@@ -256,7 +256,7 @@
 
   .field { margin-bottom: 1.25rem; }
   .field label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 6px; }
-  .field input, .field select, .field textarea {
+  .field input:not([type=checkbox]), .field select, .field textarea {
     width: 100%; background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 4px; padding: 12px 14px;
@@ -264,13 +264,13 @@
     outline: none; transition: border-color 0.2s;
     appearance: none;
   }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--orange); }
+  .field input:not([type=checkbox]):focus, .field select:focus, .field textarea:focus { border-color: var(--orange); }
   .field select option { background: var(--gray); }
   .field textarea { resize: vertical; min-height: 90px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
   .checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(245,242,237,0.75); cursor: pointer; }
-  .checkbox-label input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--orange); }
+  .checkbox-label input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--orange); appearance: auto; -webkit-appearance: checkbox; flex-shrink: 0; }
 
   .submit-btn {
     width: 100%; padding: 16px;
