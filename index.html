@@ -598,18 +598,37 @@
     document.getElementById('panel-' + tab).classList.add('active');
   }
 
-  function submitForm(e, type) {
+  async function submitForm(e, type) {
     e.preventDefault();
     const form = document.getElementById('form-' + type);
     const thanks = document.getElementById('thanks-' + type);
-    form.style.display = 'none';
-    thanks.style.display = 'block';
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'SENDING...';
+    btn.disabled = true;
 
-    // Collect form data for logging (in production, POST to your backend / Google Sheets)
     const data = new FormData(form);
-    const obj = {};
-    data.forEach((v, k) => { obj[k] = obj[k] ? [].concat(obj[k], v) : v; });
-    console.log('Iron House submission (' + type + '):', JSON.stringify(obj, null, 2));
+    data.append('_subject', 'Iron House ' + (type === 'client' ? 'Client' : 'Trainer') + ' Submission');
+    data.append('form_type', type === 'client' ? 'Client looking for coach' : 'Trainer application');
+
+    try {
+      const res = await fetch('https://formspree.io/f/mqenyrkn', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        thanks.style.display = 'block';
+      } else {
+        btn.textContent = 'TRY AGAIN';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    } catch(err) {
+      btn.textContent = 'TRY AGAIN';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
   }
 
   // Smooth scroll offset for fixed nav
