@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron House — Find Your Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --orange: #e8500a;
+    --orange-dark: #b83d06;
+    --gray: #1a1a1a;
+    --gray-mid: #2e2e2e;
+    --gray-text: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    color: var(--gray-text);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--orange) !important;
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: var(--orange-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 2.5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.85) 70%, var(--black) 100%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(232,80,10,0.03) 40px,
+        rgba(232,80,10,0.03) 41px
+      );
+  }
+  .hero-noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 1rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 12vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--orange);
+    display: block;
+    letter-spacing: -1px;
+  }
+  .hero-sub {
+    max-width: 520px;
+    font-size: 17px; line-height: 1.6;
+    color: rgba(245,242,237,0.65);
+    margin-top: 1.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center; margin-top: 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 16px 36px; border-radius: 4px;
+    font-family: var(--font-body); font-weight: 700; font-size: 15px;
+    text-transform: uppercase; letter-spacing: 1px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--white); font-size: 14px; font-weight: 500;
+    text-decoration: none; opacity: 0.6;
+    display: flex; align-items: center; gap: 6px;
+    transition: opacity 0.2s;
+  }
+  .btn-secondary:hover { opacity: 1; }
+  .btn-secondary::after { content: '→'; font-size: 16px; }
+
+  .hero-stat-row {
+    display: flex; gap: 3rem; margin-top: 3.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 2rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .hero-stat strong {
+    font-family: var(--font-display); font-size: 36px; letter-spacing: 1px;
+    color: var(--white); display: block;
+  }
+  .hero-stat span { font-size: 12px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* TICKER */
+  .ticker {
+    background: var(--orange);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex; gap: 0;
+    animation: ticker 20s linear infinite;
+  }
+  .ticker-item {
+    font-family: var(--font-display); font-size: 15px; letter-spacing: 2px;
+    color: var(--white); padding: 0 2.5rem;
+  }
+  .ticker-item::before { content: '✦'; margin-right: 2.5rem; opacity: 0.6; }
+
+  /* HOW IT WORKS */
+  .section { padding: 6rem 2.5rem; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display); font-size: clamp(42px, 6vw, 72px);
+    line-height: 1; letter-spacing: 1px; color: var(--white); margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 16px; color: var(--gray-text); max-width: 480px; line-height: 1.6; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; margin-top: 4rem; border: 1px solid rgba(255,255,255,0.07); }
+  .step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+    background: var(--black);
+    transition: background 0.2s;
+  }
+  .step:last-child { border-right: none; }
+  .step:hover { background: var(--gray); }
+  .step-num {
+    font-family: var(--font-display); font-size: 72px; color: rgba(255,255,255,0.05);
+    line-height: 1; position: absolute; top: 1.5rem; right: 1.5rem;
+  }
+  .step-icon {
+    width: 44px; height: 44px; border-radius: 4px;
+    background: rgba(232,80,10,0.15); border: 1px solid rgba(232,80,10,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 1.25rem;
+  }
+  .step h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: 1px; margin-bottom: 0.6rem; }
+  .step p { font-size: 14px; color: var(--gray-text); line-height: 1.6; }
+
+  /* FOR TRAINERS */
+  .split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .split-panel { padding: 5rem 3rem; }
+  .split-panel:first-child { border-right: 1px solid rgba(255,255,255,0.07); background: var(--gray); }
+  .split-panel h2 { font-family: var(--font-display); font-size: clamp(36px, 4vw, 56px); line-height: 1; letter-spacing: 1px; margin-bottom: 1.25rem; }
+  .split-panel p { font-size: 15px; color: var(--gray-text); line-height: 1.7; margin-bottom: 2rem; max-width: 400px; }
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; }
+  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(245,242,237,0.75); }
+  .benefit-list li::before { content: '✦'; color: var(--orange); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
+
+  /* FORM SECTION */
+  .form-section {
+    padding: 6rem 2.5rem;
+    background: var(--gray);
+    position: relative;
+    overflow: hidden;
+  }
+  .form-section::before {
+    content: 'IRON HOUSE';
+    font-family: var(--font-display);
+    font-size: 220px;
+    color: rgba(255,255,255,0.02);
+    position: absolute;
+    bottom: -20px; right: -20px;
+    letter-spacing: 4px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .form-wrap { max-width: 560px; }
+  .form-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; width: fit-content; }
+  .form-tab {
+    padding: 10px 24px; font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+    background: transparent; color: var(--gray-text); border: none;
+    font-family: var(--font-body); transition: all 0.2s;
+  }
+  .form-tab.active { background: var(--orange); color: var(--white); }
+
+  .form-panel { display: none; }
+  .form-panel.active { display: block; }
+
+  .field { margin-bottom: 1.25rem; }
+  .field label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 12px 14px;
+    color: var(--white); font-family: var(--font-body); font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+    appearance: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--orange); }
+  .field select option { background: var(--gray); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
+  .checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(245,242,237,0.75); cursor: pointer; }
+  .checkbox-label input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--orange); }
+
+  .submit-btn {
+    width: 100%; padding: 16px;
+    background: var(--orange); color: var(--white);
+    border: none; border-radius: 4px; cursor: pointer;
+    font-family: var(--font-display); font-size: 20px; letter-spacing: 2px;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  /* THANK YOU */
+  .thankyou {
+    display: none;
+    text-align: center; padding: 3rem 1rem;
+  }
+  .thankyou-icon { font-size: 48px; margin-bottom: 1rem; }
+  .thankyou h3 { font-family: var(--font-display); font-size: 36px; letter-spacing: 1px; margin-bottom: 0.75rem; }
+  .thankyou p { font-size: 15px; color: var(--gray-text); line-height: 1.6; max-width: 380px; margin: 0 auto; }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; letter-spacing: 2px; }
+  .footer-logo span { color: var(--orange); }
+  footer p { font-size: 12px; color: var(--gray-text); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 0 1.25rem 4rem; }
+    .section { padding: 4rem 1.25rem; }
+    .split { grid-template-columns: 1fr; }
+    .split-panel:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .form-section { padding: 4rem 1.25rem; }
+    .hero-stat-row { gap: 2rem; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">IRON<span>HOUSE</span></a>
+  <div class="nav-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#trainers">For trainers</a>
+    <a href="#join" class="nav-cta">Get matched</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div style="position:relative; z-index:2;">
+    <p class="hero-eyebrow">Online personal training, done right</p>
+    <h1>
+      Find the coach<br>
+      <em>built for you.</em>
+    </h1>
+    <p class="hero-sub">
+      Stop scrolling through random Instagram pages. Iron House matches you with a personal trainer who fits your goals, your personality, and your life — then gets out of the way.
+    </p>
+    <div class="hero-actions">
+      <a href="#join" class="btn-primary">Find my coach</a>
+      <a href="#trainers" class="btn-secondary">I'm a trainer</a>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <strong>100%</strong>
+        <span>Online coaching</span>
+      </div>
+      <div class="hero-stat">
+        <strong>48H</strong>
+        <span>Match turnaround</span>
+      </div>
+      <div class="hero-stat">
+        <strong>Hand</strong>
+        <span>Picked for you</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">Find your coach</span>
+    <span class="ticker-item">Real results</span>
+    <span class="ticker-item">Online training</span>
+    <span class="ticker-item">Matched to you</span>
+    <span class="ticker-item">Iron House</span>
+    <span class="ticker-item">Find your coach</span>
+    <span class="ticker-item">Real results</span>
+    <span class="ticker-item">Online training</span>
+    <span class="ticker-item">Matched to you</span>
+    <span class="ticker-item">Iron House</span>
+    <span class="ticker-item">Find your coach</span>
+    <span class="ticker-item">Real results</span>
+    <span class="ticker-item">Online training</span>
+    <span class="ticker-item">Matched to you</span>
+    <span class="ticker-item">Iron House</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <p class="section-label">The process</p>
+  <h2 class="section-title">How it works</h2>
+  <p class="section-sub">Three steps from zero to a coach who actually gets you.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <div class="step-icon">📋</div>
+      <h3>Tell us about yourself</h3>
+      <p>Fill out a short questionnaire about your goals, schedule, personality, and what you need in a coach. Takes under 3 minutes.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div class="step-icon">🎯</div>
+      <h3>We handpick your matches</h3>
+      <p>Our team personally reviews your answers and selects 2–3 coaches from our roster who are the best fit for you. Expect an email within 48 hours.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div class="step-icon">💪</div>
+      <h3>Pick your coach & start</h3>
+      <p>Browse your matched coaches, read their stories, check their style, and choose the one that feels right. Then get to work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR TRAINERS / FOR CLIENTS SPLIT -->
+<div class="split" id="trainers">
+  <div class="split-panel">
+    <p class="section-label">For trainers</p>
+    <h2>Build your business.<br>Skip the grind.</h2>
+    <p>Years of social media hustle just to find clients who ghost you. Iron House connects you with people who are already looking for someone exactly like you.</p>
+    <ul class="benefit-list">
+      <li>Clients come to you — no algorithm required</li>
+      <li>Higher quality leads matched to your style</li>
+      <li>We handle payments and transactions</li>
+      <li>Full independence — your program, your rates</li>
+      <li>Build a loyal roster that follows you, not a gym</li>
+    </ul>
+    <a href="#join" class="btn-primary">Apply as a trainer</a>
+  </div>
+  <div class="split-panel">
+    <p class="section-label">For clients</p>
+    <h2>A coach you actually<br>want to show up for.</h2>
+    <p>The right trainer changes everything. Not just results — but motivation, consistency, and the feeling that someone actually knows what you need.</p>
+    <ul class="benefit-list">
+      <li>Matched on goals, personality, and coaching style</li>
+      <li>Vetted, certified coaches only</li>
+      <li>Train from anywhere, on your schedule</li>
+      <li>No more scrolling random fitness pages</li>
+      <li>One platform, secure payments, full support</li>
+    </ul>
+    <a href="#join" class="btn-primary">Find my coach</a>
+  </div>
+</div>
+
+<!-- FORM SECTION -->
+<section class="form-section" id="join">
+  <div class="form-wrap">
+    <p class="section-label">Get started</p>
+    <h2 class="section-title" style="margin-bottom:0.5rem;">Let's find<br>your match.</h2>
+    <p style="color:var(--gray-text); font-size:15px; margin-bottom:2rem; line-height:1.6;">Whether you're looking for a coach or you are one — fill out the form below and we'll be in touch within 48 hours.</p>
+
+    <div class="form-tabs">
+      <button class="form-tab active" onclick="switchTab('client')">I need a coach</button>
+      <button class="form-tab" onclick="switchTab('trainer')">I'm a trainer</button>
+    </div>
+
+    <!-- CLIENT FORM -->
+    <div class="form-panel active" id="panel-client">
+      <form id="form-client" onsubmit="submitForm(event, 'client')">
+        <div class="field-row">
+          <div class="field">
+            <label>First name</label>
+            <input type="text" name="firstName" placeholder="Alex" required>
+          </div>
+          <div class="field">
+            <label>Last name</label>
+            <input type="text" name="lastName" placeholder="Rivera" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" name="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label>What's your main goal?</label>
+          <select name="goal" required>
+            <option value="" disabled selected>Select a goal</option>
+            <option>Build muscle / hypertrophy</option>
+            <option>Lose weight / body recomposition</option>
+            <option>Get stronger</option>
+            <option>Improve endurance / cardio</option>
+            <option>General fitness & health</option>
+            <option>Sport-specific training</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Training experience</label>
+          <select name="experience" required>
+            <option value="" disabled selected>How long have you trained?</option>
+            <option>Brand new — never really trained</option>
+            <option>A little — a few months here and there</option>
+            <option>Intermediate — 1–3 years consistently</option>
+            <option>Experienced — 3+ years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>What kind of coach do you want?</label>
+          <select name="coachStyle">
+            <option value="" disabled selected>Choose a style</option>
+            <option>Laid-back and supportive</option>
+            <option>Structured and disciplined</option>
+            <option>High energy and motivating</option>
+            <option>Scientific and data-driven</option>
+            <option>I'm not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Anything else we should know?</label>
+          <textarea name="notes" placeholder="Injuries, preferences, schedule, lifestyle — anything that helps us find your perfect match."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">SUBMIT & GET MATCHED</button>
+      </form>
+      <div class="thankyou" id="thanks-client">
+        <div class="thankyou-icon">🔥</div>
+        <h3>You're in the house.</h3>
+        <p>We'll review your answers and hand-pick your matches personally. Expect an email from us within 48 hours with your coaches.</p>
+      </div>
+    </div>
+
+    <!-- TRAINER FORM -->
+    <div class="form-panel" id="panel-trainer">
+      <form id="form-trainer" onsubmit="submitForm(event, 'trainer')">
+        <div class="field-row">
+          <div class="field">
+            <label>First name</label>
+            <input type="text" name="firstName" placeholder="Marcus" required>
+          </div>
+          <div class="field">
+            <label>Last name</label>
+            <input type="text" name="lastName" placeholder="Reyes" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" name="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label>Your location</label>
+          <input type="text" name="location" placeholder="City, State" required>
+        </div>
+        <div class="field">
+          <label>Years of experience</label>
+          <select name="experience" required>
+            <option value="" disabled selected>How long have you been coaching?</option>
+            <option>Less than 1 year</option>
+            <option>1–3 years</option>
+            <option>3–5 years</option>
+            <option>5–10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Training specialties (select all that apply)</label>
+          <div class="checkbox-group" style="margin-top:6px;">
+            <label class="checkbox-label"><input type="checkbox" name="specialty" value="Hypertrophy"> Hypertrophy / muscle building</label>
+            <label class="checkbox-label"><input type="checkbox" name="specialty" value="Strength"> Strength & powerlifting</label>
+            <label class="checkbox-label"><input type="checkbox" name="specialty" value="Calisthenics"> Calisthenics</label>
+            <label class="checkbox-label"><input type="checkbox" name="specialty" value="CrossFit"> CrossFit / functional fitness</label>
+            <label class="checkbox-label"><input type="checkbox" name="specialty" value="Weight loss"> Weight loss / recomposition</label>
+            <label class="checkbox-label"><input type="checkbox" name="specialty" value="Endurance"> Endurance / cardio</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Certifications or credentials</label>
+          <input type="text" name="certs" placeholder="e.g. NASM, ACE, ISSA, BS Kinesiology">
+        </div>
+        <div class="field">
+          <label>Tell us about yourself & your coaching style</label>
+          <textarea name="bio" placeholder="Who do you train? What makes your coaching different? What do you believe in?" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">APPLY TO JOIN</button>
+      </form>
+      <div class="thankyou" id="thanks-trainer">
+        <div class="thankyou-icon">🏋️</div>
+        <h3>Application received.</h3>
+        <p>We review every trainer personally. We'll reach out within 48 hours to set up a quick intro call and get your profile built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">IRON<span>HOUSE</span></div>
+  <p>© 2025 Iron House. Connecting coaches and clients online.</p>
+</footer>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  }
+
+  function submitForm(e, type) {
+    e.preventDefault();
+    const form = document.getElementById('form-' + type);
+    const thanks = document.getElementById('thanks-' + type);
+    form.style.display = 'none';
+    thanks.style.display = 'block';
+
+    // Collect form data for logging (in production, POST to your backend / Google Sheets)
+    const data = new FormData(form);
+    const obj = {};
+    data.forEach((v, k) => { obj[k] = obj[k] ? [].concat(obj[k], v) : v; });
+    console.log('Iron House submission (' + type + '):', JSON.stringify(obj, null, 2));
+  }
+
+  // Smooth scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
