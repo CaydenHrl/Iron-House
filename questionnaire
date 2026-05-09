@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Coach — Iron House</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --orange: #e8500a;
+    --orange-dark: #b83d06;
+    --gray: #1a1a1a;
+    --gray-mid: #2a2a2a;
+    --gray-text: #777;
+    --border: rgba(255,255,255,0.08);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+  }
+  .logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; text-decoration: none; color: var(--white); }
+  .logo span { color: var(--orange); }
+  .step-counter { font-size: 12px; color: var(--gray-text); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* PROGRESS BAR */
+  .progress-wrap { height: 3px; background: var(--gray-mid); }
+  .progress-bar { height: 3px; background: var(--orange); transition: width 0.4s ease; }
+
+  /* LAYOUT */
+  .page { display: none; animation: fadeUp 0.4s ease both; }
+  .page.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .container {
+    max-width: 680px; margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .page-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px);
+    line-height: 1; letter-spacing: 1px; margin-bottom: 0.6rem;
+  }
+  .page-sub {
+    font-size: 15px; color: var(--gray-text); line-height: 1.6; margin-bottom: 2.5rem;
+  }
+
+  /* SECTIONS */
+  .q-block { margin-bottom: 2rem; }
+  .q-label {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase; color: var(--gray-text); margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  /* MULTIPLE CHOICE PILLS */
+  .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    padding: 9px 18px; border-radius: 99px;
+    border: 1px solid var(--border);
+    background: transparent; color: rgba(245,242,237,0.6);
+    font-family: var(--font-body); font-size: 14px; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .pill:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
+  .pill.selected { background: var(--orange); border-color: var(--orange); color: var(--white); }
+  .pill.multi.selected { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+  /* SLIDER */
+  .slider-block { margin-bottom: 2rem; }
+  .slider-labels {
+    display: flex; justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .slider-labels span {
+    font-size: 11px; color: var(--gray-text); letter-spacing: 0.3px;
+    max-width: 100px;
+  }
+  .slider-labels span:last-child { text-align: right; }
+  .slider-value-display {
+    text-align: center; font-family: var(--font-display);
+    font-size: 18px; color: var(--orange); letter-spacing: 1px;
+    margin-bottom: 10px; min-height: 24px;
+  }
+
+  input[type=range] {
+    width: 100%; height: 4px;
+    -webkit-appearance: none; appearance: none;
+    background: var(--gray-mid); border-radius: 99px; outline: none;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--orange); border: 3px solid var(--black);
+    box-shadow: 0 0 0 1px var(--orange);
+    cursor: grab; transition: transform 0.1s;
+  }
+  input[type=range]::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.2); }
+  input[type=range]::-moz-range-thumb {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--orange); border: 3px solid var(--black);
+    cursor: grab;
+  }
+
+  /* DAYS SLIDER special */
+  .days-display {
+    font-family: var(--font-display); font-size: 48px;
+    color: var(--white); letter-spacing: 2px; line-height: 1;
+  }
+  .days-display span { font-size: 18px; color: var(--gray-text); margin-left: 6px; }
+
+  /* BUDGET SLIDER special */
+  .budget-display {
+    font-family: var(--font-display); font-size: 48px;
+    color: var(--white); letter-spacing: 2px; line-height: 1;
+  }
+  .budget-display span { font-size: 18px; color: var(--gray-text); margin-left: 4px; }
+
+  /* TEXT AREA */
+  .q-textarea {
+    width: 100%; background: var(--gray);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; color: var(--white);
+    font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+    outline: none; resize: vertical; min-height: 110px;
+    transition: border-color 0.2s;
+  }
+  .q-textarea:focus { border-color: var(--orange); }
+  .q-textarea::placeholder { color: var(--gray-text); }
+
+  /* TEXT INPUT */
+  .q-input {
+    width: 100%; background: var(--gray);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; color: var(--white);
+    font-family: var(--font-body); font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .q-input:focus { border-color: var(--orange); }
+  .q-input::placeholder { color: var(--gray-text); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+  /* NAV BUTTONS */
+  .nav-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 1rem 2rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 50;
+  }
+  .btn-back {
+    background: transparent; color: var(--gray-text);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 12px 24px; font-family: var(--font-display);
+    font-size: 16px; letter-spacing: 1px; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-back:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .btn-back:disabled { opacity: 0.2; cursor: default; }
+  .btn-next {
+    background: var(--orange); color: var(--white);
+    border: none; border-radius: 4px;
+    padding: 12px 32px; font-family: var(--font-display);
+    font-size: 18px; letter-spacing: 2px; cursor: pointer;
+    transition: all 0.15s; display: flex; align-items: center; gap: 8px;
+  }
+  .btn-next:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  /* THANK YOU */
+  .thankyou-page {
+    display: none; min-height: 100vh;
+    flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .thankyou-page.active { display: flex; }
+  .thankyou-icon { font-size: 64px; margin-bottom: 1.5rem; }
+  .thankyou-page h1 { font-family: var(--font-display); font-size: clamp(48px, 10vw, 80px); letter-spacing: 2px; line-height: 1; margin-bottom: 1rem; }
+  .thankyou-page h1 span { color: var(--orange); }
+  .thankyou-page p { font-size: 16px; color: var(--gray-text); line-height: 1.7; max-width: 440px; margin: 0 auto 2rem; }
+  .thankyou-detail {
+    background: var(--gray); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.25rem 1.5rem;
+    font-size: 14px; color: rgba(245,242,237,0.6);
+    line-height: 1.7; max-width: 400px;
+  }
+  .thankyou-detail strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SECTION CARD */
+  .section-card {
+    background: var(--gray); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-card-title {
+    font-family: var(--font-display); font-size: 20px; letter-spacing: 1px;
+    margin-bottom: 1.25rem; color: var(--white);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-card-title .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 2rem 1.25rem 6rem; }
+    .topbar { padding: 1rem 1.25rem; }
+    .nav-footer { padding: 1rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="index.html" class="logo">IRON<span>HOUSE</span></a>
+  <span class="step-counter" id="step-counter">Step 1 of 3</span>
+</div>
+<div class="progress-wrap">
+  <div class="progress-bar" id="progress-bar" style="width: 33%"></div>
+</div>
+
+<!-- PAGE 1: THE BASICS -->
+<div class="page active" id="page-1">
+  <div class="container">
+    <p class="page-label">Section 1 of 3</p>
+    <h1 class="page-title">The basics.</h1>
+    <p class="page-sub">Quick practical questions so we can find coaches who actually fit your life.</p>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>What's your main goal?</div>
+      <div class="pill-group" id="goal-group">
+        <button class="pill" onclick="selectPill(this, 'goal-group')">Build muscle</button>
+        <button class="pill" onclick="selectPill(this, 'goal-group')">Lose weight</button>
+        <button class="pill" onclick="selectPill(this, 'goal-group')">Get stronger</button>
+        <button class="pill" onclick="selectPill(this, 'goal-group')">Improve endurance</button>
+        <button class="pill" onclick="selectPill(this, 'goal-group')">General fitness</button>
+        <button class="pill" onclick="selectPill(this, 'goal-group')">Sport-specific</button>
+        <button class="pill" onclick="selectPill(this, 'goal-group')">Body recomposition</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Training experience</div>
+      <div class="pill-group" id="exp-group">
+        <button class="pill" onclick="selectPill(this, 'exp-group')">Brand new</button>
+        <button class="pill" onclick="selectPill(this, 'exp-group')">A few months</button>
+        <button class="pill" onclick="selectPill(this, 'exp-group')">1–3 years</button>
+        <button class="pill" onclick="selectPill(this, 'exp-group')">3+ years</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Where do you train?</div>
+      <div class="pill-group" id="location-group">
+        <button class="pill" onclick="selectPill(this, 'location-group')">Home gym</button>
+        <button class="pill" onclick="selectPill(this, 'location-group')">Commercial gym</button>
+        <button class="pill" onclick="selectPill(this, 'location-group')">Outdoors</button>
+        <button class="pill" onclick="selectPill(this, 'location-group')">Wherever I can</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Training style interests <span style="font-size:12px; color:var(--gray-text); font-family:var(--font-body); font-weight:400; letter-spacing:0; margin-left:4px;">(pick all that apply)</span></div>
+      <div class="pill-group" id="style-group">
+        <button class="pill multi" onclick="togglePill(this)">Hypertrophy</button>
+        <button class="pill multi" onclick="togglePill(this)">Strength</button>
+        <button class="pill multi" onclick="togglePill(this)">Calisthenics</button>
+        <button class="pill multi" onclick="togglePill(this)">CrossFit</button>
+        <button class="pill multi" onclick="togglePill(this)">Cardio / endurance</button>
+        <button class="pill multi" onclick="togglePill(this)">Functional fitness</button>
+        <button class="pill multi" onclick="togglePill(this)">Flexibility / mobility</button>
+        <button class="pill multi" onclick="togglePill(this)">Not sure yet</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Diet philosophy <span style="font-size:12px; color:var(--gray-text); font-family:var(--font-body); font-weight:400; letter-spacing:0; margin-left:4px;">(pick all that apply)</span></div>
+      <div class="pill-group" id="diet-group">
+        <button class="pill multi" onclick="togglePill(this)">No preference</button>
+        <button class="pill multi" onclick="togglePill(this)">High protein</button>
+        <button class="pill multi" onclick="togglePill(this)">Carnivore</button>
+        <button class="pill multi" onclick="togglePill(this)">Keto</button>
+        <button class="pill multi" onclick="togglePill(this)">Plant-based</button>
+        <button class="pill multi" onclick="togglePill(this)">Vegan</button>
+        <button class="pill multi" onclick="togglePill(this)">Intermittent fasting</button>
+        <button class="pill multi" onclick="togglePill(this)">Whole foods</button>
+        <button class="pill multi" onclick="togglePill(this)">Flexible / IIFYM</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE 2: THE SLIDERS -->
+<div class="page" id="page-2">
+  <div class="container">
+    <p class="page-label">Section 2 of 3</p>
+    <h1 class="page-title">Who you are.</h1>
+    <p class="page-sub">Drag the sliders to where you actually land — be honest, this is how we find someone who clicks with you.</p>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Days per week you can train</div>
+      <div style="text-align:center; margin-bottom: 1rem;">
+        <div class="days-display"><span id="days-val">4</span><span>days / week</span></div>
+      </div>
+      <input type="range" min="1" max="7" value="4" id="slider-days"
+        oninput="document.getElementById('days-val').textContent = this.value">
+      <div class="slider-labels">
+        <span>1 day</span>
+        <span style="text-align:right">7 days</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Monthly budget for coaching</div>
+      <div style="text-align:center; margin-bottom: 1rem;">
+        <div class="budget-display">$<span id="budget-val">150</span><span>/ mo</span></div>
+      </div>
+      <input type="range" min="50" max="500" step="10" value="150" id="slider-budget"
+        oninput="document.getElementById('budget-val').textContent = this.value">
+      <div class="slider-labels">
+        <span>$50 / mo</span>
+        <span style="text-align:right">$500+ / mo</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Coaching style</div>
+      <div class="slider-value-display" id="display-coaching"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-coaching"
+        oninput="updateSlider('slider-coaching', 'display-coaching', ['Totally laid-back', 'Relaxed & supportive', 'Balanced', 'Structured & firm', 'Full drill sergeant'])">
+      <div class="slider-labels">
+        <span>Totally laid-back</span>
+        <span style="text-align:right">Drill sergeant</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Training intensity</div>
+      <div class="slider-value-display" id="display-intensity"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-intensity"
+        oninput="updateSlider('slider-intensity', 'display-intensity', ['Light & easy', 'Moderate pace', 'Balanced', 'Push hard', 'Max effort always'])">
+      <div class="slider-labels">
+        <span>Light & steady</span>
+        <span style="text-align:right">Go hard every session</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Check-in frequency</div>
+      <div class="slider-value-display" id="display-checkin"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-checkin"
+        oninput="updateSlider('slider-checkin', 'display-checkin', ['Leave me alone', 'Weekly check-ins', 'Few times a week', 'Every other day', 'Daily accountability'])">
+      <div class="slider-labels">
+        <span>Leave me alone</span>
+        <span style="text-align:right">Daily accountability</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Diet strictness</div>
+      <div class="slider-value-display" id="display-diet"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-diet"
+        oninput="updateSlider('slider-diet', 'display-diet', ['I eat whatever', 'Mostly flexible', 'Balanced approach', 'Pretty disciplined', 'Very regimented'])">
+      <div class="slider-labels">
+        <span>I eat whatever</span>
+        <span style="text-align:right">Very regimented</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="page-label" style="margin-bottom: 1.25rem;">Your personality</p>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Motivation</div>
+      <div class="slider-value-display" id="display-motivation"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-motivation"
+        oninput="updateSlider('slider-motivation', 'display-motivation', ['Need constant pushing', 'Could use nudges', 'Self-sufficient', 'Pretty self-driven', 'Fully self-motivated'])">
+      <div class="slider-labels">
+        <span>Need a push</span>
+        <span style="text-align:right">Fully self-driven</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Personality</div>
+      <div class="slider-value-display" id="display-personality"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-personality"
+        oninput="updateSlider('slider-personality', 'display-personality', ['Very introverted', 'Mostly introverted', 'Ambiverted', 'Mostly extroverted', 'Very extroverted'])">
+      <div class="slider-labels">
+        <span>Introverted</span>
+        <span style="text-align:right">Extroverted</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Competitiveness</div>
+      <div class="slider-value-display" id="display-competitive"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-competitive"
+        oninput="updateSlider('slider-competitive', 'display-competitive', ['Not competitive at all', 'Mild', 'Moderately competitive', 'Pretty competitive', 'Extremely competitive'])">
+      <div class="slider-labels">
+        <span>Not competitive</span>
+        <span style="text-align:right">Extremely competitive</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE 3: PERSONAL -->
+<div class="page" id="page-3">
+  <div class="container">
+    <p class="page-label">Section 3 of 3</p>
+    <h1 class="page-title">Your story.</h1>
+    <p class="page-sub">This is the part that really helps us find your person. Take your time.</p>
+
+    <div class="q-block">
+      <label class="q-label">First, what's your name?</label>
+      <input type="text" class="q-input" id="input-name" placeholder="Your first name">
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">And your email — so we can send you your matches</label>
+      <input type="email" class="q-input" id="input-email" placeholder="you@email.com">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="q-block">
+      <label class="q-label">What's held you back from reaching your fitness goals before?</label>
+      <textarea class="q-textarea" id="input-held-back" placeholder="Consistency, motivation, not knowing where to start, life getting in the way... be real with us."></textarea>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">What does success look like to you in 6 months?</label>
+      <textarea class="q-textarea" id="input-success" placeholder="A number on a scale, fitting into something, feeling a certain way, hitting a PR... whatever it means to you."></textarea>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label">Anything else your coach should know about you?</label>
+      <textarea class="q-textarea" id="input-other" placeholder="Injuries, schedule quirks, things that motivate you, things that don't — anything that helps us find the right fit."></textarea>
+    </div>
+
+  </div>
+</div>
+
+<!-- THANK YOU -->
+<div class="thankyou-page" id="thankyou">
+  <div class="thankyou-icon">🔥</div>
+  <h1>You're in the<br><span>house.</span></h1>
+  <p>We're hand-picking your matches right now. Expect a personal email from us within 48 hours with your coaches.</p>
+  <div class="thankyou-detail">
+    <strong>What happens next</strong>
+    You'll receive 2–3 trainer profiles selected specifically for you — not an algorithm, a real person reviewed your answers. From there, you choose who feels right and get started.
+  </div>
+</div>
+
+<!-- NAV FOOTER -->
+<div class="nav-footer" id="nav-footer">
+  <button class="btn-back" id="btn-back" onclick="prevPage()" disabled>← Back</button>
+  <button class="btn-next" id="btn-next" onclick="nextPage()">Next →</button>
+</div>
+
+<script>
+  let currentPage = 1;
+  const totalPages = 3;
+
+  const sliderLabels = {
+    'slider-coaching': ['Totally laid-back', 'Relaxed & supportive', 'Balanced', 'Structured & firm', 'Full drill sergeant'],
+    'slider-intensity': ['Light & easy', 'Moderate pace', 'Balanced', 'Push hard', 'Max effort always'],
+    'slider-checkin': ['Leave me alone', 'Weekly check-ins', 'Few times a week', 'Every other day', 'Daily accountability'],
+    'slider-diet': ['I eat whatever', 'Mostly flexible', 'Balanced approach', 'Pretty disciplined', 'Very regimented'],
+    'slider-motivation': ['Need constant pushing', 'Could use nudges', 'Self-sufficient', 'Pretty self-driven', 'Fully self-motivated'],
+    'slider-personality': ['Very introverted', 'Mostly introverted', 'Ambiverted', 'Mostly extroverted', 'Very extroverted'],
+    'slider-competitive': ['Not competitive at all', 'Mild', 'Moderately competitive', 'Pretty competitive', 'Extremely competitive'],
+  };
+
+  function updateSlider(sliderId, displayId, labels) {
+    const val = document.getElementById(sliderId).value;
+    document.getElementById(displayId).textContent = labels[val];
+  }
+
+  function selectPill(el, groupId) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function togglePill(el) {
+    el.classList.toggle('selected');
+  }
+
+  function updateProgress() {
+    const pct = (currentPage / totalPages) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('step-counter').textContent = 'Step ' + currentPage + ' of ' + totalPages;
+    document.getElementById('btn-back').disabled = currentPage === 1;
+    document.getElementById('btn-next').textContent = currentPage === totalPages ? 'Submit →' : 'Next →';
+  }
+
+  function nextPage() {
+    if (currentPage < totalPages) {
+      document.getElementById('page-' + currentPage).classList.remove('active');
+      currentPage++;
+      const nextEl = document.getElementById('page-' + currentPage);
+      nextEl.classList.add('active');
+      nextEl.style.animation = 'none';
+      nextEl.offsetHeight;
+      nextEl.style.animation = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateProgress();
+      // init slider displays on page 2
+      if (currentPage === 2) {
+        Object.entries(sliderLabels).forEach(([id, labels]) => {
+          const displayId = 'display-' + id.replace('slider-', '');
+          const val = document.getElementById(id).value;
+          document.getElementById(displayId).textContent = labels[val];
+        });
+      }
+    } else {
+      submitForm();
+    }
+  }
+
+  function prevPage() {
+    if (currentPage > 1) {
+      document.getElementById('page-' + currentPage).classList.remove('active');
+      currentPage--;
+      document.getElementById('page-' + currentPage).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateProgress();
+    }
+  }
+
+  async function submitForm() {
+    const btn = document.getElementById('btn-next');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    // collect all data
+    const getSelected = (groupId) => [...document.querySelectorAll('#' + groupId + ' .pill.selected')].map(p => p.textContent).join(', ');
+    const getSliderLabel = (id) => { const v = document.getElementById(id).value; return sliderLabels[id] ? sliderLabels[id][v] : v; };
+
+    const formData = new FormData();
+    formData.append('_subject', 'Iron House — New Client Match Request');
+    formData.append('name', document.getElementById('input-name').value);
+    formData.append('email', document.getElementById('input-email').value);
+    formData.append('goal', getSelected('goal-group'));
+    formData.append('experience', getSelected('exp-group'));
+    formData.append('training_location', getSelected('location-group'));
+    formData.append('training_styles', getSelected('style-group'));
+    formData.append('diet', getSelected('diet-group'));
+    formData.append('days_per_week', document.getElementById('slider-days').value);
+    formData.append('budget', '$' + document.getElementById('slider-budget').value + '/mo');
+    formData.append('coaching_style', getSliderLabel('slider-coaching'));
+    formData.append('intensity', getSliderLabel('slider-intensity'));
+    formData.append('checkin_freq', getSliderLabel('slider-checkin'));
+    formData.append('diet_strictness', getSliderLabel('slider-diet'));
+    formData.append('motivation', getSliderLabel('slider-motivation'));
+    formData.append('personality', getSliderLabel('slider-personality'));
+    formData.append('competitiveness', getSliderLabel('slider-competitive'));
+    formData.append('held_back', document.getElementById('input-held-back').value);
+    formData.append('success_vision', document.getElementById('input-success').value);
+    formData.append('other_notes', document.getElementById('input-other').value);
+
+    try {
+      const res = await fetch('https://formspree.io/f/mqenyrkn', {
+        method: 'POST', body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('nav-footer').style.display = 'none';
+        document.getElementById('thankyou').classList.add('active');
+        document.getElementById('progress-bar').style.width = '100%';
+        document.getElementById('step-counter').textContent = 'Complete';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+      }
+    } catch(e) {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  }
+
+  // init
+  updateProgress();
+</script>
+</body>
+</html>
