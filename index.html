@@ -8,19 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --black: #0a0a0a;
-    --white: #f5f2ed;
-    --orange: #e8500a;
-    --orange-dark: #b83d06;
-    --gray: #1a1a1a;
-    --gray-mid: #2e2e2e;
-    --gray-text: #888;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'Barlow', sans-serif;
+    --black: #0a0a0a; --white: #f5f2ed; --orange: #e8500a; --orange-dark: #b83d06;
+    --gray: #1a1a1a; --gray-mid: #2e2e2e; --gray-text: #888;
+    --font-display: 'Bebas Neue', sans-serif; --font-body: 'Barlow', sans-serif;
   }
-
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; }
 
@@ -60,6 +52,11 @@
   .section-title { font-family: var(--font-display); font-size: clamp(42px, 6vw, 72px); line-height: 1; letter-spacing: 1px; color: var(--white); margin-bottom: 1rem; }
   .section-sub { font-size: 16px; color: var(--gray-text); max-width: 480px; line-height: 1.6; }
 
+  /* VERSE BANNER */
+  .verse-banner { padding: 2.5rem 2.5rem; background: var(--gray); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
+  .verse-text { font-family: 'Barlow', sans-serif; font-style: italic; font-size: clamp(16px, 2.5vw, 22px); color: rgba(245,242,237,0.7); line-height: 1.6; max-width: 680px; margin: 0 auto 0.5rem; }
+  .verse-ref { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); }
+
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; margin-top: 4rem; border: 1px solid rgba(255,255,255,0.07); }
   .step { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.07); position: relative; background: var(--black); transition: background 0.2s; }
   .step:last-child { border-right: none; }
@@ -69,15 +66,17 @@
   .step h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: 1px; margin-bottom: 0.6rem; }
   .step p { font-size: 14px; color: var(--gray-text); line-height: 1.6; }
 
+  /* SPLIT — clients LEFT, trainers RIGHT */
   .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
   .split-panel { padding: 5rem 3rem; }
-  .split-panel:first-child { border-right: 1px solid rgba(255,255,255,0.07); background: var(--gray); }
+  .split-panel.client-panel { border-right: 1px solid rgba(255,255,255,0.07); background: var(--gray); }
   .split-panel h2 { font-family: var(--font-display); font-size: clamp(36px, 4vw, 56px); line-height: 1; letter-spacing: 1px; margin-bottom: 1.25rem; }
   .split-panel p { font-size: 15px; color: var(--gray-text); line-height: 1.7; margin-bottom: 2rem; max-width: 400px; }
   .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; }
   .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(245,242,237,0.75); }
   .benefit-list li::before { content: '✦'; color: var(--orange); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
 
+  /* WHY TABS — clients tab first */
   .why-tab-nav { display: flex; margin-bottom: 2.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; width: fit-content; }
   .why-tab-btn { padding: 11px 28px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; background: transparent; color: var(--gray-text); border: none; font-family: var(--font-body); transition: all 0.2s; }
   .why-tab-btn.active { background: var(--orange); color: var(--white); }
@@ -133,9 +132,10 @@
     .hero { padding: 0 1.25rem 4rem; }
     .section { padding: 4rem 1.25rem; }
     .split { grid-template-columns: 1fr; }
-    .split-panel:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .split-panel.client-panel { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .hero-stat-row { gap: 2rem; }
     .faq-cols { grid-template-columns: 1fr; gap: 0.5rem; }
+    .verse-banner { padding: 2rem 1.25rem; }
   }
   @media (max-width: 480px) {
     .why-stat-col { grid-template-columns: 1fr; }
@@ -148,6 +148,7 @@
   <a href="#" class="nav-logo">IRON<span>HOUSE</span></a>
   <div class="nav-links">
     <a href="#how-it-works">How it works</a>
+    <a href="trainers.html">Meet the coaches</a>
     <a href="#why">Why Iron House</a>
     <a href="#faq">FAQ</a>
     <a href="questionnaire.html" class="nav-cta">Get matched</a>
@@ -179,6 +180,12 @@
   </div>
 </div>
 
+<!-- VERSE BANNER -->
+<div class="verse-banner">
+  <p class="verse-text">"As iron sharpens iron, so one man sharpens another."</p>
+  <p class="verse-ref">Proverbs 27:17</p>
+</div>
+
 <section class="section" id="how-it-works">
   <p class="section-label">The process</p>
   <h2 class="section-title">How it works</h2>
@@ -205,7 +212,21 @@
   </div>
 </section>
 
-<div class="split" id="trainers">
+<!-- SPLIT — clients LEFT, trainers RIGHT -->
+<div class="split" id="offerings">
+  <div class="split-panel client-panel">
+    <p class="section-label">For clients</p>
+    <h2>A coach you actually<br>want to show up for.</h2>
+    <p>The right trainer changes everything. Not just results — but motivation, consistency, and the feeling that someone actually knows what you need.</p>
+    <ul class="benefit-list">
+      <li>Matched on goals, personality, and coaching style</li>
+      <li>Vetted, certified coaches only</li>
+      <li>Train from anywhere, on your schedule</li>
+      <li>No more scrolling random fitness pages</li>
+      <li>One platform, secure payments, full support</li>
+    </ul>
+    <a href="questionnaire.html" class="btn-primary">Find my coach</a>
+  </div>
   <div class="split-panel">
     <p class="section-label">For trainers</p>
     <h2>Build your business.<br>Skip the grind.</h2>
@@ -219,56 +240,19 @@
     </ul>
     <a href="trainer-questionnaire.html" class="btn-primary">Apply as a trainer</a>
   </div>
-  <div class="split-panel">
-    <p class="section-label">For clients</p>
-    <h2>A coach you actually<br>want to show up for.</h2>
-    <p>The right trainer changes everything. Not just results — but motivation, consistency, and the feeling that someone actually knows what you need.</p>
-    <ul class="benefit-list">
-      <li>Matched on goals, personality, and coaching style</li>
-      <li>Vetted, certified coaches only</li>
-      <li>Train from anywhere, on your schedule</li>
-      <li>No more scrolling random fitness pages</li>
-      <li>One platform, secure payments, full support</li>
-    </ul>
-    <a href="questionnaire.html" class="btn-primary">Find my coach</a>
-  </div>
 </div>
 
-<!-- WHY IRON HOUSE TABS -->
+<!-- WHY IRON HOUSE TABS — clients tab first -->
 <section class="section" id="why" style="padding-bottom:3rem;">
   <p class="section-label">Why Iron House</p>
   <h2 class="section-title">Built for both sides<br>of the equation.</h2>
   <div style="margin-top:2.5rem;">
     <div class="why-tab-nav">
-      <button class="why-tab-btn active" onclick="switchWhyTab('trainers', this)">For Trainers</button>
-      <button class="why-tab-btn" onclick="switchWhyTab('clients', this)">For Clients</button>
+      <button class="why-tab-btn active" onclick="switchWhyTab('clients', this)">For Clients</button>
+      <button class="why-tab-btn" onclick="switchWhyTab('trainers', this)">For Trainers</button>
     </div>
 
-    <div class="why-panel active" id="why-trainers">
-      <div class="why-grid">
-        <div>
-          <h3 class="why-heading">Stop waiting for the algorithm.<br>Start building your business.</h3>
-          <p class="why-body">The traditional path to online coaching is brutal. You post every day, pray for followers, spend years building a platform — all before a single client signs up. Most trainers give up before they ever get traction.</p>
-          <p class="why-body">Iron House flips that entirely. We bring the clients to you — already filtered, already matched to your style, already interested in what you specifically offer. You focus on coaching. We handle the rest.</p>
-          <ul class="why-list">
-            <li>Clients matched to your personality and coaching style — not just your specialty</li>
-            <li>No social media following required to get started</li>
-            <li>We handle payments, transactions, and platform logistics</li>
-            <li>Build a loyal roster that follows <em>you</em>, not a gym</li>
-            <li>Full independence — your program, your rates, your rules</li>
-            <li>Founding trainers get permanent benefits for helping us grow</li>
-          </ul>
-          <a href="trainer-questionnaire.html" class="btn-primary" style="margin-top:2rem;">Apply as a trainer</a>
-        </div>
-        <div class="why-stat-col">
-          <div class="why-stat-card"><div class="why-stat-num">Years</div><div class="why-stat-label">The average time it takes to build a following big enough to go fully online. We skip that entirely.</div></div>
-          <div class="why-stat-card"><div class="why-stat-num">$0 upfront</div><div class="why-stat-label">No monthly fees to join. We only earn when you do. Your success is our success.</div></div>
-          <div class="why-stat-card"><div class="why-stat-num">Full freedom</div><div class="why-stat-label">Work from anywhere, with anyone, on your own schedule. This is what online coaching was supposed to be.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="why-panel" id="why-clients">
+    <div class="why-panel active" id="why-clients">
       <div class="why-grid">
         <div>
           <h3 class="why-heading">Stop scrolling.<br>Start training with someone you actually like.</h3>
@@ -291,6 +275,30 @@
         </div>
       </div>
     </div>
+
+    <div class="why-panel" id="why-trainers">
+      <div class="why-grid">
+        <div>
+          <h3 class="why-heading">Stop waiting for the algorithm.<br>Start building your business.</h3>
+          <p class="why-body">The traditional path to online coaching is brutal. You post every day, pray for followers, spend years building a platform — all before a single client signs up. Most trainers give up before they ever get traction.</p>
+          <p class="why-body">Iron House flips that entirely. We bring the clients to you — already filtered, already matched to your style, already interested in what you specifically offer. You focus on coaching. We handle the rest.</p>
+          <ul class="why-list">
+            <li>Clients matched to your personality and coaching style — not just your specialty</li>
+            <li>No social media following required to get started</li>
+            <li>We handle payments, transactions, and platform logistics</li>
+            <li>Build a loyal roster that follows <em>you</em>, not a gym</li>
+            <li>Full independence — your program, your rates, your rules</li>
+            <li>Founding trainers get permanent benefits for helping us grow</li>
+          </ul>
+          <a href="trainer-questionnaire.html" class="btn-primary" style="margin-top:2rem;">Apply as a trainer</a>
+        </div>
+        <div class="why-stat-col">
+          <div class="why-stat-card"><div class="why-stat-num">Years</div><div class="why-stat-label">The average time it takes to build a following big enough to go fully online. We skip that entirely.</div></div>
+          <div class="why-stat-card"><div class="why-stat-num">$0 upfront</div><div class="why-stat-label">No monthly fees to join. We only earn when you do. Your success is our success.</div></div>
+          <div class="why-stat-card"><div class="why-stat-num">Full freedom</div><div class="why-stat-label">Work from anywhere, with anyone, on your own schedule. This is what online coaching was supposed to be.</div></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -300,17 +308,17 @@
   <h2 class="section-title">Real people.<br>Real results.</h2>
   <div class="testimonials-grid">
     <div class="testimonial-card">
-      <div class="testimonial-quote">I spent two years grinding Instagram trying to build an audience so I could go fully online. Iron House gave me clients before I even finished setting up my profile. I wish this existed when I started.</div>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">MR</div>
-        <div><div class="testimonial-name">Marcus R.</div><div class="testimonial-role">Trainer · Tampa, FL · Hypertrophy & Strength</div></div>
-      </div>
-    </div>
-    <div class="testimonial-card">
       <div class="testimonial-quote">I'd tried two other online coaches before and it never stuck. The match Iron House sent me actually gets how I think — laid-back but consistent. Three months in and I haven't missed a week.</div>
       <div class="testimonial-author">
         <div class="testimonial-avatar">JT</div>
         <div><div class="testimonial-name">Jamie T.</div><div class="testimonial-role">Client · Lost 22 lbs in 14 weeks</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">I spent two years grinding Instagram trying to build an audience so I could go fully online. Iron House gave me clients before I even finished setting up my profile. I wish this existed when I started.</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">MR</div>
+        <div><div class="testimonial-name">Marcus R.</div><div class="testimonial-role">Trainer · Tampa, FL · Hypertrophy & Strength</div></div>
       </div>
     </div>
     <div class="testimonial-card">
@@ -330,7 +338,7 @@
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ — clients left, trainers right -->
 <section class="section" id="faq">
   <p class="section-label">Questions</p>
   <h2 class="section-title">Everything you<br>want to know.</h2>
@@ -398,14 +406,12 @@
     btn.classList.add('active');
     document.getElementById('why-' + tab).classList.add('active');
   }
-
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
     const isOpen = answer.classList.contains('open');
     btn.classList.toggle('open', !isOpen);
     answer.classList.toggle('open', !isOpen);
   }
-
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
