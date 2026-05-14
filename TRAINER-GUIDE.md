@@ -1,227 +1,280 @@
-# Iron House — Trainer Card Guide
+# Iron House — How to Add & Edit Trainers
 
-Everything you need to add, edit, or remove a trainer from the platform.
-All changes happen in one place: the `TRAINERS` array at the top of `trainers.html`.
+All trainer information lives in one file: **trainers.json**
 
----
-
-## Where to find it
-
-1. Go to your GitHub repo
-2. Click `trainers.html`
-3. Click the **pencil icon** (Edit this file)
-4. Scroll to the top of the `<script>` section — you'll see `const TRAINERS = [`
-5. Everything between the `[` and `]` is your trainer roster
+You never need to touch trainers.html. Just edit trainers.json and the website updates automatically.
 
 ---
 
-## Adding a new trainer
+## How to open and edit trainers.json
 
-Copy the block below, paste it inside the `TRAINERS` array after the last trainer's closing `},` and fill in their details.
+1. Go to the Iron House GitHub repo
+2. Click the file called **trainers.json**
+3. Click the **pencil icon** (top right of the file) to edit
+4. Make your changes
+5. Scroll to the bottom and click **Commit changes**
+6. The website will update within about 60 seconds
 
-```javascript
+---
+
+## What trainers.json looks like
+
+The file is a list of trainers. Each trainer starts with a `{` and ends with a `},`
+
+Everything between those curly brackets is that trainer's information.
+
+Here is every field explained in plain English:
+
+---
+
+```
+"name"        → Their full name. Example: "Sarah Johnson"
+
+"age"         → Their age as a number. Example: 31
+
+"location"    → Their city and state. Example: "Austin, TX"
+
+"email"       → Their email address. This is for your records only,
+                 it does not show on the website.
+
+"price"       → Their monthly rate as a number, no dollar sign.
+                 Example: 149
+
+"experience"  → How long they've been coaching.
+                 Example: "4 yrs"  or  "10+ yrs"
+
+"certs"       → Their certifications. Keep it short.
+                 Example: "NASM"  or  "ACE + BS"
+
+"rating"      → Their star rating. Use one decimal place.
+                 Example: 4.8
+                 Set to 5.0 when they're new and have no reviews yet.
+
+"reviews"     → How many reviews they have. Just a number.
+                 Example: 47
+                 Set to 0 when they're new.
+
+"founding"    → Whether they are a founding trainer.
+                 Type  true  for yes,  false  for no.
+                 (No quotes around true or false)
+```
+
+---
+
+```
+"photo_main"      → Their main profile photo.
+                     How to add a photo — see the Photos section below.
+                     Example: "images/sarah-main.jpg"
+                     Leave as  ""  (empty quotes) if no photo yet.
+
+"photo_physique"  → A gym or physique photo.
+                     Example: "images/sarah-gym.jpg"
+                     Leave as  ""  if no photo yet.
+
+"photo_lifestyle" → A lifestyle photo — outdoors, hobby, pet, etc.
+                     Example: "images/sarah-life.jpg"
+                     Leave as  ""  if no photo yet.
+```
+
+---
+
+```
+"specialties" → What they specialize in. List as many as apply.
+                 Must use square brackets and quotes.
+                 Example: ["Hypertrophy", "Strength"]
+                 Example: ["Weight Loss", "Cardio & Endurance", "Calisthenics"]
+
+                 Options to choose from:
+                 Hypertrophy, Strength, Calisthenics, CrossFit,
+                 Weight Loss, Cardio & Endurance, Functional Fitness,
+                 Flexibility & Mobility, Sport-Specific, Body Recomposition
+
+"vibe"        → Their coaching personality. Pick ONE.
+                 Example: "Laid-back"
+
+                 Options to choose from:
+                 Laid-back, Encouraging, High-energy,
+                 Structured, Motivating, No-nonsense
+
+"diet"        → Diet approach they coach. Pick ONE.
+                 Example: "High protein"
+
+                 Options to choose from:
+                 Carnivore, Plant-based, Keto, Whole foods,
+                 Flexible, High protein, Vegan, Fasting
+```
+
+---
+
+```
+"interests"   → 3 to 5 things they enjoy outside the gym.
+                 Example: ["Hiking", "Cooking", "Dogs", "Travel"]
+
+"bio"         → Short description that shows on their card.
+                 Keep to 2-3 sentences. Write in first person.
+                 Example: "I coach people who want real results..."
+
+"story"       → Longer description shown when someone clicks their profile.
+                 Can be a full paragraph or two. Write in first person.
+```
+
+---
+
+## Testimonials
+
+Each trainer has a testimonials section at the bottom of their block.
+You can have as many as you want, or none at all.
+
+**Text only (no photos):**
+```
 {
-  // ── BASIC INFO ──────────────────────────────────────────────
-  name:       "First Last",
-  age:        00,
-  location:   "City, ST",
-
-  // ── IMAGES ──────────────────────────────────────────────────
-  // To use real photos:
-  //   1. In GitHub, click "Add file" → "Upload files"
-  //   2. Create a folder called "images" if it doesn't exist
-  //   3. Upload the photo
-  //   4. Replace null with "images/filename.jpg"
-  // Leave as null to show the emoji placeholder instead
-
-  img:        null,       // main profile photo
-  img2:       null,       // physique or gym photo
-  img3:       null,       // lifestyle photo
-  emoji:      "💪",      // shows if img is null
-  emoji2:     "🏋️",     // shows if img2 is null
-  emoji3:     "🥗",      // shows if img3 is null
-
-  // ── RATING ──────────────────────────────────────────────────
-  // Set to null and false until they have real reviews
-  rating:     5.0,
-  reviews:    0,
-  founding:   true,       // set to false for non-founding trainers
-
-  // ── CREDENTIALS ─────────────────────────────────────────────
-  experience: "X yrs",    // e.g. "4 yrs" or "10+ yrs"
-  certs:      "NASM",     // keep short — e.g. "ACE", "ISSA", "BS Kin"
-  price:      149,        // number only, no $ sign
-
-  // ── TAGS (show on card) ──────────────────────────────────────
-  // specialties: list as many as apply
-  specialties: ["Hypertrophy", "Strength"],
-
-  // vibe: pick ONE — this shows as the blue tag on the card
-  // Options: "Laid-back", "Encouraging", "High-energy",
-  //          "Structured", "Motivating", "No-nonsense"
-  vibe:        "Laid-back",
-
-  // diet: pick ONE — this shows as the amber tag on the card
-  // Options: "Carnivore", "Plant-based", "Keto", "Whole foods",
-  //          "Flexible", "High protein", "Vegan", "Fasting"
-  diet:        "High protein",
-
-  // ── INTERESTS (3–5) ─────────────────────────────────────────
-  interests:   ["Hiking", "Cooking", "Dogs"],
-
-  // ── COPY ────────────────────────────────────────────────────
-  // bio: shows on the card — keep to 2-3 sentences max
-  bio:   "Write their short bio here. 2–3 sentences, first person voice.",
-
-  // story: shows when client clicks to open full profile
-  story: "Write their full story here. Who they are, why they coach, what they believe in, and what a client can expect working with them.",
-
-  // ── TESTIMONIALS ────────────────────────────────────────────
-  // Leave empty [] if none yet — the section won't appear
-  // Add as many as you want
-  testimonials: [
-
-    // TEXT ONLY (no photos):
-    {
-      name:     "Client Name",
-      initials: "CN",
-      result:   "Short result line — e.g. Lost 18 lbs in 10 weeks",
-      quote:    "Client's testimonial quote here.",
-    },
-
-    // WITH BEFORE/AFTER PHOTOS (client must consent):
-    {
-      name:     "Client Name",
-      initials: "CN",
-      result:   "Short result line",
-      quote:    "Client's testimonial quote here.",
-      before:   "images/clientname-before.jpg",
-      after:    "images/clientname-after.jpg",
-    },
-
-  ]
-},
-```
-
-**Make sure there's a comma after the `}` unless it's the very last trainer in the array.**
-
----
-
-## Editing an existing trainer
-
-Find their block by searching (Ctrl+F / Cmd+F) for their name.
-Change whatever field needs updating — price, bio, rating, photos, etc.
-Click **Commit changes** when done.
-
----
-
-## Updating a trainer's rating
-
-Once a trainer gets real reviews, update these two fields:
-```javascript
-rating:  4.8,    // one decimal place
-reviews: 23,     // total number of reviews
-```
-
----
-
-## Adding photos
-
-**Step 1 — Upload to GitHub**
-- In your repo, click **Add file → Upload files**
-- Upload the photo (JPG or PNG, ideally under 2MB)
-- Recommended naming: `firstname-main.jpg`, `firstname-gym.jpg`, `firstname-life.jpg`
-- Put all photos in an `images/` folder to keep things tidy
-
-**Step 2 — Update the trainer block**
-```javascript
-img:   "images/marcus-main.jpg",    // was null
-img2:  "images/marcus-gym.jpg",     // was null
-img3:  "images/marcus-life.jpg",    // was null
-```
-
-**Photo guidelines**
-| Slot | What to use | Crop |
-|------|-------------|------|
-| `img` (main) | Clear headshot or upper body, face visible | Square or portrait |
-| `img2` (physique/gym) | Physique shot, lifting, or coaching | Portrait |
-| `img3` (lifestyle) | Something personal — outdoors, hobby, dog | Any |
-
----
-
-## Adding a testimonial with before/after photos
-
-1. Get written consent from the client first
-2. Upload both photos to your `images/` folder
-   - Recommended naming: `clientfirstname-before.jpg` / `clientfirstname-after.jpg`
-3. Add to the trainer's `testimonials` array:
-
-```javascript
-{
-  name:     "Jamie T.",
-  initials: "JT",
-  result:   "Lost 22 lbs in 14 weeks",
-  quote:    "Their quote here.",
-  before:   "images/jamie-before.jpg",
-  after:    "images/jamie-after.jpg",
+  "name":    "Jamie T.",
+  "initials":"JT",
+  "result":  "Lost 22 lbs in 14 weeks",
+  "quote":   "Write the client's quote here.",
+  "before":  "",
+  "after":   ""
 }
 ```
 
-If the client doesn't want photos shown, just leave out `before` and `after` — it becomes a clean text quote card automatically.
+**With before/after photos (client must give permission first):**
+```
+{
+  "name":    "Jamie T.",
+  "initials":"initials":"JT",
+  "result":  "Lost 22 lbs in 14 weeks",
+  "quote":   "Write the client's quote here.",
+  "before":  "images/jamie-before.jpg",
+  "after":   "images/jamie-after.jpg"
+}
+```
 
----
+Leave `"before"` and `"after"` as empty quotes `""` if there are no photos.
+The website will automatically show a clean text card instead — it won't look broken.
 
-## Removing a trainer
-
-Find their block and delete everything from the opening `{` to the closing `},` (including the comma).
-
----
-
-## Removing the "Founding" badge
-
-Once you move past the founding phase, set a trainer's founding flag to false:
-```javascript
-founding: false,
+If there are no testimonials at all, leave the section as:
+```
+"testimonials": []
 ```
 
 ---
 
-## Quick reference — all fields
+## How to add photos
 
-| Field | Type | Example | Required? |
-|-------|------|---------|-----------|
-| `name` | text | `"Marcus Reyes"` | ✅ |
-| `age` | number | `29` | ✅ |
-| `location` | text | `"Tampa, FL"` | ✅ |
-| `img` | path or null | `"images/marcus.jpg"` | ✗ |
-| `img2` | path or null | `null` | ✗ |
-| `img3` | path or null | `null` | ✗ |
-| `emoji` | emoji | `"💪"` | ✅ (fallback) |
-| `emoji2` | emoji | `"🏋️"` | ✅ (fallback) |
-| `emoji3` | emoji | `"🥗"` | ✅ (fallback) |
-| `rating` | decimal | `4.9` | ✅ |
-| `reviews` | number | `84` | ✅ |
-| `founding` | true/false | `true` | ✅ |
-| `experience` | text | `"6 yrs"` | ✅ |
-| `certs` | text | `"NASM"` | ✅ |
-| `price` | number | `149` | ✅ |
-| `specialties` | array | `["Hypertrophy"]` | ✅ |
-| `vibe` | text | `"Laid-back"` | ✅ |
-| `diet` | text | `"Carnivore"` | ✅ |
-| `interests` | array | `["Hiking", "Dogs"]` | ✅ |
-| `bio` | text | `"2–3 sentence bio"` | ✅ |
-| `story` | text | `"Full story..."` | ✅ |
-| `testimonials` | array | `[]` or `[{...}]` | ✅ (can be empty) |
+**Step 1 — Upload the photo to GitHub**
 
----
+1. Go to the GitHub repo
+2. Click **Add file** → **Upload files**
+3. Drag the photo in (JPG or PNG, try to keep under 2MB)
+4. In the box that says "Commit changes", just click the green button
+5. The photo is now on the website at the path `images/filename.jpg`
 
-## Common mistakes to avoid
+**Tip — name photos clearly so they're easy to find:**
 
-- **Missing comma** between trainer blocks — if the page breaks after you add someone, this is almost always why. Every trainer block ends with `},` except the very last one which just ends with `}`
-- **Wrong quote type** — always use straight quotes `"like this"` not curly quotes `"like this"`
-- **Image path wrong** — make sure the filename and folder name match exactly, including capitalization. `images/Marcus.jpg` and `images/marcus.jpg` are different files.
-- **Price as a string** — write `price: 149` not `price: "$149"` — no quotes, no dollar sign
+| Photo type | Suggested name |
+|------------|----------------|
+| Main profile | `firstname-main.jpg` |
+| Gym / physique | `firstname-gym.jpg` |
+| Lifestyle | `firstname-life.jpg` |
+| Client before | `clientfirstname-before.jpg` |
+| Client after | `clientfirstname-after.jpg` |
+
+**Step 2 — Add the path to trainers.json**
+
+Once uploaded, go back to trainers.json and fill in the photo field:
+```
+"photo_main": "images/sarah-main.jpg"
+```
+
+⚠️ The filename must match exactly — including capital letters.
+`images/Sarah-Main.jpg` and `images/sarah-main.jpg` are different.
 
 ---
 
-*Last updated: 2025 — Iron House internal guide*
+## How to add a new trainer
+
+1. Open trainers.json and click the pencil to edit
+2. Scroll to the very end of the last trainer's block — find the last `}` followed by a `]`
+3. After that last `}` add a comma, then paste the template below
+4. Fill in all the fields
+5. Commit changes
+
+**New trainer template — copy and paste this:**
+```json
+  ,
+  {
+    "name": "",
+    "age": 0,
+    "location": "",
+    "email": "",
+    "price": 0,
+    "experience": "",
+    "certs": "",
+    "rating": 5.0,
+    "reviews": 0,
+    "founding": true,
+
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+
+    "specialties": [],
+    "vibe": "",
+    "diet": "",
+    "interests": [],
+
+    "bio": "",
+    "story": "",
+
+    "testimonials": []
+  }
+```
+
+---
+
+## How to remove a trainer
+
+1. Open trainers.json and click the pencil to edit
+2. Find their block — everything from their `{` to their `},`
+3. Delete that entire section including the comma
+4. Commit changes
+
+---
+
+## Quick reference — photo tips
+
+| Slot | What works best |
+|------|----------------|
+| Main profile | Clear face visible, good lighting, confident pose |
+| Physique / gym | Showing their build, lifting, or coaching someone |
+| Lifestyle | Outdoors, with a pet, doing a hobby — something personal |
+| Client before/after | Side by side works best, consistent lighting if possible |
+
+---
+
+## Things to double-check before saving
+
+- Every field has quotes around text values: `"like this"`
+- Numbers don't have quotes: `149` not `"149"`
+- Lists use square brackets: `["Item 1", "Item 2"]`
+- true and false have no quotes: `true` not `"true"`
+- Every trainer except the last one ends with `},` (with a comma)
+- The very last trainer ends with just `}` (no comma)
+- Photo filenames match exactly what you uploaded
+
+---
+
+## If something looks wrong on the website
+
+The most common cause is a missing or extra comma somewhere.
+Open trainers.json and look for any of these:
+
+- A `}` without a comma before the next trainer
+- An extra comma after the very last trainer
+- A missing quote around a text value
+
+If you can't find it, just come back to Claude and paste the file — it can spot the problem in seconds.
+
+---
+
+*Iron House — internal guide*
