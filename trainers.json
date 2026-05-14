@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Marcus Reyes",
+    "age": 29,
+    "location": "Tampa, FL",
+    "email": "marcus@email.com",
+    "price": 149,
+    "experience": "6 yrs",
+    "certs": "NASM",
+    "rating": 4.9,
+    "reviews": 84,
+    "founding": true,
+
+    "photo_main":      "images/marcus-main.jpg",
+    "photo_physique":  "images/marcus-gym.jpg",
+    "photo_lifestyle": "images/marcus-life.jpg",
+
+    "specialties": ["Hypertrophy", "Strength"],
+    "vibe":        "Laid-back",
+    "diet":        "Carnivore",
+    "interests":   ["Hiking", "Cooking", "Fantasy football", "Dogs"],
+
+    "bio":   "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment.",
+    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through — helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
+
+    "testimonials": [
+      {
+        "name":    "Jamie T.",
+        "initials":"JT",
+        "result":  "Lost 22 lbs in 14 weeks",
+        "quote":   "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
+        "before":  "",
+        "after":   ""
+      },
+      {
+        "name":    "Derek K.",
+        "initials":"DK",
+        "result":  "Added 40 lbs to his deadlift in 8 weeks",
+        "quote":   "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
+        "before":  "",
+        "after":   ""
+      }
+    ]
+  },
+
+  {
+    "name": "Jade Okafor",
+    "age": 34,
+    "location": "Atlanta, GA",
+    "email": "jade@email.com",
+    "price": 189,
+    "experience": "9 yrs",
+    "certs": "ACE + BS",
+    "rating": 4.6,
+    "reviews": 211,
+    "founding": true,
+
+    "photo_main":      "",
+    "photo_physique":  "",
+    "photo_lifestyle": "",
+
+    "specialties": ["Calisthenics", "Functional"],
+    "vibe":        "Encouraging",
+    "diet":        "Whole foods",
+    "interests":   ["Yoga", "Travel", "Reading", "Music"],
+
+    "bio":   "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life — not some idealized version of it.",
+    "story": "I started in sports medicine before pivoting fully to personal coaching. After 9 years I've worked with everyone from desk workers with chronic back pain to competitive athletes rebuilding after injury. What I've learned is that the best program is the one someone actually sticks to. I'll help you find that.",
+
+    "testimonials": [
+      {
+        "name":    "Sofia R.",
+        "initials":"SR",
+        "result":  "Back pain gone after 6 weeks",
+        "quote":   "I was skeptical that online coaching could fix something as physical as back pain. Jade proved me completely wrong.",
+        "before":  "",
+        "after":   ""
+      }
+    ]
+  },
+
+  {
+    "name": "Cole Whitman",
+    "age": 26,
+    "location": "Denver, CO",
+    "email": "cole@email.com",
+    "price": 119,
+    "experience": "3 yrs",
+    "certs": "ISSA",
+    "rating": 4.3,
+    "reviews": 57,
+    "founding": true,
+
+    "photo_main":      "",
+    "photo_physique":  "",
+    "photo_lifestyle": "",
+
+    "specialties": ["CrossFit", "Endurance"],
+    "vibe":        "High-energy",
+    "diet":        "Plant-based",
+    "interests":   ["Rock climbing", "Trail running", "Van life"],
+
+    "bio":   "Fitness should feel like an adventure, not a chore. I bring that energy to every client — let's build something that challenges you and actually keeps you coming back.",
+    "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process. My programs are high energy, outdoor-friendly, and designed to fit a life that doesn't revolve around a gym.",
+
+    "testimonials": []
+  }
+]
