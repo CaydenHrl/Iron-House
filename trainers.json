@@ -7,25 +7,28 @@
     "price": 200,
     "experience": "3 yrs",
     "certs": "NCEP",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 4,
     "founding": true,
-
     "photo_main": "",
     "photo_physique": "",
     "photo_lifestyle": "",
-
-    "specialties": ["Hypertrophy", "Calisthenics", "Flexibility & Mobility"],
+    "specialties": [
+      "Hypertrophy",
+      "Calisthenics",
+      "Flexibility & Mobility"
+    ],
     "vibe": "Stuctured",
     "diet": "Flexible",
-    "interests": ["Hiking", "Martial Arts", "Fishing"],
-
+    "interests": [
+      "Hiking",
+      "Martial Arts",
+      "Fishing"
+    ],
     "bio": "At 14 I realized I needed to grow, I was a scrawny kid. I started at home with limited equipment. I learned to master my bodyweight. Once I transitioned to a gym I mastered the weights.",
-    "story": "At 14, I lost an arm wrestling competition during the competition. I was made fun of for how skinny my arm was. By then, I was already doing some ad routines, but losing the arm competition really kick-started my drive to become bigger and stronger. So when I got home, I tried doing some push-ups. I couldn’t even get six proper push-ups, so I went on YouTube and discovered calisthenics. I started watching tutorials and learned how to progress at home with limited equipment. I would do things such as load a backpack with books or get a broomstick and water jugs to have a makeshift barbell and weights. Anything to progress at home with my limited equipment. When the pandemic hit, though, I moved from Florida to Texas since I had virtual school and I had not seen my family in a while. Luckily, the gym that my cousins went to was still open, so I started lifting weights at the gym with my cousin. We would go late at night sometimes and just lift and lift and lift. That’s when I started my powerlifting journey, learning how to get as much weight up on the big three (deadlift, squat, and bench). However, my time in Texas was limited, so once I got back home in Florida, I didn’t have access to a gym anymore, and I had to progress again at home. I had already purchased some gymnastics rings, though, which helped tremendously as it increased my exercise selection by 16%. People at my school had already started to notice my muscle game, and so I would start going to the gym occasionally with them under a guest pass. Because of my calisthenic journey, I had already realized the importance of joint health, so I didn’t suffer the same issues as my classmates. Wanting to help them, I started to learn how to correct these pains that they had. My school is more interested in bodybuilding, and my love for powerlifting started to die down since I also was more focused on growing muscle rather than lifting in the big three, and so that’s when I started to learn as much as I could about hypertrophy. However, the mainstream knowledge about bodybuilding is horrendous and only applicable to those on performance-enhancing drugs. I enjoyed having sore legs after a Tom Platt‘s leg day, however, after some time, I started plateauing, and no matter how hard I push myself in the gym, I never seem to progress, even though I was eating three school lunches, begging other classmates for lunch code so I can have more food, frustrated with the fact that I was eating enough and training a lot, but still not growing. I started researching a little bit more about how to grow. That’s when I discovered Mike Minor. During the 80s, he was a bodybuilder who went against the grain of the high-volume training three hours a day, two times a day, six days a week. However, we’ve learned much about how to grow muscle since the 80s, and so I would learn from the new age of science, space lifting, but even their knowledge was horrendous because after plateauing once again, I started to find out that the things these mainstream science space lifters were promoting are not entirely the best either. I didn’t realize that at first, however, so I started researching a little bit more about nutrition and recovery. Those helped, but still, I was not satisfied with my progress, and I have to do a deep dive into hypertrophy and how to maximize muscle growth. I finally learned up-to-date training and nutrition. Now at 20, I hope others avoid these same mistakes and struggles that I went through because I understand how frustrating it is to put in all this work and effort and not reap the rewards.",
-
+    "story": "At 14, I lost an arm wrestling competition during the competition. I was made fun of for how skinny my arm was. By then, I was already doing some ad routines, but losing the arm competition really kick-started my drive to become bigger and stronger. So when I got home, I tried doing some push-ups. I couldnât even get six proper push-ups, so I went on YouTube and discovered calisthenics. I started watching tutorials and learned how to progress at home with limited equipment. I would do things such as load a backpack with books or get a broomstick and water jugs to have a makeshift barbell and weights. Anything to progress at home with my limited equipment. When the pandemic hit, though, I moved from Florida to Texas since I had virtual school and I had not seen my family in a while. Luckily, the gym that my cousins went to was still open, so I started lifting weights at the gym with my cousin. We would go late at night sometimes and just lift and lift and lift. Thatâs when I started my powerlifting journey, learning how to get as much weight up on the big three (deadlift, squat, and bench). However, my time in Texas was limited, so once I got back home in Florida, I didnât have access to a gym anymore, and I had to progress again at home. I had already purchased some gymnastics rings, though, which helped tremendously as it increased my exercise selection by 16%. People at my school had already started to notice my muscle game, and so I would start going to the gym occasionally with them under a guest pass. Because of my calisthenic journey, I had already realized the importance of joint health, so I didnât suffer the same issues as my classmates. Wanting to help them, I started to learn how to correct these pains that they had. My school is more interested in bodybuilding, and my love for powerlifting started to die down since I also was more focused on growing muscle rather than lifting in the big three, and so thatâs when I started to learn as much as I could about hypertrophy. However, the mainstream knowledge about bodybuilding is horrendous and only applicable to those on performance-enhancing drugs. I enjoyed having sore legs after a Tom Plattâs leg day, however, after some time, I started plateauing, and no matter how hard I push myself in the gym, I never seem to progress, even though I was eating three school lunches, begging other classmates for lunch code so I can have more food, frustrated with the fact that I was eating enough and training a lot, but still not growing. I started researching a little bit more about how to grow. Thatâs when I discovered Mike Minor. During the 80s, he was a bodybuilder who went against the grain of the high-volume training three hours a day, two times a day, six days a week. However, weâve learned much about how to grow muscle since the 80s, and so I would learn from the new age of science, space lifting, but even their knowledge was horrendous because after plateauing once again, I started to find out that the things these mainstream science space lifters were promoting are not entirely the best either. I didnât realize that at first, however, so I started researching a little bit more about nutrition and recovery. Those helped, but still, I was not satisfied with my progress, and I have to do a deep dive into hypertrophy and how to maximize muscle growth. I finally learned up-to-date training and nutrition. Now at 20, I hope others avoid these same mistakes and struggles that I went through because I understand how frustrating it is to put in all this work and effort and not reap the rewards.",
     "testimonials": []
   },
-  
   {
     "name": "Marcus Reyes",
     "age": 29,
@@ -37,39 +40,42 @@
     "rating": 4.9,
     "reviews": 84,
     "founding": true,
-
-    "photo_main":      "images/marcus-main.jpg",
-    "photo_physique":  "images/marcus-gym.jpg",
+    "photo_main": "images/marcus-main.jpg",
+    "photo_physique": "images/marcus-gym.jpg",
     "photo_lifestyle": "images/marcus-life.jpg",
-
-    "specialties": ["Hypertrophy", "Strength"],
-    "vibe":        "Laid-back",
-    "diet":        "Carnivore",
-    "interests":   ["Hiking", "Cooking", "Fantasy football", "Dogs"],
-
-    "bio":   "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment.",
-    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through — helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
-
+    "specialties": [
+      "Hypertrophy",
+      "Strength"
+    ],
+    "vibe": "Laid-back",
+    "diet": "Carnivore",
+    "interests": [
+      "Hiking",
+      "Cooking",
+      "Fantasy football",
+      "Dogs"
+    ],
+    "bio": "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up â at their own pace, no judgment.",
+    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through â helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
     "testimonials": [
       {
-        "name":    "Jamie T.",
-        "initials":"JT",
-        "result":  "Lost 22 lbs in 14 weeks",
-        "quote":   "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
-        "before":  "",
-        "after":   ""
+        "name": "Jamie T.",
+        "initials": "JT",
+        "result": "Lost 22 lbs in 14 weeks",
+        "quote": "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
+        "before": "",
+        "after": ""
       },
       {
-        "name":    "Derek K.",
-        "initials":"DK",
-        "result":  "Added 40 lbs to his deadlift in 8 weeks",
-        "quote":   "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
-        "before":  "",
-        "after":   ""
+        "name": "Derek K.",
+        "initials": "DK",
+        "result": "Added 40 lbs to his deadlift in 8 weeks",
+        "quote": "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
+        "before": "",
+        "after": ""
       }
     ]
   },
-
   {
     "name": "Jade Okafor",
     "age": 34,
@@ -81,31 +87,34 @@
     "rating": 4.6,
     "reviews": 211,
     "founding": true,
-
-    "photo_main":      "",
-    "photo_physique":  "",
+    "photo_main": "",
+    "photo_physique": "",
     "photo_lifestyle": "",
-
-    "specialties": ["Calisthenics", "Functional"],
-    "vibe":        "Encouraging",
-    "diet":        "Whole foods",
-    "interests":   ["Yoga", "Travel", "Reading", "Music"],
-
-    "bio":   "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life — not some idealized version of it.",
+    "specialties": [
+      "Calisthenics",
+      "Functional"
+    ],
+    "vibe": "Encouraging",
+    "diet": "Whole foods",
+    "interests": [
+      "Yoga",
+      "Travel",
+      "Reading",
+      "Music"
+    ],
+    "bio": "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life â not some idealized version of it.",
     "story": "I started in sports medicine before pivoting fully to personal coaching. After 9 years I've worked with everyone from desk workers with chronic back pain to competitive athletes rebuilding after injury. What I've learned is that the best program is the one someone actually sticks to. I'll help you find that.",
-
     "testimonials": [
       {
-        "name":    "Sofia R.",
-        "initials":"SR",
-        "result":  "Back pain gone after 6 weeks",
-        "quote":   "I was skeptical that online coaching could fix something as physical as back pain. Jade proved me completely wrong.",
-        "before":  "",
-        "after":   ""
+        "name": "Sofia R.",
+        "initials": "SR",
+        "result": "Back pain gone after 6 weeks",
+        "quote": "I was skeptical that online coaching could fix something as physical as back pain. Jade proved me completely wrong.",
+        "before": "",
+        "after": ""
       }
     ]
   },
-
   {
     "name": "Cole Whitman",
     "age": 26,
@@ -117,19 +126,51 @@
     "rating": 4.3,
     "reviews": 57,
     "founding": true,
-
-    "photo_main":      "",
-    "photo_physique":  "",
+    "photo_main": "",
+    "photo_physique": "",
     "photo_lifestyle": "",
-
-    "specialties": ["CrossFit", "Endurance"],
-    "vibe":        "High-energy",
-    "diet":        "Plant-based",
-    "interests":   ["Rock climbing", "Trail running", "Van life"],
-
-    "bio":   "Fitness should feel like an adventure, not a chore. I bring that energy to every client — let's build something that challenges you and actually keeps you coming back.",
+    "specialties": [
+      "CrossFit",
+      "Endurance"
+    ],
+    "vibe": "High-energy",
+    "diet": "Plant-based",
+    "interests": [
+      "Rock climbing",
+      "Trail running",
+      "Van life"
+    ],
+    "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client â let's build something that challenges you and actually keeps you coming back.",
     "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process. My programs are high energy, outdoor-friendly, and designed to fit a life that doesn't revolve around a gym.",
-
+    "testimonials": []
+  },
+  {
+    "name": "Johnny Appleseed",
+    "age": 99,
+    "location": "Fairbanks, AK",
+    "email": "notrealguy@fake.com",
+    "price": 500,
+    "experience": "4 yrs",
+    "certs": "TISM",
+    "rating": 5,
+    "reviews": 5,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "Hypertrophy",
+      "Calisthenics"
+    ],
+    "vibe": "Encouraging",
+    "diet": "Flexible",
+    "interests": [
+      "God",
+      "Faith",
+      "Fitness"
+    ],
+    "bio": "I really like working out",
+    "story": "I really really really like working out in the gym with weights",
     "testimonials": []
   }
 ]
