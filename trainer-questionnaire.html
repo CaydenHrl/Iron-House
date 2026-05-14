@@ -8,54 +8,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --black: #0a0a0a;
-    --white: #f5f2ed;
-    --orange: #e8500a;
-    --orange-dark: #b83d06;
-    --gray: #1a1a1a;
-    --gray-mid: #2a2a2a;
-    --gray-text: #777;
+    --black: #0a0a0a; --white: #f5f2ed; --orange: #e8500a; --orange-dark: #b83d06;
+    --gray: #1a1a1a; --gray-mid: #2a2a2a; --gray-light: #333; --gray-text: #777;
     --border: rgba(255,255,255,0.08);
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'Barlow', sans-serif;
+    --font-display: 'Bebas Neue', sans-serif; --font-body: 'Barlow', sans-serif;
   }
-
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); min-height: 100vh; overflow-x: hidden; }
 
-  .topbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 2rem;
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); }
   .logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; text-decoration: none; color: var(--white); }
   .logo span { color: var(--orange); }
   .step-counter { font-size: 12px; color: var(--gray-text); letter-spacing: 1px; text-transform: uppercase; }
+  .step-counter a { color: var(--gray-text); text-decoration: none; transition: color 0.2s; }
+  .step-counter a:hover { color: var(--orange); }
 
   .progress-wrap { height: 3px; background: var(--gray-mid); }
   .progress-bar { height: 3px; background: var(--orange); transition: width 0.4s ease; }
 
   .page { display: none; animation: fadeUp 0.4s ease both; }
   .page.active { display: block; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
   .container { max-width: 680px; margin: 0 auto; padding: 3rem 2rem 6rem; }
-
   .page-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
   .page-title { font-family: var(--font-display); font-size: clamp(36px, 7vw, 56px); line-height: 1; letter-spacing: 1px; margin-bottom: 0.6rem; }
   .page-sub { font-size: 15px; color: var(--gray-text); line-height: 1.6; margin-bottom: 2.5rem; }
@@ -76,14 +52,19 @@
   .q-input { width: 100%; background: var(--gray-mid); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; transition: border-color 0.2s; }
   .q-input:focus { border-color: var(--orange); }
   .q-input::placeholder { color: var(--gray-text); }
-
   .q-textarea { width: 100%; background: var(--gray-mid); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; color: var(--white); font-family: var(--font-body); font-size: 15px; line-height: 1.6; outline: none; resize: vertical; min-height: 110px; transition: border-color 0.2s; }
   .q-textarea:focus { border-color: var(--orange); }
   .q-textarea::placeholder { color: var(--gray-text); }
 
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-  /* SLIDERS */
+  /* OTHER INPUT */
+  .other-wrap { display: none; margin-top: 8px; }
+  .other-wrap.visible { display: block; }
+  .other-input { width: 100%; background: var(--gray-mid); border: 1px solid rgba(232,80,10,0.4); border-radius: 8px; padding: 10px 14px; color: var(--white); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .other-input:focus { border-color: var(--orange); }
+  .other-input::placeholder { color: var(--gray-text); }
+
   input[type=range] { width: 100%; height: 4px; -webkit-appearance: none; appearance: none; background: var(--gray-mid); border-radius: 99px; outline: none; cursor: pointer; }
   input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); box-shadow: 0 0 0 1px var(--orange); cursor: grab; transition: transform 0.1s; }
   input[type=range]::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.2); }
@@ -93,11 +74,27 @@
   .slider-labels { display: flex; justify-content: space-between; margin-top: 6px; }
   .slider-labels span { font-size: 11px; color: var(--gray-text); max-width: 120px; }
   .slider-labels span:last-child { text-align: right; }
-
   .rate-display { font-family: var(--font-display); font-size: 48px; color: var(--white); letter-spacing: 2px; line-height: 1; text-align: center; margin-bottom: 1rem; }
   .rate-display span { font-size: 18px; color: var(--gray-text); margin-left: 4px; }
 
-  /* INTERESTS BUILDER */
+  /* PHOTO UPLOAD CARDS */
+  .photo-card { background: var(--gray-mid); border: 1px dashed rgba(255,255,255,0.15); border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; }
+  .photo-card:last-child { margin-bottom: 0; }
+  .photo-card-title { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 8px; }
+  .photo-card-title .tag-badge { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: rgba(232,80,10,0.15); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); font-family: var(--font-body); }
+  .photo-card-title .tag-optional { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--gray-text); font-family: var(--font-body); }
+  .photo-card-desc { font-size: 13px; color: var(--gray-text); line-height: 1.55; margin-bottom: 1rem; }
+  .photo-upload-area { border: 1px dashed rgba(255,255,255,0.12); border-radius: 8px; padding: 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
+  .photo-upload-area:hover { border-color: var(--orange); background: rgba(232,80,10,0.04); }
+  .photo-upload-area input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-icon { font-size: 28px; margin-bottom: 0.5rem; }
+  .upload-text { font-size: 13px; color: var(--gray-text); }
+  .upload-text strong { color: var(--orange); }
+  .upload-preview { display: none; margin-top: 0.75rem; }
+  .upload-preview img { max-height: 120px; border-radius: 6px; object-fit: cover; }
+  .upload-filename { font-size: 12px; color: #7cba4a; margin-top: 4px; }
+
+  /* INTERESTS */
   .interests-builder { }
   .interests-input-row { display: flex; gap: 8px; margin-bottom: 12px; }
   .interests-input-row input { flex: 1; }
@@ -108,21 +105,12 @@
   .interest-tag button { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 16px; line-height: 1; padding: 0; display: flex; align-items: center; transition: color 0.15s; }
   .interest-tag button:hover { color: var(--orange); }
   .interests-hint { font-size: 12px; color: var(--gray-text); margin-top: 8px; }
-
-  /* OR PICK FROM */
   .interest-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .interest-suggestion { padding: 6px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--gray-text); font-family: var(--font-body); font-size: 12px; cursor: pointer; transition: all 0.15s; }
   .interest-suggestion:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
 
   .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
 
-  /* PREVIEW CARD HINT */
-  .card-preview-hint { background: rgba(232,80,10,0.08); border: 1px solid rgba(232,80,10,0.2); border-radius: 8px; padding: 12px 16px; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1.25rem; }
-  .card-preview-hint span { font-size: 18px; }
-  .card-preview-hint p { font-size: 13px; color: rgba(245,242,237,0.6); line-height: 1.5; }
-  .card-preview-hint strong { color: var(--orange); }
-
-  /* NAV */
   .nav-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 1rem 2rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 50; }
   .btn-back { background: transparent; color: var(--gray-text); border: 1px solid var(--border); border-radius: 4px; padding: 12px 24px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; transition: all 0.15s; }
   .btn-back:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
@@ -130,7 +118,6 @@
   .btn-next { background: var(--orange); color: var(--white); border: none; border-radius: 4px; padding: 12px 32px; font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; cursor: pointer; transition: all 0.15s; }
   .btn-next:hover { background: var(--orange-dark); transform: translateY(-1px); }
 
-  /* THANK YOU */
   .thankyou-page { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; animation: fadeUp 0.5s ease both; }
   .thankyou-page.active { display: flex; }
   .thankyou-icon { font-size: 64px; margin-bottom: 1.5rem; }
@@ -139,6 +126,12 @@
   .thankyou-page p { font-size: 16px; color: var(--gray-text); line-height: 1.7; max-width: 440px; margin: 0 auto 2rem; }
   .thankyou-detail { background: var(--gray); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; font-size: 14px; color: rgba(245,242,237,0.6); line-height: 1.7; max-width: 400px; }
   .thankyou-detail strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+  .btn-home { margin-top: 1.5rem; display: inline-block; padding: 12px 32px; background: var(--orange); color: var(--white); border-radius: 4px; font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; text-decoration: none; transition: background 0.2s; }
+  .btn-home:hover { background: var(--orange-dark); }
+
+  .card-preview-hint { background: rgba(232,80,10,0.08); border: 1px solid rgba(232,80,10,0.2); border-radius: 8px; padding: 12px 16px; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1.25rem; }
+  .card-preview-hint p { font-size: 13px; color: rgba(245,242,237,0.6); line-height: 1.5; }
+  .card-preview-hint strong { color: var(--orange); }
 
   @media (max-width: 600px) {
     .container { padding: 2rem 1.25rem 6rem; }
@@ -154,11 +147,9 @@
   <a href="index.html" class="logo">IRON<span>HOUSE</span></a>
   <span class="step-counter" id="step-counter">Step 1 of 3</span>
 </div>
-<div class="progress-wrap">
-  <div class="progress-bar" id="progress-bar" style="width: 33%"></div>
-</div>
+<div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:33%"></div></div>
 
-<!-- PAGE 1: YOUR CREDENTIALS -->
+<!-- PAGE 1: CREDENTIALS -->
 <div class="page active" id="page-1">
   <div class="container">
     <p class="page-label">Section 1 of 3</p>
@@ -167,7 +158,7 @@
 
     <div class="card-preview-hint">
       <span>🪪</span>
-      <p>This section builds your <strong>trainer card</strong> — the profile clients browse when we send them their matches. Fill it out like you're introducing yourself.</p>
+      <p>This section builds your <strong>trainer card</strong> — the profile clients browse when we send them their matches.</p>
     </div>
 
     <div class="section-card">
@@ -185,7 +176,7 @@
       <div class="field-row" style="margin-bottom:1rem;">
         <div class="q-block" style="margin-bottom:0;">
           <label class="q-label">Age</label>
-          <input type="number" class="q-input" id="input-age" placeholder="29" min="18" max="80">
+          <input type="number" class="q-input" id="input-age" placeholder="29">
         </div>
         <div class="q-block" style="margin-bottom:0;">
           <label class="q-label">City & State</label>
@@ -203,21 +194,21 @@
       <div class="q-block">
         <label class="q-label">Years of coaching experience</label>
         <div class="pill-group" id="exp-group">
-          <button class="pill" onclick="selectPill(this, 'exp-group')">Less than 1 yr</button>
-          <button class="pill" onclick="selectPill(this, 'exp-group')">1–3 years</button>
-          <button class="pill" onclick="selectPill(this, 'exp-group')">3–5 years</button>
-          <button class="pill" onclick="selectPill(this, 'exp-group')">5–10 years</button>
-          <button class="pill" onclick="selectPill(this, 'exp-group')">10+ years</button>
+          <button class="pill" onclick="selectPill(this,'exp-group')">Less than 1 yr</button>
+          <button class="pill" onclick="selectPill(this,'exp-group')">1–3 years</button>
+          <button class="pill" onclick="selectPill(this,'exp-group')">3–5 years</button>
+          <button class="pill" onclick="selectPill(this,'exp-group')">5–10 years</button>
+          <button class="pill" onclick="selectPill(this,'exp-group')">10+ years</button>
         </div>
       </div>
       <div class="q-block" style="margin-bottom:0;">
-        <label class="q-label">Certifications & degrees <span style="text-transform:none;letter-spacing:0;font-weight:400;">(e.g. NASM, ACE, BS Kinesiology)</span></label>
-        <input type="text" class="q-input" id="input-certs" placeholder="NASM-CPT, Precision Nutrition Level 1">
+        <label class="q-label">Certifications & degrees</label>
+        <input type="text" class="q-input" id="input-certs" placeholder="e.g. NASM-CPT, ACE, BS Kinesiology">
       </div>
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Training specialties <span style="font-size:12px; color:var(--gray-text); font-family:var(--font-body); font-weight:400; letter-spacing:0; margin-left:4px;">(pick all that apply)</span></div>
+      <div class="section-card-title"><div class="dot"></div>Training specialties <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
       <div class="pill-group" id="specialty-group">
         <button class="pill" onclick="togglePill(this)">Hypertrophy</button>
         <button class="pill" onclick="togglePill(this)">Strength & powerlifting</button>
@@ -229,11 +220,15 @@
         <button class="pill" onclick="togglePill(this)">Flexibility & mobility</button>
         <button class="pill" onclick="togglePill(this)">Sport-specific</button>
         <button class="pill" onclick="togglePill(this)">Body recomposition</button>
+        <button class="pill" onclick="togglePillOther(this,'specialty-other')">Other</button>
+      </div>
+      <div class="other-wrap" id="specialty-other">
+        <input type="text" class="other-input" id="specialty-other-input" placeholder="Describe your specialty...">
       </div>
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Diet philosophies you coach <span style="font-size:12px; color:var(--gray-text); font-family:var(--font-body); font-weight:400; letter-spacing:0; margin-left:4px;">(pick all that apply)</span></div>
+      <div class="section-card-title"><div class="dot"></div>Diet philosophies you coach <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
       <div class="pill-group" id="diet-group">
         <button class="pill" onclick="togglePill(this)">Flexible / IIFYM</button>
         <button class="pill" onclick="togglePill(this)">High protein</button>
@@ -244,70 +239,78 @@
         <button class="pill" onclick="togglePill(this)">Whole foods</button>
         <button class="pill" onclick="togglePill(this)">Intermittent fasting</button>
         <button class="pill" onclick="togglePill(this)">Whatever works for the client</button>
+        <button class="pill" onclick="togglePillOther(this,'diet-other')">Other</button>
+      </div>
+      <div class="other-wrap" id="diet-other">
+        <input type="text" class="other-input" id="diet-other-input" placeholder="Describe your diet approach...">
       </div>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Monthly rate</div>
       <div class="rate-display">$<span id="rate-val">149</span><span>/ mo</span></div>
-      <input type="range" min="50" max="600" step="10" value="149" id="slider-rate"
-        oninput="document.getElementById('rate-val').textContent = this.value">
-      <div class="slider-labels">
-        <span>$50 / mo</span>
-        <span style="text-align:right">$600 / mo</span>
-      </div>
-      <p style="font-size:12px; color:var(--gray-text); margin-top:10px;">You can adjust this anytime. This gives clients a ballpark when browsing your card.</p>
+      <input type="range" min="50" max="600" step="10" value="149" id="slider-rate" oninput="document.getElementById('rate-val').textContent=this.value">
+      <div class="slider-labels"><span>$50 / mo</span><span style="text-align:right">$600 / mo</span></div>
+      <p style="font-size:12px;color:var(--gray-text);margin-top:10px;">You can adjust this anytime. This gives clients a ballpark when browsing your card.</p>
     </div>
-
   </div>
 </div>
 
-<!-- PAGE 2: YOUR COACHING STYLE -->
+<!-- PAGE 2: COACHING STYLE -->
 <div class="page" id="page-2">
   <div class="container">
     <p class="page-label">Section 2 of 3</p>
     <h1 class="page-title">Your style.</h1>
-    <p class="page-sub">This is how we match you with clients who actually suit your coaching personality. Be honest — the right client for you is out there.</p>
+    <p class="page-sub">This is how we match you with clients who actually suit your coaching personality.</p>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Your coaching approach</div>
       <div class="slider-value-display" id="display-approach"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-approach"
-        oninput="updateSlider('slider-approach','display-approach',['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'])">
+      <input type="range" min="0" max="4" value="2" id="slider-approach" oninput="updateSlider('slider-approach','display-approach',['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'])">
       <div class="slider-labels"><span>Laid-back</span><span>Drill sergeant</span></div>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Training intensity you prefer to coach</div>
       <div class="slider-value-display" id="display-intensity"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-intensity"
-        oninput="updateSlider('slider-intensity','display-intensity',['Light & steady','Moderate','Balanced','Hard-working','Max effort always'])">
+      <input type="range" min="0" max="4" value="2" id="slider-intensity" oninput="updateSlider('slider-intensity','display-intensity',['Light & steady','Moderate','Balanced','Hard-working','Max effort always'])">
       <div class="slider-labels"><span>Light & steady</span><span>Max intensity</span></div>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>How often do you check in with clients?</div>
       <div class="slider-value-display" id="display-checkin"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-checkin"
-        oninput="updateSlider('slider-checkin','display-checkin',['As needed only','Weekly','A few times a week','Every other day','Daily'])">
+      <input type="range" min="0" max="4" value="2" id="slider-checkin" oninput="updateSlider('slider-checkin','display-checkin',['As needed only','Weekly','A few times a week','Every other day','Daily'])">
       <div class="slider-labels"><span>As needed</span><span>Daily</span></div>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>How strict are you about diet with clients?</div>
       <div class="slider-value-display" id="display-dietstrict"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-dietstrict"
-        oninput="updateSlider('slider-dietstrict','display-dietstrict',['Very flexible','Mostly flexible','Balanced','Pretty strict','Very regimented'])">
+      <input type="range" min="0" max="4" value="2" id="slider-dietstrict" oninput="updateSlider('slider-dietstrict','display-dietstrict',['Very flexible','Mostly flexible','Balanced','Pretty strict','Very regimented'])">
       <div class="slider-labels"><span>Very flexible</span><span>Very strict</span></div>
     </div>
 
-    <div class="divider"></div>
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Your energy as a coach</div>
+      <div class="slider-value-display" id="display-energy"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-energy" oninput="updateSlider('slider-energy','display-energy',['Very calm & quiet','Mostly relaxed','Balanced','Energetic','High energy always'])">
+      <div class="slider-labels"><span>Calm & quiet</span><span>High energy</span></div>
+    </div>
 
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>How structured are your programs?</div>
+      <div class="slider-value-display" id="display-structure"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-structure" oninput="updateSlider('slider-structure','display-structure',['Very flexible & adaptive','Mostly flexible','Balanced','Pretty structured','Fully mapped out'])">
+      <div class="slider-labels"><span>Fully flexible</span><span>Fully structured</span></div>
+    </div>
+
+    <div class="divider"></div>
     <p class="page-label" style="margin-bottom:1.25rem;">Ideal client profile</p>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Who do you do your best work with?</div>
-      <div class="q-block" style="margin-bottom:1rem;">
+      <div class="q-block">
         <label class="q-label">Experience level</label>
         <div class="pill-group" id="clientexp-group">
           <button class="pill" onclick="togglePill(this)">Complete beginners</button>
@@ -327,36 +330,82 @@
         </div>
       </div>
     </div>
-
-    <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your energy as a coach</div>
-      <div class="slider-value-display" id="display-energy"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-energy"
-        oninput="updateSlider('slider-energy','display-energy',['Very calm & quiet','Mostly relaxed','Balanced','Energetic','High energy always'])">
-      <div class="slider-labels"><span>Calm & quiet</span><span>High energy</span></div>
-    </div>
-
-    <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>How structured are your programs?</div>
-      <div class="slider-value-display" id="display-structure"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-structure"
-        oninput="updateSlider('slider-structure','display-structure',['Very flexible & adaptive','Mostly flexible','Balanced','Pretty structured','Fully mapped out'])">
-      <div class="slider-labels"><span>Fully flexible</span><span>Fully structured</span></div>
-    </div>
-
   </div>
 </div>
 
-<!-- PAGE 3: YOUR STORY -->
+<!-- PAGE 3: YOUR STORY + PHOTOS -->
 <div class="page" id="page-3">
   <div class="container">
     <p class="page-label">Section 3 of 3</p>
     <h1 class="page-title">Your story.</h1>
-    <p class="page-sub">This is what turns a profile into a person. Clients pick coaches they connect with — give them something real.</p>
+    <p class="page-sub">This is what turns a profile into a person — and where we collect photos for your card.</p>
 
+    <!-- PHOTOS -->
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Profile photos</div>
+      <p style="font-size:13px;color:var(--gray-text);line-height:1.6;margin-bottom:1.25rem;">These photos appear on your trainer card. The better your photos, the more clients connect with you before they even reach out.</p>
+
+      <div class="photo-card">
+        <div class="photo-card-title">
+          Profile photo
+          <span class="tag-badge">Required</span>
+        </div>
+        <p class="photo-card-desc">Your main headshot or upper-body photo. This is the first image clients see on your card. Clear, well-lit, and showing your face. Think confident and approachable.</p>
+        <div class="photo-upload-area" id="upload-area-1">
+          <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-1','filename-1')">
+          <div class="upload-icon">📸</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG, PNG — recommended square crop</div>
+          <div class="upload-preview" id="preview-1"><img id="preview-img-1" src="" alt=""><div class="upload-filename" id="filename-1"></div></div>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-card-title">
+          Physique or action photo
+          <span class="tag-badge">Required</span>
+        </div>
+        <p class="photo-card-desc">A photo showing your physique, you in the gym, performing an exercise, or coaching a client. This tells clients what they can potentially achieve and shows you walk the talk.</p>
+        <div class="photo-upload-area" id="upload-area-2">
+          <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-2','filename-2')">
+          <div class="upload-icon">💪</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Portrait or square crop works best</div>
+          <div class="upload-preview" id="preview-2"><img id="preview-img-2" src="" alt=""><div class="upload-filename" id="filename-2"></div></div>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-card-title">
+          Lifestyle photo
+          <span class="tag-optional">Optional</span>
+        </div>
+        <p class="photo-card-desc">Something that shows who you are outside the gym — hiking, cooking, your dog, traveling. This is the photo that helps clients feel like they already know you. Matches your listed personal interests.</p>
+        <div class="photo-upload-area" id="upload-area-3">
+          <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-3','filename-3')">
+          <div class="upload-icon">🌄</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Any orientation — be yourself</div>
+          <div class="upload-preview" id="preview-3"><img id="preview-img-3" src="" alt=""><div class="upload-filename" id="filename-3"></div></div>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-card-title">
+          Client testimonial photos
+          <span class="tag-optional">Optional</span>
+        </div>
+        <p class="photo-card-desc">Before/after or progress photos from consenting clients. These show up in your full profile when clients click to learn more. Only include photos you have explicit permission to use. You can send these later — just email them to us once you have them.</p>
+        <div class="photo-upload-area" id="upload-area-4">
+          <input type="file" accept="image/*" multiple onchange="previewPhotoMulti(this,'preview-4','filename-4')">
+          <div class="upload-icon">🏆</div>
+          <div class="upload-text"><strong>Click to upload</strong> — select multiple files<br>Pairs of before/after work best</div>
+          <div class="upload-preview" id="preview-4"><div class="upload-filename" id="filename-4"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERESTS -->
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Personal interests</div>
-      <p style="font-size:13px; color:var(--gray-text); margin-bottom:1rem; line-height:1.5;">Add 3–5 things you're into outside the gym. These show up on your card and help clients feel like they know you before they even reach out.</p>
+      <p style="font-size:13px;color:var(--gray-text);margin-bottom:1rem;line-height:1.5;">Add 3–5 things you're into outside the gym. These show up on your card.</p>
       <div class="interests-builder">
         <div class="interests-input-row">
           <input type="text" class="q-input" id="interest-input" placeholder="e.g. Hiking, cooking, fantasy football..." onkeydown="if(event.key==='Enter'){event.preventDefault();addInterest();}">
@@ -365,7 +414,7 @@
         <div class="interests-tags" id="interests-tags"></div>
         <p class="interests-hint" id="interests-hint">0 of 5 added</p>
         <div class="divider"></div>
-        <p style="font-size:12px; color:var(--gray-text); margin-bottom:8px;">Or pick from common ones:</p>
+        <p style="font-size:12px;color:var(--gray-text);margin-bottom:8px;">Or pick from common ones:</p>
         <div class="interest-suggestions">
           <button class="interest-suggestion" onclick="addSuggestion(this)">Hiking</button>
           <button class="interest-suggestion" onclick="addSuggestion(this)">Cooking</button>
@@ -381,38 +430,36 @@
           <button class="interest-suggestion" onclick="addSuggestion(this)">Motorcycles</button>
           <button class="interest-suggestion" onclick="addSuggestion(this)">Martial arts</button>
           <button class="interest-suggestion" onclick="addSuggestion(this)">Film & TV</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Van life</button>
           <button class="interest-suggestion" onclick="addSuggestion(this)">Golf</button>
         </div>
       </div>
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your short bio <span style="font-size:12px; color:var(--gray-text); font-family:var(--font-body); font-weight:400; letter-spacing:0; margin-left:4px;">(shows on your card)</span></div>
-      <p style="font-size:13px; color:var(--gray-text); margin-bottom:0.75rem; line-height:1.5;">2–3 sentences. Who you are, who you train, what drives you. Write it like you're talking to a potential client.</p>
+      <div class="section-card-title"><div class="dot"></div>Your short bio <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your card)</span></div>
+      <p style="font-size:13px;color:var(--gray-text);margin-bottom:0.75rem;line-height:1.5;">2–3 sentences. Who you are, who you train, what drives you.</p>
       <textarea class="q-textarea" id="input-bio" placeholder="Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment."></textarea>
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your full story <span style="font-size:12px; color:var(--gray-text); font-family:var(--font-body); font-weight:400; letter-spacing:0; margin-left:4px;">(shows on your full profile)</span></div>
-      <p style="font-size:13px; color:var(--gray-text); margin-bottom:0.75rem; line-height:1.5;">This is the longer version — why you became a coach, what you believe in, what your program looks like and who it's built for.</p>
-      <textarea class="q-textarea" style="min-height:140px;" id="input-story" placeholder="Tell your full story here. Where you started, what changed, what you stand for as a coach, and what a client can expect working with you..."></textarea>
+      <div class="section-card-title"><div class="dot"></div>Your full story <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your full profile)</span></div>
+      <textarea class="q-textarea" style="min-height:140px;" id="input-story" placeholder="Why you became a coach, what you believe in, what your program looks like and who it's built for..."></textarea>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>What do you struggle with most when it comes to clients?</div>
-      <p style="font-size:13px; color:var(--gray-text); margin-bottom:0.75rem; line-height:1.5;">Consistency, communication, clients who ghost, unrealistic expectations — be honest. This helps us match you with people who are actually a good fit for the way you coach.</p>
-      <textarea class="q-textarea" id="input-struggle" placeholder="Be real here. The more honest you are, the better we can match you with clients you'll actually enjoy working with."></textarea>
+      <p style="font-size:13px;color:var(--gray-text);margin-bottom:0.75rem;line-height:1.5;">Be honest — this helps us match you with clients who are actually a good fit.</p>
+      <textarea class="q-textarea" id="input-struggle" placeholder="Consistency, ghosting, unrealistic expectations... the more honest you are, the better we can match you."></textarea>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>What does success look like for your clients?</div>
-      <textarea class="q-textarea" id="input-success" placeholder="What transformation do you help people make — physically, mentally, or both? What are you most proud of from past clients?"></textarea>
+      <textarea class="q-textarea" id="input-success" placeholder="What transformation do you help people make? What are you most proud of from past clients?"></textarea>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Anything else you want us to know?</div>
-      <textarea class="q-textarea" id="input-other" placeholder="Availability, unique offerings, what makes you different, specific populations you love working with..."></textarea>
+      <textarea class="q-textarea" id="input-other" placeholder="Availability, what makes you different, specific populations you love working with..."></textarea>
     </div>
 
   </div>
@@ -427,6 +474,7 @@
     <strong>What happens next</strong>
     We'll reach out to schedule a short intro call, finalize your profile card, and get you set up on the platform. As one of our founding trainers, you'll have a direct line to us whenever you need it.
   </div>
+  <a href="index.html" class="btn-home">Back to Iron House</a>
 </div>
 
 <!-- NAV FOOTER -->
@@ -452,32 +500,48 @@
   function updateSlider(id, displayId, labels) {
     document.getElementById(displayId).textContent = labels[document.getElementById(id).value];
   }
-
   function selectPill(el, groupId) {
-    document.querySelectorAll('#' + groupId + ' .pill').forEach(p => p.classList.remove('selected'));
+    document.querySelectorAll('#'+groupId+' .pill').forEach(p => p.classList.remove('selected'));
     el.classList.add('selected');
   }
-
   function togglePill(el) { el.classList.toggle('selected'); }
+
+  function togglePillOther(el, wrapperId) {
+    el.classList.toggle('selected');
+    document.getElementById(wrapperId).classList.toggle('visible', el.classList.contains('selected'));
+  }
+
+  function previewPhoto(input, previewId, filenameId) {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const preview = document.getElementById(previewId);
+        const img = document.getElementById('preview-img-' + previewId.split('-')[1]);
+        const fn = document.getElementById(filenameId);
+        if (img) img.src = e.target.result;
+        fn.textContent = '✓ ' + input.files[0].name;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function previewPhotoMulti(input, previewId, filenameId) {
+    if (input.files && input.files.length > 0) {
+      const fn = document.getElementById(filenameId);
+      fn.textContent = '✓ ' + input.files.length + ' file(s) selected: ' + Array.from(input.files).map(f => f.name).join(', ');
+      document.getElementById(previewId).style.display = 'block';
+    }
+  }
 
   function addInterest(val) {
     const input = document.getElementById('interest-input');
     const text = (val || input.value).trim();
     if (!text || interests.length >= 5 || interests.includes(text)) { input.value = ''; return; }
-    interests.push(text);
-    input.value = '';
-    renderInterests();
+    interests.push(text); input.value = ''; renderInterests();
   }
-
-  function addSuggestion(btn) {
-    addInterest(btn.textContent);
-  }
-
-  function removeInterest(i) {
-    interests.splice(i, 1);
-    renderInterests();
-  }
-
+  function addSuggestion(btn) { addInterest(btn.textContent); }
+  function removeInterest(i) { interests.splice(i, 1); renderInterests(); }
   function renderInterests() {
     const container = document.getElementById('interests-tags');
     const hint = document.getElementById('interests-hint');
@@ -509,38 +573,41 @@
 
   function nextPage() {
     if (currentPage < totalPages) {
-      document.getElementById('page-' + currentPage).classList.remove('active');
+      document.getElementById('page-'+currentPage).classList.remove('active');
       currentPage++;
-      const nextEl = document.getElementById('page-' + currentPage);
+      const nextEl = document.getElementById('page-'+currentPage);
       nextEl.classList.add('active');
-      nextEl.style.animation = 'none';
-      nextEl.offsetHeight;
-      nextEl.style.animation = '';
+      nextEl.style.animation = 'none'; nextEl.offsetHeight; nextEl.style.animation = '';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       updateProgress();
       if (currentPage === 2) initSliders();
-    } else {
-      submitForm();
-    }
+    } else { submitForm(); }
   }
 
   function prevPage() {
     if (currentPage > 1) {
-      document.getElementById('page-' + currentPage).classList.remove('active');
+      document.getElementById('page-'+currentPage).classList.remove('active');
       currentPage--;
-      document.getElementById('page-' + currentPage).classList.add('active');
+      document.getElementById('page-'+currentPage).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       updateProgress();
     }
   }
 
-  const getSelected = (id) => [...document.querySelectorAll('#' + id + ' .pill.selected')].map(p => p.textContent).join(', ');
+  const getSelected = (id) => [...document.querySelectorAll('#'+id+' .pill.selected')].map(p => p.textContent).join(', ');
   const getSlider = (id) => { const v = document.getElementById(id).value; return sliderLabels[id] ? sliderLabels[id][v] : v; };
 
   async function submitForm() {
     const btn = document.getElementById('btn-next');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
+    btn.textContent = 'Sending...'; btn.disabled = true;
+
+    let specialties = getSelected('specialty-group');
+    const specOther = document.getElementById('specialty-other-input').value.trim();
+    if (specOther) specialties += (specialties ? ', ' : '') + specOther;
+
+    let diet = getSelected('diet-group');
+    const dietOther = document.getElementById('diet-other-input').value.trim();
+    if (dietOther) diet += (diet ? ', ' : '') + dietOther;
 
     const formData = new FormData();
     formData.append('_subject', 'Iron House — Trainer Application');
@@ -550,8 +617,8 @@
     formData.append('location', document.getElementById('input-location').value);
     formData.append('experience', getSelected('exp-group'));
     formData.append('certifications', document.getElementById('input-certs').value);
-    formData.append('specialties', getSelected('specialty-group'));
-    formData.append('diet_philosophies', getSelected('diet-group'));
+    formData.append('specialties', specialties);
+    formData.append('diet_philosophies', diet);
     formData.append('monthly_rate', '$' + document.getElementById('slider-rate').value + '/mo');
     formData.append('coaching_approach', getSlider('slider-approach'));
     formData.append('intensity', getSlider('slider-intensity'));
@@ -568,24 +635,31 @@
     formData.append('client_success', document.getElementById('input-success').value);
     formData.append('other_notes', document.getElementById('input-other').value);
 
+    // note about photos (Formspree free tier doesn't support file uploads — flag in submission)
+    const photoFiles = [];
+    ['upload-area-1','upload-area-2','upload-area-3','upload-area-4'].forEach((id, i) => {
+      const input = document.querySelector('#'+id+' input[type=file]');
+      if (input && input.files.length > 0) {
+        photoFiles.push(`Photo ${i+1}: ${Array.from(input.files).map(f=>f.name).join(', ')}`);
+      }
+    });
+    if (photoFiles.length > 0) {
+      formData.append('photos_note', 'Trainer selected photos: ' + photoFiles.join(' | ') + ' — please follow up to collect files.');
+    }
+
     try {
       const res = await fetch('https://formspree.io/f/mqenyrkn', {
-        method: 'POST', body: formData,
-        headers: { 'Accept': 'application/json' }
+        method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('nav-footer').style.display = 'none';
         document.getElementById('thankyou').classList.add('active');
         document.getElementById('progress-bar').style.width = '100%';
-        document.getElementById('step-counter').textContent = 'Complete';
+        document.getElementById('step-counter').innerHTML = '<a href="index.html">← Back to Iron House</a>';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        btn.textContent = 'Try Again'; btn.disabled = false;
-      }
-    } catch(e) {
-      btn.textContent = 'Try Again'; btn.disabled = false;
-    }
+      } else { btn.textContent = 'Try Again'; btn.disabled = false; }
+    } catch(e) { btn.textContent = 'Try Again'; btn.disabled = false; }
   }
 
   updateProgress();
