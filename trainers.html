@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Coaches — Iron House</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0a0a0a; --white: #f5f2ed; --orange: #e8500a; --orange-dark: #b83d06;
+    --gray: #1a1a1a; --gray-mid: #242424; --gray-light: #2e2e2e; --gray-text: #777;
+    --border: rgba(255,255,255,0.07);
+    --font-display: 'Bebas Neue', sans-serif; --font-body: 'Barlow', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; min-height: 100vh; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2rem; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-right a { color: var(--gray-text); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s; }
+  .nav-right a:hover { color: var(--white); }
+  .nav-cta { background: var(--orange); color: var(--white) !important; padding: 8px 18px; border-radius: 4px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--orange-dark) !important; }
+
+  .page-header { padding: 3.5rem 2rem 2rem; border-bottom: 1px solid var(--border); }
+  .page-header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .page-title { font-family: var(--font-display); font-size: clamp(36px, 6vw, 64px); line-height: 1; letter-spacing: 1px; }
+  .page-sub { font-size: 14px; color: var(--gray-text); margin-top: 0.5rem; line-height: 1.6; max-width: 380px; }
+  .trainer-count span { color: var(--orange); font-family: var(--font-display); font-size: 28px; display: block; }
+  .trainer-count { font-size: 13px; color: var(--gray-text); letter-spacing: 0.5px; }
+
+  .filters-bar { padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: 57px; z-index: 90; }
+  .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .filter-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-text); margin-right: 4px; }
+  .filter-group { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .filter-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
+  .filter-chip { padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--gray-text); font-family: var(--font-body); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .filter-chip:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .filter-chip.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+  .grid-wrap { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+
+  /* ── CARD ── */
+  .trainer-card { background: var(--gray); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; animation: fadeUp 0.4s ease both; }
+  .trainer-card:hover { border-color: rgba(232,80,10,0.4); transform: translateY(-3px); }
+
+  .card-header { padding: 1.1rem 1.25rem 0.75rem; display: flex; justify-content: space-between; align-items: flex-start; }
+  .trainer-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; line-height: 1; }
+  .trainer-meta { font-size: 12px; color: var(--gray-text); margin-top: 3px; }
+  .card-header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+  .stars { display: flex; align-items: center; gap: 4px; }
+  .star-icons { display: flex; gap: 1px; }
+  .star { width: 11px; height: 11px; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); background: #c07a18; }
+  .star.half { background: linear-gradient(90deg,#c07a18 50%,var(--gray-mid) 50%); }
+  .star.empty { background: var(--gray-light); }
+  .review-count { font-size: 11px; color: var(--gray-text); }
+  .founding-badge { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; background: rgba(232,80,10,0.12); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); }
+
+  /* ── IMAGES ── */
+  .card-images { display: flex; gap: 8px; padding: 0 1.25rem 1rem; height: 210px; }
+  .img-main { flex: 1.5; border-radius: 10px; background: var(--gray-mid); overflow: hidden; position: relative; }
+  .img-side { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .img-secondary { flex: 1; border-radius: 10px; background: var(--gray-mid); overflow: hidden; position: relative; }
+  .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 36px; background: var(--gray-light); }
+  .img-placeholder.sm { font-size: 24px; }
+  .card-images img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .card-stats { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .card-stat { flex: 1; padding: 0.75rem 0; text-align: center; border-right: 1px solid var(--border); }
+  .card-stat:last-child { border-right: none; }
+  .card-stat-val { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; color: var(--white); }
+  .card-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; }
+
+  .card-tags { padding: 0.875rem 1.25rem; display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--border); color: var(--gray-text); white-space: nowrap; }
+  .tag.style { background: rgba(50,120,20,0.1); color: #7cba4a; border-color: rgba(80,160,30,0.2); }
+  .tag.vibe { background: rgba(40,100,200,0.08); color: #7aadec; border-color: rgba(60,130,220,0.2); }
+  .tag.diet { background: rgba(200,120,20,0.08); color: #e0a84a; border-color: rgba(200,140,30,0.2); }
+
+  .card-interests { padding: 0 1.25rem 0.875rem; }
+  .interests-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 6px; }
+  .interests-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .interest-chip { font-size: 11px; padding: 3px 10px; border-radius: 99px; background: var(--gray-mid); border: 1px solid var(--border); color: rgba(245,242,237,0.6); }
+
+  .card-bio { padding: 0.875rem 1.25rem 1rem; font-size: 13px; color: var(--gray-text); line-height: 1.65; border-top: 1px solid var(--border); }
+
+  .card-footer { padding: 0.875rem 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--border); }
+  .card-price { font-size: 13px; color: var(--gray-text); }
+  .card-price strong { font-family: var(--font-display); font-size: 22px; color: var(--white); letter-spacing: 0.5px; }
+  .btn-view { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: var(--white); cursor: pointer; font-family: var(--font-body); transition: all 0.15s; }
+  .btn-view:hover { background: var(--orange); border-color: var(--orange); }
+
+  .empty-state { text-align: center; padding: 5rem 2rem; color: var(--gray-text); }
+  .empty-state h3 { font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; color: var(--white); margin-bottom: 0.5rem; }
+
+  /* ── MODAL ── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
+  .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+  .modal { background: var(--gray); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 700px; overflow: hidden; margin: auto; position: relative; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: var(--white); width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; z-index: 10; }
+  .modal-close:hover { background: var(--orange); }
+
+  /* modal hero images */
+  .modal-images { display: flex; gap: 6px; height: 240px; padding: 0; }
+  .modal-img-main { flex: 1.6; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 64px; }
+  .modal-img-side { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .modal-img-sec { flex: 1; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+  .modal-images img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .modal-body { padding: 1.75rem; }
+  .modal-top-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem; }
+  .modal-name { font-family: var(--font-display); font-size: 34px; letter-spacing: 1px; line-height: 1; }
+  .modal-meta { font-size: 13px; color: var(--gray-text); margin-top: 3px; }
+  .modal-section-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; margin-top: 1.5rem; }
+  .modal-story { font-size: 15px; color: rgba(245,242,237,0.8); line-height: 1.75; }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .modal-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; margin: 1.25rem 0; }
+  .modal-stat { background: var(--gray-mid); padding: 1rem; text-align: center; }
+  .modal-stat-val { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--white); }
+  .modal-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-wrap { display: flex; flex-direction: column; gap: 12px; }
+
+  /* text-only testimonial */
+  .testi-text { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
+  .testi-quote { font-size: 14px; color: rgba(245,242,237,0.75); line-height: 1.7; font-style: italic; position: relative; padding-left: 1.25rem; }
+  .testi-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 40px; color: var(--orange); position: absolute; left: -4px; top: -8px; line-height: 1; }
+  .testi-author { margin-top: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .testi-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 0.5px; color: var(--white); flex-shrink: 0; }
+  .testi-name { font-size: 13px; font-weight: 600; }
+  .testi-result { font-size: 11px; color: #7cba4a; margin-top: 1px; }
+
+  /* photo testimonial */
+  .testi-photo { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .testi-photo-images { display: flex; height: 160px; }
+  .testi-photo-slot { flex: 1; background: var(--gray-light); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+  .testi-photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .testi-photo-slot .placeholder-label { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; }
+  .testi-photo-divider { width: 3px; background: var(--black); flex-shrink: 0; position: relative; display: flex; align-items: center; justify-content: center; }
+  .testi-photo-divider::after { content: '→'; position: absolute; background: var(--orange); color: var(--white); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; z-index: 1; }
+  .testi-before-label { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,0,0,0.6); color: var(--gray-text); padding: 2px 7px; border-radius: 99px; }
+  .testi-after-label { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(232,80,10,0.7); color: var(--white); padding: 2px 7px; border-radius: 99px; }
+  .testi-photo-body { padding: 0.875rem 1.1rem; }
+
+  .modal-cta { width: 100%; padding: 14px; background: var(--orange); color: var(--white); border: none; border-radius: 8px; font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; cursor: pointer; margin-top: 1.5rem; transition: background 0.15s; }
+  .modal-cta:hover { background: var(--orange-dark); }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 2rem 1.25rem 1.5rem; }
+    .filters-bar { padding: 1rem 1.25rem; top: 53px; }
+    .grid-wrap { padding: 1.5rem 1.25rem 4rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .nav-right a:not(.nav-cta) { display: none; }
+    .modal-img-side { display: none; }
+    .testi-photo-images { height: 130px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">IRON<span>HOUSE</span></a>
+  <div class="nav-right">
+    <a href="index.html#faq">FAQ</a>
+    <a href="questionnaire.html" class="nav-cta">Get matched</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <p class="page-eyebrow">Browse coaches</p>
+      <h1 class="page-title">Find your person.</h1>
+      <p class="page-sub">Every coach on Iron House is vetted and hand-selected. Filter by what matters to you, or let us match you personally.</p>
+    </div>
+    <a href="questionnaire.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:12px 24px;border-radius:4px;text-decoration:none;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;flex-shrink:0;">Get matched for me →</a>
+  </div>
+</div>
+
+<div class="filters-bar">
+  <div class="filters-inner">
+    <div class="filter-group">
+      <span class="filter-label">Style:</span>
+      <button class="filter-chip active" data-filter="specialty" data-val="all" onclick="setFilter('specialty','all',this)">All</button>
+      <button class="filter-chip" data-filter="specialty" data-val="Hypertrophy" onclick="setFilter('specialty','Hypertrophy',this)">Hypertrophy</button>
+      <button class="filter-chip" data-filter="specialty" data-val="Strength" onclick="setFilter('specialty','Strength',this)">Strength</button>
+      <button class="filter-chip" data-filter="specialty" data-val="Calisthenics" onclick="setFilter('specialty','Calisthenics',this)">Calisthenics</button>
+      <button class="filter-chip" data-filter="specialty" data-val="CrossFit" onclick="setFilter('specialty','CrossFit',this)">CrossFit</button>
+      <button class="filter-chip" data-filter="specialty" data-val="Weight Loss" onclick="setFilter('specialty','Weight Loss',this)">Weight Loss</button>
+      <button class="filter-chip" data-filter="specialty" data-val="Endurance" onclick="setFilter('specialty','Endurance',this)">Endurance</button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group">
+      <span class="filter-label">Vibe:</span>
+      <button class="filter-chip active" data-filter="vibe" data-val="all" onclick="setFilter('vibe','all',this)">All</button>
+      <button class="filter-chip" data-filter="vibe" data-val="Laid-back" onclick="setFilter('vibe','Laid-back',this)">Laid-back</button>
+      <button class="filter-chip" data-filter="vibe" data-val="Encouraging" onclick="setFilter('vibe','Encouraging',this)">Encouraging</button>
+      <button class="filter-chip" data-filter="vibe" data-val="High-energy" onclick="setFilter('vibe','High-energy',this)">High-energy</button>
+      <button class="filter-chip" data-filter="vibe" data-val="Structured" onclick="setFilter('vibe','Structured',this)">Structured</button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group">
+      <span class="filter-label">Price:</span>
+      <button class="filter-chip active" data-filter="price" data-val="all" onclick="setFilter('price','all',this)">All</button>
+      <button class="filter-chip" data-filter="price" data-val="under150" onclick="setFilter('price','under150',this)">Under $150</button>
+      <button class="filter-chip" data-filter="price" data-val="150to250" onclick="setFilter('price','150to250',this)">$150–$250</button>
+      <button class="filter-chip" data-filter="price" data-val="over250" onclick="setFilter('price','over250',this)">$250+</button>
+    </div>
+  </div>
+</div>
+
+<div class="grid-wrap">
+  <div class="cards-grid" id="cards-grid"></div>
+  <div class="empty-state" id="empty-state" style="display:none;">
+    <h3>No coaches found</h3>
+    <p>Try a different filter, or let us match you personally.</p>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+
+    <div class="modal-images" id="modal-images"></div>
+
+    <div class="modal-body">
+      <div class="modal-top-row">
+        <div>
+          <div class="modal-name" id="modal-name"></div>
+          <div class="modal-meta" id="modal-meta"></div>
+        </div>
+        <span class="founding-badge" id="modal-badge"></span>
+      </div>
+
+      <div class="modal-stats">
+        <div class="modal-stat"><div class="modal-stat-val" id="modal-exp"></div><div class="modal-stat-label">Experience</div></div>
+        <div class="modal-stat"><div class="modal-stat-val" id="modal-cert"></div><div class="modal-stat-label">Certified</div></div>
+        <div class="modal-stat"><div class="modal-stat-val" id="modal-price-stat"></div><div class="modal-stat-label">Per month</div></div>
+      </div>
+
+      <div class="modal-section-title">Training specialties</div>
+      <div class="modal-tags" id="modal-specialties"></div>
+
+      <div class="modal-section-title">About</div>
+      <div class="modal-story" id="modal-story"></div>
+
+      <div class="modal-section-title">Personal interests</div>
+      <div class="modal-tags" id="modal-interests"></div>
+
+      <div id="modal-testimonials-section"></div>
+
+      <button class="modal-cta" id="modal-cta-btn" onclick="">GET MATCHED WITH THIS COACH</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+//  HOW TO ADD / EDIT TRAINERS
+//  ----------------------------------------------------------------
+//  Each trainer is one object inside the TRAINERS array below.
+//  Copy an existing block, paste it, change the values.
+//
+//  IMAGES:
+//  - Create a folder called "images" in your GitHub repo
+//  - Upload photos there
+//  - Replace null with the path, e.g: "images/marcus-main.jpg"
+//  - If you leave img as null, the emoji shows as a placeholder
+//
+//  TESTIMONIALS:
+//  - Each trainer has a testimonials array
+//  - You can have as many or as few as you want (including zero)
+//  - Text-only testimonial (no photos):
+//      { name:"Jamie T.", initials:"JT", result:"Lost 22 lbs in 14 weeks",
+//        quote:"Your client's quote here." }
+//  - With before/after photos:
+//      { name:"Jamie T.", initials:"JT", result:"Lost 22 lbs in 14 weeks",
+//        quote:"Your client's quote here.",
+//        before:"images/jamie-before.jpg", after:"images/jamie-after.jpg" }
+//  - If a client doesn't want photos, just leave out before/after entirely
+//  - Photos are always consensual — only add them when a client approves
+// ================================================================
+
+const TRAINERS = [
+  {
+    // ── BASIC INFO ──────────────────────────────────────────────
+    name:       "Marcus Reyes",
+    age:        29,
+    location:   "Tampa, FL",
+
+    // ── IMAGES (set to null to show emoji placeholder) ──────────
+    img:        null,              // main profile photo
+    img2:       null,              // second photo (physique / gym)
+    img3:       null,              // third photo (lifestyle / food)
+    emoji:      "💪",             // placeholder if img is null
+    emoji2:     "🏋️",            // placeholder if img2 is null
+    emoji3:     "🥩",             // placeholder if img3 is null
+
+    // ── RATING ──────────────────────────────────────────────────
+    rating:     4.9,
+    reviews:    84,
+    founding:   true,
+
+    // ── CREDENTIALS ─────────────────────────────────────────────
+    experience: "6 yrs",
+    certs:      "NASM",
+    price:      149,
+
+    // ── TAGS ────────────────────────────────────────────────────
+    specialties: ["Hypertrophy", "Strength"],
+    vibe:        "Laid-back",
+    diet:        "Carnivore",
+
+    // ── INTERESTS (3–5) ─────────────────────────────────────────
+    interests:   ["Hiking", "Cooking", "Fantasy football", "Dogs"],
+
+    // ── COPY ────────────────────────────────────────────────────
+    bio:   "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment.",
+    story: "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through — helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
+
+    // ── TESTIMONIALS ─────────────────────────────────────────────
+    // Leave this array empty [] if you have no testimonials yet
+    testimonials: [
+      {
+        name:     "Jamie T.",
+        initials: "JT",
+        result:   "Lost 22 lbs in 14 weeks",
+        quote:    "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
+        before:   null,   // replace with "images/jamie-before.jpg" when ready
+        after:    null    // replace with "images/jamie-after.jpg" when ready
+      },
+      {
+        name:     "Derek K.",
+        initials: "DK",
+        result:   "Added 40 lbs to his deadlift in 8 weeks",
+        quote:    "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
+        // no before/after — this client didn't submit photos
+      }
+    ]
+  },
+
+  {
+    name:       "Jade Okafor",
+    age:        34,
+    location:   "Atlanta, GA",
+    img:        null,
+    img2:       null,
+    img3:       null,
+    emoji:      "🏃‍♀️",
+    emoji2:     "🤸",
+    emoji3:     "🥗",
+    rating:     4.6,
+    reviews:    211,
+    founding:   true,
+    experience: "9 yrs",
+    certs:      "ACE + BS",
+    price:      189,
+    specialties: ["Calisthenics", "Functional"],
+    vibe:        "Encouraging",
+    diet:        "Whole foods",
+    interests:   ["Yoga", "Travel", "Reading", "Music"],
+    bio:   "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life — not some idealized version of it.",
+    story: "I started in sports medicine before pivoting fully to personal coaching. After 9 years I've worked with everyone from desk workers with chronic back pain to competitive athletes rebuilding after injury. What I've learned is that the best program is the one someone actually sticks to. I'll help you find that.",
+    testimonials: [
+      {
+        name:     "Sofia R.",
+        initials: "SR",
+        result:   "Back pain gone after 6 weeks",
+        quote:    "I was skeptical that online coaching could fix something as physical as back pain. Jade proved me completely wrong.",
+        before:   null,
+        after:    null
+      }
+    ]
+  },
+
+  {
+    name:       "Cole Whitman",
+    age:        26,
+    location:   "Denver, CO",
+    img:        null,
+    img2:       null,
+    img3:       null,
+    emoji:      "🧗",
+    emoji2:     "🏔️",
+    emoji3:     "🥦",
+    rating:     4.3,
+    reviews:    57,
+    founding:   true,
+    experience: "3 yrs",
+    certs:      "ISSA",
+    price:      119,
+    specialties: ["CrossFit", "Endurance"],
+    vibe:        "High-energy",
+    diet:        "Plant-based",
+    interests:   ["Rock climbing", "Trail running", "Van life"],
+    bio:   "Fitness should feel like an adventure, not a chore. I bring that energy to every client — let's build something that challenges you and actually keeps you coming back.",
+    story: "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process. My programs are high energy, outdoor-friendly, and designed to fit a life that doesn't revolve around a gym.",
+    testimonials: []  // no testimonials yet — section won't appear
+  }
+];
+
+// ================================================================
+//  EVERYTHING BELOW IS THE ENGINE — you don't need to touch this
+// ================================================================
+
+function renderStars(rating) {
+  let html = '<div class="star-icons">';
+  for (let i = 1; i <= 5; i++) {
+    if (rating >= i) html += '<div class="star"></div>';
+    else if (rating >= i - 0.5) html += '<div class="star half"></div>';
+    else html += '<div class="star empty"></div>';
+  }
+  return html + '</div>';
+}
+
+function buildImgSlot(img, emoji, cls) {
+  return img
+    ? `<div class="${cls}"><img src="${img}" alt=""></div>`
+    : `<div class="${cls}"><div class="img-placeholder${cls.includes('secondary') ? ' sm' : ''}">${emoji}</div></div>`;
+}
+
+function buildCard(trainer, index) {
+  const delay = (index % 9) * 0.05;
+  const styleTags = trainer.specialties.map(s => `<span class="tag style">${s}</span>`).join('');
+  const interestChips = trainer.interests.map(i => `<span class="interest-chip">${i}</span>`).join('');
+  const mainImg = buildImgSlot(trainer.img, trainer.emoji, 'img-main');
+  const img2 = buildImgSlot(trainer.img2, trainer.emoji2, 'img-secondary');
+  const img3 = buildImgSlot(trainer.img3, trainer.emoji3, 'img-secondary');
+
+  return `
+  <div class="trainer-card" style="animation-delay:${delay}s"
+    data-specialties="${trainer.specialties.join(',')}"
+    onclick="openModal(${index})">
+    <div class="card-header">
+      <div>
+        <div class="trainer-name">${trainer.name}</div>
+        <div class="trainer-meta">${trainer.age} · ${trainer.location}</div>
+      </div>
+      <div class="card-header-right">
+        <div class="stars">${renderStars(trainer.rating)}<span class="review-count">${trainer.rating} (${trainer.reviews})</span></div>
+        ${trainer.founding ? '<span class="founding-badge">✦ Founding</span>' : ''}
+      </div>
+    </div>
+    <div class="card-images">
+      ${mainImg}
+      <div class="img-side">${img2}${img3}</div>
+    </div>
+    <div class="card-stats">
+      <div class="card-stat"><div class="card-stat-val">${trainer.experience}</div><div class="card-stat-label">Experience</div></div>
+      <div class="card-stat"><div class="card-stat-val">${trainer.certs}</div><div class="card-stat-label">Certified</div></div>
+      <div class="card-stat"><div class="card-stat-val">$${trainer.price}</div><div class="card-stat-label">Per month</div></div>
+    </div>
+    <div class="card-tags">
+      ${styleTags}
+      <span class="tag vibe">${trainer.vibe}</span>
+      <span class="tag diet">${trainer.diet}</span>
+    </div>
+    <div class="card-interests">
+      <div class="interests-label">Interests</div>
+      <div class="interests-row">${interestChips}</div>
+    </div>
+    <div class="card-bio">${trainer.bio}</div>
+    <div class="card-footer">
+      <div class="card-price"><strong>$${trainer.price}</strong><span> / mo</span></div>
+      <button class="btn-view">View profile</button>
+    </div>
+  </div>`;
+}
+
+function buildTestimonial(t) {
+  const hasPhotos = t.before && t.after;
+  const hasEitherPhoto = t.before || t.after;
+
+  if (hasPhotos) {
+    // Full before/after layout
+    return `
+    <div class="testi-photo">
+      <div class="testi-photo-images">
+        <div class="testi-photo-slot">
+          <img src="${t.before}" alt="Before">
+          <span class="testi-before-label">Before</span>
+        </div>
+        <div class="testi-photo-divider"></div>
+        <div class="testi-photo-slot">
+          <img src="${t.after}" alt="After">
+          <span class="testi-after-label">After</span>
+        </div>
+      </div>
+      <div class="testi-photo-body">
+        <div class="testi-quote">${t.quote}</div>
+        <div class="testi-author" style="margin-top:0.75rem;">
+          <div class="testi-avatar">${t.initials}</div>
+          <div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div>
+        </div>
+      </div>
+    </div>`;
+  } else {
+    // Text-only layout — clean, no awkward empty slots
+    return `
+    <div class="testi-text">
+      <div class="testi-quote">${t.quote}</div>
+      <div class="testi-author">
+        <div class="testi-avatar">${t.initials}</div>
+        <div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div>
+      </div>
+    </div>`;
+  }
+}
+
+// ================================================================
+//  EVERYTHING BELOW IS THE ENGINE — you don't need to touch this
+// ================================================================
+
+let activeFilters = { specialty: 'all', vibe: 'all', price: 'all' };
+
+function setFilter(dimension, val, btn) {
+  activeFilters[dimension] = val;
+  // deactivate other chips in same group
+  document.querySelectorAll(`[data-filter="${dimension}"]`).forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const grid = document.getElementById('cards-grid');
+  const empty = document.getElementById('empty-state');
+
+  const filtered = TRAINERS.filter(t => {
+    const specialtyOk = activeFilters.specialty === 'all' ||
+      t.specialties.some(s => s.toLowerCase().includes(activeFilters.specialty.toLowerCase()));
+    const vibeOk = activeFilters.vibe === 'all' ||
+      t.vibe.toLowerCase().includes(activeFilters.vibe.toLowerCase());
+    const priceOk = activeFilters.price === 'all' ||
+      (activeFilters.price === 'under150' && t.price < 150) ||
+      (activeFilters.price === '150to250' && t.price >= 150 && t.price <= 250) ||
+      (activeFilters.price === 'over250' && t.price > 250);
+    return specialtyOk && vibeOk && priceOk;
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = ''; empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    grid.innerHTML = filtered.map((t, i) => buildCard(t, TRAINERS.indexOf(t))).join('');
+  }
+}
+
+function openModal(index) {
+  const t = TRAINERS[index];
+
+  document.getElementById('modal-name').textContent = t.name;
+  document.getElementById('modal-meta').textContent = `${t.age} · ${t.location}`;
+  document.getElementById('modal-exp').textContent = t.experience;
+  document.getElementById('modal-cert').textContent = t.certs;
+  document.getElementById('modal-price-stat').textContent = `$${t.price}`;
+  document.getElementById('modal-story').textContent = t.story;
+  document.getElementById('modal-badge').textContent = t.founding ? '✦ Founding Trainer' : '';
+  document.getElementById('modal-badge').style.display = t.founding ? '' : 'none';
+
+  // Wire CTA to pass trainer name to questionnaire
+  const encodedName = encodeURIComponent(t.name);
+  document.getElementById('modal-cta-btn').onclick = () => {
+    window.location.href = `questionnaire.html?trainer=${encodedName}`;
+  };
+
+  // modal images
+  const mainImg = t.img ? `<img src="${t.img}" alt="${t.name}">` : t.emoji;
+  const sec2 = t.img2 ? `<img src="${t.img2}" alt="">` : t.emoji2;
+  const sec3 = t.img3 ? `<img src="${t.img3}" alt="">` : t.emoji3;
+  document.getElementById('modal-images').innerHTML = `
+    <div class="modal-img-main">${mainImg}</div>
+    <div class="modal-img-side">
+      <div class="modal-img-sec">${sec2}</div>
+      <div class="modal-img-sec">${sec3}</div>
+    </div>`;
+
+  // specialties
+  const specHTML = t.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
+    `<span class="tag vibe">${t.vibe}</span><span class="tag diet">${t.diet}</span>`;
+  document.getElementById('modal-specialties').innerHTML = specHTML;
+
+  // interests
+  document.getElementById('modal-interests').innerHTML =
+    t.interests.map(i => `<span class="interest-chip">${i}</span>`).join('');
+
+  // testimonials
+  const testiSection = document.getElementById('modal-testimonials-section');
+  if (t.testimonials && t.testimonials.length > 0) {
+    testiSection.innerHTML = `
+      <div class="modal-section-title">Client results</div>
+      <div class="testimonials-wrap">${t.testimonials.map(buildTestimonial).join('')}</div>`;
+  } else {
+    testiSection.innerHTML = '';
+  }
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+// Init
+applyFilters();
+</script>
+</body>
+</html>
