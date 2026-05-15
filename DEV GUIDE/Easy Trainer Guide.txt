@@ -3,5 +3,5 @@
 3. Scroll down sheet until you find new trainer
 4. Copy information from sheet into Generator
     4a. Upload any images from the trainer into the images folder on GITHUB
-    4b. Copy image filenames EXACTLY. Match caps and replace any spaces with dashes (-). Make sure to include file type in the GENERATOR (.png, .jpg.          etc)
+    4b. Copy image filenames EXACTLY. Match caps and replace any spaces with dashes (-). Make sure to include file type in the GENERATOR (.png, .jpg., etc)
 Disregard TESTIMONIALS section of GENERATOR
