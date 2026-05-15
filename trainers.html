@@ -30,10 +30,12 @@
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--black); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.97); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
   .mobile-menu.open { display: flex; }
-  .mobile-menu a { font-family: var(--font-display); font-size: 32px; letter-spacing: 2px; color: var(--white); text-decoration: none; }
+  .mobile-menu a { font-family: var(--font-display); font-size: 32px; letter-spacing: 2px; color: var(--white); text-decoration: none; position: relative; z-index: 2; }
   .mobile-menu .m-cta { background: var(--orange); color: var(--white) !important; padding: 12px 32px; border-radius: 4px; }
+  .mobile-menu-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: var(--white); font-size: 32px; cursor: pointer; z-index: 3; line-height: 1; opacity: 0.6; transition: opacity 0.2s; }
+  .mobile-menu-close:hover { opacity: 1; }
 
   .page-header { padding: 3rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
   .page-header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
@@ -242,7 +244,8 @@
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" onclick="handleMenuClick(event)">
+  <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="index.html#faq" onclick="closeMenu()">FAQ</a>
   <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
@@ -689,6 +692,9 @@ function closeMenu() {
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('mobile-menu').classList.remove('open');
   document.body.style.overflow = '';
+}
+function handleMenuClick(e) {
+  if (e.target === document.getElementById('mobile-menu')) closeMenu();
 }
 
 fetch('trainers.json')
