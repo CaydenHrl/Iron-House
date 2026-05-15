@@ -36,11 +36,13 @@
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   /* MOBILE MENU */
-  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--black); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.97); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
   .mobile-menu.open { display: flex; animation: fadeIn 0.2s ease; }
-  .mobile-menu a { font-family: var(--font-display); font-size: 36px; letter-spacing: 2px; color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .mobile-menu a { font-family: var(--font-display); font-size: 36px; letter-spacing: 2px; color: var(--white); text-decoration: none; transition: color 0.2s; position: relative; z-index: 2; }
   .mobile-menu a:hover { color: var(--orange); }
   .mobile-menu .m-cta { background: var(--orange); color: var(--white) !important; padding: 12px 32px; border-radius: 4px; }
+  .mobile-menu-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: var(--white); font-size: 32px; cursor: pointer; z-index: 3; line-height: 1; opacity: 0.6; transition: opacity 0.2s; }
+  .mobile-menu-close:hover { opacity: 1; }
 
   /* VERSE BAR */
   .verse-bar { background: rgba(232,80,10,0.07); border-bottom: 1px solid rgba(232,80,10,0.15); padding: 9px 2.5rem; text-align: center; position: relative; z-index: 99; margin-top: 72px; }
@@ -186,7 +188,8 @@
   </button>
 </nav>
 
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" onclick="handleMenuClick(event)">
+  <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
   <a href="#how-it-works" onclick="closeMenu()">How it works</a>
   <a href="trainers.html" onclick="closeMenu()">Meet the coaches</a>
   <a href="#why" onclick="closeMenu()">Why Iron House</a>
@@ -405,6 +408,10 @@
     document.getElementById('hamburger').classList.remove('open');
     document.getElementById('mobile-menu').classList.remove('open');
     document.body.style.overflow = '';
+  }
+  function handleMenuClick(e) {
+    // close if clicking the backdrop (not a link or the close button)
+    if (e.target === document.getElementById('mobile-menu')) closeMenu();
   }
   function switchWhyTab(tab, btn) {
     document.querySelectorAll('.why-tab-btn').forEach(b => b.classList.remove('active'));
