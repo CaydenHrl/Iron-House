@@ -1,50 +1,41 @@
 [
   {
-    "name": "John Doe",
-    "age": 29,
-    "location": "Tampa, FL",
-    "email": "marcus@email.com",
-    "price": 149,
-    "experience": "6 yrs",
-    "certs": "NASM",
-    "rating": 4.9,
-    "reviews": 84,
+    "name": "Rogelio Perez",
+    "age": 20,
+    "location": "Orlando, FL",
+    "email": "trainedbyrogmok@gmail.com",
+    "price": 150,
+    "experience": "3 yrs",
+    "certs": "NCEP",
+    "rating": 5,
+    "reviews": 2,
     "founding": true,
-    "photo_main": "images/marcus-main.jpg",
-    "photo_physique": "images/marcus-gym.jpg",
-    "photo_lifestyle": "images/marcus-life.jpg",
+    "photo_main": "images/Roger-PFP.jpg",
+    "photo_physique": "images/RogerPhysique.jpg",
+    "photo_lifestyle": "images/Roger-Lifestyle.jpg",
     "specialties": [
       "Hypertrophy",
-      "Strength"
+      "Calisthenics",
+      "Flexibility & Mobility"
     ],
-    "diet": "Carnivore",
+    "diet": "Flexible",
     "niches": [
-      "Beginners",
-      "General population",
-      "Muscle building focused"
+      "General population"
     ],
     "interests": [
       "Hiking",
-      "Cooking",
-      "Fantasy football",
-      "Dogs"
+      "Martial Arts",
+      "Fishing"
     ],
-    "stat_intensity": 3,
+    "stat_intensity": 4,
     "stat_structure": 2,
-    "stat_checkins": 2,
-    "stat_energy": 2,
+    "stat_checkins": 1,
+    "stat_energy": 3,
     "stat_diet": 3,
-    "bio": "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up â at their own pace, no judgment.",
-    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through â helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
-    "testimonials": [
-      {
-        "name": "Jamie T.",
-        "initials": "JT",
-        "result": "Lost 22 lbs in 14 weeks",
-        "quote": "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
-        "before": "",
-        "after": ""
-      },
+    "bio": "At 14 I realized I needed to grow, I was a scrawny kid. I started at home with limited equipment. Learned to master my bodyweight. Once I transitioned to a gym I mastered the weights.",
+    "story": "At 14 years old, I lost an arm wrestling competition and got made fun of for how skinny my arms were. I had already been doing random ab workouts at home, but losing that competition really sparked my drive to become bigger and stronger.\n\nWhen I got home, I tried doing push-ups and couldn’t even do six proper reps. That’s when I discovered calisthenics on YouTube. I became obsessed with learning how to train and progress at home with limited equipment. I would load backpacks with books, use broomsticks with water jugs as makeshift barbells, and do whatever I could to improve with what I had.\n\nWhen the pandemic hit, I moved from Florida to Texas for a while since school became virtual and I hadn’t seen family in a long time. Luckily, the gym my cousins trained at stayed open, and that’s where I started lifting weights seriously. We would spend late nights in the gym constantly pushing ourselves, and that’s where my powerlifting journey began. I became focused on improving the “big three” lifts: squat, bench, and deadlift.\n\nEventually, I moved back to Florida and lost access to a gym again, so I had to continue progressing from home. By then, I had bought gymnastics rings, which completely changed my training and opened up far more exercise options. Around this time, people at school started noticing my physique, and I would occasionally train at local gyms using guest passes with friends.\n\nBecause of my calisthenics background, I had already learned how important joint health and movement quality were. While many people around me dealt with shoulder, elbow, and lower back pain from poor training habits, I became interested in learning how to avoid and fix those issues.\n\nOver time, my focus shifted away from pure powerlifting and more toward hypertrophy and building muscle. I wanted to learn everything I could about bodybuilding and muscle growth. The problem was that a lot of mainstream fitness advice either wasn’t effective or was designed around people using performance-enhancing drugs. I trained incredibly hard, pushed myself constantly, ate as much as I could — sometimes even eating three school lunches a day — yet I still hit frustrating plateaus.\n\nThat frustration led me deeper into researching training, recovery, nutrition, and the science of muscle growth. I studied different training philosophies, from old-school bodybuilding methods to modern evidence-based approaches, and eventually realized that even many popular “science-based” fitness influencers were missing important pieces of the puzzle.\n\nAfter years of trial and error, I finally developed a much deeper understanding of effective training, recovery, nutrition, and long-term progression.\n\nNow at 20 years old, my goal is to help others avoid the same mistakes, confusion, and frustration I went through. I know what it feels like to work hard without seeing results, and I want to help people train smarter so their effort actually pays off.",
+    "testimonials": []
+  },
       {
         "name": "Derek K.",
         "initials": "DK",
@@ -142,40 +133,57 @@
     "testimonials": []
   },
   {
-    "name": "Rogelio Perez",
-    "age": 20,
-    "location": "Orlando, FL",
-    "email": "trainedbyrogmok@gmail.com",
-    "price": 150,
-    "experience": "3 yrs",
-    "certs": "NCEP",
-    "rating": 5,
-    "reviews": 2,
+    "name": "John Doe",
+    "age": 29,
+    "location": "Tampa, FL",
+    "email": "marcus@email.com",
+    "price": 149,
+    "experience": "6 yrs",
+    "certs": "NASM",
+    "rating": 4.9,
+    "reviews": 84,
     "founding": true,
-    "photo_main": "images/Roger-PFP.jpg",
-    "photo_physique": "images/RogerPhysique.jpg",
-    "photo_lifestyle": "images/Roger-Lifestyle.jpg",
+    "photo_main": "images/marcus-main.jpg",
+    "photo_physique": "images/marcus-gym.jpg",
+    "photo_lifestyle": "images/marcus-life.jpg",
     "specialties": [
       "Hypertrophy",
-      "Calisthenics",
-      "Flexibility & Mobility"
+      "Strength"
     ],
-    "diet": "Flexible",
+    "diet": "Carnivore",
     "niches": [
-      "General population"
+      "Beginners",
+      "General population",
+      "Muscle building focused"
     ],
     "interests": [
       "Hiking",
-      "Martial Arts",
-      "Fishing"
+      "Cooking",
+      "Fantasy football",
+      "Dogs"
     ],
-    "stat_intensity": 4,
+    "stat_intensity": 3,
     "stat_structure": 2,
-    "stat_checkins": 1,
-    "stat_energy": 3,
+    "stat_checkins": 2,
+    "stat_energy": 2,
     "stat_diet": 3,
-    "bio": "At 14 I realized I needed to grow, I was a scrawny kid. I started at home with limited equipment. Learned to master my bodyweight. Once I transitioned to a gym I mastered the weights.",
-    "story": "At 14 years old, I lost an arm wrestling competition and got made fun of for how skinny my arms were. I had already been doing random ab workouts at home, but losing that competition really sparked my drive to become bigger and stronger.\n\nWhen I got home, I tried doing push-ups and couldn’t even do six proper reps. That’s when I discovered calisthenics on YouTube. I became obsessed with learning how to train and progress at home with limited equipment. I would load backpacks with books, use broomsticks with water jugs as makeshift barbells, and do whatever I could to improve with what I had.\n\nWhen the pandemic hit, I moved from Florida to Texas for a while since school became virtual and I hadn’t seen family in a long time. Luckily, the gym my cousins trained at stayed open, and that’s where I started lifting weights seriously. We would spend late nights in the gym constantly pushing ourselves, and that’s where my powerlifting journey began. I became focused on improving the “big three” lifts: squat, bench, and deadlift.\n\nEventually, I moved back to Florida and lost access to a gym again, so I had to continue progressing from home. By then, I had bought gymnastics rings, which completely changed my training and opened up far more exercise options. Around this time, people at school started noticing my physique, and I would occasionally train at local gyms using guest passes with friends.\n\nBecause of my calisthenics background, I had already learned how important joint health and movement quality were. While many people around me dealt with shoulder, elbow, and lower back pain from poor training habits, I became interested in learning how to avoid and fix those issues.\n\nOver time, my focus shifted away from pure powerlifting and more toward hypertrophy and building muscle. I wanted to learn everything I could about bodybuilding and muscle growth. The problem was that a lot of mainstream fitness advice either wasn’t effective or was designed around people using performance-enhancing drugs. I trained incredibly hard, pushed myself constantly, ate as much as I could — sometimes even eating three school lunches a day — yet I still hit frustrating plateaus.\n\nThat frustration led me deeper into researching training, recovery, nutrition, and the science of muscle growth. I studied different training philosophies, from old-school bodybuilding methods to modern evidence-based approaches, and eventually realized that even many popular “science-based” fitness influencers were missing important pieces of the puzzle.\n\nAfter years of trial and error, I finally developed a much deeper understanding of effective training, recovery, nutrition, and long-term progression.\n\nNow at 20 years old, my goal is to help others avoid the same mistakes, confusion, and frustration I went through. I know what it feels like to work hard without seeing results, and I want to help people train smarter so their effort actually pays off.",
-    "testimonials": []
+    "bio": "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up â at their own pace, no judgment.",
+    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through â helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
+    "testimonials": [
+      {
+        "name": "Jamie T.",
+        "initials": "JT",
+        "result": "Lost 22 lbs in 14 weeks",
+        "quote": "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
+        "before": "",
+        "after": ""
+      },
+      {
+        "name": "Derek K.",
+        "initials": "DK",
+        "result": "Added 40 lbs to his deadlift in 8 weeks",
+        "quote": "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
+        "before": "",
+        "after": ""
   }
 ]
