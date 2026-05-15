@@ -437,10 +437,10 @@
 <div class="thankyou-page" id="thankyou">
   <div class="thankyou-icon">🏋️</div>
   <h1>Application<br><span>received.</span></h1>
-  <p>We review every application personally. If you're a good fit, expect an email from us within 48 hours with everything you need to know — how the platform works, next steps, and how to get your profile live.</p>
+  <p>We review every trainer personally. Expect a message from us within 48 hours — we'll hop on a quick call and get your profile built together.</p>
   <div class="thankyou-detail">
     <strong>What happens next</strong>
-    You'll receive an orientation email from us covering how Iron House works, your commission rate, and how to get set up. We'll also finalize your profile card together over email so it represents you the right way.
+    We'll reach out to schedule a short intro call, finalize your profile card, and get you set up on the platform. As one of our founding trainers, you'll have a direct line to us whenever you need it.
   </div>
   <a href="index.html" class="btn-home">Back to Iron House</a>
 </div>
@@ -556,7 +556,7 @@
   const getSelected = (id) => [...document.querySelectorAll('#'+id+' .pill.selected')].map(p => p.textContent).join(', ');
   const getSlider = (id) => { const v = document.getElementById(id).value; return sliderLabels[id] ? sliderLabels[id][v] : v; };
 
-  async function submitForm() {
+  function submitForm() {
     const btn = document.getElementById('btn-next');
     btn.textContent = 'Sending...'; btn.disabled = true;
 
@@ -572,62 +572,90 @@
     const dietOther = document.getElementById('diet-other-input').value.trim();
     if (dietOther) diet += (diet ? ', ' : '') + dietOther;
 
-    const formData = new FormData();
-    formData.append('_subject', 'Iron House — Trainer Application');
-    formData.append('name', document.getElementById('input-firstname').value + ' ' + document.getElementById('input-lastname').value);
-    formData.append('email', document.getElementById('input-email').value);
-    formData.append('age', document.getElementById('input-age').value);
-    formData.append('location', document.getElementById('input-location').value);
-    formData.append('experience', getSelected('exp-group'));
-    formData.append('certifications', document.getElementById('input-certs').value);
-    formData.append('specialties', specialties);
-    formData.append('niches', niches);
-    formData.append('diet_philosophies', diet);
-    formData.append('monthly_rate', '$' + document.getElementById('slider-rate').value + '/mo');
-    formData.append('stat_intensity', document.getElementById('slider-intensity').value);
-    formData.append('stat_structure', document.getElementById('slider-structure').value);
-    formData.append('stat_checkins', document.getElementById('slider-checkin').value);
-    formData.append('stat_energy', document.getElementById('slider-energy').value);
-    formData.append('stat_diet', document.getElementById('slider-dietstrict').value);
-    formData.append('intensity_label', getSlider('slider-intensity'));
-    formData.append('structure_label', getSlider('slider-structure'));
-    formData.append('checkin_label', getSlider('slider-checkin'));
-    formData.append('energy_label', getSlider('slider-energy'));
-    formData.append('diet_strictness_label', getSlider('slider-dietstrict'));
-    formData.append('ideal_client_experience', getSelected('clientexp-group'));
-    formData.append('ideal_client_motivation', getSelected('clientmotiv-group'));
-    formData.append('interests', interests.join(', '));
-    formData.append('short_bio', document.getElementById('input-bio').value);
-    formData.append('full_story', document.getElementById('input-story').value);
-    formData.append('client_struggles', document.getElementById('input-struggle').value);
-    formData.append('client_success', document.getElementById('input-success').value);
-    formData.append('other_notes', document.getElementById('input-other').value);
+    const form = document.getElementById('hidden-form');
+    form.innerHTML = ''; // clear any previous run
 
-    const photoFiles = [];
-    ['1','2','3','4'].forEach(i => {
-      const input = document.querySelector(`#preview-${i}`).previousElementSibling?.querySelector('input[type=file]');
-      if (input && input.files && input.files.length > 0) {
-        photoFiles.push(`Photo ${i}: ${Array.from(input.files).map(f=>f.name).join(', ')}`);
+    // Helper — adds a hidden text field to the form
+    function addField(name, value) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value || '';
+      form.appendChild(input);
+    }
+
+    // All text fields
+    addField('_subject', 'Iron House — Trainer Application');
+    addField('name', document.getElementById('input-firstname').value + ' ' + document.getElementById('input-lastname').value);
+    addField('email', document.getElementById('input-email').value);
+    addField('age', document.getElementById('input-age').value);
+    addField('location', document.getElementById('input-location').value);
+    addField('experience', getSelected('exp-group'));
+    addField('certifications', document.getElementById('input-certs').value);
+    addField('specialties', specialties);
+    addField('niches', niches);
+    addField('diet_philosophies', diet);
+    addField('monthly_rate', '$' + document.getElementById('slider-rate').value + '/mo');
+    addField('stat_intensity', document.getElementById('slider-intensity').value);
+    addField('stat_structure', document.getElementById('slider-structure').value);
+    addField('stat_checkins', document.getElementById('slider-checkin').value);
+    addField('stat_energy', document.getElementById('slider-energy').value);
+    addField('stat_diet', document.getElementById('slider-dietstrict').value);
+    addField('intensity_label', getSlider('slider-intensity'));
+    addField('structure_label', getSlider('slider-structure'));
+    addField('checkin_label', getSlider('slider-checkin'));
+    addField('energy_label', getSlider('slider-energy'));
+    addField('diet_strictness_label', getSlider('slider-dietstrict'));
+    addField('ideal_client_experience', getSelected('clientexp-group'));
+    addField('ideal_client_motivation', getSelected('clientmotiv-group'));
+    addField('interests', interests.join(', '));
+    addField('short_bio', document.getElementById('input-bio').value);
+    addField('full_story', document.getElementById('input-story').value);
+    addField('client_struggles', document.getElementById('input-struggle').value);
+    addField('client_success', document.getElementById('input-success').value);
+    addField('other_notes', document.getElementById('input-other').value);
+
+    // Move the actual file inputs into the hidden form so Formspree receives the files
+    // We clone each input — the original stays in the DOM so the user's selections persist visually
+    const photoSlots = [
+      { inputSelector: '#page-3 .photo-card:nth-child(1) input[type=file]', name: 'photo_profile' },
+      { inputSelector: '#page-3 .photo-card:nth-child(2) input[type=file]', name: 'photo_physique' },
+      { inputSelector: '#page-3 .photo-card:nth-child(3) input[type=file]', name: 'photo_lifestyle' },
+      { inputSelector: '#page-3 .photo-card:nth-child(4) input[type=file]', name: 'photo_testimonials' },
+    ];
+
+    photoSlots.forEach(slot => {
+      const original = document.querySelector(slot.inputSelector);
+      if (original && original.files && original.files.length > 0) {
+        // Can't clone a file input with its files — move it, submit, then restore
+        original.name = slot.name;
+        form.appendChild(original);
       }
     });
-    if (photoFiles.length) formData.append('photos_note', 'Photos selected: ' + photoFiles.join(' | ') + ' — follow up to collect files.');
 
-    try {
-      const res = await fetch('https://formspree.io/f/mqenyrkn', {
-        method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
+    // Formspree redirect after submit — send to thank you state via hash
+    addField('_next', window.location.href.split('#')[0] + '#thankyou');
+
+    // Show thank you before the page navigates (covers slow connections)
+    // We listen for the form submit event to fire the visual transition
+    form.addEventListener('submit', () => {
+      setTimeout(() => {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('nav-footer').style.display = 'none';
         document.getElementById('thankyou').classList.add('active');
         document.getElementById('progress-bar').style.width = '100%';
         document.getElementById('step-counter').innerHTML = '<a href="index.html">← Back to Iron House</a>';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else { btn.textContent = 'Try Again'; btn.disabled = false; }
-    } catch(e) { btn.textContent = 'Try Again'; btn.disabled = false; }
+      }, 200);
+    }, { once: true });
+
+    form.submit();
   }
 
   updateProgress();
 </script>
+<!-- HIDDEN MULTIPART FORM — Formspree needs this to receive file uploads -->
+<form id="hidden-form" action="https://formspree.io/f/mqenyrkn" method="POST" enctype="multipart/form-data" style="display:none;"></form>
+
 </body>
 </html>
