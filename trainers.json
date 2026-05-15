@@ -152,9 +152,9 @@
     "rating": 5,
     "reviews": 2,
     "founding": true,
-    "photo_main": "images/Roger-PFP",
-    "photo_physique": "images/RogerPhysique",
-    "photo_lifestyle": "images/Roger-Lifestyle",
+    "photo_main": "images/Roger-PFP.jpg",
+    "photo_physique": "images/RogerPhysique.jpg",
+    "photo_lifestyle": "images/Roger-Lifestyle.jpg",
     "specialties": [
       "Hypertrophy",
       "Calisthenics",
