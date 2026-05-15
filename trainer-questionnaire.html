@@ -333,7 +333,7 @@
         <div class="photo-card-title">Profile photo <span class="tag-badge">Required</span></div>
         <p class="photo-card-desc">Your main headshot or upper-body photo. Clear, well-lit, face visible.</p>
         <div class="photo-upload-area">
-          <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-1','filename-1')">
+          <input type="file" id="file-profile" accept="image/*" onchange="previewPhoto(this,'preview-1','filename-1')">
           <div class="upload-icon">📸</div>
           <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · Square or portrait crop</div>
           <div class="upload-preview" id="preview-1"><div class="upload-filename" id="filename-1"></div></div>
@@ -344,7 +344,7 @@
         <div class="photo-card-title">Physique or action photo <span class="tag-badge">Required</span></div>
         <p class="photo-card-desc">You in the gym, lifting, coaching, or showing your physique.</p>
         <div class="photo-upload-area">
-          <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-2','filename-2')">
+          <input type="file" id="file-physique" accept="image/*" onchange="previewPhoto(this,'preview-2','filename-2')">
           <div class="upload-icon">💪</div>
           <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Portrait crop works best</div>
           <div class="upload-preview" id="preview-2"><div class="upload-filename" id="filename-2"></div></div>
@@ -355,21 +355,10 @@
         <div class="photo-card-title">Lifestyle photo <span class="tag-optional">Optional</span></div>
         <p class="photo-card-desc">Something outside the gym — hiking, cooking, your dog, traveling. Matches your personal interests.</p>
         <div class="photo-upload-area">
-          <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-3','filename-3')">
+          <input type="file" id="file-lifestyle" accept="image/*" onchange="previewPhoto(this,'preview-3','filename-3')">
           <div class="upload-icon">🌄</div>
           <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
           <div class="upload-preview" id="preview-3"><div class="upload-filename" id="filename-3"></div></div>
-        </div>
-      </div>
-
-      <div class="photo-card">
-        <div class="photo-card-title">Client testimonial photos <span class="tag-optional">Optional</span></div>
-        <p class="photo-card-desc">Before/after or progress photos from consenting clients. You can send these later by emailing us.</p>
-        <div class="photo-upload-area">
-          <input type="file" accept="image/*" multiple onchange="previewPhotoMulti(this,'preview-4','filename-4')">
-          <div class="upload-icon">🏆</div>
-          <div class="upload-text"><strong>Click to upload</strong> — select multiple<br>Pairs of before/after work best</div>
-          <div class="upload-preview" id="preview-4"><div class="upload-filename" id="filename-4"></div></div>
         </div>
       </div>
     </div>
@@ -607,13 +596,12 @@
 
     // Attach actual files directly to FormData
     const photoSlots = [
-      { selector: '.photo-card:nth-child(1) input[type=file]', name: 'photo_profile' },
-      { selector: '.photo-card:nth-child(2) input[type=file]', name: 'photo_physique' },
-      { selector: '.photo-card:nth-child(3) input[type=file]', name: 'photo_lifestyle' },
-      { selector: '.photo-card:nth-child(4) input[type=file]', name: 'photo_testimonials' },
+      { id: 'file-profile',  name: 'photo_profile'  },
+      { id: 'file-physique', name: 'photo_physique'  },
+      { id: 'file-lifestyle',name: 'photo_lifestyle' },
     ];
     photoSlots.forEach(slot => {
-      const input = document.querySelector(slot.selector);
+      const input = document.getElementById(slot.id);
       if (input && input.files) {
         Array.from(input.files).forEach(file => {
           formData.append(slot.name, file, file.name);
