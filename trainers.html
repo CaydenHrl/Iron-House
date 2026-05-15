@@ -25,31 +25,39 @@
   .nav-right a:hover { color: var(--white); }
   .nav-cta { background: var(--orange); color: var(--white) !important; padding: 8px 18px; border-radius: 4px; font-weight: 600 !important; }
   .nav-cta:hover { background: var(--orange-dark) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.25s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--black); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: var(--font-display); font-size: 32px; letter-spacing: 2px; color: var(--white); text-decoration: none; }
+  .mobile-menu .m-cta { background: var(--orange); color: var(--white) !important; padding: 12px 32px; border-radius: 4px; }
 
-  .page-header { padding: 3.5rem 2rem 2rem; border-bottom: 1px solid var(--border); }
+  .page-header { padding: 3rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
   .page-header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
   .page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
   .page-title { font-family: var(--font-display); font-size: clamp(36px, 6vw, 64px); line-height: 1; letter-spacing: 1px; }
   .page-sub { font-size: 14px; color: var(--gray-text); margin-top: 0.5rem; line-height: 1.6; max-width: 380px; }
-  .trainer-count span { color: var(--orange); font-family: var(--font-display); font-size: 28px; display: block; }
-  .trainer-count { font-size: 13px; color: var(--gray-text); letter-spacing: 0.5px; }
+  .get-matched-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--white); padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s; flex-shrink: 0; }
+  .get-matched-btn:hover { background: var(--orange-dark); }
 
-  .filters-bar { padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: 57px; z-index: 90; }
-  .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .filter-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-text); margin-right: 4px; }
-  .filter-group { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-  .filter-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
-  .filter-chip { padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--gray-text); font-family: var(--font-body); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .filters-bar { padding: 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: 57px; z-index: 90; overflow-x: auto; }
+  .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; min-width: max-content; }
+  .filter-group { display: flex; gap: 5px; align-items: center; }
+  .filter-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-text); margin-right: 2px; white-space: nowrap; }
+  .filter-divider { width: 1px; height: 20px; background: var(--border); margin: 0 6px; flex-shrink: 0; }
+  .filter-chip { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--gray-text); font-family: var(--font-body); font-size: 11px; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .filter-chip:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
   .filter-chip.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
 
   .grid-wrap { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
 
-  /* ── CARD ── */
+  /* CARD */
   .trainer-card { background: var(--gray); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; animation: fadeUp 0.4s ease both; }
   .trainer-card:hover { border-color: rgba(232,80,10,0.4); transform: translateY(-3px); }
-
   .card-header { padding: 1.1rem 1.25rem 0.75rem; display: flex; justify-content: space-between; align-items: flex-start; }
   .trainer-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; line-height: 1; }
   .trainer-meta { font-size: 12px; color: var(--gray-text); margin-top: 3px; }
@@ -62,34 +70,41 @@
   .review-count { font-size: 11px; color: var(--gray-text); }
   .founding-badge { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; background: rgba(232,80,10,0.12); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); }
 
-  /* ── IMAGES ── */
+  /* IMAGES */
   .card-images { display: flex; gap: 8px; padding: 0 1.25rem 1rem; height: 210px; }
-  .img-main { flex: 1.5; border-radius: 10px; background: var(--gray-mid); overflow: hidden; position: relative; }
+  .img-main { flex: 1.5; border-radius: 10px; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 48px; }
   .img-side { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-  .img-secondary { flex: 1; border-radius: 10px; background: var(--gray-mid); overflow: hidden; position: relative; }
-  .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 36px; background: var(--gray-light); }
-  .img-placeholder.sm { font-size: 24px; }
+  .img-secondary { flex: 1; border-radius: 10px; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 28px; }
   .card-images img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+  /* STAT ROW */
   .card-stats { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .card-stat { flex: 1; padding: 0.75rem 0; text-align: center; border-right: 1px solid var(--border); }
+  .card-stat { flex: 1; padding: 0.7rem 0; text-align: center; border-right: 1px solid var(--border); }
   .card-stat:last-child { border-right: none; }
   .card-stat-val { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; color: var(--white); }
   .card-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; }
 
-  .card-tags { padding: 0.875rem 1.25rem; display: flex; flex-wrap: wrap; gap: 5px; }
-  .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--border); color: var(--gray-text); white-space: nowrap; }
+  /* TAGS + STAT BARS SPLIT */
+  .card-middle { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
+  .card-tags-col { flex: 1; padding: 0.875rem 1.25rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--border); color: var(--gray-text); white-space: nowrap; display: inline-block; }
   .tag.style { background: rgba(50,120,20,0.1); color: #7cba4a; border-color: rgba(80,160,30,0.2); }
-  .tag.vibe { background: rgba(40,100,200,0.08); color: #7aadec; border-color: rgba(60,130,220,0.2); }
   .tag.diet { background: rgba(200,120,20,0.08); color: #e0a84a; border-color: rgba(200,140,30,0.2); }
+  .tag.niche { background: rgba(100,80,200,0.1); color: #a89aea; border-color: rgba(120,100,220,0.2); }
 
-  .card-interests { padding: 0 1.25rem 0.875rem; }
-  .interests-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 6px; }
+  .card-statbars-col { flex: 1; padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .stat-bar-row { display: flex; align-items: center; gap: 6px; }
+  .stat-bar-label { font-size: 9px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; width: 44px; flex-shrink: 0; }
+  .stat-bar-track { flex: 1; height: 4px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
+  .stat-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); transition: width 0.4s ease; }
+
+  /* INTERESTS */
+  .card-interests { padding: 0.75rem 1.25rem 0; }
+  .interests-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 5px; }
   .interests-row { display: flex; flex-wrap: wrap; gap: 5px; }
   .interest-chip { font-size: 11px; padding: 3px 10px; border-radius: 99px; background: var(--gray-mid); border: 1px solid var(--border); color: rgba(245,242,237,0.6); }
 
-  .card-bio { padding: 0.875rem 1.25rem 1rem; font-size: 13px; color: var(--gray-text); line-height: 1.65; border-top: 1px solid var(--border); }
-
+  .card-bio { padding: 0.75rem 1.25rem 1rem; font-size: 13px; color: var(--gray-text); line-height: 1.65; border-top: 1px solid var(--border); margin-top: 0.75rem; }
   .card-footer { padding: 0.875rem 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--border); }
   .card-price { font-size: 13px; color: var(--gray-text); }
   .card-price strong { font-family: var(--font-display); font-size: 22px; color: var(--white); letter-spacing: 0.5px; }
@@ -99,20 +114,17 @@
   .empty-state { text-align: center; padding: 5rem 2rem; color: var(--gray-text); }
   .empty-state h3 { font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; color: var(--white); margin-bottom: 0.5rem; }
 
-  /* ── MODAL ── */
+  /* MODAL */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
   .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
   .modal { background: var(--gray); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 700px; overflow: hidden; margin: auto; position: relative; }
   .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: var(--white); width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; z-index: 10; }
   .modal-close:hover { background: var(--orange); }
-
-  /* modal hero images */
-  .modal-images { display: flex; gap: 6px; height: 240px; padding: 0; }
+  .modal-images { display: flex; gap: 6px; height: 240px; }
   .modal-img-main { flex: 1.6; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 64px; }
   .modal-img-side { flex: 1; display: flex; flex-direction: column; gap: 6px; }
   .modal-img-sec { flex: 1; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 32px; }
   .modal-images img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
   .modal-body { padding: 1.75rem; }
   .modal-top-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem; }
   .modal-name { font-family: var(--font-display); font-size: 34px; letter-spacing: 1px; line-height: 1; }
@@ -125,10 +137,17 @@
   .modal-stat-val { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--white); }
   .modal-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
-  /* ── TESTIMONIALS ── */
-  .testimonials-wrap { display: flex; flex-direction: column; gap: 12px; }
+  /* MODAL STAT BARS */
+  .modal-statbars { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .modal-bar-row { display: flex; align-items: center; gap: 10px; }
+  .modal-bar-label { font-size: 12px; color: var(--gray-text); width: 90px; flex-shrink: 0; }
+  .modal-bar-track { flex: 1; height: 6px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
+  .modal-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); }
+  .modal-bar-ends { display: flex; justify-content: space-between; margin-top: 2px; }
+  .modal-bar-end { font-size: 10px; color: rgba(255,255,255,0.25); }
 
-  /* text-only testimonial */
+  /* TESTIMONIALS */
+  .testimonials-wrap { display: flex; flex-direction: column; gap: 12px; }
   .testi-text { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
   .testi-quote { font-size: 14px; color: rgba(245,242,237,0.75); line-height: 1.7; font-style: italic; position: relative; padding-left: 1.25rem; }
   .testi-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 40px; color: var(--orange); position: absolute; left: -4px; top: -8px; line-height: 1; }
@@ -136,15 +155,12 @@
   .testi-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 0.5px; color: var(--white); flex-shrink: 0; }
   .testi-name { font-size: 13px; font-weight: 600; }
   .testi-result { font-size: 11px; color: #7cba4a; margin-top: 1px; }
-
-  /* photo testimonial */
   .testi-photo { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .testi-photo-images { display: flex; height: 160px; }
   .testi-photo-slot { flex: 1; background: var(--gray-light); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
   .testi-photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .testi-photo-slot .placeholder-label { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; }
   .testi-photo-divider { width: 3px; background: var(--black); flex-shrink: 0; position: relative; display: flex; align-items: center; justify-content: center; }
-  .testi-photo-divider::after { content: '→'; position: absolute; background: var(--orange); color: var(--white); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; z-index: 1; }
+  .testi-photo-divider::after { content: '→'; position: absolute; background: var(--orange); color: var(--white); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; }
   .testi-before-label { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,0,0,0.6); color: var(--gray-text); padding: 2px 7px; border-radius: 99px; }
   .testi-after-label { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(232,80,10,0.7); color: var(--white); padding: 2px 7px; border-radius: 99px; }
   .testi-photo-body { padding: 0.875rem 1.1rem; }
@@ -157,12 +173,11 @@
 
   @media (max-width: 640px) {
     .page-header { padding: 2rem 1.25rem 1.5rem; }
-    .filters-bar { padding: 1rem 1.25rem; top: 53px; }
     .grid-wrap { padding: 1.5rem 1.25rem 4rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .nav-right a:not(.nav-cta) { display: none; }
+    .hamburger { display: flex; }
     .modal-img-side { display: none; }
-    .testi-photo-images { height: 130px; }
   }
 </style>
 </head>
@@ -173,8 +188,17 @@
   <div class="nav-right">
     <a href="index.html#faq">FAQ</a>
     <a href="questionnaire.html" class="nav-cta">Get matched</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="index.html#faq" onclick="closeMenu()">FAQ</a>
+  <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
+</div>
 
 <div class="page-header">
   <div class="page-header-inner">
@@ -183,7 +207,7 @@
       <h1 class="page-title">Find your person.</h1>
       <p class="page-sub">Every coach on Iron House is vetted and hand-selected. Filter by what matters to you, or let us match you personally.</p>
     </div>
-    <a href="questionnaire.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:12px 24px;border-radius:4px;text-decoration:none;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;flex-shrink:0;">Get matched for me →</a>
+    <a href="questionnaire.html" class="get-matched-btn">Get matched for me →</a>
   </div>
 </div>
 
@@ -201,12 +225,14 @@
     </div>
     <div class="filter-divider"></div>
     <div class="filter-group">
-      <span class="filter-label">Vibe:</span>
-      <button class="filter-chip active" data-filter="vibe" data-val="all" onclick="setFilter('vibe','all',this)">All</button>
-      <button class="filter-chip" data-filter="vibe" data-val="Laid-back" onclick="setFilter('vibe','Laid-back',this)">Laid-back</button>
-      <button class="filter-chip" data-filter="vibe" data-val="Encouraging" onclick="setFilter('vibe','Encouraging',this)">Encouraging</button>
-      <button class="filter-chip" data-filter="vibe" data-val="High-energy" onclick="setFilter('vibe','High-energy',this)">High-energy</button>
-      <button class="filter-chip" data-filter="vibe" data-val="Structured" onclick="setFilter('vibe','Structured',this)">Structured</button>
+      <span class="filter-label">Niche:</span>
+      <button class="filter-chip active" data-filter="niche" data-val="all" onclick="setFilter('niche','all',this)">All</button>
+      <button class="filter-chip" data-filter="niche" data-val="Seniors" onclick="setFilter('niche','Seniors',this)">Seniors</button>
+      <button class="filter-chip" data-filter="niche" data-val="Postpartum" onclick="setFilter('niche','Postpartum',this)">Postpartum</button>
+      <button class="filter-chip" data-filter="niche" data-val="Athletes" onclick="setFilter('niche','Athletes',this)">Athletes</button>
+      <button class="filter-chip" data-filter="niche" data-val="Beginners" onclick="setFilter('niche','Beginners',this)">Beginners</button>
+      <button class="filter-chip" data-filter="niche" data-val="Post-injury" onclick="setFilter('niche','Post-injury',this)">Post-injury</button>
+      <button class="filter-chip" data-filter="niche" data-val="Women only" onclick="setFilter('niche','Women only',this)">Women only</button>
     </div>
     <div class="filter-divider"></div>
     <div class="filter-group">
@@ -227,47 +253,45 @@
   </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModalDirect()">✕</button>
-
     <div class="modal-images" id="modal-images"></div>
-
     <div class="modal-body">
       <div class="modal-top-row">
-        <div>
-          <div class="modal-name" id="modal-name"></div>
-          <div class="modal-meta" id="modal-meta"></div>
-        </div>
+        <div><div class="modal-name" id="modal-name"></div><div class="modal-meta" id="modal-meta"></div></div>
         <span class="founding-badge" id="modal-badge"></span>
       </div>
-
       <div class="modal-stats">
         <div class="modal-stat"><div class="modal-stat-val" id="modal-exp"></div><div class="modal-stat-label">Experience</div></div>
         <div class="modal-stat"><div class="modal-stat-val" id="modal-cert"></div><div class="modal-stat-label">Certified</div></div>
         <div class="modal-stat"><div class="modal-stat-val" id="modal-price-stat"></div><div class="modal-stat-label">Per month</div></div>
       </div>
-
-      <div class="modal-section-title">Training specialties</div>
+      <div class="modal-section-title">Coaching style</div>
+      <div class="modal-statbars" id="modal-statbars"></div>
+      <div class="modal-section-title">Specialties & focus</div>
       <div class="modal-tags" id="modal-specialties"></div>
-
       <div class="modal-section-title">About</div>
       <div class="modal-story" id="modal-story"></div>
-
       <div class="modal-section-title">Personal interests</div>
       <div class="modal-tags" id="modal-interests"></div>
-
       <div id="modal-testimonials-section"></div>
-
-      <button class="modal-cta" id="modal-cta-btn" onclick="">GET MATCHED WITH THIS COACH</button>
+      <button class="modal-cta" id="modal-cta-btn">GET MATCHED WITH THIS COACH</button>
     </div>
   </div>
 </div>
 
 <script>
-// Data is loaded from trainers.json — edit that file, not this one.
 let TRAINERS = [];
+let activeFilters = { specialty: 'all', niche: 'all', price: 'all' };
+
+const STAT_DEFS = [
+  { key: 'stat_intensity',  label: 'Intensity', lo: 'Easy',     hi: 'Max effort' },
+  { key: 'stat_structure',  label: 'Structure', lo: 'Flexible', hi: 'Rigid'      },
+  { key: 'stat_checkins',   label: 'Check-ins', lo: 'As needed',hi: 'Daily'      },
+  { key: 'stat_energy',     label: 'Energy',    lo: 'Calm',     hi: 'Hype'       },
+  { key: 'stat_diet',       label: 'Diet',      lo: 'Flexible', hi: 'Strict'     },
+];
 
 function renderStars(rating) {
   let html = '<div class="star-icons">';
@@ -279,24 +303,42 @@ function renderStars(rating) {
   return html + '</div>';
 }
 
-function buildImgSlot(img, cls) {
-  const emojis = { 'img-main': '💪', 'img-secondary': '🏋️' };
-  return img
-    ? `<div class="${cls}"><img src="${img}" alt=""></div>`
-    : `<div class="${cls}"><div class="img-placeholder${cls.includes('secondary') ? ' sm' : ''}">${emojis[cls] || '📸'}</div></div>`;
+function statBarHTML(val) {
+  const pct = Math.round((val / 4) * 100);
+  return `<div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>`;
 }
 
 function buildCard(trainer, index) {
   const delay = (index % 9) * 0.05;
+  const mainImg = trainer.photo_main
+    ? `<img src="${trainer.photo_main}" alt="${trainer.name}">`
+    : '💪';
+  const img2 = trainer.photo_physique
+    ? `<img src="${trainer.photo_physique}" alt="">`
+    : '🏋️';
+  const img3 = trainer.photo_lifestyle
+    ? `<img src="${trainer.photo_lifestyle}" alt="">`
+    : '🌄';
+
   const styleTags = trainer.specialties.map(s => `<span class="tag style">${s}</span>`).join('');
-  const interestChips = trainer.interests.map(i => `<span class="interest-chip">${i}</span>`).join('');
-  const mainImg = buildImgSlot(trainer.photo_main, 'img-main');
-  const img2 = buildImgSlot(trainer.photo_physique, 'img-secondary');
-  const img3 = buildImgSlot(trainer.photo_lifestyle, 'img-secondary');
+  const dietTag = `<span class="tag diet">${trainer.diet}</span>`;
+  const nicheTag = trainer.niches && trainer.niches.length
+    ? `<span class="tag niche">${trainer.niches[0]}</span>`
+    : '';
+
+  const statBars = STAT_DEFS.map(d => `
+    <div class="stat-bar-row">
+      <span class="stat-bar-label">${d.label}</span>
+      ${statBarHTML(trainer[d.key] ?? 2)}
+    </div>`).join('');
+
+  const interestChips = (trainer.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
 
   return `
   <div class="trainer-card" style="animation-delay:${delay}s"
     data-specialties="${trainer.specialties.join(',')}"
+    data-niches="${(trainer.niches || []).join(',')}"
+    data-price="${trainer.price}"
     onclick="openModal(${index})">
     <div class="card-header">
       <div>
@@ -309,18 +351,24 @@ function buildCard(trainer, index) {
       </div>
     </div>
     <div class="card-images">
-      ${mainImg}
-      <div class="img-side">${img2}${img3}</div>
+      <div class="img-main">${mainImg}</div>
+      <div class="img-side">
+        <div class="img-secondary">${img2}</div>
+        <div class="img-secondary">${img3}</div>
+      </div>
     </div>
     <div class="card-stats">
       <div class="card-stat"><div class="card-stat-val">${trainer.experience}</div><div class="card-stat-label">Experience</div></div>
       <div class="card-stat"><div class="card-stat-val">${trainer.certs}</div><div class="card-stat-label">Certified</div></div>
       <div class="card-stat"><div class="card-stat-val">$${trainer.price}</div><div class="card-stat-label">Per month</div></div>
     </div>
-    <div class="card-tags">
-      ${styleTags}
-      <span class="tag vibe">${trainer.vibe}</span>
-      <span class="tag diet">${trainer.diet}</span>
+    <div class="card-middle">
+      <div class="card-tags-col">
+        ${styleTags}${dietTag}${nicheTag}
+      </div>
+      <div class="card-statbars-col">
+        ${statBars}
+      </div>
     </div>
     <div class="card-interests">
       <div class="interests-label">Interests</div>
@@ -334,74 +382,19 @@ function buildCard(trainer, index) {
   </div>`;
 }
 
-function buildTestimonial(t) {
-  const hasPhotos = t.before && t.after;
-  const hasEitherPhoto = t.before || t.after;
-
-  if (hasPhotos) {
-    // Full before/after layout
-    return `
-    <div class="testi-photo">
-      <div class="testi-photo-images">
-        <div class="testi-photo-slot">
-          <img src="${t.before}" alt="Before">
-          <span class="testi-before-label">Before</span>
-        </div>
-        <div class="testi-photo-divider"></div>
-        <div class="testi-photo-slot">
-          <img src="${t.after}" alt="After">
-          <span class="testi-after-label">After</span>
-        </div>
-      </div>
-      <div class="testi-photo-body">
-        <div class="testi-quote">${t.quote}</div>
-        <div class="testi-author" style="margin-top:0.75rem;">
-          <div class="testi-avatar">${t.initials}</div>
-          <div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div>
-        </div>
-      </div>
-    </div>`;
-  } else {
-    // Text-only layout — clean, no awkward empty slots
-    return `
-    <div class="testi-text">
-      <div class="testi-quote">${t.quote}</div>
-      <div class="testi-author">
-        <div class="testi-avatar">${t.initials}</div>
-        <div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div>
-      </div>
-    </div>`;
-  }
-}
-
-// ================================================================
-//  EVERYTHING BELOW IS THE ENGINE — you don't need to touch this
-// ================================================================
-
-let activeFilters = { specialty: 'all', vibe: 'all', price: 'all' };
-
-function setFilter(dimension, val, btn) {
-  activeFilters[dimension] = val;
-  // deactivate other chips in same group
-  document.querySelectorAll(`[data-filter="${dimension}"]`).forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilters();
-}
-
 function applyFilters() {
   const grid = document.getElementById('cards-grid');
   const empty = document.getElementById('empty-state');
-
   const filtered = TRAINERS.filter(t => {
-    const specialtyOk = activeFilters.specialty === 'all' ||
+    const specOk = activeFilters.specialty === 'all' ||
       t.specialties.some(s => s.toLowerCase().includes(activeFilters.specialty.toLowerCase()));
-    const vibeOk = activeFilters.vibe === 'all' ||
-      t.vibe.toLowerCase().includes(activeFilters.vibe.toLowerCase());
+    const nicheOk = activeFilters.niche === 'all' ||
+      (t.niches || []).some(n => n.toLowerCase().includes(activeFilters.niche.toLowerCase()));
     const priceOk = activeFilters.price === 'all' ||
       (activeFilters.price === 'under150' && t.price < 150) ||
       (activeFilters.price === '150to250' && t.price >= 150 && t.price <= 250) ||
       (activeFilters.price === 'over250' && t.price > 250);
-    return specialtyOk && vibeOk && priceOk;
+    return specOk && nicheOk && priceOk;
   });
 
   if (!filtered.length) {
@@ -412,46 +405,78 @@ function applyFilters() {
   }
 }
 
+function setFilter(dimension, val, btn) {
+  activeFilters[dimension] = val;
+  document.querySelectorAll(`[data-filter="${dimension}"]`).forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function buildTestimonial(t) {
+  if (t.before && t.after) {
+    return `<div class="testi-photo">
+      <div class="testi-photo-images">
+        <div class="testi-photo-slot"><img src="${t.before}" alt="Before"><span class="testi-before-label">Before</span></div>
+        <div class="testi-photo-divider"></div>
+        <div class="testi-photo-slot"><img src="${t.after}" alt="After"><span class="testi-after-label">After</span></div>
+      </div>
+      <div class="testi-photo-body">
+        <div class="testi-quote">${t.quote}</div>
+        <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
+      </div>
+    </div>`;
+  }
+  return `<div class="testi-text">
+    <div class="testi-quote">${t.quote}</div>
+    <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
+  </div>`;
+}
+
 function openModal(index) {
-  const trainer = TRAINERS[index];
+  const t = TRAINERS[index];
+  document.getElementById('modal-name').textContent = t.name;
+  document.getElementById('modal-meta').textContent = `${t.age} · ${t.location}`;
+  document.getElementById('modal-exp').textContent = t.experience;
+  document.getElementById('modal-cert').textContent = t.certs;
+  document.getElementById('modal-price-stat').textContent = `$${t.price}`;
+  document.getElementById('modal-story').textContent = t.story;
+  document.getElementById('modal-badge').textContent = t.founding ? '✦ Founding Trainer' : '';
+  document.getElementById('modal-badge').style.display = t.founding ? '' : 'none';
 
-  document.getElementById('modal-name').textContent = trainer.name;
-  document.getElementById('modal-meta').textContent = `${trainer.age} · ${trainer.location}`;
-  document.getElementById('modal-exp').textContent = trainer.experience;
-  document.getElementById('modal-cert').textContent = trainer.certs;
-  document.getElementById('modal-price-stat').textContent = `$${trainer.price}`;
-  document.getElementById('modal-story').textContent = trainer.story;
-  document.getElementById('modal-badge').textContent = trainer.founding ? '✦ Founding Trainer' : '';
-  document.getElementById('modal-badge').style.display = trainer.founding ? '' : 'none';
-
-  const encodedName = encodeURIComponent(trainer.name);
   document.getElementById('modal-cta-btn').onclick = () => {
-    window.location.href = `questionnaire.html?trainer=${encodedName}`;
+    window.location.href = `questionnaire.html?trainer=${encodeURIComponent(t.name)}`;
   };
 
-  // modal images
-  const mainImg = trainer.photo_main ? `<img src="${trainer.photo_main}" alt="${trainer.name}">` : '💪';
-  const sec2 = trainer.photo_physique ? `<img src="${trainer.photo_physique}" alt="">` : '🏋️';
-  const sec3 = trainer.photo_lifestyle ? `<img src="${trainer.photo_lifestyle}" alt="">` : '🌄';
+  const mainImg = t.photo_main ? `<img src="${t.photo_main}" alt="${t.name}">` : '💪';
+  const sec2 = t.photo_physique ? `<img src="${t.photo_physique}" alt="">` : '🏋️';
+  const sec3 = t.photo_lifestyle ? `<img src="${t.photo_lifestyle}" alt="">` : '🌄';
   document.getElementById('modal-images').innerHTML = `
     <div class="modal-img-main">${mainImg}</div>
-    <div class="modal-img-side">
-      <div class="modal-img-sec">${sec2}</div>
-      <div class="modal-img-sec">${sec3}</div>
-    </div>`;
+    <div class="modal-img-side"><div class="modal-img-sec">${sec2}</div><div class="modal-img-sec">${sec3}</div></div>`;
 
-  const specHTML = trainer.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
-    `<span class="tag vibe">${trainer.vibe}</span><span class="tag diet">${trainer.diet}</span>`;
+  const specHTML = t.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
+    `<span class="tag diet">${t.diet}</span>` +
+    (t.niches || []).map(n => `<span class="tag niche">${n}</span>`).join('');
   document.getElementById('modal-specialties').innerHTML = specHTML;
 
+  document.getElementById('modal-statbars').innerHTML = STAT_DEFS.map(d => {
+    const pct = Math.round(((t[d.key] ?? 2) / 4) * 100);
+    return `<div class="modal-bar-row">
+      <span class="modal-bar-label">${d.label}</span>
+      <div style="flex:1;">
+        <div class="modal-bar-track"><div class="modal-bar-fill" style="width:${pct}%"></div></div>
+        <div class="modal-bar-ends"><span class="modal-bar-end">${d.lo}</span><span class="modal-bar-end">${d.hi}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+
   document.getElementById('modal-interests').innerHTML =
-    trainer.interests.map(i => `<span class="interest-chip">${i}</span>`).join('');
+    (t.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
 
   const testiSection = document.getElementById('modal-testimonials-section');
-  if (trainer.testimonials && trainer.testimonials.length > 0) {
-    testiSection.innerHTML = `
-      <div class="modal-section-title">Client results</div>
-      <div class="testimonials-wrap">${trainer.testimonials.map(buildTestimonial).join('')}</div>`;
+  if (t.testimonials && t.testimonials.length > 0) {
+    testiSection.innerHTML = `<div class="modal-section-title">Client results</div>
+      <div class="testimonials-wrap">${t.testimonials.map(buildTestimonial).join('')}</div>`;
   } else {
     testiSection.innerHTML = '';
   }
@@ -460,24 +485,27 @@ function openModal(index) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobile-menu').classList.contains('open') ? 'hidden' : '';
 }
-function closeModalDirect() {
-  document.getElementById('modal-overlay').classList.remove('open');
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
-
-// Load trainers from trainers.json then render
 fetch('trainers.json')
   .then(r => r.json())
   .then(data => { TRAINERS = data; applyFilters(); })
   .catch(() => {
-    document.getElementById('cards-grid').innerHTML = '';
     document.getElementById('empty-state').style.display = 'block';
-    document.getElementById('empty-state').innerHTML = '<h3>Couldn\'t load trainers</h3><p>Make sure trainers.json is in the same folder as this file.</p>';
+    document.getElementById('empty-state').innerHTML = '<h3>Couldn\'t load trainers</h3><p>Make sure trainers.json is in the same folder.</p>';
   });
 </script>
 </body>
