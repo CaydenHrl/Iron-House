@@ -173,13 +173,11 @@
       <div class="section-card-title"><div class="dot"></div>Experience & credentials</div>
       <div class="q-block">
         <label class="q-label">Years of coaching experience</label>
-        <div class="pill-group" id="exp-group">
-          <button class="pill" onclick="selectPill(this,'exp-group')">Less than 1 yr</button>
-          <button class="pill" onclick="selectPill(this,'exp-group')">1–3 years</button>
-          <button class="pill" onclick="selectPill(this,'exp-group')">3–5 years</button>
-          <button class="pill" onclick="selectPill(this,'exp-group')">5–10 years</button>
-          <button class="pill" onclick="selectPill(this,'exp-group')">10+ years</button>
+        <div style="text-align:center;margin-bottom:10px;">
+          <div class="rate-display"><span id="exp-val">1</span><span id="exp-suffix"> yr</span></div>
         </div>
+        <input type="range" min="1" max="9" value="1" id="slider-exp" oninput="updateExp(this.value)">
+        <div class="slider-labels"><span>1 yr</span><span>9+ yrs</span></div>
       </div>
       <div class="q-block" style="margin-bottom:0;"><label class="q-label">Certifications & degrees</label><input type="text" class="q-input" id="input-certs" placeholder="e.g. NASM-CPT, ACE, BS Kinesiology"></div>
     </div>
@@ -335,7 +333,7 @@
         <div class="photo-upload-area">
           <input type="file" id="file-profile" accept="image/*" onchange="previewPhoto(this,'preview-1','filename-1')">
           <div class="upload-icon">📸</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · 1:1 Ratio Square Image</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · Square or portrait crop</div>
           <div class="upload-preview" id="preview-1"><div class="upload-filename" id="filename-1"></div></div>
         </div>
       </div>
@@ -346,7 +344,7 @@
         <div class="photo-upload-area">
           <input type="file" id="file-physique" accept="image/*" onchange="previewPhoto(this,'preview-2','filename-2')">
           <div class="upload-icon">💪</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>4:3 Landscape Image</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Portrait crop works best</div>
           <div class="upload-preview" id="preview-2"><div class="upload-filename" id="filename-2"></div></div>
         </div>
       </div>
@@ -357,7 +355,7 @@
         <div class="photo-upload-area">
           <input type="file" id="file-lifestyle" accept="image/*" onchange="previewPhoto(this,'preview-3','filename-3')">
           <div class="upload-icon">🌄</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>4:3 Landscape Image</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
           <div class="upload-preview" id="preview-3"><div class="upload-filename" id="filename-3"></div></div>
         </div>
       </div>
@@ -379,7 +377,6 @@
         <button class="interest-suggestion" onclick="addSuggestion(this)">Cooking</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Dogs</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Travel</button>
-        <button class="interest-suggestion" onclick="addSuggestion(this)">Faith</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Music</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Reading</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Fantasy sports</button>
@@ -452,6 +449,12 @@
     'slider-energy':     ['Very calm','Mostly relaxed','Balanced','Energetic','High energy always'],
     'slider-dietstrict': ['Very flexible','Mostly flexible','Balanced','Pretty strict','Very regimented'],
   };
+
+  function updateExp(val) {
+    const num = parseInt(val);
+    document.getElementById('exp-val').textContent = num;
+    document.getElementById('exp-suffix').textContent = num === 9 ? '+ yrs' : num === 1 ? ' yr' : ' yrs';
+  }
 
   function updateSlider(id, displayId, labels) {
     document.getElementById(displayId).textContent = labels[document.getElementById(id).value];
@@ -570,7 +573,9 @@
     formData.append('email', document.getElementById('input-email').value);
     formData.append('age', document.getElementById('input-age').value);
     formData.append('location', document.getElementById('input-location').value);
-    formData.append('experience', getSelected('exp-group'));
+    const expVal = parseInt(document.getElementById('slider-exp').value);
+    const experience = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
+    formData.append('experience', experience);
     formData.append('certifications', document.getElementById('input-certs').value);
     formData.append('specialties', specialties);
     formData.append('niches', niches);
