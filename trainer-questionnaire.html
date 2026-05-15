@@ -58,7 +58,6 @@
 
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-  /* OTHER INPUT */
   .other-wrap { display: none; margin-top: 8px; }
   .other-wrap.visible { display: block; }
   .other-input { width: 100%; background: var(--gray-mid); border: 1px solid rgba(232,80,10,0.4); border-radius: 8px; padding: 10px 14px; color: var(--white); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; }
@@ -66,7 +65,7 @@
   .other-input::placeholder { color: var(--gray-text); }
 
   input[type=range] { width: 100%; height: 4px; -webkit-appearance: none; appearance: none; background: var(--gray-mid); border-radius: 99px; outline: none; cursor: pointer; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); box-shadow: 0 0 0 1px var(--orange); cursor: grab; transition: transform 0.1s; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); box-shadow: 0 0 0 1px var(--orange); cursor: grab; }
   input[type=range]::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.2); }
   input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); cursor: grab; }
 
@@ -77,12 +76,11 @@
   .rate-display { font-family: var(--font-display); font-size: 48px; color: var(--white); letter-spacing: 2px; line-height: 1; text-align: center; margin-bottom: 1rem; }
   .rate-display span { font-size: 18px; color: var(--gray-text); margin-left: 4px; }
 
-  /* PHOTO UPLOAD CARDS */
-  .photo-card { background: var(--gray-mid); border: 1px dashed rgba(255,255,255,0.15); border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; }
+  .photo-card { background: var(--gray-mid); border: 1px dashed rgba(255,255,255,0.12); border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; }
   .photo-card:last-child { margin-bottom: 0; }
   .photo-card-title { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 8px; }
-  .photo-card-title .tag-badge { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: rgba(232,80,10,0.15); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); font-family: var(--font-body); }
-  .photo-card-title .tag-optional { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--gray-text); font-family: var(--font-body); }
+  .tag-badge { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: rgba(232,80,10,0.15); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); font-family: var(--font-body); }
+  .tag-optional { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--gray-text); font-family: var(--font-body); }
   .photo-card-desc { font-size: 13px; color: var(--gray-text); line-height: 1.55; margin-bottom: 1rem; }
   .photo-upload-area { border: 1px dashed rgba(255,255,255,0.12); border-radius: 8px; padding: 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
   .photo-upload-area:hover { border-color: var(--orange); background: rgba(232,80,10,0.04); }
@@ -91,18 +89,15 @@
   .upload-text { font-size: 13px; color: var(--gray-text); }
   .upload-text strong { color: var(--orange); }
   .upload-preview { display: none; margin-top: 0.75rem; }
-  .upload-preview img { max-height: 120px; border-radius: 6px; object-fit: cover; }
   .upload-filename { font-size: 12px; color: #7cba4a; margin-top: 4px; }
 
-  /* INTERESTS */
-  .interests-builder { }
   .interests-input-row { display: flex; gap: 8px; margin-bottom: 12px; }
   .interests-input-row input { flex: 1; }
   .add-btn { background: var(--orange); color: var(--white); border: none; border-radius: 8px; padding: 13px 18px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
   .add-btn:hover { background: var(--orange-dark); }
   .interests-tags { display: flex; flex-wrap: wrap; gap: 8px; min-height: 36px; }
   .interest-tag { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 99px; background: rgba(232,80,10,0.15); border: 1px solid rgba(232,80,10,0.4); color: var(--white); font-size: 14px; }
-  .interest-tag button { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 16px; line-height: 1; padding: 0; display: flex; align-items: center; transition: color 0.15s; }
+  .interest-tag button { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 16px; line-height: 1; padding: 0; }
   .interest-tag button:hover { color: var(--orange); }
   .interests-hint { font-size: 12px; color: var(--gray-text); margin-top: 8px; }
   .interest-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -164,29 +159,14 @@
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Basic info</div>
       <div class="field-row" style="margin-bottom:1rem;">
-        <div class="q-block" style="margin-bottom:0;">
-          <label class="q-label">First name</label>
-          <input type="text" class="q-input" id="input-firstname" placeholder="Marcus">
-        </div>
-        <div class="q-block" style="margin-bottom:0;">
-          <label class="q-label">Last name</label>
-          <input type="text" class="q-input" id="input-lastname" placeholder="Reyes">
-        </div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">First name</label><input type="text" class="q-input" id="input-firstname" placeholder="Marcus"></div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">Last name</label><input type="text" class="q-input" id="input-lastname" placeholder="Reyes"></div>
       </div>
       <div class="field-row" style="margin-bottom:1rem;">
-        <div class="q-block" style="margin-bottom:0;">
-          <label class="q-label">Age</label>
-          <input type="number" class="q-input" id="input-age" placeholder="29">
-        </div>
-        <div class="q-block" style="margin-bottom:0;">
-          <label class="q-label">City & State</label>
-          <input type="text" class="q-input" id="input-location" placeholder="Tampa, FL">
-        </div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">Age</label><input type="number" class="q-input" id="input-age" placeholder="29"></div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">City & State</label><input type="text" class="q-input" id="input-location" placeholder="Tampa, FL"></div>
       </div>
-      <div class="q-block" style="margin-bottom:0;">
-        <label class="q-label">Email address</label>
-        <input type="email" class="q-input" id="input-email" placeholder="you@email.com">
-      </div>
+      <div class="q-block" style="margin-bottom:0;"><label class="q-label">Email address</label><input type="email" class="q-input" id="input-email" placeholder="you@email.com"></div>
     </div>
 
     <div class="section-card">
@@ -201,10 +181,7 @@
           <button class="pill" onclick="selectPill(this,'exp-group')">10+ years</button>
         </div>
       </div>
-      <div class="q-block" style="margin-bottom:0;">
-        <label class="q-label">Certifications & degrees</label>
-        <input type="text" class="q-input" id="input-certs" placeholder="e.g. NASM-CPT, ACE, BS Kinesiology">
-      </div>
+      <div class="q-block" style="margin-bottom:0;"><label class="q-label">Certifications & degrees</label><input type="text" class="q-input" id="input-certs" placeholder="e.g. NASM-CPT, ACE, BS Kinesiology"></div>
     </div>
 
     <div class="section-card">
@@ -222,9 +199,27 @@
         <button class="pill" onclick="togglePill(this)">Body recomposition</button>
         <button class="pill" onclick="togglePillOther(this,'specialty-other')">Other</button>
       </div>
-      <div class="other-wrap" id="specialty-other">
-        <input type="text" class="other-input" id="specialty-other-input" placeholder="Describe your specialty...">
+      <div class="other-wrap" id="specialty-other"><input type="text" class="other-input" id="specialty-other-input" placeholder="Describe your specialty..."></div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Who do you specialize in working with? <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
+      <div class="pill-group" id="niche-group">
+        <button class="pill" onclick="togglePill(this)">Seniors / 60+</button>
+        <button class="pill" onclick="togglePill(this)">Postpartum women</button>
+        <button class="pill" onclick="togglePill(this)">Teens / youth</button>
+        <button class="pill" onclick="togglePill(this)">Competitive athletes</button>
+        <button class="pill" onclick="togglePill(this)">Complete beginners</button>
+        <button class="pill" onclick="togglePill(this)">Post-injury / rehab</button>
+        <button class="pill" onclick="togglePill(this)">Women only</button>
+        <button class="pill" onclick="togglePill(this)">Men only</button>
+        <button class="pill" onclick="togglePill(this)">Plus-size / body positive</button>
+        <button class="pill" onclick="togglePill(this)">Weight loss focused</button>
+        <button class="pill" onclick="togglePill(this)">Muscle building focused</button>
+        <button class="pill" onclick="togglePill(this)">General population</button>
+        <button class="pill" onclick="togglePillOther(this,'niche-other')">Other</button>
       </div>
+      <div class="other-wrap" id="niche-other"><input type="text" class="other-input" id="niche-other-input" placeholder="Describe your niche..."></div>
     </div>
 
     <div class="section-card">
@@ -241,9 +236,7 @@
         <button class="pill" onclick="togglePill(this)">Whatever works for the client</button>
         <button class="pill" onclick="togglePillOther(this,'diet-other')">Other</button>
       </div>
-      <div class="other-wrap" id="diet-other">
-        <input type="text" class="other-input" id="diet-other-input" placeholder="Describe your diet approach...">
-      </div>
+      <div class="other-wrap" id="diet-other"><input type="text" class="other-input" id="diet-other-input" placeholder="Describe your diet approach..."></div>
     </div>
 
     <div class="section-card">
@@ -251,30 +244,29 @@
       <div class="rate-display">$<span id="rate-val">149</span><span>/ mo</span></div>
       <input type="range" min="50" max="600" step="10" value="149" id="slider-rate" oninput="document.getElementById('rate-val').textContent=this.value">
       <div class="slider-labels"><span>$50 / mo</span><span style="text-align:right">$600 / mo</span></div>
-      <p style="font-size:12px;color:var(--gray-text);margin-top:10px;">You can adjust this anytime. This gives clients a ballpark when browsing your card.</p>
     </div>
   </div>
 </div>
 
-<!-- PAGE 2: COACHING STYLE -->
+<!-- PAGE 2: COACHING STYLE + STATS -->
 <div class="page" id="page-2">
   <div class="container">
     <p class="page-label">Section 2 of 3</p>
     <h1 class="page-title">Your style.</h1>
-    <p class="page-sub">This is how we match you with clients who actually suit your coaching personality.</p>
+    <p class="page-sub">These sliders power the stat bars on your trainer card — clients see exactly what kind of coach you are before they even click your profile.</p>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your coaching approach</div>
-      <div class="slider-value-display" id="display-approach"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-approach" oninput="updateSlider('slider-approach','display-approach',['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'])">
-      <div class="slider-labels"><span>Laid-back</span><span>Drill sergeant</span></div>
+      <div class="section-card-title"><div class="dot"></div>Training intensity you coach</div>
+      <div class="slider-value-display" id="display-intensity"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-intensity" oninput="updateSlider('slider-intensity','display-intensity',['Easy & light','Moderate','Balanced','Hard-working','Max effort always'])">
+      <div class="slider-labels"><span>Easy</span><span>Max effort</span></div>
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Training intensity you prefer to coach</div>
-      <div class="slider-value-display" id="display-intensity"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-intensity" oninput="updateSlider('slider-intensity','display-intensity',['Light & steady','Moderate','Balanced','Hard-working','Max effort always'])">
-      <div class="slider-labels"><span>Light & steady</span><span>Max intensity</span></div>
+      <div class="section-card-title"><div class="dot"></div>How structured are your programs?</div>
+      <div class="slider-value-display" id="display-structure"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-structure" oninput="updateSlider('slider-structure','display-structure',['Very flexible','Mostly flexible','Balanced','Pretty structured','Fully rigid'])">
+      <div class="slider-labels"><span>Flexible</span><span>Rigid</span></div>
     </div>
 
     <div class="section-card">
@@ -285,28 +277,21 @@
     </div>
 
     <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Your energy as a coach</div>
+      <div class="slider-value-display" id="display-energy"></div>
+      <input type="range" min="0" max="4" value="2" id="slider-energy" oninput="updateSlider('slider-energy','display-energy',['Very calm','Mostly relaxed','Balanced','Energetic','High energy always'])">
+      <div class="slider-labels"><span>Calm</span><span>Hype</span></div>
+    </div>
+
+    <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>How strict are you about diet with clients?</div>
       <div class="slider-value-display" id="display-dietstrict"></div>
       <input type="range" min="0" max="4" value="2" id="slider-dietstrict" oninput="updateSlider('slider-dietstrict','display-dietstrict',['Very flexible','Mostly flexible','Balanced','Pretty strict','Very regimented'])">
-      <div class="slider-labels"><span>Very flexible</span><span>Very strict</span></div>
-    </div>
-
-    <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your energy as a coach</div>
-      <div class="slider-value-display" id="display-energy"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-energy" oninput="updateSlider('slider-energy','display-energy',['Very calm & quiet','Mostly relaxed','Balanced','Energetic','High energy always'])">
-      <div class="slider-labels"><span>Calm & quiet</span><span>High energy</span></div>
-    </div>
-
-    <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>How structured are your programs?</div>
-      <div class="slider-value-display" id="display-structure"></div>
-      <input type="range" min="0" max="4" value="2" id="slider-structure" oninput="updateSlider('slider-structure','display-structure',['Very flexible & adaptive','Mostly flexible','Balanced','Pretty structured','Fully mapped out'])">
-      <div class="slider-labels"><span>Fully flexible</span><span>Fully structured</span></div>
+      <div class="slider-labels"><span>Flexible</span><span>Strict</span></div>
     </div>
 
     <div class="divider"></div>
-    <p class="page-label" style="margin-bottom:1.25rem;">Ideal client profile</p>
+    <p class="page-label" style="margin-bottom:1.25rem;">Ideal client</p>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Who do you do your best work with?</div>
@@ -333,111 +318,95 @@
   </div>
 </div>
 
-<!-- PAGE 3: YOUR STORY + PHOTOS -->
+<!-- PAGE 3: STORY + PHOTOS -->
 <div class="page" id="page-3">
   <div class="container">
     <p class="page-label">Section 3 of 3</p>
     <h1 class="page-title">Your story.</h1>
-    <p class="page-sub">This is what turns a profile into a person — and where we collect photos for your card.</p>
+    <p class="page-sub">This is what turns a profile into a person.</p>
 
-    <!-- PHOTOS -->
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Profile photos</div>
-      <p style="font-size:13px;color:var(--gray-text);line-height:1.6;margin-bottom:1.25rem;">These photos appear on your trainer card. The better your photos, the more clients connect with you before they even reach out.</p>
+      <p style="font-size:13px;color:var(--gray-text);line-height:1.6;margin-bottom:1.25rem;">These photos appear on your trainer card. The better your photos, the more clients connect with you before they reach out.</p>
 
       <div class="photo-card">
-        <div class="photo-card-title">
-          Profile photo
-          <span class="tag-badge">Required</span>
-        </div>
-        <p class="photo-card-desc">Your main headshot or upper-body photo. This is the first image clients see on your card. Clear, well-lit, and showing your face. Think confident and approachable.</p>
-        <div class="photo-upload-area" id="upload-area-1">
+        <div class="photo-card-title">Profile photo <span class="tag-badge">Required</span></div>
+        <p class="photo-card-desc">Your main headshot or upper-body photo. Clear, well-lit, face visible.</p>
+        <div class="photo-upload-area">
           <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-1','filename-1')">
           <div class="upload-icon">📸</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG, PNG — recommended square crop</div>
-          <div class="upload-preview" id="preview-1"><img id="preview-img-1" src="" alt=""><div class="upload-filename" id="filename-1"></div></div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · Square or portrait crop</div>
+          <div class="upload-preview" id="preview-1"><div class="upload-filename" id="filename-1"></div></div>
         </div>
       </div>
 
       <div class="photo-card">
-        <div class="photo-card-title">
-          Physique or action photo
-          <span class="tag-badge">Required</span>
-        </div>
-        <p class="photo-card-desc">A photo showing your physique, you in the gym, performing an exercise, or coaching a client. This tells clients what they can potentially achieve and shows you walk the talk.</p>
-        <div class="photo-upload-area" id="upload-area-2">
+        <div class="photo-card-title">Physique or action photo <span class="tag-badge">Required</span></div>
+        <p class="photo-card-desc">You in the gym, lifting, coaching, or showing your physique.</p>
+        <div class="photo-upload-area">
           <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-2','filename-2')">
           <div class="upload-icon">💪</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Portrait or square crop works best</div>
-          <div class="upload-preview" id="preview-2"><img id="preview-img-2" src="" alt=""><div class="upload-filename" id="filename-2"></div></div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Portrait crop works best</div>
+          <div class="upload-preview" id="preview-2"><div class="upload-filename" id="filename-2"></div></div>
         </div>
       </div>
 
       <div class="photo-card">
-        <div class="photo-card-title">
-          Lifestyle photo
-          <span class="tag-optional">Optional</span>
-        </div>
-        <p class="photo-card-desc">Something that shows who you are outside the gym — hiking, cooking, your dog, traveling. This is the photo that helps clients feel like they already know you. Matches your listed personal interests.</p>
-        <div class="photo-upload-area" id="upload-area-3">
+        <div class="photo-card-title">Lifestyle photo <span class="tag-optional">Optional</span></div>
+        <p class="photo-card-desc">Something outside the gym — hiking, cooking, your dog, traveling. Matches your personal interests.</p>
+        <div class="photo-upload-area">
           <input type="file" accept="image/*" onchange="previewPhoto(this,'preview-3','filename-3')">
           <div class="upload-icon">🌄</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>Any orientation — be yourself</div>
-          <div class="upload-preview" id="preview-3"><img id="preview-img-3" src="" alt=""><div class="upload-filename" id="filename-3"></div></div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
+          <div class="upload-preview" id="preview-3"><div class="upload-filename" id="filename-3"></div></div>
         </div>
       </div>
 
       <div class="photo-card">
-        <div class="photo-card-title">
-          Client testimonial photos
-          <span class="tag-optional">Optional</span>
-        </div>
-        <p class="photo-card-desc">Before/after or progress photos from consenting clients. These show up in your full profile when clients click to learn more. Only include photos you have explicit permission to use. You can send these later — just email them to us once you have them.</p>
-        <div class="photo-upload-area" id="upload-area-4">
+        <div class="photo-card-title">Client testimonial photos <span class="tag-optional">Optional</span></div>
+        <p class="photo-card-desc">Before/after or progress photos from consenting clients. You can send these later by emailing us.</p>
+        <div class="photo-upload-area">
           <input type="file" accept="image/*" multiple onchange="previewPhotoMulti(this,'preview-4','filename-4')">
           <div class="upload-icon">🏆</div>
-          <div class="upload-text"><strong>Click to upload</strong> — select multiple files<br>Pairs of before/after work best</div>
+          <div class="upload-text"><strong>Click to upload</strong> — select multiple<br>Pairs of before/after work best</div>
           <div class="upload-preview" id="preview-4"><div class="upload-filename" id="filename-4"></div></div>
         </div>
       </div>
     </div>
 
-    <!-- INTERESTS -->
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Personal interests</div>
-      <p style="font-size:13px;color:var(--gray-text);margin-bottom:1rem;line-height:1.5;">Add 3–5 things you're into outside the gym. These show up on your card.</p>
-      <div class="interests-builder">
-        <div class="interests-input-row">
-          <input type="text" class="q-input" id="interest-input" placeholder="e.g. Hiking, cooking, fantasy football..." onkeydown="if(event.key==='Enter'){event.preventDefault();addInterest();}">
-          <button class="add-btn" onclick="addInterest()">Add</button>
-        </div>
-        <div class="interests-tags" id="interests-tags"></div>
-        <p class="interests-hint" id="interests-hint">0 of 5 added</p>
-        <div class="divider"></div>
-        <p style="font-size:12px;color:var(--gray-text);margin-bottom:8px;">Or pick from common ones:</p>
-        <div class="interest-suggestions">
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Hiking</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Cooking</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Dogs</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Travel</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Music</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Reading</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Fantasy sports</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Rock climbing</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Yoga</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Gaming</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Fishing</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Motorcycles</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Martial arts</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Film & TV</button>
-          <button class="interest-suggestion" onclick="addSuggestion(this)">Golf</button>
-        </div>
+      <p style="font-size:13px;color:var(--gray-text);margin-bottom:1rem;line-height:1.5;">Add 3–5 things you're into outside the gym. These show up on your card and help clients connect with you.</p>
+      <div class="interests-input-row">
+        <input type="text" class="q-input" id="interest-input" placeholder="e.g. Hiking, cooking, fantasy football..." onkeydown="if(event.key==='Enter'){event.preventDefault();addInterest();}">
+        <button class="add-btn" onclick="addInterest()">Add</button>
+      </div>
+      <div class="interests-tags" id="interests-tags"></div>
+      <p class="interests-hint" id="interests-hint">0 of 5 added</p>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:var(--gray-text);margin-bottom:8px;">Or pick some:</p>
+      <div class="interest-suggestions">
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Hiking</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Cooking</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Dogs</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Travel</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Music</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Reading</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Fantasy sports</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Rock climbing</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Yoga</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Gaming</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Fishing</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Motorcycles</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Martial arts</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Golf</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Van life</button>
       </div>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Your short bio <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your card)</span></div>
-      <p style="font-size:13px;color:var(--gray-text);margin-bottom:0.75rem;line-height:1.5;">2–3 sentences. Who you are, who you train, what drives you.</p>
+      <p style="font-size:13px;color:var(--gray-text);margin-bottom:0.75rem;line-height:1.5;">2–3 sentences. First person voice.</p>
       <textarea class="q-textarea" id="input-bio" placeholder="Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment."></textarea>
     </div>
 
@@ -449,19 +418,18 @@
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>What do you struggle with most when it comes to clients?</div>
       <p style="font-size:13px;color:var(--gray-text);margin-bottom:0.75rem;line-height:1.5;">Be honest — this helps us match you with clients who are actually a good fit.</p>
-      <textarea class="q-textarea" id="input-struggle" placeholder="Consistency, ghosting, unrealistic expectations... the more honest you are, the better we can match you."></textarea>
+      <textarea class="q-textarea" id="input-struggle" placeholder="Consistency, ghosting, unrealistic expectations..."></textarea>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>What does success look like for your clients?</div>
-      <textarea class="q-textarea" id="input-success" placeholder="What transformation do you help people make? What are you most proud of from past clients?"></textarea>
+      <textarea class="q-textarea" id="input-success" placeholder="What transformation do you help people make? What are you most proud of?"></textarea>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Anything else you want us to know?</div>
       <textarea class="q-textarea" id="input-other" placeholder="Availability, what makes you different, specific populations you love working with..."></textarea>
     </div>
-
   </div>
 </div>
 
@@ -477,7 +445,6 @@
   <a href="index.html" class="btn-home">Back to Iron House</a>
 </div>
 
-<!-- NAV FOOTER -->
 <div class="nav-footer" id="nav-footer">
   <button class="btn-back" id="btn-back" onclick="prevPage()" disabled>← Back</button>
   <button class="btn-next" id="btn-next" onclick="nextPage()">Next →</button>
@@ -489,12 +456,11 @@
   let interests = [];
 
   const sliderLabels = {
-    'slider-approach': ['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'],
-    'slider-intensity': ['Light & steady','Moderate','Balanced','Hard-working','Max effort always'],
-    'slider-checkin': ['As needed only','Weekly','A few times a week','Every other day','Daily'],
+    'slider-intensity':  ['Easy & light','Moderate','Balanced','Hard-working','Max effort always'],
+    'slider-structure':  ['Very flexible','Mostly flexible','Balanced','Pretty structured','Fully rigid'],
+    'slider-checkin':    ['As needed only','Weekly','A few times a week','Every other day','Daily'],
+    'slider-energy':     ['Very calm','Mostly relaxed','Balanced','Energetic','High energy always'],
     'slider-dietstrict': ['Very flexible','Mostly flexible','Balanced','Pretty strict','Very regimented'],
-    'slider-energy': ['Very calm & quiet','Mostly relaxed','Balanced','Energetic','High energy always'],
-    'slider-structure': ['Very flexible & adaptive','Mostly flexible','Balanced','Pretty structured','Fully mapped out'],
   };
 
   function updateSlider(id, displayId, labels) {
@@ -505,7 +471,6 @@
     el.classList.add('selected');
   }
   function togglePill(el) { el.classList.toggle('selected'); }
-
   function togglePillOther(el, wrapperId) {
     el.classList.toggle('selected');
     document.getElementById(wrapperId).classList.toggle('visible', el.classList.contains('selected'));
@@ -513,23 +478,17 @@
 
   function previewPhoto(input, previewId, filenameId) {
     if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = e => {
-        const preview = document.getElementById(previewId);
-        const img = document.getElementById('preview-img-' + previewId.split('-')[1]);
-        const fn = document.getElementById(filenameId);
-        if (img) img.src = e.target.result;
-        fn.textContent = '✓ ' + input.files[0].name;
-        preview.style.display = 'block';
-      };
-      reader.readAsDataURL(input.files[0]);
+      const fn = document.getElementById(filenameId);
+      fn.textContent = '✓ ' + input.files[0].name;
+      fn.style.color = '#7cba4a';
+      document.getElementById(previewId).style.display = 'block';
     }
   }
-
   function previewPhotoMulti(input, previewId, filenameId) {
     if (input.files && input.files.length > 0) {
       const fn = document.getElementById(filenameId);
-      fn.textContent = '✓ ' + input.files.length + ' file(s) selected: ' + Array.from(input.files).map(f => f.name).join(', ');
+      fn.textContent = '✓ ' + input.files.length + ' file(s) selected';
+      fn.style.color = '#7cba4a';
       document.getElementById(previewId).style.display = 'block';
     }
   }
@@ -546,7 +505,7 @@
     const container = document.getElementById('interests-tags');
     const hint = document.getElementById('interests-hint');
     container.innerHTML = interests.map((t, i) =>
-      `<div class="interest-tag">${t}<button onclick="removeInterest(${i})" title="Remove">×</button></div>`
+      `<div class="interest-tag">${t}<button onclick="removeInterest(${i})">×</button></div>`
     ).join('');
     hint.textContent = interests.length + ' of 5 added';
     hint.style.color = interests.length >= 5 ? 'var(--orange)' : 'var(--gray-text)';
@@ -605,6 +564,10 @@
     const specOther = document.getElementById('specialty-other-input').value.trim();
     if (specOther) specialties += (specialties ? ', ' : '') + specOther;
 
+    let niches = getSelected('niche-group');
+    const nicheOther = document.getElementById('niche-other-input').value.trim();
+    if (nicheOther) niches += (niches ? ', ' : '') + nicheOther;
+
     let diet = getSelected('diet-group');
     const dietOther = document.getElementById('diet-other-input').value.trim();
     if (dietOther) diet += (diet ? ', ' : '') + dietOther;
@@ -618,14 +581,19 @@
     formData.append('experience', getSelected('exp-group'));
     formData.append('certifications', document.getElementById('input-certs').value);
     formData.append('specialties', specialties);
+    formData.append('niches', niches);
     formData.append('diet_philosophies', diet);
     formData.append('monthly_rate', '$' + document.getElementById('slider-rate').value + '/mo');
-    formData.append('coaching_approach', getSlider('slider-approach'));
-    formData.append('intensity', getSlider('slider-intensity'));
-    formData.append('checkin_freq', getSlider('slider-checkin'));
-    formData.append('diet_strictness', getSlider('slider-dietstrict'));
-    formData.append('energy', getSlider('slider-energy'));
-    formData.append('program_structure', getSlider('slider-structure'));
+    formData.append('stat_intensity', document.getElementById('slider-intensity').value);
+    formData.append('stat_structure', document.getElementById('slider-structure').value);
+    formData.append('stat_checkins', document.getElementById('slider-checkin').value);
+    formData.append('stat_energy', document.getElementById('slider-energy').value);
+    formData.append('stat_diet', document.getElementById('slider-dietstrict').value);
+    formData.append('intensity_label', getSlider('slider-intensity'));
+    formData.append('structure_label', getSlider('slider-structure'));
+    formData.append('checkin_label', getSlider('slider-checkin'));
+    formData.append('energy_label', getSlider('slider-energy'));
+    formData.append('diet_strictness_label', getSlider('slider-dietstrict'));
     formData.append('ideal_client_experience', getSelected('clientexp-group'));
     formData.append('ideal_client_motivation', getSelected('clientmotiv-group'));
     formData.append('interests', interests.join(', '));
@@ -635,17 +603,14 @@
     formData.append('client_success', document.getElementById('input-success').value);
     formData.append('other_notes', document.getElementById('input-other').value);
 
-    // note about photos (Formspree free tier doesn't support file uploads — flag in submission)
     const photoFiles = [];
-    ['upload-area-1','upload-area-2','upload-area-3','upload-area-4'].forEach((id, i) => {
-      const input = document.querySelector('#'+id+' input[type=file]');
-      if (input && input.files.length > 0) {
-        photoFiles.push(`Photo ${i+1}: ${Array.from(input.files).map(f=>f.name).join(', ')}`);
+    ['1','2','3','4'].forEach(i => {
+      const input = document.querySelector(`#preview-${i}`).previousElementSibling?.querySelector('input[type=file]');
+      if (input && input.files && input.files.length > 0) {
+        photoFiles.push(`Photo ${i}: ${Array.from(input.files).map(f=>f.name).join(', ')}`);
       }
     });
-    if (photoFiles.length > 0) {
-      formData.append('photos_note', 'Trainer selected photos: ' + photoFiles.join(' | ') + ' — please follow up to collect files.');
-    }
+    if (photoFiles.length) formData.append('photos_note', 'Photos selected: ' + photoFiles.join(' | ') + ' — follow up to collect files.');
 
     try {
       const res = await fetch('https://formspree.io/f/mqenyrkn', {
