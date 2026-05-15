@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Rogelio Perez",
+    "age": 20,
+    "location": "Orlando, FL",
+    "email": "trainedbyrogmok@gmail.com",
+    "price": 150,
+    "experience": "3 yrs",
+    "certs": "NCEP",
+    "rating": 5,
+    "reviews": 2,
+    "founding": true,
+    "photo_main": "images/Roger-PFP.jpg",
+    "photo_physique": "images/RogerPhysique.jpg",
+    "photo_lifestyle": "images/Roger-Lifestyle.jpg",
+    "specialties": [
+      "Hypertrophy",
+      "Calisthenics",
+      "Flexibility & Mobility"
+    ],
+    "diet": "Flexible",
+    "niches": [
+      "General population"
+    ],
+    "interests": [
+      "Hiking",
+      "Martial Arts",
+      "Fishing"
+    ],
+    "stat_intensity": 4,
+    "stat_structure": 2,
+    "stat_checkins": 1,
+    "stat_energy": 3,
+    "stat_diet": 3,
+    "bio": "At 14 I realized I needed to grow, I was a scrawny kid. I started at home with limited equipment. Learned to master my bodyweight. Once I transitioned to a gym I mastered the weights.",
+    "story": "At 14 years old, I lost an arm wrestling competition and got made fun of for how skinny my arms were. I had already been doing random ab workouts at home, but losing that competition really sparked my drive to become bigger and stronger.\n\nWhen I got home, I tried doing push-ups and couldn’t even do six proper reps. That’s when I discovered calisthenics on YouTube. I became obsessed with learning how to train and progress at home with limited equipment. I would load backpacks with books, use broomsticks with water jugs as makeshift barbells, and do whatever I could to improve with what I had.\n\nWhen the pandemic hit, I moved from Florida to Texas for a while since school became virtual and I hadn’t seen family in a long time. Luckily, the gym my cousins trained at stayed open, and that’s where I started lifting weights seriously. We would spend late nights in the gym constantly pushing ourselves, and that’s where my powerlifting journey began. I became focused on improving the “big three” lifts: squat, bench, and deadlift.\n\nEventually, I moved back to Florida and lost access to a gym again, so I had to continue progressing from home. By then, I had bought gymnastics rings, which completely changed my training and opened up far more exercise options. Around this time, people at school started noticing my physique, and I would occasionally train at local gyms using guest passes with friends.\n\nBecause of my calisthenics background, I had already learned how important joint health and movement quality were. While many people around me dealt with shoulder, elbow, and lower back pain from poor training habits, I became interested in learning how to avoid and fix those issues.\n\nOver time, my focus shifted away from pure powerlifting and more toward hypertrophy and building muscle. I wanted to learn everything I could about bodybuilding and muscle growth. The problem was that a lot of mainstream fitness advice either wasn’t effective or was designed around people using performance-enhancing drugs. I trained incredibly hard, pushed myself constantly, ate as much as I could — sometimes even eating three school lunches a day — yet I still hit frustrating plateaus.\n\nThat frustration led me deeper into researching training, recovery, nutrition, and the science of muscle growth. I studied different training philosophies, from old-school bodybuilding methods to modern evidence-based approaches, and eventually realized that even many popular “science-based” fitness influencers were missing important pieces of the puzzle.\n\nAfter years of trial and error, I finally developed a much deeper understanding of effective training, recovery, nutrition, and long-term progression.\n\nNow at 20 years old, my goal is to help others avoid the same mistakes, confusion, and frustration I went through. I know what it feels like to work hard without seeing results, and I want to help people train smarter so their effort actually pays off.",
+    "testimonials": []
+  },
+      {
+        "name": "Derek K.",
+        "initials": "DK",
+        "result": "Added 40 lbs to his deadlift in 8 weeks",
+        "quote": "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
+        "before": "",
+        "after": ""
+      }
+    ]
+  },
+  {
+    "name": "Jane Doe",
+    "age": 34,
+    "location": "Atlanta, GA",
+    "email": "jade@email.com",
+    "price": 189,
+    "experience": "9 yrs",
+    "certs": "ACE + BS",
+    "rating": 4.6,
+    "reviews": 211,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "Calisthenics",
+      "Functional"
+    ],
+    "diet": "Whole foods",
+    "niches": [
+      "Women only",
+      "Post-injury/rehab",
+      "General population"
+    ],
+    "interests": [
+      "Yoga",
+      "Travel",
+      "Reading",
+      "Music"
+    ],
+    "stat_intensity": 2,
+    "stat_structure": 3,
+    "stat_checkins": 3,
+    "stat_energy": 2,
+    "stat_diet": 2,
+    "bio": "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life â not some idealized version of it.",
+    "story": "I started in sports medicine before pivoting fully to personal coaching. After 9 years I've worked with everyone from desk workers with chronic back pain to competitive athletes rebuilding after injury. What I've learned is that the best program is the one someone actually sticks to. I'll help you find that.",
+    "testimonials": [
+      {
+        "name": "Sofia R.",
+        "initials": "SR",
+        "result": "Back pain gone after 6 weeks",
+        "quote": "I was skeptical that online coaching could fix something as physical as back pain. Jade proved me completely wrong.",
+        "before": "",
+        "after": ""
+      }
+    ]
+  },
+  {
+    "name": "Sample Whitman",
+    "age": 26,
+    "location": "Denver, CO",
+    "email": "cole@email.com",
+    "price": 119,
+    "experience": "3 yrs",
+    "certs": "ISSA",
+    "rating": 4.3,
+    "reviews": 57,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "CrossFit",
+      "Endurance"
+    ],
+    "diet": "Plant-based",
+    "niches": [
+      "Athletes",
+      "General population",
+      "Weight loss focused"
+    ],
+    "interests": [
+      "Rock climbing",
+      "Trail running",
+      "Van life"
+    ],
+    "stat_intensity": 4,
+    "stat_structure": 2,
+    "stat_checkins": 2,
+    "stat_energy": 4,
+    "stat_diet": 1,
+    "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client â let's build something that challenges you and actually keeps you coming back.",
+    "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process.",
+    "testimonials": []
+  },
+  {
+    "name": "Rogelio Perez",
+    "age": 20,
+    "location": "Orlando, FL",
+    "email": "trainedbyrogmok@gmail.com",
+    "price": 150,
+    "experience": "3 yrs",
+    "certs": "NCEP",
+    "rating": 5,
+    "reviews": 2,
+    "founding": true,
+    "photo_main": "images/Roger-PFP.jpg",
+    "photo_physique": "images/RogerPhysique.jpg",
+    "photo_lifestyle": "images/Roger-Lifestyle.jpg",
+    "specialties": [
+      "Hypertrophy",
+      "Calisthenics",
+      "Flexibility & Mobility"
+    ],
+    "diet": "Flexible",
+    "niches": [
+      "General population"
+    ],
+    "interests": [
+      "Hiking",
+      "Martial Arts",
+      "Fishing"
+    ],
+    "stat_intensity": 4,
+    "stat_structure": 2,
+    "stat_checkins": 1,
+    "stat_energy": 3,
+    "stat_diet": 3,
+    "bio": "At 14 I realized I needed to grow, I was a scrawny kid. I started at home with limited equipment. Learned to master my bodyweight. Once I transitioned to a gym I mastered the weights.",
+    "story": "At 14 years old, I lost an arm wrestling competition and got made fun of for how skinny my arms were. I had already been doing random ab workouts at home, but losing that competition really sparked my drive to become bigger and stronger.\n\nWhen I got home, I tried doing push-ups and couldn’t even do six proper reps. That’s when I discovered calisthenics on YouTube. I became obsessed with learning how to train and progress at home with limited equipment. I would load backpacks with books, use broomsticks with water jugs as makeshift barbells, and do whatever I could to improve with what I had.\n\nWhen the pandemic hit, I moved from Florida to Texas for a while since school became virtual and I hadn’t seen family in a long time. Luckily, the gym my cousins trained at stayed open, and that’s where I started lifting weights seriously. We would spend late nights in the gym constantly pushing ourselves, and that’s where my powerlifting journey began. I became focused on improving the “big three” lifts: squat, bench, and deadlift.\n\nEventually, I moved back to Florida and lost access to a gym again, so I had to continue progressing from home. By then, I had bought gymnastics rings, which completely changed my training and opened up far more exercise options. Around this time, people at school started noticing my physique, and I would occasionally train at local gyms using guest passes with friends.\n\nBecause of my calisthenics background, I had already learned how important joint health and movement quality were. While many people around me dealt with shoulder, elbow, and lower back pain from poor training habits, I became interested in learning how to avoid and fix those issues.\n\nOver time, my focus shifted away from pure powerlifting and more toward hypertrophy and building muscle. I wanted to learn everything I could about bodybuilding and muscle growth. The problem was that a lot of mainstream fitness advice either wasn’t effective or was designed around people using performance-enhancing drugs. I trained incredibly hard, pushed myself constantly, ate as much as I could — sometimes even eating three school lunches a day — yet I still hit frustrating plateaus.\n\nThat frustration led me deeper into researching training, recovery, nutrition, and the science of muscle growth. I studied different training philosophies, from old-school bodybuilding methods to modern evidence-based approaches, and eventually realized that even many popular “science-based” fitness influencers were missing important pieces of the puzzle.\n\nAfter years of trial and error, I finally developed a much deeper understanding of effective training, recovery, nutrition, and long-term progression.\n\nNow at 20 years old, my goal is to help others avoid the same mistakes, confusion, and frustration I went through. I know what it feels like to work hard without seeing results, and I want to help people train smarter so their effort actually pays off.",
+    "testimonials": []
+  }
+]
