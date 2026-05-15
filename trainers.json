@@ -1,6 +1,6 @@
 [
   {
-    "name": "Marcus Reyes",
+    "name": "John Doe",
     "age": 29,
     "location": "Tampa, FL",
     "email": "marcus@email.com",
@@ -56,7 +56,7 @@
     ]
   },
   {
-    "name": "Jade Okafor",
+    "name": "Jane Doe",
     "age": 34,
     "location": "Atlanta, GA",
     "email": "jade@email.com",
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "name": "Cole Whitman",
+    "name": "Sample Whitman",
     "age": 26,
     "location": "Denver, CO",
     "email": "cole@email.com",
