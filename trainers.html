@@ -86,15 +86,15 @@
 
   /* TAGS + STAT BARS SPLIT */
   .card-middle { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
-  .card-tags-col { flex: 1; padding: 0.875rem 1.25rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .card-tags-col { flex: 0 0 38%; padding: 0.875rem 1rem 0.875rem 1.25rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
   .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--border); color: var(--gray-text); white-space: nowrap; display: inline-block; }
   .tag.style { background: rgba(50,120,20,0.1); color: #7cba4a; border-color: rgba(80,160,30,0.2); }
   .tag.diet { background: rgba(200,120,20,0.08); color: #e0a84a; border-color: rgba(200,140,30,0.2); }
   .tag.niche { background: rgba(100,80,200,0.1); color: #a89aea; border-color: rgba(120,100,220,0.2); }
 
-  .card-statbars-col { flex: 1; padding: 0.875rem 1rem; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
-  .stat-bar-row { display: flex; align-items: center; gap: 6px; }
-  .stat-bar-label { font-size: 9px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; width: 44px; flex-shrink: 0; }
+  .card-statbars-col { flex: 1; padding: 0.875rem 1.25rem; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .stat-bar-row { display: flex; align-items: center; gap: 7px; }
+  .stat-bar-label { font-size: 9px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; width: 52px; flex-shrink: 0; }
   .stat-bar-track { flex: 1; height: 4px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
   .stat-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); transition: width 0.4s ease; }
 
