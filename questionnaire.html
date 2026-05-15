@@ -60,7 +60,7 @@
   .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
 
   input[type=range] { width: 100%; height: 4px; -webkit-appearance: none; appearance: none; background: var(--gray-mid); border-radius: 99px; outline: none; cursor: pointer; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); box-shadow: 0 0 0 1px var(--orange); cursor: grab; transition: transform 0.1s; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); box-shadow: 0 0 0 1px var(--orange); cursor: grab; }
   input[type=range]::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.2); }
   input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 3px solid var(--black); cursor: grab; }
 
@@ -73,8 +73,21 @@
   .big-display span { font-size: 18px; color: var(--gray-text); margin-left: 4px; }
 
   .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+  .optional-note { font-size: 11px; color: var(--gray-text); font-style: italic; margin-top: 4px; }
 
-  .optional-note { font-size: 11px; color: var(--gray-text); font-style: italic; margin-top: 6px; }
+  /* INTERESTS BUILDER */
+  .interests-input-row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .interests-input-row input { flex: 1; }
+  .add-btn { background: var(--orange); color: var(--white); border: none; border-radius: 8px; padding: 13px 18px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+  .add-btn:hover { background: var(--orange-dark); }
+  .interests-tags { display: flex; flex-wrap: wrap; gap: 8px; min-height: 36px; }
+  .interest-tag { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 99px; background: rgba(232,80,10,0.15); border: 1px solid rgba(232,80,10,0.4); color: var(--white); font-size: 14px; }
+  .interest-tag button { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 16px; line-height: 1; padding: 0; }
+  .interest-tag button:hover { color: var(--orange); }
+  .interests-hint { font-size: 12px; color: var(--gray-text); margin-top: 8px; }
+  .interest-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .interest-suggestion { padding: 6px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--gray-text); font-family: var(--font-body); font-size: 12px; cursor: pointer; transition: all 0.15s; }
+  .interest-suggestion:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
 
   .nav-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 1rem 2rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 50; }
   .btn-back { background: transparent; color: var(--gray-text); border: 1px solid var(--border); border-radius: 4px; padding: 12px 24px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; transition: all 0.15s; }
@@ -127,7 +140,7 @@
         </div>
         <div class="q-block" style="margin-bottom:0;">
           <label class="q-label">Biological sex</label>
-          <div class="pill-group" id="sex-group" style="margin-top:2px;">
+          <div class="pill-group" id="sex-group" style="margin-top:4px;">
             <button class="pill" onclick="selectPill(this,'sex-group')">Male</button>
             <button class="pill" onclick="selectPill(this,'sex-group')">Female</button>
             <button class="pill" onclick="selectPill(this,'sex-group')">Other</button>
@@ -137,7 +150,7 @@
       <div class="field-row-3">
         <div class="q-block" style="margin-bottom:0;">
           <label class="q-label">Height</label>
-          <input type="text" class="q-input" id="input-height" placeholder="5'10&quot;">
+          <input type="text" class="q-input" id="input-height" placeholder='5&apos;10"'>
           <p class="optional-note">Optional</p>
         </div>
         <div class="q-block" style="margin-bottom:0;">
@@ -163,6 +176,22 @@
         <button class="pill" onclick="selectPill(this,'goal-group')">General fitness</button>
         <button class="pill" onclick="selectPill(this,'goal-group')">Sport-specific</button>
         <button class="pill" onclick="selectPill(this,'goal-group')">Body recomposition</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Do any of these describe you? <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
+      <div class="pill-group" id="niche-group">
+        <button class="pill" onclick="togglePill(this)">Senior / 60+</button>
+        <button class="pill" onclick="togglePill(this)">Postpartum</button>
+        <button class="pill" onclick="togglePill(this)">Teen / youth</button>
+        <button class="pill" onclick="togglePill(this)">Competitive athlete</button>
+        <button class="pill" onclick="togglePill(this)">Complete beginner</button>
+        <button class="pill" onclick="togglePill(this)">Recovering from injury</button>
+        <button class="pill" onclick="togglePill(this)">Plus-size / body positive</button>
+        <button class="pill" onclick="togglePill(this)">Prefer a female coach</button>
+        <button class="pill" onclick="togglePill(this)">Prefer a male coach</button>
+        <button class="pill" onclick="togglePill(this)">None of the above</button>
       </div>
     </div>
 
@@ -214,6 +243,32 @@
         <button class="pill" onclick="togglePill(this)">Flexible / IIFYM</button>
       </div>
     </div>
+
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Your interests <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(helps us match you with a coach you'll click with)</span></div>
+      <div class="interests-input-row">
+        <input type="text" class="q-input" id="interest-input" placeholder="e.g. Hiking, cooking, fantasy football..." onkeydown="if(event.key==='Enter'){event.preventDefault();addInterest();}">
+        <button class="add-btn" onclick="addInterest()">Add</button>
+      </div>
+      <div class="interests-tags" id="interests-tags"></div>
+      <p class="interests-hint" id="interests-hint">0 of 5 added</p>
+      <div class="divider"></div>
+      <p style="font-size:12px;color:var(--gray-text);margin-bottom:8px;">Or pick some:</p>
+      <div class="interest-suggestions">
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Hiking</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Cooking</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Dogs</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Travel</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Music</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Reading</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Fantasy sports</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Gaming</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Fishing</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Golf</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Yoga</button>
+        <button class="interest-suggestion" onclick="addSuggestion(this)">Rock climbing</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -226,18 +281,14 @@
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Days per week you can train</div>
-      <div style="text-align:center;margin-bottom:1rem;">
-        <div class="big-display"><span id="days-val">4</span><span>days / week</span></div>
-      </div>
+      <div style="text-align:center;margin-bottom:1rem;"><div class="big-display"><span id="days-val">4</span><span>days / week</span></div></div>
       <input type="range" min="1" max="7" value="4" id="slider-days" oninput="document.getElementById('days-val').textContent=this.value">
       <div class="slider-labels"><span>1 day</span><span style="text-align:right">7 days</span></div>
     </div>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Monthly budget for coaching</div>
-      <div style="text-align:center;margin-bottom:1rem;">
-        <div class="big-display">$<span id="budget-val">150</span><span>/ mo</span></div>
-      </div>
+      <div style="text-align:center;margin-bottom:1rem;"><div class="big-display">$<span id="budget-val">150</span><span>/ mo</span></div></div>
       <input type="range" min="50" max="500" step="10" value="150" id="slider-budget" oninput="document.getElementById('budget-val').textContent=this.value">
       <div class="slider-labels"><span>$50 / mo</span><span style="text-align:right">$500+ / mo</span></div>
     </div>
@@ -314,7 +365,6 @@
       <input type="email" class="q-input" id="input-email" placeholder="you@email.com">
     </div>
 
-    <!-- hidden field — auto-filled when coming from a trainer card -->
     <input type="hidden" id="input-preferred-trainer" value="">
 
     <div class="divider"></div>
@@ -341,12 +391,11 @@
   <p>We're hand-picking your matches right now. Expect a personal email from us within 48 hours with your coaches.</p>
   <div class="thankyou-detail">
     <strong>What happens next</strong>
-    You'll receive 2–3 trainer profiles selected specifically for you — not an algorithm, a real person reviewed your answers. From there, you choose who feels right and get started.
+    You'll receive 2–3 trainer profiles selected specifically for you. From there, you choose who feels right and get started.
   </div>
   <a href="index.html" class="btn-home">Back to Iron House</a>
 </div>
 
-<!-- NAV FOOTER -->
 <div class="nav-footer" id="nav-footer">
   <button class="btn-back" id="btn-back" onclick="prevPage()" disabled>← Back</button>
   <button class="btn-next" id="btn-next" onclick="nextPage()">Next →</button>
@@ -355,32 +404,48 @@
 <script>
   let currentPage = 1;
   const totalPages = 3;
+  let interests = [];
 
-  // Check for preferred trainer passed via URL param (e.g. ?trainer=Marcus+Reyes)
   const urlParams = new URLSearchParams(window.location.search);
   const preferredTrainer = urlParams.get('trainer');
-  if (preferredTrainer) {
-    document.getElementById('input-preferred-trainer').value = preferredTrainer;
-  }
+  if (preferredTrainer) document.getElementById('input-preferred-trainer').value = preferredTrainer;
 
   const sliderLabels = {
-    'slider-coaching': ['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'],
-    'slider-intensity': ['Light & easy','Moderate pace','Balanced','Push hard','Max effort always'],
-    'slider-checkin': ['Leave me alone','Weekly check-ins','Few times a week','Every other day','Daily accountability'],
-    'slider-diet': ['I eat whatever','Mostly flexible','Balanced approach','Pretty disciplined','Very regimented'],
-    'slider-motivation': ['Need constant pushing','Could use nudges','Self-sufficient','Pretty self-driven','Fully self-motivated'],
+    'slider-coaching':    ['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'],
+    'slider-intensity':   ['Light & easy','Moderate pace','Balanced','Push hard','Max effort always'],
+    'slider-checkin':     ['Leave me alone','Weekly check-ins','Few times a week','Every other day','Daily accountability'],
+    'slider-diet':        ['I eat whatever','Mostly flexible','Balanced approach','Pretty disciplined','Very regimented'],
+    'slider-motivation':  ['Need constant pushing','Could use nudges','Self-sufficient','Pretty self-driven','Fully self-motivated'],
     'slider-personality': ['Very introverted','Mostly introverted','Ambiverted','Mostly extroverted','Very extroverted'],
     'slider-competitive': ['Not competitive at all','Mild','Moderately competitive','Pretty competitive','Extremely competitive'],
   };
 
-  function updateSlider(sliderId, displayId, labels) {
-    document.getElementById(displayId).textContent = labels[document.getElementById(sliderId).value];
+  function updateSlider(id, displayId, labels) {
+    document.getElementById(displayId).textContent = labels[document.getElementById(id).value];
   }
   function selectPill(el, groupId) {
     document.querySelectorAll('#'+groupId+' .pill').forEach(p => p.classList.remove('selected'));
     el.classList.add('selected');
   }
   function togglePill(el) { el.classList.toggle('selected'); }
+
+  function addInterest(val) {
+    const input = document.getElementById('interest-input');
+    const text = (val || input.value).trim();
+    if (!text || interests.length >= 5 || interests.includes(text)) { input.value = ''; return; }
+    interests.push(text); input.value = ''; renderInterests();
+  }
+  function addSuggestion(btn) { addInterest(btn.textContent); }
+  function removeInterest(i) { interests.splice(i, 1); renderInterests(); }
+  function renderInterests() {
+    const container = document.getElementById('interests-tags');
+    const hint = document.getElementById('interests-hint');
+    container.innerHTML = interests.map((t, i) =>
+      `<div class="interest-tag">${t}<button onclick="removeInterest(${i})">×</button></div>`
+    ).join('');
+    hint.textContent = interests.length + ' of 5 added';
+    hint.style.color = interests.length >= 5 ? 'var(--orange)' : 'var(--gray-text)';
+  }
 
   function updateProgress() {
     const pct = (currentPage / totalPages) * 100;
@@ -402,7 +467,8 @@
       if (currentPage === 2) {
         Object.entries(sliderLabels).forEach(([id, labels]) => {
           const displayId = 'display-' + id.replace('slider-','');
-          document.getElementById(displayId).textContent = labels[document.getElementById(id).value];
+          const el = document.getElementById(displayId);
+          if (el) el.textContent = labels[document.getElementById(id).value];
         });
       }
     } else { submitForm(); }
@@ -435,10 +501,12 @@
     formData.append('weight', document.getElementById('input-weight').value || 'Not provided');
     formData.append('body_fat', document.getElementById('input-bf').value || 'Not provided');
     formData.append('goal', getSelected('goal-group'));
+    formData.append('client_niches', getSelected('niche-group'));
     formData.append('experience', getSelected('exp-group'));
     formData.append('training_location', getSelected('location-group'));
     formData.append('training_styles', getSelected('style-group'));
     formData.append('diet', getSelected('diet-group'));
+    formData.append('interests', interests.join(', '));
     formData.append('days_per_week', document.getElementById('slider-days').value);
     formData.append('budget', '$' + document.getElementById('slider-budget').value + '/mo');
     formData.append('coaching_style', getSlider('slider-coaching'));
