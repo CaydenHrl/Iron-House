@@ -47,9 +47,9 @@
     "rating": 4.6,
     "reviews": 211,
     "founding": true,
-    "photo_main": "janedoepfp.png",
-    "photo_physique": "janedoephysique.png",
-    "photo_lifestyle": "janedoelifestyle.png",
+    "photo_main": "images/janedoepfp.png",
+    "photo_physique": "images/janedoephysique.png",
+    "photo_lifestyle": "images/janedoelifestyle.png",
     "specialties": [
       "Calisthenics",
       "Functional"
@@ -95,9 +95,9 @@
     "rating": 4.3,
     "reviews": 57,
     "founding": true,
-    "photo_main": "samplewhitmanpfp.png",
-    "photo_physique": "samplewhitmanphysique.png",
-    "photo_lifestyle": "samplewhitmanlifestyle.png",
+    "photo_main": "images/samplewhitmanpfp.png",
+    "photo_physique": "images/samplewhitmanphysique.png",
+    "photo_lifestyle": "images/samplewhitmanlifestyle.png",
     "specialties": [
       "CrossFit",
       "Endurance"
