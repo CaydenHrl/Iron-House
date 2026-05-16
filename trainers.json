@@ -95,9 +95,9 @@
     "rating": 4.3,
     "reviews": 57,
     "founding": true,
-    "photo_main": "",
-    "photo_physique": "",
-    "photo_lifestyle": "",
+    "photo_main": "samplewhitmanpfp.png",
+    "photo_physique": "samplewhitmanphysique.png",
+    "photo_lifestyle": "samplewhitmanlifestyle.png",
     "specialties": [
       "CrossFit",
       "Endurance"
