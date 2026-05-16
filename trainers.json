@@ -47,9 +47,9 @@
     "rating": 4.6,
     "reviews": 211,
     "founding": true,
-    "photo_main": "",
-    "photo_physique": "",
-    "photo_lifestyle": "",
+    "photo_main": "janedoepfp.png",
+    "photo_physique": "janedoephysique.png",
+    "photo_lifestyle": "janedoelifestyle.png",
     "specialties": [
       "Calisthenics",
       "Functional"
