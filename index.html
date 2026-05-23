@@ -53,43 +53,49 @@
   .mobile-menu-close:hover { opacity: 1; }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 6rem 2.5rem 3rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(232,80,10,0.07) 0%, transparent 65%); pointer-events: none; }
-  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(232,80,10,0.06) 0%, transparent 60%); pointer-events: none; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3rem 4rem 2.5rem; position: relative; z-index: 2; }
+  .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2.5rem; position: relative; z-index: 2; overflow: hidden; }
 
-  /* VERSE — integrated into hero */
-  .hero-verse { font-family: var(--font-marker); font-size: clamp(18px, 2.5vw, 28px); color: var(--orange); opacity: 0.9; margin-bottom: 1.25rem; letter-spacing: 0.5px; line-height: 1.3; animation: fadeUp 0.5s ease both; }
-
+  /* VERSE */
+  .hero-verse { font-family: var(--font-marker); font-size: clamp(18px, 2.2vw, 26px); color: var(--orange); opacity: 0.9; margin-bottom: 1.25rem; letter-spacing: 0.5px; line-height: 1.3; animation: fadeUp 0.5s ease both; }
   .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 0.75rem; animation: fadeUp 0.6s 0.05s ease both; }
-  .hero h1 { font-family: var(--font-display); font-size: clamp(72px, 11vw, 130px); line-height: 0.9; letter-spacing: 1px; animation: fadeUp 0.6s 0.1s ease both; }
-  .hero h1 em { font-style: italic; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: clamp(48px, 7.5vw, 90px); color: var(--orange); display: block; letter-spacing: -1px; margin-top: 0.1em; }
-  .hero-sub { max-width: 540px; font-size: 17px; line-height: 1.65; color: rgba(245,242,237,0.6); margin-top: 1.5rem; animation: fadeUp 0.6s 0.15s ease both; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(60px, 8vw, 110px); line-height: 0.9; letter-spacing: 1px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero h1 em { font-style: italic; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: clamp(42px, 5.8vw, 78px); color: var(--orange); display: block; letter-spacing: -1px; margin-top: 0.1em; }
+  .hero-sub { max-width: 480px; font-size: 16px; line-height: 1.65; color: rgba(245,242,237,0.6); margin-top: 1.5rem; animation: fadeUp 0.6s 0.15s ease both; }
   .hero-actions { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; animation: fadeUp 0.6s 0.2s ease both; flex-wrap: wrap; }
   .btn-primary { background: var(--orange); color: var(--white); padding: 14px 32px; border-radius: 4px; font-family: var(--font-body); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.1s; display: inline-block; }
   .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
   .btn-secondary { color: var(--white); font-size: 13px; font-weight: 500; text-decoration: none; opacity: 0.55; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
   .btn-secondary:hover { opacity: 1; }
   .btn-secondary::after { content: '→'; }
-
-  /* HERO BOTTOM ROW — stats + carousel side by side */
-  .hero-bottom { display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: start; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.07); animation: fadeUp 0.6s 0.25s ease both; }
-  .hero-stats { display: flex; gap: 2.5rem; }
+  .hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07); animation: fadeUp 0.6s 0.25s ease both; }
   .hero-stat strong { font-family: var(--font-display); font-size: 30px; letter-spacing: 1px; display: block; }
   .hero-stat span { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; }
 
-  /* TESTIMONIAL CAROUSEL — now integrated in hero bottom */
-  .carousel-wrap { display: flex; flex-direction: column; gap: 0.75rem; }
-  .carousel-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: opacity 0.4s ease, transform 0.4s ease; }
-  .carousel-quote { font-size: 14px; line-height: 1.7; color: rgba(245,242,237,0.75); font-style: italic; flex: 1; position: relative; padding-left: 1.25rem; }
-  .carousel-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 40px; color: var(--orange); position: absolute; left: -4px; top: -6px; line-height: 1; }
-  .carousel-author { display: flex; align-items: center; gap: 10px; margin-top: 0.75rem; }
-  .carousel-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 11px; letter-spacing: 1px; color: var(--white); flex-shrink: 0; }
-  .carousel-name { font-weight: 600; font-size: 13px; }
-  .carousel-role { font-size: 11px; color: var(--gray-text); }
-  .carousel-result { font-size: 11px; color: #7cba4a; }
-  .carousel-dots { display: flex; gap: 6px; }
-  .carousel-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; padding: 0; }
-  .carousel-dot.active { background: var(--orange); transform: scale(1.3); }
+  /* 3-CARD STACKED CAROUSEL */
+  .carousel-stage { width: 100%; max-width: 360px; position: relative; height: 260px; animation: fadeUp 0.6s 0.3s ease both; }
+  .c-card { position: absolute; left: 50%; width: 300px; background: var(--gray); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+  .c-card.prev { transform: translateX(calc(-50% - 180px)) scale(0.82); opacity: 0.3; filter: blur(1px); z-index: 1; }
+  .c-card.active { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border-color: rgba(232,80,10,0.2); }
+  .c-card.next { transform: translateX(calc(-50% + 180px)) scale(0.82); opacity: 0.3; filter: blur(1px); z-index: 1; }
+  .c-card.hidden { opacity: 0; pointer-events: none; z-index: 0; transform: translateX(-50%) scale(0.7); }
+  .c-quote { font-size: 13px; line-height: 1.7; color: rgba(245,242,237,0.8); font-style: italic; position: relative; padding-left: 1.25rem; }
+  .c-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 42px; color: var(--orange); position: absolute; left: -4px; top: -8px; line-height: 1; }
+  .c-author { display: flex; align-items: center; gap: 10px; margin-top: 1rem; }
+  .c-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 12px; letter-spacing: 1px; color: var(--white); flex-shrink: 0; }
+  .c-name { font-weight: 600; font-size: 13px; }
+  .c-role { font-size: 11px; color: var(--gray-text); }
+  .c-result { font-size: 11px; color: #7cba4a; }
+
+  /* ANIMATED TIMER DOTS */
+  .carousel-dots { display: flex; gap: 8px; margin-top: 1.75rem; justify-content: center; animation: fadeUp 0.6s 0.35s ease both; }
+  .carousel-dot { position: relative; width: 28px; height: 4px; border-radius: 99px; background: rgba(255,255,255,0.12); border: none; cursor: pointer; padding: 0; overflow: hidden; transition: width 0.3s ease; }
+  .carousel-dot.active { width: 44px; background: rgba(255,255,255,0.15); }
+  .carousel-dot-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--orange); border-radius: 99px; width: 0%; }
+  .carousel-dot.active .carousel-dot-fill { animation: dotTimer 4.5s linear forwards; }
+  @keyframes dotTimer { from { width: 0%; } to { width: 100%; } }
 
   /* TICKER */
   .ticker { background: var(--orange); padding: 9px 0; overflow: hidden; white-space: nowrap; }
@@ -166,7 +172,8 @@
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   @media (max-width: 960px) {
-    .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { padding: 2rem 2.5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
     .steps { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
     .stat-cards { grid-template-columns: 1fr 1fr; }
@@ -176,13 +183,16 @@
     nav { padding: 1rem 1.25rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .hero { padding: 5rem 1.25rem 3rem; }
+    .hero-left { padding: 3rem 1.25rem 2rem; }
+    .hero-right { padding: 1.5rem 1.25rem 3rem; }
     .section { padding: 4rem 1.25rem; }
     .cta-section { padding: 4rem 1.25rem; }
     footer { padding: 1.5rem 1.25rem; }
     .stat-cards { grid-template-columns: 1fr; }
-    .hero-stats { gap: 1.5rem; }
-    .hero-bottom { grid-template-columns: 1fr; }
+    .carousel-stage { height: 220px; }
+    .c-card { width: 260px; }
+    .c-card.prev { transform: translateX(calc(-50% - 150px)) scale(0.82); }
+    .c-card.next { transform: translateX(calc(-50% + 150px)) scale(0.82); }
   }
 </style>
 </head>
@@ -212,7 +222,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-content">
+
+  <div class="hero-left">
     <div class="hero-verse">As iron sharpens iron —</div>
     <p class="hero-eyebrow">Online personal training, done right</p>
     <h1>Find the coach<br><em>built for you.</em></h1>
@@ -221,17 +232,16 @@
       <a href="questionnaire.html" class="btn-primary">Find my coach</a>
       <a href="trainer-questionnaire.html" class="btn-secondary">I'm a trainer</a>
     </div>
-    <div class="hero-bottom">
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>48H</strong><span>Match turnaround</span></div>
-        <div class="hero-stat"><strong>100%</strong><span>Online coaching</span></div>
-        <div class="hero-stat"><strong>Hand</strong><span>Picked for you</span></div>
-      </div>
-      <div class="carousel-wrap">
-        <div id="carousel-container"></div>
-        <div class="carousel-dots" id="carousel-dots"></div>
-      </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>48H</strong><span>Match turnaround</span></div>
+      <div class="hero-stat"><strong>100%</strong><span>Online coaching</span></div>
+      <div class="hero-stat"><strong>Hand</strong><span>Picked for you</span></div>
     </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="carousel-stage" id="carousel-stage"></div>
+    <div class="carousel-dots" id="carousel-dots"></div>
   </div>
 </section>
 
@@ -436,7 +446,7 @@
     a.classList.toggle('open', !open);
   }
 
-  // TESTIMONIAL CAROUSEL
+  // TESTIMONIAL CAROUSEL — 3-card stacked with timer dots
   let carouselData = [];
   let currentSlide = 0;
   let carouselTimer;
@@ -448,36 +458,53 @@
     } catch(e) {
       carouselData = [
         { name: 'Jamie T.', initials: 'JT', role: 'Client', result: 'Lost 22 lbs in 14 weeks', quote: "I'd tried two other online coaches before and it never stuck. The match Iron House sent me actually gets how I think. Three months in and I haven't missed a week." },
-        { name: 'Marcus R.', initials: 'MR', role: 'Trainer', result: 'Filled his roster without posting', quote: "I spent two years grinding Instagram trying to build an audience. Iron House gave me clients before I even finished setting up my profile." }
+        { name: 'Marcus R.', initials: 'MR', role: 'Trainer · Tampa, FL', result: 'Filled his roster without posting', quote: "I spent two years grinding Instagram trying to build an audience. Iron House gave me clients before I even finished setting up my profile." },
+        { name: 'Derek K.', initials: 'DK', role: 'Client', result: 'First time consistent in 4 years', quote: "What sold me was the questionnaire. It asked things no other platform bothered to ask. My coach knew exactly what she was walking into." },
+        { name: 'Jade O.', initials: 'JO', role: 'Trainer · Atlanta, GA', result: 'Better clients, zero cold outreach', quote: "The clients I get through Iron House show up differently. They already know my style going in. We just get to work." },
+        { name: 'Sofia R.', initials: 'SR', role: 'Client', result: 'Back pain gone after 6 weeks', quote: "I was skeptical that online coaching could fix something as physical as back pain. My matched coach proved me completely wrong." },
+        { name: 'Cole W.', initials: 'CW', role: 'Trainer · Denver, CO', result: 'Coaching clients who fit his style', quote: "Every client I've gotten through Iron House was already on board with my intensity before day one. No convincing, no mismatches. Just work." }
       ];
     }
     renderCarousel();
     startCarouselTimer();
   }
 
-  function renderCarousel() {
-    const container = document.getElementById('carousel-container');
-    const dotsEl = document.getElementById('carousel-dots');
-    if (!carouselData.length) return;
-
-    const t = carouselData[currentSlide];
-    container.innerHTML = `
-      <div class="carousel-card">
-        <div style="flex:1;">
-          <div class="carousel-quote">${t.quote}</div>
-          <div class="carousel-author">
-            <div class="carousel-avatar">${t.initials}</div>
-            <div>
-              <div class="carousel-name">${t.name}</div>
-              <div class="carousel-role">${t.role}</div>
-              <div class="carousel-result">${t.result}</div>
-            </div>
-          </div>
+  function buildCard(t) {
+    return `<div class="c-quote">${t.quote}</div>
+      <div class="c-author">
+        <div class="c-avatar">${t.initials}</div>
+        <div>
+          <div class="c-name">${t.name}</div>
+          <div class="c-role">${t.role}</div>
+          <div class="c-result">${t.result}</div>
         </div>
       </div>`;
+  }
 
+  function getSlotClass(i, total) {
+    const prev = (currentSlide - 1 + total) % total;
+    const next = (currentSlide + 1) % total;
+    if (i === currentSlide) return 'active';
+    if (i === prev) return 'prev';
+    if (i === next) return 'next';
+    return 'hidden';
+  }
+
+  function renderCarousel() {
+    const stage = document.getElementById('carousel-stage');
+    const dotsEl = document.getElementById('carousel-dots');
+    if (!carouselData.length || !stage) return;
+
+    // build all cards
+    stage.innerHTML = carouselData.map((t, i) =>
+      `<div class="c-card ${getSlotClass(i, carouselData.length)}" onclick="goToSlide(${i})">${buildCard(t)}</div>`
+    ).join('');
+
+    // animated timer dots
     dotsEl.innerHTML = carouselData.map((_, i) =>
-      `<button class="carousel-dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></button>`
+      `<button class="carousel-dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})">
+        <div class="carousel-dot-fill"></div>
+      </button>`
     ).join('');
   }
 
