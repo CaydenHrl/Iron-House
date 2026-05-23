@@ -57,9 +57,9 @@
 
   /* FILTERS */
   .filters-bar { padding: 0.75rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: 57px; z-index: 90; }
-  .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; justify-content: space-between; }
-  .filters-left { display: flex; align-items: center; gap: 10px; }
-  .filter-icon-key { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+  .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; justify-content: space-between; position: relative; }
+  .filters-left { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .filter-icon-key { display: flex; align-items: center; gap: 16px; position: absolute; left: 50%; transform: translateX(-50%); pointer-events: none; }
   .fik-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray-text); white-space: nowrap; }
   .fik-item svg { flex-shrink: 0; }
   .filter-btn { display: flex; align-items: center; gap: 8px; padding: 8px 18px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--white); font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
@@ -225,12 +225,14 @@
 
   @media (max-width: 640px) {
     .page-header { padding: 1.75rem 1.25rem 1.25rem; }
+    .filters-bar { padding: 0.6rem 1.25rem; }
+    .filter-icon-key { display: none; }
+    .filter-panel { width: calc(100vw - 2.5rem); max-width: 380px; }
     .grid-wrap { padding: 1.5rem 1.25rem 4rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .hamburger { display: flex; }
     .nav-right a:not(.nav-cta) { display: none; }
     .modal-img-side { display: none; }
-    .filter-panel { width: 320px; }
   }
 </style>
 </head>
