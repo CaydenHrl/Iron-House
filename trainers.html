@@ -256,15 +256,18 @@
   </div>
 </nav>
 <script>
-  (function() {
-    function setNH() {
-      var n = document.querySelector('nav');
-      if (n) document.documentElement.style.setProperty('--nav-h', n.offsetHeight + 'px');
-    }
-    setNH();
-    document.fonts.ready.then(setNH);
-    window.addEventListener('resize', setNH);
-  })();
+  function applyNavH() {
+    var n = document.querySelector('nav');
+    if (!n) return;
+    document.documentElement.style.setProperty('--nav-h', n.offsetHeight + 'px');
+  }
+  // fire immediately, after DOM, after fonts, and on resize
+  applyNavH();
+  document.addEventListener('DOMContentLoaded', applyNavH);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() { applyNavH(); });
+  }
+  window.addEventListener('resize', applyNavH);
 </script>
 
 <div class="mobile-menu" id="mobile-menu" onclick="handleMenuClick(event)">
