@@ -53,7 +53,7 @@
   .mobile-menu-close:hover { opacity: 1; }
 
   /* HERO */
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; position: relative; overflow: hidden; }
+  .hero { min-height: calc(100vh - 110px); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(232,80,10,0.06) 0%, transparent 60%); pointer-events: none; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3rem 4rem 2.5rem; position: relative; z-index: 2; }
   .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2.5rem; position: relative; z-index: 2; overflow: hidden; }
@@ -74,7 +74,7 @@
   .hero-stat strong { font-family: var(--font-display); font-size: 30px; letter-spacing: 1px; display: block; }
   .hero-stat span { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; }
 
-  /* 3-CARD STACKED CAROUSEL */
+  /* on mobile carousel shows faded peek cards but smaller offset */
   .carousel-stage { width: 100%; max-width: 360px; position: relative; height: 280px; animation: fadeUp 0.6s 0.3s ease both; }
   .c-card { position: absolute; left: 50%; width: 300px; background: var(--gray); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
   .c-card.prev { transform: translateX(calc(-50% - 180px)) scale(0.82); opacity: 0.3; filter: blur(1px); z-index: 1; }
@@ -98,7 +98,7 @@
   @keyframes dotTimer { from { width: 0%; } to { width: 100%; } }
 
   /* TICKER */
-  .ticker { background: var(--orange); padding: 9px 0; overflow: hidden; white-space: nowrap; }
+  .ticker { background: var(--orange); padding: 9px 0; overflow: hidden; white-space: nowrap; margin-top: 72px; }
   .ticker-inner { display: inline-flex; animation: ticker 22s linear infinite; }
   .ticker-item { font-family: var(--font-display); font-size: 14px; letter-spacing: 2px; color: var(--white); padding: 0 2.5rem; }
   .ticker-item::before { content: '✦'; margin-right: 2.5rem; opacity: 0.6; }
@@ -131,6 +131,11 @@
   .benefit-card h4 { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.5px; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
   .benefit-card h4::before { content: '✦'; color: var(--orange); font-size: 12px; }
   .benefit-card p { font-size: 13px; color: var(--gray-text); line-height: 1.65; }
+
+  /* BENEFIT LIST — bullet points */
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; }
+  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: rgba(245,242,237,0.8); line-height: 1.6; }
+  .benefit-list li::before { content: '✦'; color: var(--orange); font-size: 11px; margin-top: 5px; flex-shrink: 0; }
 
   /* STAT HIGHLIGHT CARDS */
   .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
@@ -178,22 +183,26 @@
     .benefits-grid { grid-template-columns: 1fr; }
     .stat-cards { grid-template-columns: 1fr 1fr; }
     .faq-cols { grid-template-columns: 1fr; gap: 0; }
+    .faq-col { margin-bottom: 0; }
+    .faq-col-label { margin-top: 2rem; display: block; }
+    .faq-col:first-child .faq-col-label { margin-top: 0; }
   }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .hero-left { padding: 3rem 1.25rem 2rem; }
-    .hero-right { padding: 1.5rem 1.25rem 3rem; }
+    .hero-right { padding: 1.5rem 1.25rem 3rem; overflow: hidden; }
     .section { padding: 4rem 1.25rem; }
     .cta-section { padding: 4rem 1.25rem; }
     footer { padding: 1.5rem 1.25rem; }
     .stat-cards { grid-template-columns: 1fr; }
-    /* on mobile carousel shows single card, no side peek */
-    .carousel-stage { height: auto; min-height: 200px; overflow: visible; }
-    .c-card { position: relative; left: auto; transform: none !important; opacity: 1 !important; filter: none !important; width: 100%; max-width: 100%; display: none; }
-    .c-card.active { display: block; }
-    .c-card.prev, .c-card.next, .c-card.hidden { display: none; }
+    /* mobile carousel: smaller card, tighter peek offsets, auto height */
+    .carousel-stage { height: 240px; max-width: 100%; }
+    .c-card { width: 240px; padding: 1.1rem; }
+    .c-card.prev { transform: translateX(calc(-50% - 130px)) scale(0.82); }
+    .c-card.next { transform: translateX(calc(-50% + 130px)) scale(0.82); }
+    .c-quote { font-size: 12px; }
   }
 </style>
 </head>
@@ -218,6 +227,12 @@
   <a href="trainers.html" onclick="closeMenu()">Meet the coaches</a>
   <a href="#faq" onclick="closeMenu()">FAQ</a>
   <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
+</div>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Find your coach</span><span class="ticker-item">Real results</span><span class="ticker-item">Online training</span><span class="ticker-item">Matched to you</span><span class="ticker-item">Iron House</span><span class="ticker-item">Find your coach</span><span class="ticker-item">Real results</span><span class="ticker-item">Online training</span><span class="ticker-item">Matched to you</span><span class="ticker-item">Iron House</span><span class="ticker-item">Find your coach</span><span class="ticker-item">Real results</span><span class="ticker-item">Online training</span><span class="ticker-item">Matched to you</span><span class="ticker-item">Iron House</span>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -245,12 +260,6 @@
     <div class="carousel-dots" id="carousel-dots"></div>
   </div>
 </section>
-
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Find your coach</span><span class="ticker-item">Real results</span><span class="ticker-item">Online training</span><span class="ticker-item">Matched to you</span><span class="ticker-item">Iron House</span><span class="ticker-item">Find your coach</span><span class="ticker-item">Real results</span><span class="ticker-item">Online training</span><span class="ticker-item">Matched to you</span><span class="ticker-item">Iron House</span><span class="ticker-item">Find your coach</span><span class="ticker-item">Real results</span><span class="ticker-item">Online training</span><span class="ticker-item">Matched to you</span><span class="ticker-item">Iron House</span>
-  </div>
-</div>
 
 <!-- HOW IT WORKS — tabbed, merged with Why Iron House -->
 <section class="section" id="how-it-works" style="padding-bottom:3rem;">
@@ -285,24 +294,13 @@
         <p>Browse your matched coaches, read their stories, see how they coach, and pick the one that feels right. Then get to work.</p>
       </div>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <h4>Matched on personality</h4>
-        <p>The best certified trainer in the world is useless if their energy is wrong for you. We match on coaching style, intensity, and vibe — not just credentials.</p>
-      </div>
-      <div class="benefit-card">
-        <h4>Vetted coaches only</h4>
-        <p>Every trainer on Iron House is reviewed and approved before they appear on the platform. No random Instagram pages, no guessing if someone is legit.</p>
-      </div>
-      <div class="benefit-card">
-        <h4>Train from anywhere</h4>
-        <p>100% online. Your schedule, your location, your pace. A great coach doesn't require a shared zip code.</p>
-      </div>
-      <div class="benefit-card">
-        <h4>Free to get matched</h4>
-        <p>Finding your coach through Iron House costs nothing. You only pay when you sign up with a trainer directly, at whatever rate they set.</p>
-      </div>
-    </div>
+    <ul class="benefit-list">
+      <li>Matched on personality, coaching style, and goals — not just credentials</li>
+      <li>Every trainer is reviewed and approved before appearing on the platform</li>
+      <li>100% online — train from anywhere, on your schedule, at your pace</li>
+      <li>Finding your coach through Iron House is completely free</li>
+      <li>If the match isn't right, we'll find you a better one</li>
+    </ul>
     <div class="stat-cards">
       <div class="stat-card"><div class="stat-card-num">48 hrs</div><div class="stat-card-label">From submitting your questionnaire to receiving hand-picked trainer matches in your inbox.</div></div>
       <div class="stat-card"><div class="stat-card-num">Your pick</div><div class="stat-card-label">We send you options, you choose. No pressure, no commitment until you're ready.</div></div>
@@ -332,24 +330,13 @@
         <p>The client chooses you. You take it from there — your program, your rates, your relationship. Iron House stays out of the way.</p>
       </div>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <h4>No algorithm required</h4>
-        <p>You don't need 10,000 followers to have a full roster. Iron House brings clients to you directly — no content grind, no posting every day hoping someone notices.</p>
-      </div>
-      <div class="benefit-card">
-        <h4>Pre-matched leads</h4>
-        <p>By the time a client reaches out to you, they already know your coaching style and chose you anyway. Better leads, less friction, stronger retention.</p>
-      </div>
-      <div class="benefit-card">
-        <h4>$0 platform fee</h4>
-        <p>No monthly subscription, no seat fee. Iron House only earns when you do — 15% commission on client payments. If you have no clients, you pay nothing.</p>
-      </div>
-      <div class="benefit-card">
-        <h4>Full independence</h4>
-        <p>Your program, your pricing, your schedule. Work from anywhere with anyone. Iron House handles client acquisition. Everything else is yours.</p>
-      </div>
-    </div>
+    <ul class="benefit-list">
+      <li>Clients come to you — no algorithm, no content grind required</li>
+      <li>Pre-matched leads who already know your style before they reach out</li>
+      <li>$0 platform fee for founding trainers, locked in for life</li>
+      <li>15% commission — we only earn when you do</li>
+      <li>Your program, your pricing, your schedule. Full independence.</li>
+    </ul>
     <div class="stat-cards">
       <div class="stat-card"><div class="stat-card-num">$0</div><div class="stat-card-label">Platform fee for founding trainers — locked in for life as a thank-you for building with us early.</div></div>
       <div class="stat-card"><div class="stat-card-num">85%</div><div class="stat-card-label">Of every client payment goes directly to you. We take 15% — only when you earn.</div></div>
@@ -439,12 +426,19 @@
     document.getElementById('how-' + tab).classList.add('active');
   }
 
-  // FAQ
+  // FAQ — accordion, one open at a time
+  let openFaq = null;
   function toggleFaq(btn) {
     const a = btn.nextElementSibling;
-    const open = a.classList.contains('open');
-    btn.classList.toggle('open', !open);
-    a.classList.toggle('open', !open);
+    const isOpen = a.classList.contains('open');
+    // close currently open one
+    if (openFaq && openFaq !== btn) {
+      openFaq.classList.remove('open');
+      openFaq.nextElementSibling.classList.remove('open');
+    }
+    btn.classList.toggle('open', !isOpen);
+    a.classList.toggle('open', !isOpen);
+    openFaq = !isOpen ? btn : null;
   }
 
   // TESTIMONIAL CAROUSEL — 3-card stacked with timer dots
