@@ -12,9 +12,6 @@
 <meta property="og:url" content="https://www.joinironhouse.com/trainers.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Iron House">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Browse Coaches — Iron House Online Personal Training">
-<meta name="twitter:description" content="Browse Iron House's vetted online personal trainers. Filter by training style, diet philosophy, niche, and budget.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
 <style>
@@ -28,6 +25,7 @@
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; min-height: 100vh; }
 
+  /* NAV */
   nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2rem; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; color: var(--white); text-decoration: none; }
   .nav-logo span { color: var(--orange); }
@@ -36,7 +34,7 @@
   .nav-right a:hover { color: var(--white); }
   .nav-cta { background: var(--orange); color: var(--white) !important; padding: 8px 18px; border-radius: 4px; font-weight: 600 !important; }
   .nav-cta:hover { background: var(--orange-dark) !important; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.25s; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -48,26 +46,32 @@
   .mobile-menu-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: var(--white); font-size: 32px; cursor: pointer; z-index: 3; line-height: 1; opacity: 0.6; transition: opacity 0.2s; }
   .mobile-menu-close:hover { opacity: 1; }
 
-  .page-header { padding: 3rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
+  /* ICON KEY */
+  .icon-key { background: var(--gray); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; }
+  .icon-key-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .icon-key-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-text); margin-right: 0.5rem; flex-shrink: 0; }
+  .icon-key-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray-text); }
+  .icon-key-item svg { flex-shrink: 0; }
+
+  /* PAGE HEADER */
+  .page-header { padding: 2.5rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
   .page-header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-  .page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
-  .page-title { font-family: var(--font-display); font-size: clamp(36px, 6vw, 64px); line-height: 1; letter-spacing: 1px; }
-  .page-sub { font-size: 14px; color: var(--gray-text); margin-top: 0.5rem; line-height: 1.6; max-width: 380px; }
-  .get-matched-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--white); padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s; flex-shrink: 0; }
+  .page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.4rem; }
+  .page-title { font-family: var(--font-display); font-size: clamp(34px, 5vw, 58px); line-height: 1; letter-spacing: 1px; }
+  .page-sub { font-size: 13px; color: var(--gray-text); margin-top: 0.4rem; line-height: 1.6; max-width: 360px; }
+  .get-matched-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--white); padding: 11px 22px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s; flex-shrink: 0; }
   .get-matched-btn:hover { background: var(--orange-dark); }
 
-  /* FILTER DROPDOWN */
+  /* FILTERS */
   .filters-bar { padding: 0.75rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: 57px; z-index: 90; }
   .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
-
-  .filter-btn { display: flex; align-items: center; gap: 8px; padding: 8px 18px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--white); font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; letter-spacing: 0.3px; }
+  .filter-btn { display: flex; align-items: center; gap: 8px; padding: 8px 18px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--white); font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
   .filter-btn:hover { border-color: rgba(255,255,255,0.25); }
   .filter-btn.open { border-color: var(--orange); background: rgba(232,80,10,0.08); }
   .filter-btn .caret { font-size: 10px; opacity: 0.5; transition: transform 0.2s; }
   .filter-btn.open .caret { transform: rotate(180deg); }
-  .filter-btn .filter-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: none; }
-  .filter-btn .filter-dot.show { display: block; }
-
+  .filter-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: none; }
+  .filter-dot.show { display: block; }
   .active-summary { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
   .active-tag { display: flex; align-items: center; gap: 5px; font-size: 11px; padding: 3px 10px; border-radius: 99px; font-weight: 500; }
   .active-tag.style  { background: rgba(50,120,20,0.15);  color: #7cba4a; border: 1px solid rgba(80,160,30,0.25); }
@@ -75,44 +79,34 @@
   .active-tag.niche  { background: rgba(100,80,200,0.12); color: #a89aea; border: 1px solid rgba(120,100,220,0.25); }
   .active-tag.budget { background: rgba(232,80,10,0.12);  color: var(--orange); border: 1px solid rgba(232,80,10,0.25); }
   .active-tag button { background: none; border: none; color: inherit; cursor: pointer; font-size: 14px; line-height: 1; padding: 0; opacity: 0.6; }
-  .active-tag button:hover { opacity: 1; }
-
+  .filter-panel-wrap { position: relative; }
   .filter-panel { position: absolute; top: calc(100% + 6px); left: 0; background: #1e1e1e; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; width: 440px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); display: none; z-index: 200; }
   .filter-panel.open { display: block; animation: dropIn 0.18s ease both; }
   @keyframes dropIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
-  .filter-panel-wrap { position: relative; }
-
   .fp-section { margin-bottom: 1.25rem; }
   .fp-section:last-child { margin-bottom: 0; }
   .fp-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
-  .fp-label.style  { color: #7cba4a; }
-  .fp-label.diet   { color: #e0a84a; }
-  .fp-label.niche  { color: #a89aea; }
-  .fp-label.budget { color: var(--orange); }
-
+  .fp-label.style { color: #7cba4a; } .fp-label.diet { color: #e0a84a; } .fp-label.niche { color: #a89aea; } .fp-label.budget { color: var(--orange); }
   .fp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .fp-chip { padding: 5px 13px; border-radius: 99px; border: 1px solid transparent; font-family: var(--font-body); font-size: 12px; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.05); color: var(--gray-text); }
   .fp-chip:hover { color: var(--white); }
-  .fp-chip.active.style  { background: rgba(50,120,20,0.2);  color: #7cba4a; border-color: rgba(80,160,30,0.35); }
-  .fp-chip.active.diet   { background: rgba(200,120,20,0.18);color: #e0a84a; border-color: rgba(200,140,30,0.35); }
-  .fp-chip.active.niche  { background: rgba(100,80,200,0.18);color: #a89aea; border-color: rgba(120,100,220,0.35); }
-
+  .fp-chip.active.style { background: rgba(50,120,20,0.2); color: #7cba4a; border-color: rgba(80,160,30,0.35); }
+  .fp-chip.active.diet  { background: rgba(200,120,20,0.18); color: #e0a84a; border-color: rgba(200,140,30,0.35); }
+  .fp-chip.active.niche { background: rgba(100,80,200,0.18); color: #a89aea; border-color: rgba(120,100,220,0.35); }
   .fp-divider { height: 1px; background: var(--border); margin: 1.1rem 0; }
-
   .fp-budget-display { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--white); margin-bottom: 10px; }
   .fp-budget-display span { font-size: 13px; color: var(--gray-text); font-family: var(--font-body); font-weight: 400; margin-left: 4px; }
   input.fp-slider { width: 100%; height: 4px; -webkit-appearance: none; appearance: none; background: var(--gray-light); border-radius: 99px; outline: none; cursor: pointer; }
   input.fp-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--orange); border: 3px solid #1e1e1e; box-shadow: 0 0 0 1px var(--orange); cursor: grab; }
-  input.fp-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--orange); border: 3px solid #1e1e1e; cursor: grab; }
   .fp-budget-labels { display: flex; justify-content: space-between; margin-top: 5px; }
   .fp-budget-labels span { font-size: 10px; color: var(--gray-text); }
-
   .fp-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
-  .fp-clear { background: none; border: none; font-family: var(--font-body); font-size: 12px; color: var(--gray-text); cursor: pointer; padding: 0; transition: color 0.15s; }
+  .fp-clear { background: none; border: none; font-family: var(--font-body); font-size: 12px; color: var(--gray-text); cursor: pointer; padding: 0; }
   .fp-clear:hover { color: var(--white); }
-  .fp-apply { background: var(--orange); color: var(--white); border: none; border-radius: 6px; padding: 9px 22px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; transition: background 0.15s; }
+  .fp-apply { background: var(--orange); color: var(--white); border: none; border-radius: 6px; padding: 9px 22px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; }
   .fp-apply:hover { background: var(--orange-dark); }
 
+  /* GRID */
   .grid-wrap { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
 
@@ -122,40 +116,37 @@
   .card-header { padding: 1.1rem 1.25rem 0.75rem; display: flex; justify-content: space-between; align-items: flex-start; }
   .trainer-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; line-height: 1; }
   .trainer-meta { font-size: 12px; color: var(--gray-text); margin-top: 3px; }
-  .card-header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+  .card-header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
   .stars { display: flex; align-items: center; gap: 4px; }
   .star-icons { display: flex; gap: 1px; }
   .star { width: 11px; height: 11px; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); background: #c07a18; }
-  .star.half { background: linear-gradient(90deg,#c07a18 50%,var(--gray-mid) 50%); }
   .star.empty { background: var(--gray-light); }
   .review-count { font-size: 11px; color: var(--gray-text); }
   .founding-badge { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; background: rgba(232,80,10,0.12); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); }
 
-  /* IMAGES */
   .card-images { display: flex; gap: 8px; padding: 0 1.25rem 1rem; height: 210px; }
   .img-main { flex: 1.5; border-radius: 10px; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 48px; }
   .img-side { flex: 1; display: flex; flex-direction: column; gap: 8px; }
   .img-secondary { flex: 1; border-radius: 10px; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 28px; }
   .card-images img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* STAT ROW */
   .card-stats { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .card-stat { flex: 1; padding: 0.7rem 0; text-align: center; border-right: 1px solid var(--border); }
   .card-stat:last-child { border-right: none; }
-  .card-stat-val { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; color: var(--white); }
+  .card-stat-val { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; }
   .card-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; }
 
-  /* TAGS + STAT BARS SPLIT */
-  .card-middle { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
+  /* TAGS + STAT BARS */
+  .card-middle { display: flex; border-bottom: 1px solid var(--border); }
   .card-tags-col { flex: 0 0 38%; padding: 0.875rem 1rem 0.875rem 1.25rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
   .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--border); color: var(--gray-text); white-space: nowrap; display: inline-block; }
   .tag.style { background: rgba(50,120,20,0.1); color: #7cba4a; border-color: rgba(80,160,30,0.2); }
-  .tag.diet { background: rgba(200,120,20,0.08); color: #e0a84a; border-color: rgba(200,140,30,0.2); }
+  .tag.diet  { background: rgba(200,120,20,0.08); color: #e0a84a; border-color: rgba(200,140,30,0.2); }
   .tag.niche { background: rgba(100,80,200,0.1); color: #a89aea; border-color: rgba(120,100,220,0.2); }
 
-  .card-statbars-col { flex: 1; padding: 0.875rem 1.25rem; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .card-statbars-col { flex: 1; padding: 0.875rem 1.25rem; display: flex; flex-direction: column; gap: 6px; justify-content: center; }
   .stat-bar-row { display: flex; align-items: center; gap: 7px; }
-  .stat-bar-label { font-size: 9px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; width: 52px; flex-shrink: 0; }
+  .stat-bar-icon { flex-shrink: 0; width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; }
   .stat-bar-track { flex: 1; height: 4px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
   .stat-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); transition: width 0.4s ease; }
 
@@ -179,7 +170,7 @@
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
   .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
   .modal { background: var(--gray); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 700px; overflow: hidden; margin: auto; position: relative; }
-  .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: var(--white); width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; z-index: 10; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); border: none; color: var(--white); width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.15s; }
   .modal-close:hover { background: var(--orange); }
   .modal-images { display: flex; gap: 6px; height: 240px; }
   .modal-img-main { flex: 1.6; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 64px; }
@@ -195,25 +186,25 @@
   .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .modal-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; margin: 1.25rem 0; }
   .modal-stat { background: var(--gray-mid); padding: 1rem; text-align: center; }
-  .modal-stat-val { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--white); }
+  .modal-stat-val { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; }
   .modal-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
-  /* MODAL STAT BARS */
-  .modal-statbars { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  /* MODAL STAT BARS with icons + labels */
+  .modal-statbars { display: flex; flex-direction: column; gap: 10px; }
   .modal-bar-row { display: flex; align-items: center; gap: 10px; }
-  .modal-bar-label { font-size: 12px; color: var(--gray-text); width: 90px; flex-shrink: 0; }
+  .modal-bar-icon { flex-shrink: 0; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; }
+  .modal-bar-label { font-size: 12px; color: var(--gray-text); width: 70px; flex-shrink: 0; }
   .modal-bar-track { flex: 1; height: 6px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
   .modal-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); }
   .modal-bar-ends { display: flex; justify-content: space-between; margin-top: 2px; }
   .modal-bar-end { font-size: 10px; color: rgba(255,255,255,0.25); }
 
-  /* TESTIMONIALS */
   .testimonials-wrap { display: flex; flex-direction: column; gap: 12px; }
   .testi-text { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
   .testi-quote { font-size: 14px; color: rgba(245,242,237,0.75); line-height: 1.7; font-style: italic; position: relative; padding-left: 1.25rem; }
   .testi-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 40px; color: var(--orange); position: absolute; left: -4px; top: -8px; line-height: 1; }
   .testi-author { margin-top: 0.75rem; display: flex; align-items: center; gap: 8px; }
-  .testi-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 0.5px; color: var(--white); flex-shrink: 0; }
+  .testi-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: var(--font-display); color: var(--white); flex-shrink: 0; }
   .testi-name { font-size: 13px; font-weight: 600; }
   .testi-result { font-size: 11px; color: #7cba4a; margin-top: 1px; }
   .testi-photo { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
@@ -233,12 +224,13 @@
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
   @media (max-width: 640px) {
-    .page-header { padding: 2rem 1.25rem 1.5rem; }
+    .page-header { padding: 1.75rem 1.25rem 1.25rem; }
     .grid-wrap { padding: 1.5rem 1.25rem 4rem; }
     .cards-grid { grid-template-columns: 1fr; }
-    .nav-right a:not(.nav-cta) { display: none; }
     .hamburger { display: flex; }
+    .nav-right a:not(.nav-cta) { display: none; }
     .modal-img-side { display: none; }
+    .filter-panel { width: 320px; }
   }
 </style>
 </head>
@@ -262,6 +254,33 @@
   <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
 </div>
 
+<!-- ICON KEY -->
+<div class="icon-key">
+  <div class="icon-key-inner">
+    <span class="icon-key-label">Coaching stats key:</span>
+    <span class="icon-key-item">
+      <svg width="14" height="14" viewBox="0 0 15 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0 C6 4 4 7 3 10 C1.5 8.5 1.5 6 2.5 4.5 C0.5 7 0 10 0 12 C0 17 3 21 7.5 21 C12 21 15 17 15 12 C15 7 12 3.5 8 0z" fill="#e8500a"/><path d="M7.5 21 C5 19.5 3.5 17 3.5 14 C3.5 11 5 8.5 6.5 7 C6 9.5 6.5 12 7.5 13.5 C6.5 11 7 8 7.5 6.5 C8 8 8.5 11 7.5 13.5 C8.5 12 9 9.5 8.5 7 C10 8.5 11.5 11 11.5 14 C11.5 17 10 19.5 7.5 21z" fill="#b83d06"/><path d="M7.5 21 C6 18.5 5.5 16 5.5 14 C5.5 12.5 6.3 11.5 7.5 11 C8.7 11.5 9.5 12.5 9.5 14 C9.5 16 9 18.5 7.5 21z" fill="#ff8040"/></svg>
+      Intensity
+    </span>
+    <span class="icon-key-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" fill="#e8500a"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#e8500a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Structure
+    </span>
+    <span class="icon-key-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" fill="#e8500a"/><circle cx="16" cy="8" r="3" fill="#e8500a" opacity="0.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8500a" stroke-width="2" stroke-linecap="round"/><path d="M16 14c1.7.8 3 2.7 3 5" stroke="#e8500a" stroke-width="2" stroke-linecap="round" opacity="0.6"/></svg>
+      Check-ins
+    </span>
+    <span class="icon-key-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#e8500a"/></svg>
+      Energy
+    </span>
+    <span class="icon-key-item">
+      <svg width="14" height="14" viewBox="0 0 16 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 7 C12 7 15 11 15 16 C15 22 12 28 8 30 C4 28 1 22 1 16 C1 11 4 7 8 7z" fill="#e8500a"/><line x1="3" y1="14" x2="13" y2="14" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="2" y1="18" x2="14" y2="18" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="3" y1="22" x2="13" y2="22" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><path d="M5 6 C3 4 2 1 3 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8 6 C8 4 8 1 8 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M11 6 C13 4 14 1 13 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+      Diet
+    </span>
+  </div>
+</div>
+
 <div class="page-header">
   <div class="page-header-inner">
     <div>
@@ -282,8 +301,6 @@
         <span class="caret">▼</span>
       </button>
       <div class="filter-panel" id="filter-panel">
-
-        <!-- STYLE -->
         <div class="fp-section">
           <span class="fp-label style">Training style</span>
           <div class="fp-chips" id="fp-specialty">
@@ -295,13 +312,9 @@
             <button class="fp-chip style" onclick="fpSelect('specialty','Weight Loss',this)">Weight Loss</button>
             <button class="fp-chip style" onclick="fpSelect('specialty','Endurance',this)">Endurance</button>
             <button class="fp-chip style" onclick="fpSelect('specialty','Functional Fitness',this)">Functional</button>
-            <button class="fp-chip style" onclick="fpSelect('specialty','Body Recomposition',this)">Recomposition</button>
           </div>
         </div>
-
         <div class="fp-divider"></div>
-
-        <!-- DIET -->
         <div class="fp-section">
           <span class="fp-label diet">Diet philosophy</span>
           <div class="fp-chips" id="fp-diet">
@@ -314,10 +327,7 @@
             <button class="fp-chip diet" onclick="fpSelect('diet','Flexible',this)">Flexible</button>
           </div>
         </div>
-
         <div class="fp-divider"></div>
-
-        <!-- NICHE -->
         <div class="fp-section">
           <span class="fp-label niche">Client niche</span>
           <div class="fp-chips" id="fp-niche">
@@ -329,26 +339,20 @@
             <button class="fp-chip niche" onclick="fpSelect('niche','Post-injury',this)">Post-injury</button>
             <button class="fp-chip niche" onclick="fpSelect('niche','Women only',this)">Women only</button>
             <button class="fp-chip niche" onclick="fpSelect('niche','Weight loss focused',this)">Weight loss</button>
-            <button class="fp-chip niche" onclick="fpSelect('niche','Muscle building focused',this)">Muscle building</button>
+            <button class="fp-chip niche" onclick="fpSelect('niche','Muscle building',this)">Muscle building</button>
           </div>
         </div>
-
         <div class="fp-divider"></div>
-
-        <!-- BUDGET -->
         <div class="fp-section">
           <span class="fp-label budget">Max monthly budget</span>
           <div class="fp-budget-display">$<span id="fp-budget-val">Any</span><span id="fp-budget-suffix"></span></div>
-          <input type="range" class="fp-slider" min="50" max="500" step="10" value="500" id="fp-budget-slider"
-            oninput="updateBudgetDisplay(this.value)">
+          <input type="range" class="fp-slider" min="50" max="500" step="10" value="500" id="fp-budget-slider" oninput="updateBudgetDisplay(this.value)">
           <div class="fp-budget-labels"><span>$50</span><span>$500</span></div>
         </div>
-
         <div class="fp-footer">
           <button class="fp-clear" onclick="clearFilters()">Clear all</button>
           <button class="fp-apply" onclick="applyAndClose()">Apply filters</button>
         </div>
-
       </div>
     </div>
     <div class="active-summary" id="active-summary"></div>
@@ -363,6 +367,7 @@
   </div>
 </div>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModalDirect()">✕</button>
@@ -392,329 +397,276 @@
 </div>
 
 <script>
-let TRAINERS = [];
-let activeFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
-let pendingFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
+  let TRAINERS = [];
+  let activeFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
+  let pendingFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
 
-function toggleFilterPanel() {
-  const btn = document.getElementById('filter-toggle');
-  const panel = document.getElementById('filter-panel');
-  const isOpen = panel.classList.contains('open');
-  btn.classList.toggle('open', !isOpen);
-  panel.classList.toggle('open', !isOpen);
-  if (!isOpen) {
-    // sync pending to active when opening
-    pendingFilters = { ...activeFilters };
-    syncPanelUI();
-  }
-}
-
-function syncPanelUI() {
-  ['specialty','diet','niche'].forEach(dim => {
-    document.querySelectorAll(`#fp-${dim === 'specialty' ? 'specialty' : dim} .fp-chip`).forEach(c => {
-      c.classList.toggle('active', c.textContent.trim() === 'All'
-        ? pendingFilters[dim] === 'all'
-        : c.getAttribute('onclick').includes(`'${pendingFilters[dim]}'`));
-    });
-  });
-  document.getElementById('fp-budget-slider').value = pendingFilters.budget;
-  const display = document.getElementById('fp-budget-val');
-  const suffix = document.getElementById('fp-budget-suffix');
-  if (pendingFilters.budget >= 500) {
-    display.textContent = 'Any'; suffix.textContent = '';
-  } else {
-    display.textContent = '$' + pendingFilters.budget; suffix.textContent = ' / mo or less';
-  }
-}
-
-function fpSelect(dim, val, btn) {
-  pendingFilters[dim] = val;
-  const groupId = dim === 'specialty' ? 'fp-specialty' : `fp-${dim}`;
-  document.querySelectorAll(`#${groupId} .fp-chip`).forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-}
-
-function updateBudgetDisplay(val) {
-  pendingFilters.budget = parseInt(val);
-  const display = document.getElementById('fp-budget-val');
-  const suffix = document.getElementById('fp-budget-suffix');
-  if (parseInt(val) >= 500) {
-    display.textContent = 'Any';
-    suffix.textContent = '';
-  } else {
-    display.textContent = '$' + val;
-    suffix.textContent = ' / mo or less';
-  }
-}
-
-function applyAndClose() {
-  activeFilters = { ...pendingFilters };
-  document.getElementById('filter-toggle').classList.remove('open');
-  document.getElementById('filter-panel').classList.remove('open');
-  applyFilters();
-  renderActiveSummary();
-  updateFilterDot();
-}
-
-function clearFilters() {
-  pendingFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
-  syncPanelUI();
-}
-
-function removeFilter(dim) {
-  activeFilters[dim] = dim === 'budget' ? 500 : 'all';
-  pendingFilters[dim] = activeFilters[dim];
-  applyFilters();
-  renderActiveSummary();
-  updateFilterDot();
-}
-
-function updateFilterDot() {
-  const active = activeFilters.specialty !== 'all' || activeFilters.diet !== 'all' ||
-    activeFilters.niche !== 'all' || activeFilters.budget < 500;
-  document.getElementById('filter-dot').classList.toggle('show', active);
-}
-
-function renderActiveSummary() {
-  const wrap = document.getElementById('active-summary');
-  let html = '';
-  if (activeFilters.specialty !== 'all')
-    html += `<span class="active-tag style">${activeFilters.specialty}<button onclick="removeFilter('specialty')">×</button></span>`;
-  if (activeFilters.diet !== 'all')
-    html += `<span class="active-tag diet">${activeFilters.diet}<button onclick="removeFilter('diet')">×</button></span>`;
-  if (activeFilters.niche !== 'all')
-    html += `<span class="active-tag niche">${activeFilters.niche}<button onclick="removeFilter('niche')">×</button></span>`;
-  if (activeFilters.budget < 500)
-    html += `<span class="active-tag budget">Under $${activeFilters.budget}/mo<button onclick="removeFilter('budget')">×</button></span>`;
-  wrap.innerHTML = html;
-}
-
-// close panel when clicking outside
-document.addEventListener('click', e => {
-  const wrap = document.querySelector('.filter-panel-wrap');
-  if (wrap && !wrap.contains(e.target)) {
-    document.getElementById('filter-toggle').classList.remove('open');
-    document.getElementById('filter-panel').classList.remove('open');
-  }
-});
-
-const STAT_DEFS = [
-  { key: 'stat_intensity',  label: 'Intensity', lo: 'Easy',     hi: 'Max effort' },
-  { key: 'stat_structure',  label: 'Structure', lo: 'Flexible', hi: 'Rigid'      },
-  { key: 'stat_checkins',   label: 'Check-ins', lo: 'As needed',hi: 'Daily'      },
-  { key: 'stat_energy',     label: 'Energy',    lo: 'Calm',     hi: 'Hype'       },
-  { key: 'stat_diet',       label: 'Diet',      lo: 'Flexible', hi: 'Strict'     },
-];
-
-function renderStars(rating) {
-  let html = '<div class="star-icons">';
-  for (let i = 1; i <= 5; i++) {
-    if (rating >= i) html += '<div class="star"></div>';
-    else if (rating >= i - 0.5) html += '<div class="star half"></div>';
-    else html += '<div class="star empty"></div>';
-  }
-  return html + '</div>';
-}
-
-function statBarHTML(val) {
-  const pct = Math.round((val / 4) * 100);
-  return `<div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>`;
-}
-
-function buildCard(trainer, index) {
-  const delay = (index % 9) * 0.05;
-  const mainImg = trainer.photo_main
-    ? `<img src="${trainer.photo_main}" alt="${trainer.name}">`
-    : '💪';
-  const img2 = trainer.photo_physique
-    ? `<img src="${trainer.photo_physique}" alt="">`
-    : '🏋️';
-  const img3 = trainer.photo_lifestyle
-    ? `<img src="${trainer.photo_lifestyle}" alt="">`
-    : '🌄';
-
-  const styleTags = trainer.specialties.map(s => `<span class="tag style">${s}</span>`).join('');
-  const dietTag = `<span class="tag diet">${trainer.diet}</span>`;
-  const nicheTag = trainer.niches && trainer.niches.length
-    ? `<span class="tag niche">${trainer.niches[0]}</span>`
-    : '';
-
-  const statBars = STAT_DEFS.map(d => `
-    <div class="stat-bar-row">
-      <span class="stat-bar-label">${d.label}</span>
-      ${statBarHTML(trainer[d.key] ?? 2)}
-    </div>`).join('');
-
-  const interestChips = (trainer.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
-
-  return `
-  <div class="trainer-card" style="animation-delay:${delay}s"
-    data-specialties="${trainer.specialties.join(',')}"
-    data-niches="${(trainer.niches || []).join(',')}"
-    data-price="${trainer.price}"
-    onclick="openModal(${index})">
-    <div class="card-header">
-      <div>
-        <div class="trainer-name">${trainer.name}</div>
-        <div class="trainer-meta">${trainer.age} · ${trainer.location}</div>
-      </div>
-      <div class="card-header-right">
-        <div class="stars">${renderStars(trainer.rating)}<span class="review-count">${trainer.rating} (${trainer.reviews})</span></div>
-        ${trainer.founding ? '<span class="founding-badge">✦ Founding</span>' : ''}
-      </div>
-    </div>
-    <div class="card-images">
-      <div class="img-main">${mainImg}</div>
-      <div class="img-side">
-        <div class="img-secondary">${img2}</div>
-        <div class="img-secondary">${img3}</div>
-      </div>
-    </div>
-    <div class="card-stats">
-      <div class="card-stat"><div class="card-stat-val">${trainer.experience}</div><div class="card-stat-label">Experience</div></div>
-      <div class="card-stat"><div class="card-stat-val">${trainer.certs}</div><div class="card-stat-label">Certified</div></div>
-      <div class="card-stat"><div class="card-stat-val">$${trainer.price}</div><div class="card-stat-label">Per month</div></div>
-    </div>
-    <div class="card-middle">
-      <div class="card-tags-col">
-        ${styleTags}${dietTag}${nicheTag}
-      </div>
-      <div class="card-statbars-col">
-        ${statBars}
-      </div>
-    </div>
-    <div class="card-interests">
-      <div class="interests-label">Interests</div>
-      <div class="interests-row">${interestChips}</div>
-    </div>
-    <div class="card-bio">${trainer.bio}</div>
-    <div class="card-footer">
-      <div class="card-price"><strong>$${trainer.price}</strong><span> / mo</span></div>
-      <button class="btn-view">View profile</button>
-    </div>
-  </div>`;
-}
-
-function applyFilters() {
-  const grid = document.getElementById('cards-grid');
-  const empty = document.getElementById('empty-state');
-  const filtered = TRAINERS.filter(t => {
-    const specOk = activeFilters.specialty === 'all' ||
-      t.specialties.some(s => s.toLowerCase().includes(activeFilters.specialty.toLowerCase()));
-    const dietOk = activeFilters.diet === 'all' ||
-      (t.diet || '').toLowerCase().includes(activeFilters.diet.toLowerCase());
-    const nicheOk = activeFilters.niche === 'all' ||
-      (t.niches || []).some(n => n.toLowerCase().includes(activeFilters.niche.toLowerCase()));
-    const budgetOk = activeFilters.budget >= 500 || t.price <= activeFilters.budget;
-    return specOk && dietOk && nicheOk && budgetOk;
-  });
-
-  if (!filtered.length) {
-    grid.innerHTML = ''; empty.style.display = 'block';
-  } else {
-    empty.style.display = 'none';
-    grid.innerHTML = filtered.map((t, i) => buildCard(t, TRAINERS.indexOf(t))).join('');
-  }
-}
-
-function buildTestimonial(t) {
-  if (t.before && t.after) {
-    return `<div class="testi-photo">
-      <div class="testi-photo-images">
-        <div class="testi-photo-slot"><img src="${t.before}" alt="Before"><span class="testi-before-label">Before</span></div>
-        <div class="testi-photo-divider"></div>
-        <div class="testi-photo-slot"><img src="${t.after}" alt="After"><span class="testi-after-label">After</span></div>
-      </div>
-      <div class="testi-photo-body">
-        <div class="testi-quote">${t.quote}</div>
-        <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
-      </div>
-    </div>`;
-  }
-  return `<div class="testi-text">
-    <div class="testi-quote">${t.quote}</div>
-    <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
-  </div>`;
-}
-
-function openModal(index) {
-  const t = TRAINERS[index];
-  document.getElementById('modal-name').textContent = t.name;
-  document.getElementById('modal-meta').textContent = `${t.age} · ${t.location}`;
-  document.getElementById('modal-exp').textContent = t.experience;
-  document.getElementById('modal-cert').textContent = t.certs;
-  document.getElementById('modal-price-stat').textContent = `$${t.price}`;
-  document.getElementById('modal-story').textContent = t.story;
-  document.getElementById('modal-badge').textContent = t.founding ? '✦ Founding Trainer' : '';
-  document.getElementById('modal-badge').style.display = t.founding ? '' : 'none';
-
-  document.getElementById('modal-cta-btn').onclick = () => {
-    window.location.href = `questionnaire.html?trainer=${encodeURIComponent(t.name)}`;
+  // SVG ICONS — single color orange
+  const ICONS = {
+    intensity: `<svg width="14" height="14" viewBox="0 0 15 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0 C6 4 4 7 3 10 C1.5 8.5 1.5 6 2.5 4.5 C0.5 7 0 10 0 12 C0 17 3 21 7.5 21 C12 21 15 17 15 12 C15 7 12 3.5 8 0z" fill="#e8500a"/><path d="M7.5 21 C5 19.5 3.5 17 3.5 14 C3.5 11 5 8.5 6.5 7 C6 9.5 6.5 12 7.5 13.5 C6.5 11 7 8 7.5 6.5 C8 8 8.5 11 7.5 13.5 C8.5 12 9 9.5 8.5 7 C10 8.5 11.5 11 11.5 14 C11.5 17 10 19.5 7.5 21z" fill="#b83d06"/><path d="M7.5 21 C6 18.5 5.5 16 5.5 14 C5.5 12.5 6.3 11.5 7.5 11 C8.7 11.5 9.5 12.5 9.5 14 C9.5 16 9 18.5 7.5 21z" fill="#ff8040"/></svg>`,
+    structure:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" fill="#e8500a"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#e8500a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    checkins:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" fill="#e8500a"/><circle cx="16" cy="8" r="3" fill="#e8500a" opacity="0.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8500a" stroke-width="2" stroke-linecap="round"/><path d="M16 14c1.7.8 3 2.7 3 5" stroke="#e8500a" stroke-width="2" stroke-linecap="round" opacity="0.6"/></svg>`,
+    energy:     `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#e8500a"/></svg>`,
+    diet:       `<svg width="14" height="14" viewBox="0 0 16 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 7 C12 7 15 11 15 16 C15 22 12 28 8 30 C4 28 1 22 1 16 C1 11 4 7 8 7z" fill="#e8500a"/><line x1="3" y1="14" x2="13" y2="14" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="2" y1="18" x2="14" y2="18" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="3" y1="22" x2="13" y2="22" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><path d="M5 6 C3 4 2 1 3 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8 6 C8 4 8 1 8 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M11 6 C13 4 14 1 13 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>`,
   };
 
-  const mainImg = t.photo_main ? `<img src="${t.photo_main}" alt="${t.name}">` : '💪';
-  const sec2 = t.photo_physique ? `<img src="${t.photo_physique}" alt="">` : '🏋️';
-  const sec3 = t.photo_lifestyle ? `<img src="${t.photo_lifestyle}" alt="">` : '🌄';
-  document.getElementById('modal-images').innerHTML = `
-    <div class="modal-img-main">${mainImg}</div>
-    <div class="modal-img-side"><div class="modal-img-sec">${sec2}</div><div class="modal-img-sec">${sec3}</div></div>`;
+  const STAT_DEFS = [
+    { key: 'stat_intensity', icon: 'intensity', label: 'Intensity', lo: 'Easy',     hi: 'Max effort' },
+    { key: 'stat_structure', icon: 'structure', label: 'Structure', lo: 'Flexible', hi: 'Rigid'      },
+    { key: 'stat_checkins',  icon: 'checkins',  label: 'Check-ins', lo: 'As needed',hi: 'Daily'      },
+    { key: 'stat_energy',    icon: 'energy',    label: 'Energy',    lo: 'Calm',     hi: 'Hype'       },
+    { key: 'stat_diet',      icon: 'diet',      label: 'Diet',      lo: 'Flexible', hi: 'Strict'     },
+  ];
 
-  const specHTML = t.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
-    `<span class="tag diet">${t.diet}</span>` +
-    (t.niches || []).map(n => `<span class="tag niche">${n}</span>`).join('');
-  document.getElementById('modal-specialties').innerHTML = specHTML;
-
-  document.getElementById('modal-statbars').innerHTML = STAT_DEFS.map(d => {
-    const pct = Math.round(((t[d.key] ?? 2) / 4) * 100);
-    return `<div class="modal-bar-row">
-      <span class="modal-bar-label">${d.label}</span>
-      <div style="flex:1;">
-        <div class="modal-bar-track"><div class="modal-bar-fill" style="width:${pct}%"></div></div>
-        <div class="modal-bar-ends"><span class="modal-bar-end">${d.lo}</span><span class="modal-bar-end">${d.hi}</span></div>
-      </div>
-    </div>`;
-  }).join('');
-
-  document.getElementById('modal-interests').innerHTML =
-    (t.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
-
-  const testiSection = document.getElementById('modal-testimonials-section');
-  if (t.testimonials && t.testimonials.length > 0) {
-    testiSection.innerHTML = `<div class="modal-section-title">Client results</div>
-      <div class="testimonials-wrap">${t.testimonials.map(buildTestimonial).join('')}</div>`;
-  } else {
-    testiSection.innerHTML = '';
+  function renderStars(rating) {
+    let html = '<div class="star-icons">';
+    for (let i = 1; i <= 5; i++) {
+      if (rating >= i) html += '<div class="star"></div>';
+      else if (rating >= i - 0.5) html += '<div class="star" style="background:linear-gradient(90deg,#c07a18 50%,var(--gray-light) 50%)"></div>';
+      else html += '<div class="star empty"></div>';
+    }
+    return html + '</div>';
   }
 
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+  function buildCard(trainer, index) {
+    const delay = (index % 9) * 0.05;
+    const mainImg = trainer.photo_main   ? `<img src="${trainer.photo_main}" alt="${trainer.name}">` : '💪';
+    const img2    = trainer.photo_physique  ? `<img src="${trainer.photo_physique}" alt="">` : '🏋️';
+    const img3    = trainer.photo_lifestyle ? `<img src="${trainer.photo_lifestyle}" alt="">` : '🌄';
 
-function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalDirect(); }
-function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+    const styleTags = trainer.specialties.map(s => `<span class="tag style">${s}</span>`).join('');
+    const dietTag   = trainer.diet ? `<span class="tag diet">${trainer.diet}</span>` : '';
+    // show first niche from ordered list
+    const nicheTag  = trainer.niches && trainer.niches.length
+      ? `<span class="tag niche">${trainer.niches[0]}</span>` : '';
 
-function toggleMenu() {
-  document.getElementById('hamburger').classList.toggle('open');
-  document.getElementById('mobile-menu').classList.toggle('open');
-  document.body.style.overflow = document.getElementById('mobile-menu').classList.contains('open') ? 'hidden' : '';
-}
-function closeMenu() {
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('mobile-menu').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function handleMenuClick(e) {
-  if (e.target === document.getElementById('mobile-menu')) closeMenu();
-}
+    const statBars = STAT_DEFS.map(d => {
+      const pct = Math.round(((trainer[d.key] ?? 2) / 4) * 100);
+      return `<div class="stat-bar-row">
+        <div class="stat-bar-icon">${ICONS[d.icon]}</div>
+        <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join('');
 
-fetch('trainers.json')
-  .then(r => r.json())
-  .then(data => { TRAINERS = data; applyFilters(); })
-  .catch(() => {
-    document.getElementById('empty-state').style.display = 'block';
-    document.getElementById('empty-state').innerHTML = '<h3>Couldn\'t load trainers</h3><p>Make sure trainers.json is in the same folder.</p>';
+    const chips = (trainer.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
+
+    return `
+    <div class="trainer-card" style="animation-delay:${delay}s" onclick="openModal(${index})">
+      <div class="card-header">
+        <div>
+          <div class="trainer-name">${trainer.name}</div>
+          <div class="trainer-meta">${trainer.age} · ${trainer.location}</div>
+        </div>
+        <div class="card-header-right">
+          <div class="stars">${renderStars(trainer.rating)}<span class="review-count">${trainer.rating} (${trainer.reviews})</span></div>
+          ${trainer.founding ? '<span class="founding-badge">✦ Founding</span>' : ''}
+        </div>
+      </div>
+      <div class="card-images">
+        <div class="img-main">${mainImg}</div>
+        <div class="img-side"><div class="img-secondary">${img2}</div><div class="img-secondary">${img3}</div></div>
+      </div>
+      <div class="card-stats">
+        <div class="card-stat"><div class="card-stat-val">${trainer.experience}</div><div class="card-stat-label">Experience</div></div>
+        <div class="card-stat"><div class="card-stat-val">${trainer.certs}</div><div class="card-stat-label">Certified</div></div>
+        <div class="card-stat"><div class="card-stat-val">$${trainer.price}</div><div class="card-stat-label">Per month</div></div>
+      </div>
+      <div class="card-middle">
+        <div class="card-tags-col">${styleTags}${dietTag}${nicheTag}</div>
+        <div class="card-statbars-col">${statBars}</div>
+      </div>
+      <div class="card-interests">
+        <div class="interests-label">Interests</div>
+        <div class="interests-row">${chips}</div>
+      </div>
+      <div class="card-bio">${trainer.bio}</div>
+      <div class="card-footer">
+        <div class="card-price"><strong>$${trainer.price}</strong><span> / mo</span></div>
+        <button class="btn-view">View profile</button>
+      </div>
+    </div>`;
+  }
+
+  function applyFilters() {
+    const grid  = document.getElementById('cards-grid');
+    const empty = document.getElementById('empty-state');
+    const filtered = TRAINERS.filter(t => {
+      const specOk   = activeFilters.specialty === 'all' || t.specialties.some(s => s.toLowerCase().includes(activeFilters.specialty.toLowerCase()));
+      const dietOk   = activeFilters.diet === 'all' || (t.diet || '').toLowerCase().includes(activeFilters.diet.toLowerCase());
+      const nicheOk  = activeFilters.niche === 'all' || (t.niches || []).some(n => n.toLowerCase().includes(activeFilters.niche.toLowerCase()));
+      const budgetOk = activeFilters.budget >= 500 || t.price <= activeFilters.budget;
+      return specOk && dietOk && nicheOk && budgetOk;
+    });
+    if (!filtered.length) { grid.innerHTML = ''; empty.style.display = 'block'; }
+    else { empty.style.display = 'none'; grid.innerHTML = filtered.map((t, i) => buildCard(t, TRAINERS.indexOf(t))).join(''); }
+  }
+
+  // FILTER PANEL
+  function toggleFilterPanel() {
+    const btn   = document.getElementById('filter-toggle');
+    const panel = document.getElementById('filter-panel');
+    const isOpen = panel.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    panel.classList.toggle('open', !isOpen);
+    if (!isOpen) { pendingFilters = { ...activeFilters }; syncPanelUI(); }
+  }
+  function syncPanelUI() {
+    ['specialty','diet','niche'].forEach(dim => {
+      const groupId = dim === 'specialty' ? 'fp-specialty' : `fp-${dim}`;
+      document.querySelectorAll(`#${groupId} .fp-chip`).forEach(c => {
+        c.classList.toggle('active', c.getAttribute('onclick')?.includes(`'${pendingFilters[dim]}'`) || (pendingFilters[dim] === 'all' && c.textContent.trim() === 'All'));
+      });
+    });
+    const slider = document.getElementById('fp-budget-slider');
+    const display = document.getElementById('fp-budget-val');
+    const suffix  = document.getElementById('fp-budget-suffix');
+    slider.value = pendingFilters.budget;
+    if (pendingFilters.budget >= 500) { display.textContent = 'Any'; suffix.textContent = ''; }
+    else { display.textContent = '$' + pendingFilters.budget; suffix.textContent = ' / mo or less'; }
+  }
+  function fpSelect(dim, val, btn) {
+    pendingFilters[dim] = val;
+    const groupId = dim === 'specialty' ? 'fp-specialty' : `fp-${dim}`;
+    document.querySelectorAll(`#${groupId} .fp-chip`).forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function updateBudgetDisplay(val) {
+    pendingFilters.budget = parseInt(val);
+    const d = document.getElementById('fp-budget-val');
+    const s = document.getElementById('fp-budget-suffix');
+    if (parseInt(val) >= 500) { d.textContent = 'Any'; s.textContent = ''; }
+    else { d.textContent = '$' + val; s.textContent = ' / mo or less'; }
+  }
+  function applyAndClose() {
+    activeFilters = { ...pendingFilters };
+    document.getElementById('filter-toggle').classList.remove('open');
+    document.getElementById('filter-panel').classList.remove('open');
+    applyFilters(); renderActiveSummary(); updateFilterDot();
+  }
+  function clearFilters() { pendingFilters = { specialty:'all', diet:'all', niche:'all', budget:500 }; syncPanelUI(); }
+  function removeFilter(dim) {
+    activeFilters[dim] = dim === 'budget' ? 500 : 'all';
+    pendingFilters[dim] = activeFilters[dim];
+    applyFilters(); renderActiveSummary(); updateFilterDot();
+  }
+  function updateFilterDot() {
+    const active = activeFilters.specialty !== 'all' || activeFilters.diet !== 'all' || activeFilters.niche !== 'all' || activeFilters.budget < 500;
+    document.getElementById('filter-dot').classList.toggle('show', active);
+  }
+  function renderActiveSummary() {
+    const wrap = document.getElementById('active-summary');
+    let html = '';
+    if (activeFilters.specialty !== 'all') html += `<span class="active-tag style">${activeFilters.specialty}<button onclick="removeFilter('specialty')">×</button></span>`;
+    if (activeFilters.diet !== 'all') html += `<span class="active-tag diet">${activeFilters.diet}<button onclick="removeFilter('diet')">×</button></span>`;
+    if (activeFilters.niche !== 'all') html += `<span class="active-tag niche">${activeFilters.niche}<button onclick="removeFilter('niche')">×</button></span>`;
+    if (activeFilters.budget < 500) html += `<span class="active-tag budget">Under $${activeFilters.budget}/mo<button onclick="removeFilter('budget')">×</button></span>`;
+    wrap.innerHTML = html;
+  }
+  document.addEventListener('click', e => {
+    const wrap = document.querySelector('.filter-panel-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('filter-toggle').classList.remove('open');
+      document.getElementById('filter-panel').classList.remove('open');
+    }
   });
+
+  // MODAL
+  function buildTestimonial(t) {
+    if (t.before && t.after) {
+      return `<div class="testi-photo">
+        <div class="testi-photo-images">
+          <div class="testi-photo-slot"><img src="${t.before}" alt="Before"><span class="testi-before-label">Before</span></div>
+          <div class="testi-photo-divider"></div>
+          <div class="testi-photo-slot"><img src="${t.after}" alt="After"><span class="testi-after-label">After</span></div>
+        </div>
+        <div class="testi-photo-body">
+          <div class="testi-quote">${t.quote}</div>
+          <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
+        </div></div>`;
+    }
+    return `<div class="testi-text">
+      <div class="testi-quote">${t.quote}</div>
+      <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
+    </div>`;
+  }
+
+  function openModal(index) {
+    const t = TRAINERS[index];
+    document.getElementById('modal-name').textContent = t.name;
+    document.getElementById('modal-meta').textContent = `${t.age} · ${t.location}`;
+    document.getElementById('modal-exp').textContent = t.experience;
+    document.getElementById('modal-cert').textContent = t.certs;
+    document.getElementById('modal-price-stat').textContent = `$${t.price}`;
+    document.getElementById('modal-story').textContent = t.story;
+    document.getElementById('modal-badge').textContent = t.founding ? '✦ Founding Trainer' : '';
+    document.getElementById('modal-badge').style.display = t.founding ? '' : 'none';
+    document.getElementById('modal-cta-btn').onclick = () => {
+      window.location.href = `questionnaire.html?trainer=${encodeURIComponent(t.name)}`;
+    };
+
+    const mainImg = t.photo_main      ? `<img src="${t.photo_main}" alt="${t.name}">` : '💪';
+    const sec2    = t.photo_physique  ? `<img src="${t.photo_physique}" alt="">` : '🏋️';
+    const sec3    = t.photo_lifestyle ? `<img src="${t.photo_lifestyle}" alt="">` : '🌄';
+    document.getElementById('modal-images').innerHTML = `
+      <div class="modal-img-main">${mainImg}</div>
+      <div class="modal-img-side"><div class="modal-img-sec">${sec2}</div><div class="modal-img-sec">${sec3}</div></div>`;
+
+    // stat bars with icon + label + end labels
+    document.getElementById('modal-statbars').innerHTML = STAT_DEFS.map(d => {
+      const pct = Math.round(((t[d.key] ?? 2) / 4) * 100);
+      return `<div class="modal-bar-row">
+        <div class="modal-bar-icon">${ICONS[d.icon]}</div>
+        <span class="modal-bar-label">${d.label}</span>
+        <div style="flex:1;">
+          <div class="modal-bar-track"><div class="modal-bar-fill" style="width:${pct}%"></div></div>
+          <div class="modal-bar-ends"><span class="modal-bar-end">${d.lo}</span><span class="modal-bar-end">${d.hi}</span></div>
+        </div>
+      </div>`;
+    }).join('');
+
+    // all niches shown in modal
+    const specHTML = t.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
+      (t.diet ? `<span class="tag diet">${t.diet}</span>` : '') +
+      (t.niches || []).map(n => `<span class="tag niche">${n}</span>`).join('');
+    document.getElementById('modal-specialties').innerHTML = specHTML;
+
+    document.getElementById('modal-interests').innerHTML = (t.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
+
+    const testiSection = document.getElementById('modal-testimonials-section');
+    if (t.testimonials && t.testimonials.length > 0) {
+      testiSection.innerHTML = `<div class="modal-section-title">Client results</div>
+        <div class="testimonials-wrap">${t.testimonials.map(buildTestimonial).join('')}</div>`;
+    } else { testiSection.innerHTML = ''; }
+
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalDirect(); }
+  function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+  // NAV
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobile-menu').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('mobile-menu').classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleMenuClick(e) { if (e.target === document.getElementById('mobile-menu')) closeMenu(); }
+
+  // LOAD
+  fetch('trainers.json')
+    .then(r => r.json())
+    .then(data => { TRAINERS = data; applyFilters(); })
+    .catch(() => {
+      document.getElementById('empty-state').style.display = 'block';
+      document.getElementById('empty-state').innerHTML = '<h3>Couldn\'t load trainers</h3><p>Make sure trainers.json is in the same folder.</p>';
+    });
 </script>
 </body>
 </html>
