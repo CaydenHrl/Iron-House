@@ -117,6 +117,32 @@
 
   .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
 
+  /* NICHE RANKED LIST */
+  .niche-rank-item { display: flex; align-items: center; gap: 10px; background: var(--gray-mid); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 6px; cursor: grab; transition: background 0.15s; user-select: none; }
+  .niche-rank-item:active { cursor: grabbing; background: #333; }
+  .niche-rank-item.dragging { opacity: 0.4; }
+  .niche-rank-item.drag-over { border-color: var(--orange); background: rgba(232,80,10,0.08); }
+  .niche-rank-num { font-family: var(--font-display); font-size: 18px; color: var(--orange); letter-spacing: 1px; width: 20px; flex-shrink: 0; }
+  .niche-rank-label { font-size: 14px; color: var(--white); flex: 1; }
+  .niche-rank-badge { font-size: 10px; color: var(--gray-text); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 99px; flex-shrink: 0; }
+  .niche-rank-handle { color: var(--gray-text); font-size: 14px; cursor: grab; }
+  .niche-rank-remove { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 16px; padding: 0; line-height: 1; transition: color 0.15s; }
+  .niche-rank-remove:hover { color: #f87171; }
+
+  /* FLOATING PREVIEW BUTTON */
+  .preview-float-btn { position: fixed; bottom: 80px; right: 1.5rem; z-index: 60; background: var(--orange); color: var(--white); border: none; border-radius: 99px; padding: 12px 20px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; box-shadow: 0 4px 20px rgba(232,80,10,0.4); transition: background 0.15s, transform 0.15s; display: flex; align-items: center; gap: 8px; }
+  .preview-float-btn:hover { background: var(--orange-dark); transform: translateY(-2px); }
+
+  /* PREVIEW MODAL */
+  .preview-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 200; display: none; align-items: center; justify-content: center; padding: 2rem 1rem; }
+  .preview-modal-overlay.open { display: flex; animation: fadeUp 0.2s ease both; }
+  .preview-modal { background: var(--gray); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 380px; overflow: hidden; position: relative; }
+  .preview-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+  .preview-modal-title { font-family: var(--font-display); font-size: 18px; letter-spacing: 1px; color: var(--orange); }
+  .preview-modal-close { background: none; border: none; color: var(--gray-text); font-size: 20px; cursor: pointer; line-height: 1; }
+  .preview-modal-close:hover { color: var(--white); }
+  .preview-modal-body { padding: 1rem; overflow-y: auto; max-height: 80vh; }
+
   .nav-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 1rem 2rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 50; }
   .btn-back { background: transparent; color: var(--gray-text); border: 1px solid var(--border); border-radius: 4px; padding: 12px 24px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; transition: all 0.15s; }
   .btn-back:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
@@ -212,23 +238,28 @@
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Who do you specialize in working with? <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
-      <div class="pill-group" id="niche-group">
-        <button class="pill" onclick="togglePill(this)">Seniors / 60+</button>
-        <button class="pill" onclick="togglePill(this)">Postpartum women</button>
-        <button class="pill" onclick="togglePill(this)">Teens / youth</button>
-        <button class="pill" onclick="togglePill(this)">Competitive athletes</button>
-        <button class="pill" onclick="togglePill(this)">Complete beginners</button>
-        <button class="pill" onclick="togglePill(this)">Post-injury / rehab</button>
-        <button class="pill" onclick="togglePill(this)">Women only</button>
-        <button class="pill" onclick="togglePill(this)">Men only</button>
-        <button class="pill" onclick="togglePill(this)">Plus-size / body positive</button>
-        <button class="pill" onclick="togglePill(this)">Weight loss focused</button>
-        <button class="pill" onclick="togglePill(this)">Muscle building focused</button>
-        <button class="pill" onclick="togglePill(this)">General population</button>
-        <button class="pill" onclick="togglePillOther(this,'niche-other')">Other</button>
+      <div class="section-card-title"><div class="dot"></div>Who do you specialize in working with?</div>
+      <p style="font-size:13px;color:var(--gray-text);line-height:1.6;margin-bottom:1rem;">Pick up to 3. Order matters — #1 shows on your trainer card, all 3 show in your full profile.</p>
+      <div class="pill-group" id="niche-group" style="margin-bottom:1rem;">
+        <button class="pill" onclick="toggleNiche(this)">Seniors / 60+</button>
+        <button class="pill" onclick="toggleNiche(this)">Postpartum women</button>
+        <button class="pill" onclick="toggleNiche(this)">Teens / youth</button>
+        <button class="pill" onclick="toggleNiche(this)">Competitive athletes</button>
+        <button class="pill" onclick="toggleNiche(this)">Complete beginners</button>
+        <button class="pill" onclick="toggleNiche(this)">Post-injury / rehab</button>
+        <button class="pill" onclick="toggleNiche(this)">Women only</button>
+        <button class="pill" onclick="toggleNiche(this)">Men only</button>
+        <button class="pill" onclick="toggleNiche(this)">Plus-size / body positive</button>
+        <button class="pill" onclick="toggleNiche(this)">Weight loss focused</button>
+        <button class="pill" onclick="toggleNiche(this)">Muscle building focused</button>
+        <button class="pill" onclick="toggleNiche(this)">General population</button>
+        <button class="pill" onclick="toggleNicheOther(this)">Other</button>
       </div>
       <div class="other-wrap" id="niche-other"><input type="text" class="other-input" id="niche-other-input" placeholder="Describe your niche..."></div>
+      <div id="niche-ranked-list" style="display:none; margin-top:1rem;">
+        <p style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray-text);margin-bottom:8px;">Your priority order — drag to reorder</p>
+        <div id="niche-ranked-items"></div>
+      </div>
     </div>
 
     <div class="section-card">
@@ -341,10 +372,14 @@
       <div class="photo-card">
         <div class="photo-card-title">Profile photo <span class="tag-badge">Required</span></div>
         <p class="photo-card-desc">Your main headshot or upper-body photo. Clear, well-lit, face visible.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(232,80,10,0.08);border:1px solid rgba(232,80,10,0.2);border-radius:6px;padding:5px 10px;margin-bottom:10px;">
+          <span style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);">Size:</span>
+          <span style="font-size:12px;color:rgba(245,242,237,0.7);">1:1 square — e.g. 1000 × 1000 px</span>
+        </div>
         <div class="photo-upload-area">
           <input type="file" id="file-profile" accept="image/*" onchange="previewPhoto(this,'preview-1','filename-1')">
           <div class="upload-icon">📸</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · 1:1 Square Image</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · 1:1 square crop</div>
           <div class="upload-preview" id="preview-1"><div class="upload-filename" id="filename-1"></div></div>
         </div>
       </div>
@@ -352,10 +387,14 @@
       <div class="photo-card">
         <div class="photo-card-title">Physique or action photo <span class="tag-badge">Required</span></div>
         <p class="photo-card-desc">You in the gym, lifting, coaching, or showing your physique.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(232,80,10,0.08);border:1px solid rgba(232,80,10,0.2);border-radius:6px;padding:5px 10px;margin-bottom:10px;">
+          <span style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);">Size:</span>
+          <span style="font-size:12px;color:rgba(245,242,237,0.7);">4:3 landscape — e.g. 1200 × 900 px</span>
+        </div>
         <div class="photo-upload-area">
           <input type="file" id="file-physique" accept="image/*" onchange="previewPhoto(this,'preview-2','filename-2')">
           <div class="upload-icon">💪</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>4:3 Landscape Image</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · 4:3 landscape crop</div>
           <div class="upload-preview" id="preview-2"><div class="upload-filename" id="filename-2"></div></div>
         </div>
       </div>
@@ -363,10 +402,14 @@
       <div class="photo-card">
         <div class="photo-card-title">Lifestyle photo <span class="tag-optional">Optional</span></div>
         <p class="photo-card-desc">Something outside the gym — hiking, cooking, your dog, traveling. Matches your personal interests.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(232,80,10,0.08);border:1px solid rgba(232,80,10,0.2);border-radius:6px;padding:5px 10px;margin-bottom:10px;">
+          <span style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--orange);">Size:</span>
+          <span style="font-size:12px;color:rgba(245,242,237,0.7);">4:3 landscape — e.g. 1200 × 900 px</span>
+        </div>
         <div class="photo-upload-area">
           <input type="file" id="file-lifestyle" accept="image/*" onchange="previewPhoto(this,'preview-3','filename-3')">
           <div class="upload-icon">🌄</div>
-          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>4:3 Landscape Image</div>
+          <div class="upload-text"><strong>Click to upload</strong> or drag and drop<br>JPG or PNG · 4:3 landscape crop</div>
           <div class="upload-preview" id="preview-3"><div class="upload-filename" id="filename-3"></div></div>
         </div>
       </div>
@@ -388,7 +431,6 @@
         <button class="interest-suggestion" onclick="addSuggestion(this)">Cooking</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Dogs</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Travel</button>
-        <button class="interest-suggestion" onclick="addSuggestion(this)">Faith</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Music</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Reading</button>
         <button class="interest-suggestion" onclick="addSuggestion(this)">Fantasy sports</button>
@@ -444,6 +486,26 @@
   <a href="index.html" class="btn-home">Back to Iron House</a>
 </div>
 
+<!-- FLOATING PREVIEW BUTTON -->
+<button class="preview-float-btn" onclick="openPreviewModal()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/></svg>
+  Preview card
+</button>
+
+<!-- PREVIEW MODAL -->
+<div class="preview-modal-overlay" id="preview-modal-overlay" onclick="handlePreviewOverlayClick(event)">
+  <div class="preview-modal">
+    <div class="preview-modal-header">
+      <span class="preview-modal-title">Your card preview</span>
+      <button class="preview-modal-close" onclick="closePreviewModal()">✕</button>
+    </div>
+    <div class="preview-modal-body">
+      <div id="preview-card-inner"></div>
+      <p style="font-size:11px;color:var(--gray-text);text-align:center;margin-top:12px;line-height:1.5;">This is how your card appears to clients on the Meet the Trainers page.</p>
+    </div>
+  </div>
+</div>
+
 <div class="nav-footer" id="nav-footer">
   <button class="btn-back" id="btn-back" onclick="prevPage()" disabled>← Back</button>
   <button class="btn-next" id="btn-next" onclick="nextPage()">Next →</button>
@@ -479,6 +541,190 @@
   function togglePillOther(el, wrapperId) {
     el.classList.toggle('selected');
     document.getElementById(wrapperId).classList.toggle('visible', el.classList.contains('selected'));
+  }
+
+  // NICHE ORDERING SYSTEM
+  let nicheOrder = []; // ordered array of selected niche labels
+  let nicheDragSrc = null;
+
+  function toggleNiche(btn) {
+    const label = btn.textContent.trim();
+    if (btn.classList.contains('selected')) {
+      // deselect
+      btn.classList.remove('selected');
+      nicheOrder = nicheOrder.filter(n => n !== label);
+    } else {
+      if (nicheOrder.length >= 3) return; // max 3
+      btn.classList.add('selected');
+      nicheOrder.push(label);
+    }
+    renderNicheRanked();
+  }
+
+  function toggleNicheOther(btn) {
+    toggleNiche(btn);
+    document.getElementById('niche-other').classList.toggle('visible', btn.classList.contains('selected'));
+  }
+
+  function removeNicheRank(label) {
+    nicheOrder = nicheOrder.filter(n => n !== label);
+    // unselect the pill
+    document.querySelectorAll('#niche-group .pill').forEach(p => {
+      if (p.textContent.trim() === label) p.classList.remove('selected');
+    });
+    renderNicheRanked();
+  }
+
+  function renderNicheRanked() {
+    const list = document.getElementById('niche-ranked-list');
+    const items = document.getElementById('niche-ranked-items');
+    if (!nicheOrder.length) { list.style.display = 'none'; return; }
+    list.style.display = 'block';
+    items.innerHTML = nicheOrder.map((n, i) => `
+      <div class="niche-rank-item" draggable="true"
+        ondragstart="nicheDragStart(${i})"
+        ondragover="nicheDragOver(event,${i})"
+        ondrop="nicheDrop(event,${i})"
+        ondragend="nicheDragEnd()">
+        <span class="niche-rank-num">${i + 1}</span>
+        <span class="niche-rank-label">${n}</span>
+        ${i === 0 ? '<span class="niche-rank-badge">Shows on card</span>' : ''}
+        <span class="niche-rank-handle">⠿</span>
+        <button class="niche-rank-remove" onclick="removeNicheRank('${n}')">×</button>
+      </div>`).join('');
+  }
+
+  function nicheDragStart(i) { nicheDragSrc = i; }
+  function nicheDragOver(e, i) {
+    e.preventDefault();
+    document.querySelectorAll('.niche-rank-item').forEach((el, idx) => {
+      el.classList.toggle('drag-over', idx === i && i !== nicheDragSrc);
+    });
+  }
+  function nicheDrop(e, i) {
+    e.preventDefault();
+    if (nicheDragSrc === null || nicheDragSrc === i) return;
+    const moved = nicheOrder.splice(nicheDragSrc, 1)[0];
+    nicheOrder.splice(i, 0, moved);
+    renderNicheRanked();
+  }
+  function nicheDragEnd() {
+    nicheDragSrc = null;
+    document.querySelectorAll('.niche-rank-item').forEach(el => el.classList.remove('drag-over', 'dragging'));
+  }
+
+  function getNicheOrdered() { return [...nicheOrder]; }
+
+  // CARD PREVIEW MODAL
+  const ICONS_SVG = {
+    intensity: `<svg width="12" height="12" viewBox="0 0 15 21" fill="none"><path d="M8 0 C6 4 4 7 3 10 C1.5 8.5 1.5 6 2.5 4.5 C0.5 7 0 10 0 12 C0 17 3 21 7.5 21 C12 21 15 17 15 12 C15 7 12 3.5 8 0z" fill="#e8500a"/><path d="M7.5 21 C5 19.5 3.5 17 3.5 14 C3.5 11 5 8.5 6.5 7 C6 9.5 6.5 12 7.5 13.5 C6.5 11 7 8 7.5 6.5 C8 8 8.5 11 7.5 13.5 C8.5 12 9 9.5 8.5 7 C10 8.5 11.5 11 11.5 14 C11.5 17 10 19.5 7.5 21z" fill="#b83d06"/></svg>`,
+    structure:  `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#e8500a"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#e8500a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    checkins:   `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" fill="#e8500a"/><circle cx="16" cy="8" r="3" fill="#e8500a" opacity="0.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8500a" stroke-width="2" stroke-linecap="round"/><path d="M16 14c1.7.8 3 2.7 3 5" stroke="#e8500a" stroke-width="2" stroke-linecap="round" opacity="0.6"/></svg>`,
+    energy:     `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#e8500a"/></svg>`,
+    diet:       `<svg width="12" height="12" viewBox="0 0 16 30" fill="none"><path d="M8 7 C12 7 15 11 15 16 C15 22 12 28 8 30 C4 28 1 22 1 16 C1 11 4 7 8 7z" fill="#e8500a"/><line x1="3" y1="14" x2="13" y2="14" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="2" y1="18" x2="14" y2="18" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="3" y1="22" x2="13" y2="22" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><path d="M5 6 C3 4 2 1 3 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8 6 C8 4 8 1 8 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M11 6 C13 4 14 1 13 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>`,
+  };
+  const STAT_KEYS = [
+    { key: 'slider-intensity',  icon: 'intensity' },
+    { key: 'slider-structure',  icon: 'structure'  },
+    { key: 'slider-checkin',    icon: 'checkins'   },
+    { key: 'slider-energy',     icon: 'energy'     },
+    { key: 'slider-dietstrict', icon: 'diet'       },
+  ];
+
+  function buildPreviewCard() {
+    const fname = document.getElementById('input-firstname')?.value.trim() || '';
+    const lname = document.getElementById('input-lastname')?.value.trim() || '';
+    const name = (fname + ' ' + lname).trim() || 'Your Name';
+    const age = document.getElementById('input-age')?.value || '—';
+    const loc = document.getElementById('input-location')?.value.trim() || 'City, ST';
+    const expVal = parseInt(document.getElementById('slider-exp')?.value) || 1;
+    const exp = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
+    const certs = document.getElementById('input-certs')?.value.trim() || '—';
+    const rate = document.getElementById('slider-rate')?.value || '—';
+    const bio = document.getElementById('input-bio')?.value.trim() || 'Your bio will appear here.';
+
+    const specialties = [...document.querySelectorAll('#specialty-group .pill.selected')].map(p => p.textContent.trim()).filter(Boolean);
+    const diet = [...document.querySelectorAll('#diet-group .pill.selected')].map(p => p.textContent.trim())[0] || '';
+    const niches = getNicheOrdered();
+
+    const statBars = STAT_KEYS.map(d => {
+      const val = parseInt(document.getElementById(d.key)?.value) || 2;
+      const pct = Math.round((val / 4) * 100);
+      return `<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+        <div style="flex-shrink:0;width:12px;height:12px;">${ICONS_SVG[d.icon]}</div>
+        <div style="flex:1;height:3px;background:#2e2e2e;border-radius:99px;overflow:hidden;">
+          <div style="width:${pct}%;height:100%;background:#e8500a;border-radius:99px;"></div>
+        </div>
+      </div>`;
+    }).join('');
+
+    const styleTags = specialties.map(s => `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(50,120,20,0.1);color:#7cba4a;border:1px solid rgba(80,160,30,0.2);display:inline-block;margin:2px;">${s}</span>`).join('');
+    const dietTag = diet ? `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(200,120,20,0.08);color:#e0a84a;border:1px solid rgba(200,140,30,0.2);display:inline-block;margin:2px;">${diet}</span>` : '';
+    const nicheTag = niches[0] ? `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(100,80,200,0.1);color:#a89aea;border:1px solid rgba(120,100,220,0.2);display:inline-block;margin:2px;">${niches[0]}</span>` : '';
+
+    return `<div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;font-family:'Barlow',sans-serif;color:#f5f2ed;">
+      <div style="padding:0.875rem 1rem 0.6rem;display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.5px;">${name}</div>
+          <div style="font-size:11px;color:#777;margin-top:2px;">${age} · ${loc}</div>
+        </div>
+        <span style="font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:99px;background:rgba(232,80,10,0.12);border:1px solid rgba(232,80,10,0.3);color:#e8500a;">✦ Founding</span>
+      </div>
+      <div style="display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);">
+        <div style="flex:1;padding:0.6rem 0;text-align:center;border-right:1px solid rgba(255,255,255,0.07);">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;">${exp}</div>
+          <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.5px;">Experience</div>
+        </div>
+        <div style="flex:1;padding:0.6rem 0;text-align:center;border-right:1px solid rgba(255,255,255,0.07);">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;">${certs || '—'}</div>
+          <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.5px;">Certified</div>
+        </div>
+        <div style="flex:1;padding:0.6rem 0;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;">$${rate}</div>
+          <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.5px;">Per month</div>
+        </div>
+      </div>
+      <div style="display:flex;border-bottom:1px solid rgba(255,255,255,0.07);">
+        <div style="flex:0 0 38%;padding:0.75rem 0.875rem 0.75rem 1rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:3px;justify-content:center;">
+          ${styleTags}${dietTag}${nicheTag}
+        </div>
+        <div style="flex:1;padding:0.75rem 1rem;display:flex;flex-direction:column;justify-content:center;">
+          ${statBars}
+        </div>
+      </div>
+      <div style="padding:0.6rem 1rem 0.875rem;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#777;margin-bottom:4px;">Interests</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="prev-interests-chips"></div>
+      </div>
+      <div style="padding:0.6rem 1rem 0.875rem;font-size:12px;color:#777;line-height:1.6;border-top:1px solid rgba(255,255,255,0.07);">${bio}</div>
+      <div style="padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.07);">
+        <div style="font-size:12px;color:#777;"><span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#f5f2ed;">$${rate}</span> / mo</div>
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:6px 14px;border-radius:4px;border:1px solid rgba(255,255,255,0.15);color:#f5f2ed;">View profile</div>
+      </div>
+    </div>`;
+  }
+
+  function openPreviewModal() {
+    const inner = document.getElementById('preview-card-inner');
+    inner.innerHTML = buildPreviewCard();
+    // add interest chips
+    const interestEl = inner.querySelector('#prev-interests-chips');
+    if (interestEl) {
+      interestEl.innerHTML = interests.map(i =>
+        `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:#242424;border:1px solid rgba(255,255,255,0.07);color:rgba(245,242,237,0.6);">${i}</span>`
+      ).join('') || '<span style="font-size:11px;color:#555;">None added yet</span>';
+    }
+    document.getElementById('preview-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePreviewModal() {
+    document.getElementById('preview-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handlePreviewOverlayClick(e) {
+    if (e.target === document.getElementById('preview-modal-overlay')) closePreviewModal();
   }
 
   function previewPhoto(input, previewId, filenameId) {
@@ -569,7 +815,7 @@
     const specOther = document.getElementById('specialty-other-input').value.trim();
     if (specOther) specialties += (specialties ? ', ' : '') + specOther;
 
-    let niches = getSelected('niche-group');
+    let niches = getNicheOrdered().join(', ');
     const nicheOther = document.getElementById('niche-other-input').value.trim();
     if (nicheOther) niches += (niches ? ', ' : '') + nicheOther;
 
