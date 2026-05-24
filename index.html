@@ -75,7 +75,7 @@
   .hero-stat span { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; }
 
   /* hero right — trainer spotlight */
-  .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem 2.5rem; position: relative; z-index: 2; overflow: hidden; gap: 0.75rem; }
+  .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2.5rem; position: relative; z-index: 2; overflow: hidden; gap: 0.75rem; }
 
   /* ANIMATED TIMER DOTS */
   .carousel-dots { display: flex; gap: 8px; margin-top: 1.25rem; justify-content: center; animation: fadeUp 0.6s 0.35s ease both; position: relative; z-index: 2; }
@@ -86,24 +86,28 @@
   @keyframes dotTimer { from { width: 0%; } to { width: 100%; } }
 
   /* TRAINER SPOTLIGHT */
-  .spotlight-label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
-  .spotlight-stage { width: 100%; max-width: 320px; }
+  .spotlight-label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; align-self: center; }
+  .spotlight-stage { width: 100%; max-width: 300px; }
   .spotlight-card { background: var(--gray); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
   .spotlight-card:hover { border-color: rgba(232,80,10,0.4); transform: translateY(-3px); }
-  .spotlight-img { width: 100%; height: 160px; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+  .spotlight-img { width: 100%; aspect-ratio: 1 / 1; background: var(--gray-mid); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 48px; }
   .spotlight-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .spotlight-body { padding: 1rem 1.1rem; }
-  .spotlight-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; }
-  .spotlight-meta { font-size: 11px; color: var(--gray-text); margin-top: 2px; margin-bottom: 0.75rem; }
-  .spotlight-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.75rem; }
+  .spotlight-body { padding: 0.875rem 1.1rem 0.5rem; }
+  .spotlight-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.2rem; }
+  .spotlight-name { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.5px; }
+  .spotlight-stars { display: flex; align-items: center; gap: 3px; margin-top: 2px; }
+  .spotlight-star { width: 9px; height: 9px; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); background: #c07a18; }
+  .spotlight-rating { font-size: 10px; color: var(--gray-text); margin-left: 2px; }
+  .spotlight-meta { font-size: 11px; color: var(--gray-text); margin-bottom: 0.6rem; }
+  .spotlight-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.6rem; }
   .spotlight-tag { font-size: 10px; padding: 2px 8px; border-radius: 99px; background: rgba(50,120,20,0.1); color: #7cba4a; border: 1px solid rgba(80,160,30,0.2); }
-  .spotlight-bars { display: flex; flex-direction: column; gap: 5px; }
+  .spotlight-bars { display: flex; flex-direction: column; gap: 4px; }
   .spotlight-bar-row { display: flex; align-items: center; gap: 6px; }
   .spotlight-bar-track { flex: 1; height: 3px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
   .spotlight-bar-fill { height: 100%; background: var(--orange); border-radius: 99px; }
-  .spotlight-footer { padding: 0.6rem 1.1rem 0.875rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.07); }
-  .spotlight-price { font-family: var(--font-display); font-size: 18px; letter-spacing: 0.5px; }
-  .spotlight-price span { font-size: 11px; color: var(--gray-text); font-family: var(--font-body); font-weight: 400; }
+  .spotlight-footer { padding: 0.6rem 1.1rem 0.875rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.07); margin-top: 0.6rem; }
+  .spotlight-exp { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; }
+  .spotlight-exp span { font-size: 11px; color: var(--gray-text); font-family: var(--font-body); font-weight: 400; }
   .spotlight-cta { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--orange); }
 
   /* HOW IT WORKS SECTION HEADER SPLIT */
@@ -111,16 +115,21 @@
   .section-header-left { display: flex; flex-direction: column; justify-content: flex-start; }
   .section-header-right { display: flex; flex-direction: column; justify-content: center; }
 
-  /* TESTIMONIAL MINI CAROUSEL */
-  .testi-mini-wrap { width: 100%; }
-  .testi-mini-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.25rem 1.5rem; transition: opacity 0.4s ease; }
-  .testi-mini-quote { font-size: 14px; line-height: 1.7; color: rgba(245,242,237,0.78); font-style: italic; position: relative; padding-left: 1.25rem; }
-  .testi-mini-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 38px; color: var(--orange); position: absolute; left: -4px; top: -6px; line-height: 1; }
-  .testi-mini-author { display: flex; align-items: center; gap: 10px; margin-top: 0.875rem; }
-  .testi-mini-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 11px; color: var(--white); flex-shrink: 0; }
-  .testi-mini-name { font-weight: 600; font-size: 13px; }
-  .testi-mini-role { font-size: 11px; color: var(--gray-text); }
-  .testi-mini-result { font-size: 11px; color: #7cba4a; }
+  /* TESTIMONIAL MINI CAROUSEL — 3-card faded stack */
+  .testi-mini-wrap { width: 100%; position: relative; }
+  .testi-mini-stage { position: relative; height: 200px; overflow: hidden; }
+  .testi-mini-card { position: absolute; left: 50%; width: 88%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.1rem 1.4rem; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .testi-mini-card.tmc-prev { transform: translateX(calc(-50% - 120px)) scale(0.84); opacity: 0.25; filter: blur(1px); z-index: 1; }
+  .testi-mini-card.tmc-active { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; border-color: rgba(232,80,10,0.15); }
+  .testi-mini-card.tmc-next { transform: translateX(calc(-50% + 120px)) scale(0.84); opacity: 0.25; filter: blur(1px); z-index: 1; }
+  .testi-mini-card.tmc-hidden { opacity: 0; z-index: 0; transform: translateX(-50%) scale(0.7); }
+  .testi-mini-quote { font-size: 13px; line-height: 1.65; color: rgba(245,242,237,0.78); font-style: italic; position: relative; padding-left: 1.1rem; }
+  .testi-mini-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 34px; color: var(--orange); position: absolute; left: -3px; top: -5px; line-height: 1; }
+  .testi-mini-author { display: flex; align-items: center; gap: 8px; margin-top: 0.7rem; }
+  .testi-mini-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 10px; color: var(--white); flex-shrink: 0; }
+  .testi-mini-name { font-weight: 600; font-size: 12px; }
+  .testi-mini-role { font-size: 10px; color: var(--gray-text); }
+  .testi-mini-result { font-size: 10px; color: #7cba4a; }
   .ticker { background: var(--orange); padding: 9px 0; overflow: hidden; white-space: nowrap; margin-top: var(--nav-h, 64px); }
   .ticker-inner { display: inline-flex; animation: ticker 22s linear infinite; }
   .ticker-item { font-family: var(--font-display); font-size: 14px; letter-spacing: 2px; color: var(--white); padding: 0 2.5rem; }
@@ -301,7 +310,7 @@
     </div>
     <div class="section-header-right">
       <div class="testi-mini-wrap">
-        <div id="testi-mini-card"></div>
+        <div class="testi-mini-stage" id="testi-mini-stage"></div>
         <div class="carousel-dots" id="testi-mini-dots" style="justify-content:flex-start;margin-top:1rem;"></div>
       </div>
     </div>
@@ -504,12 +513,17 @@
   let spotlightIdx = 0;
   let spotlightTimer;
 
-  function buildSpotlightCard(t, idx) {
+  function buildSpotlightCard(t) {
     const img = t.photo_main
       ? `<img src="${t.photo_main}" alt="${t.name}" onerror="this.parentElement.innerHTML='💪'">`
       : '💪';
     const tags = (t.specialties || []).slice(0,2).map(s =>
       `<span class="spotlight-tag">${s}</span>`).join('');
+    const nicheTag = t.niches && t.niches[0]
+      ? `<span class="spotlight-tag" style="background:rgba(100,80,200,0.1);color:#a89aea;border-color:rgba(120,100,220,0.2);">${t.niches[0]}</span>` : '';
+    const stars = Array(5).fill(0).map((_, i) =>
+      `<div class="spotlight-star" style="background:${i < Math.round(t.rating || 5) ? '#c07a18' : 'var(--gray-light)'}"></div>`
+    ).join('');
     const bars = SPOTLIGHT_STAT_KEYS.map(d => {
       const pct = Math.round(((t[d.key] || 2) / 4) * 100);
       return `<div class="spotlight-bar-row">
@@ -520,13 +534,18 @@
     return `<div class="spotlight-card" onclick="window.location.href='trainers.html?spotlight=${encodeURIComponent(t.name)}'">
       <div class="spotlight-img">${img}</div>
       <div class="spotlight-body">
-        <div class="spotlight-name">${t.name}</div>
+        <div class="spotlight-header-row">
+          <div class="spotlight-name">${t.name}</div>
+          <div>
+            <div class="spotlight-stars">${stars}<span class="spotlight-rating">(${t.reviews || 0})</span></div>
+          </div>
+        </div>
         <div class="spotlight-meta">${t.age} · ${t.location}</div>
-        <div class="spotlight-tags">${tags}${t.niches && t.niches[0] ? `<span class="spotlight-tag" style="background:rgba(100,80,200,0.1);color:#a89aea;border-color:rgba(120,100,220,0.2);">${t.niches[0]}</span>` : ''}</div>
+        <div class="spotlight-tags">${tags}${nicheTag}</div>
         <div class="spotlight-bars">${bars}</div>
       </div>
       <div class="spotlight-footer">
-        <div class="spotlight-price">$${t.price}<span> / mo</span></div>
+        <div class="spotlight-exp">${t.experience || '—'}<span> experience</span></div>
         <span class="spotlight-cta">View profile →</span>
       </div>
     </div>`;
@@ -536,7 +555,7 @@
     const stage = document.getElementById('spotlight-stage');
     const dotsEl = document.getElementById('carousel-dots');
     if (!spotlightData.length || !stage) return;
-    stage.innerHTML = buildSpotlightCard(spotlightData[spotlightIdx], spotlightIdx);
+    stage.innerHTML = buildSpotlightCard(spotlightData[spotlightIdx]);
     dotsEl.innerHTML = spotlightData.map((_, i) =>
       `<button class="carousel-dot ${i === spotlightIdx ? 'active' : ''}" onclick="goToSpotlight(${i})">
         <div class="carousel-dot-fill"></div>
@@ -551,27 +570,36 @@
     spotlightTimer = setInterval(() => { spotlightIdx = (spotlightIdx + 1) % spotlightData.length; renderSpotlight(); }, 5000);
   }
 
-  // TESTIMONIAL MINI CAROUSEL
+  // TESTIMONIAL MINI — 3-card faded stack
   let testiData = [];
   let testiIdx = 0;
   let testiTimer;
 
+  function testiSlotClass(i, total) {
+    const prev = (testiIdx - 1 + total) % total;
+    const next = (testiIdx + 1) % total;
+    if (i === testiIdx) return 'tmc-active';
+    if (i === prev) return 'tmc-prev';
+    if (i === next) return 'tmc-next';
+    return 'tmc-hidden';
+  }
+
   function renderTestiMini() {
-    const card = document.getElementById('testi-mini-card');
+    const stage = document.getElementById('testi-mini-stage');
     const dotsEl = document.getElementById('testi-mini-dots');
-    if (!testiData.length || !card) return;
-    const t = testiData[testiIdx];
-    card.innerHTML = `<div class="testi-mini-card">
-      <div class="testi-mini-quote">${t.quote}</div>
-      <div class="testi-mini-author">
-        <div class="testi-mini-avatar">${t.initials}</div>
-        <div>
-          <div class="testi-mini-name">${t.name}</div>
-          <div class="testi-mini-role">${t.role}</div>
-          <div class="testi-mini-result">${t.result}</div>
+    if (!testiData.length || !stage) return;
+    stage.innerHTML = testiData.map((t, i) => `
+      <div class="testi-mini-card ${testiSlotClass(i, testiData.length)}" onclick="goToTesti(${i})">
+        <div class="testi-mini-quote">${t.quote}</div>
+        <div class="testi-mini-author">
+          <div class="testi-mini-avatar">${t.initials}</div>
+          <div>
+            <div class="testi-mini-name">${t.name}</div>
+            <div class="testi-mini-role">${t.role}</div>
+            <div class="testi-mini-result">${t.result}</div>
+          </div>
         </div>
-      </div>
-    </div>`;
+      </div>`).join('');
     dotsEl.innerHTML = testiData.map((_, i) =>
       `<button class="carousel-dot ${i === testiIdx ? 'active' : ''}" onclick="goToTesti(${i})">
         <div class="carousel-dot-fill"></div>
