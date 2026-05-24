@@ -56,7 +56,7 @@
   .get-matched-btn:hover { background: var(--orange-dark); }
 
   /* FILTERS */
-  .filters-bar { padding: 0.7rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: var(--nav-h, 63px); z-index: 90; }
+  .filters-bar { padding: 0.7rem 2rem; border-bottom: 1px solid var(--border); background: var(--gray); position: sticky; top: 57px; z-index: 90; }
   .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
   .filter-icon-key { display: flex; align-items: center; gap: 20px; }
   .fik-item { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: rgba(245,242,237,0.55); white-space: nowrap; letter-spacing: 0.3px; }
@@ -255,20 +255,6 @@
     </button>
   </div>
 </nav>
-<script>
-  function applyNavH() {
-    var n = document.querySelector('nav');
-    if (!n) return;
-    document.documentElement.style.setProperty('--nav-h', n.offsetHeight + 'px');
-  }
-  // fire immediately, after DOM, after fonts, and on resize
-  applyNavH();
-  document.addEventListener('DOMContentLoaded', applyNavH);
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(function() { applyNavH(); });
-  }
-  window.addEventListener('resize', applyNavH);
-</script>
 
 <div class="mobile-menu" id="mobile-menu" onclick="handleMenuClick(event)">
   <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
@@ -723,13 +709,6 @@
     document.body.style.overflow = '';
   }
   function handleMenuClick(e) { if (e.target === document.getElementById('mobile-menu')) closeMenu(); }
-
-  function setNavHeight() {
-    const h = document.querySelector('nav').offsetHeight;
-    document.documentElement.style.setProperty('--nav-h', h + 'px');
-  }
-  window.addEventListener('load', setNavHeight);
-  window.addEventListener('resize', setNavHeight);
 
   // LOAD
   fetch('trainers.json')
