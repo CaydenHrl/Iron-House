@@ -74,8 +74,8 @@
   .hero-stat strong { font-family: var(--font-display); font-size: 30px; letter-spacing: 1px; display: block; }
   .hero-stat span { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; }
 
-  /* hero right — trainer spotlight */
   .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2.5rem; position: relative; z-index: 2; overflow: hidden; gap: 0.75rem; }
+  .hero-right::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 180px; background: radial-gradient(ellipse at center bottom, rgba(232,80,10,0.18) 0%, transparent 70%); pointer-events: none; z-index: 0; }
 
   /* ANIMATED TIMER DOTS */
   .carousel-dots { display: flex; gap: 8px; margin-top: 1.25rem; justify-content: center; animation: fadeUp 0.6s 0.35s ease both; position: relative; z-index: 2; }
