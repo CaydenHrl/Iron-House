@@ -561,7 +561,7 @@
     el.classList.add('selected');
   }
   // CERT TAG BUILDER
-  let certList = []; // [{name, file}]
+  let certList = [];
   let certIdCounter = 0;
 
   function addCert() {
@@ -571,22 +571,44 @@
     const id = ++certIdCounter;
     certList.push({ id, name, file: null });
     input.value = '';
-    renderCertTags();
+    appendCertTag(id, name);
+  }
+
+  function appendCertTag(id, name) {
+    const list = document.getElementById('cert-tags-list');
+    const div = document.createElement('div');
+    div.className = 'cert-tag-row';
+    div.id = 'cert-row-' + id;
+    div.innerHTML = `
+      <div class="cert-tag-header">
+        <div class="cert-tag-label"><span class="cert-tag-pill">${name}</span></div>
+        <button class="cert-tag-remove" onclick="removeCert(${id})">×</button>
+      </div>
+      <div class="cert-tag-upload">
+        <input type="file" id="cert-file-input-${id}" accept="image/*,.pdf" style="display:none;" onchange="certFileChosen(${id}, this)">
+        <button type="button" class="cert-tag-upload-btn" onclick="document.getElementById('cert-file-input-${id}').click()">
+          📄 Attach proof
+        </button>
+        <div class="cert-tag-filename" id="cert-ft-${id}">
+          <span>✓</span><span id="cert-fn-${id}"></span>
+          <button class="cert-tag-clear" onclick="clearCertFile(${id})">×</button>
+        </div>
+      </div>`;
+    list.appendChild(div);
   }
 
   function removeCert(id) {
     certList = certList.filter(c => c.id !== id);
-    renderCertTags();
+    const el = document.getElementById('cert-row-' + id);
+    if (el) el.remove();
   }
 
   function certFileChosen(id, input) {
     const cert = certList.find(c => c.id === id);
     if (!cert || !input.files[0]) return;
     cert.file = input.files[0];
-    const fnEl = document.getElementById('cert-fn-' + id);
-    const ftEl = document.getElementById('cert-ft-' + id);
-    fnEl.textContent = cert.file.name;
-    ftEl.classList.add('show');
+    document.getElementById('cert-fn-' + id).textContent = cert.file.name;
+    document.getElementById('cert-ft-' + id).classList.add('show');
   }
 
   function clearCertFile(id) {
@@ -595,29 +617,6 @@
     cert.file = null;
     document.getElementById('cert-file-input-' + id).value = '';
     document.getElementById('cert-ft-' + id).classList.remove('show');
-  }
-
-  function renderCertTags() {
-    const list = document.getElementById('cert-tags-list');
-    list.innerHTML = certList.map(c => `
-      <div class="cert-tag-row" id="cert-row-${c.id}">
-        <div class="cert-tag-header">
-          <div class="cert-tag-label">
-            <span class="cert-tag-pill">${c.name}</span>
-          </div>
-          <button class="cert-tag-remove" onclick="removeCert(${c.id})">×</button>
-        </div>
-        <div class="cert-tag-upload">
-          <input type="file" id="cert-file-input-${c.id}" accept="image/*,.pdf" style="display:none;" onchange="certFileChosen(${c.id}, this)">
-          <button type="button" class="cert-tag-upload-btn" onclick="document.getElementById('cert-file-input-${c.id}').click()">
-            📄 Attach proof
-          </button>
-          <div class="cert-tag-filename" id="cert-ft-${c.id}">
-            <span>✓</span><span id="cert-fn-${c.id}"></span>
-            <button class="cert-tag-clear" onclick="clearCertFile(${c.id})">×</button>
-          </div>
-        </div>
-      </div>`).join('');
   }
 
   function getCertData() {
@@ -724,7 +723,7 @@
     const loc = document.getElementById('input-location')?.value.trim() || 'City, ST';
     const expVal = parseInt(document.getElementById('slider-exp')?.value) || 1;
     const exp = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
-    const certs = document.getElementById('input-certs')?.value.trim() || '—';
+    const certs = getCertData() || '—';
     const rate = document.getElementById('slider-rate')?.value || '—';
     const bio = document.getElementById('input-bio')?.value.trim() || 'Your bio will appear here.';
 
