@@ -403,8 +403,18 @@
   </div>
 </div>
 
+</div>
+
+<footer style="padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;">IRON<span style="color:#e8500a;">HOUSE</span> <span style="font-family:'Barlow',sans-serif;font-size:11px;color:#777;font-weight:400;letter-spacing:1px;margin-left:4px;">LLC</span></span>
+  <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
+    <a href="https://instagram.com/joinironhouse" target="_blank" style="font-size:13px;color:#777;text-decoration:none;">@joinironhouse</a>
+    <a href="privacy.html" style="font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;">Privacy Policy</a>
+    <span style="font-size:11px;color:rgba(255,255,255,0.2);">© 2025 Iron House LLC</span>
+  </div>
+</footer>
+
 <script>
-  let TRAINERS = [];
   let activeFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
   let pendingFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
 
@@ -715,7 +725,17 @@
   // LOAD
   fetch('trainers.json')
     .then(r => r.json())
-    .then(data => { TRAINERS = data; applyFilters(); })
+    .then(data => {
+      TRAINERS = data;
+      applyFilters();
+      // auto-open spotlight trainer if redirected from landing page
+      const params = new URLSearchParams(window.location.search);
+      const spotlightName = params.get('spotlight');
+      if (spotlightName) {
+        const idx = TRAINERS.findIndex(t => t.name === decodeURIComponent(spotlightName));
+        if (idx !== -1) setTimeout(() => openModal(idx), 300);
+      }
+    })
     .catch(() => {
       document.getElementById('empty-state').style.display = 'block';
       document.getElementById('empty-state').innerHTML = '<h3>Couldn\'t load trainers</h3><p>Make sure trainers.json is in the same folder.</p>';
