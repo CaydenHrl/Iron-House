@@ -185,7 +185,25 @@
     .topbar { padding: 1rem 1.25rem; }
     .nav-footer { padding: 1rem 1.25rem; }
     .field-row { grid-template-columns: 1fr; }
+    .agreement-box { max-height: 50vh; }
   }
+
+  /* TRAINER AGREEMENT */
+  .agreement-box { background: var(--gray); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; max-height: 45vh; overflow-y: auto; }
+  .agreement-box::-webkit-scrollbar { width: 4px; }
+  .agreement-box::-webkit-scrollbar-track { background: transparent; }
+  .agreement-box::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 99px; }
+  .agreement-title { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--white); margin-bottom: 0.25rem; }
+  .agreement-effective { font-size: 12px; color: var(--gray-text); margin-bottom: 1.25rem; font-style: italic; }
+  .agreement-intro { font-size: 13px; color: rgba(245,242,237,0.7); line-height: 1.7; margin-bottom: 1.5rem; }
+  .agreement-section { margin-bottom: 1.25rem; }
+  .agreement-section-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .agreement-section p { font-size: 13px; color: rgba(245,242,237,0.7); line-height: 1.75; }
+  .agreement-check-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; padding: 1.25rem; background: var(--gray); border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.2s; width: 100%; margin-top: 1.25rem; }
+  .agreement-check-row:hover { border-color: rgba(232,80,10,0.3); }
+  .agreement-check-row input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--orange); cursor: pointer; margin-top: 2px; flex-shrink: 0; }
+  .agreement-check-label { font-size: 13px; color: rgba(245,242,237,0.8); line-height: 1.6; }
+  .agreement-check-hint { font-size: 12px; color: #f87171; margin-top: 8px; padding-left: 4px; }
 </style>
 </head>
 <body>
@@ -507,10 +525,11 @@
     We'll reach out to schedule a short intro call, finalize your profile card, and get you set up on the platform. As one of our founding trainers, you'll have a direct line to us whenever you need it.
   </div>
   <a href="index.html" class="btn-home">Back to Iron House</a>
+  <p style="margin-top:1.5rem;font-size:11px;color:rgba(255,255,255,0.2);">By submitting this application you agreed to the Iron House Trainer Agreement. · <a href="privacy.html" style="color:rgba(255,255,255,0.2);text-decoration:underline;">Privacy Policy</a></p>
 </div>
 
 <!-- FLOATING PREVIEW BUTTON -->
-<button class="preview-float-btn" onclick="openPreviewModal()">
+<button class="preview-float-btn" id="preview-float-btn" onclick="openPreviewModal()">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/></svg>
   Preview card
 </button>
@@ -529,6 +548,81 @@
   </div>
 </div>
 
+</div>
+
+<!-- PAGE 4: TRAINER AGREEMENT -->
+<div class="page" id="page-4">
+  <div class="container" style="padding-bottom:8rem;">
+    <p class="page-label">Section 4 of 4</p>
+    <h1 class="page-title">Trainer agreement.</h1>
+    <p class="page-sub">Read through the agreement below. You must accept it at the bottom before submitting your application.</p>
+
+    <div class="section-card">
+      <div style="font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:0.2rem;">IRON HOUSE TRAINER AGREEMENT</div>
+      <div style="font-size:12px;color:var(--gray-text);font-style:italic;margin-bottom:1.5rem;">Effective upon submission of this application</div>
+      <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;margin-bottom:1.5rem;">This Agreement is between Iron House LLC ("Iron House," "we," "us") and the trainer submitting this application ("Trainer," "you"). By checking the acceptance box and submitting this application, you agree to the following terms.</p>
+
+      <div style="height:1px;background:var(--border);margin-bottom:1.5rem;"></div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">1. The Platform</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">Iron House operates an online marketplace that matches clients with personal trainers based on goals, personality, and coaching style. Iron House provides client acquisition services to trainers listed on the platform. Iron House does not manage, supervise, or direct the Trainer's coaching programs, methods, or client relationships.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">2. Commission & Payments</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">Iron House earns a 15% commission on all payments made by clients who were matched to you through the Iron House platform. You keep 85% of every payment from platform-matched clients. Commission applies only to clients sourced through Iron House. You are free to continue acquiring clients through your own channels — those clients and their payments are entirely your own and are not subject to any Iron House commission or obligation.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">3. No Off-Platform Poaching</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">You agree not to move Iron House-matched clients off the platform to avoid commission payments. If a client was introduced to you through Iron House, payments for coaching services provided to that client are subject to the 15% commission regardless of where payment is processed. Circumventing platform payments is a material breach of this Agreement and grounds for immediate removal.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">4. Founding Trainer Fee</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">Trainers who join during Iron House's founding phase are granted a $0 monthly platform fee, locked in for life, as long as this Agreement remains in good standing. Iron House reserves the right to introduce a monthly platform fee for trainers who join after the founding phase. Your $0 fee will not be retroactively changed provided you have not breached this Agreement.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">5. Credentials & Conduct</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">You represent that all certifications, credentials, and information provided in this application are accurate and truthful. You agree to conduct yourself professionally in all interactions with clients sourced through Iron House. Misrepresentation of credentials or unprofessional conduct toward clients is grounds for immediate removal from the platform.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">6. Mutual Promotional Support</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">Iron House will actively work to match you with clients and support the growth of your roster. In turn, you agree to make reasonable good-faith efforts to promote your Iron House profile — such as sharing your profile link or tagging Iron House when relevant. No specific posting schedule or quota is required.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">7. Iron House's Right to Remove</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">Iron House reserves the right to remove any trainer from the platform at any time, for any reason, with or without cause. Removal does not entitle the Trainer to compensation for lost future income or client relationships. Iron House is not liable for any business loss resulting from removal.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">8. No Guarantee of Clients</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">Iron House makes no guarantee of a minimum number of client matches, referrals, or income. Client matching depends on demand, trainer fit, and platform growth. Joining Iron House does not guarantee business results.</p>
+      </div>
+
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">9. Governing Law</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">This Agreement is governed by the laws of the State of Florida. Any disputes arising from this Agreement will be resolved in the courts of Florida.</p>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">10. Entire Agreement</div>
+        <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">This Agreement constitutes the full understanding between Iron House LLC and the Trainer regarding platform participation. Iron House reserves the right to update these terms with reasonable notice.</p>
+      </div>
+    </div>
+
+    <label class="agreement-check-row" id="agreement-check-row">
+      <input type="checkbox" id="agreement-checkbox" onchange="updateAgreementBtn()">
+      <span class="agreement-check-label">I have read and agree to the Iron House Trainer Agreement. I understand that checking this box constitutes a legally binding electronic signature.</span>
+    </label>
+    <p class="agreement-check-hint" id="agreement-check-hint" style="display:none;">Please read and accept the agreement before submitting.</p>
+  </div>
+</div>
+
 <div class="nav-footer" id="nav-footer">
   <button class="btn-back" id="btn-back" onclick="prevPage()" disabled>← Back</button>
   <button class="btn-next" id="btn-next" onclick="nextPage()">Next →</button>
@@ -536,7 +630,7 @@
 
 <script>
   let currentPage = 1;
-  const totalPages = 3;
+  const totalPages = 4;
   let interests = [];
 
   const sliderLabels = {
@@ -846,12 +940,27 @@
     hint.style.color = interests.length >= 5 ? 'var(--orange)' : 'var(--gray-text)';
   }
 
+  function updateAgreementBtn() {
+    const checked = document.getElementById('agreement-checkbox').checked;
+    document.getElementById('btn-next').disabled = !checked;
+    document.getElementById('agreement-check-row').style.borderColor = checked ? 'rgba(232,80,10,0.5)' : '';
+    document.getElementById('agreement-check-hint').style.display = 'none';
+  }
+
   function updateProgress() {
     const pct = (currentPage / totalPages) * 100;
     document.getElementById('progress-bar').style.width = pct + '%';
     document.getElementById('step-counter').textContent = 'Step ' + currentPage + ' of ' + totalPages;
     document.getElementById('btn-back').disabled = currentPage === 1;
-    document.getElementById('btn-next').textContent = currentPage === totalPages ? 'Submit →' : 'Next →';
+    const nextBtn = document.getElementById('btn-next');
+    nextBtn.textContent = currentPage === totalPages ? 'Submit →' : 'Next →';
+    if (currentPage === totalPages) {
+      nextBtn.disabled = !document.getElementById('agreement-checkbox').checked;
+    } else {
+      nextBtn.disabled = false;
+    }
+    // hide preview button on agreement page
+    document.getElementById('preview-float-btn').style.display = currentPage === totalPages ? 'none' : '';
   }
 
   function initSliders() {
@@ -911,6 +1020,8 @@
 
     // Text fields
     formData.append('_subject', 'Iron House — Trainer Application');
+    formData.append('agreement_accepted', 'Yes');
+    formData.append('agreement_accepted_at', new Date().toISOString());
     formData.append('name', document.getElementById('input-firstname').value + ' ' + document.getElementById('input-lastname').value);
     formData.append('email', document.getElementById('input-email').value);
     formData.append('age', document.getElementById('input-age').value);
