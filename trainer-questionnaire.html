@@ -165,7 +165,22 @@
   .card-preview-hint p { font-size: 13px; color: rgba(245,242,237,0.6); line-height: 1.5; }
   .card-preview-hint strong { color: var(--orange); }
 
-  @media (max-width: 600px) {
+  /* CERT TAG BUILDER */
+  .cert-input-row { display: flex; gap: 8px; }
+  .cert-add-btn { background: var(--orange); color: var(--white); border: none; border-radius: 6px; padding: 0 18px; font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+  .cert-add-btn:hover { background: var(--orange-dark); }
+  .cert-tag-row { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .cert-tag-header { display: flex; align-items: center; justify-content: space-between; }
+  .cert-tag-label { display: flex; align-items: center; gap: 8px; }
+  .cert-tag-pill { background: rgba(232,80,10,0.12); border: 1px solid rgba(232,80,10,0.3); color: var(--orange); font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; letter-spacing: 0.5px; }
+  .cert-tag-remove { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 16px; line-height: 1; padding: 0; transition: color 0.15s; }
+  .cert-tag-remove:hover { color: #f87171; }
+  .cert-tag-upload { display: flex; align-items: center; gap: 10px; }
+  .cert-tag-upload-btn { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-text); background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 7px 14px; cursor: pointer; transition: all 0.15s; font-family: var(--font-body); white-space: nowrap; }
+  .cert-tag-upload-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .cert-tag-filename { font-size: 11px; color: #7cba4a; display: none; align-items: center; gap: 5px; }
+  .cert-tag-filename.show { display: flex; }
+  .cert-tag-clear { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 13px; padding: 0; }
     .container { padding: 2rem 1.25rem 6rem; }
     .topbar { padding: 1rem 1.25rem; }
     .nav-footer { padding: 1rem 1.25rem; }
@@ -216,7 +231,15 @@
         <input type="range" min="1" max="9" value="1" id="slider-exp" oninput="updateExp(this.value)">
         <div class="slider-labels"><span>1 yr</span><span>9+ yrs</span></div>
       </div>
-      <div class="q-block" style="margin-bottom:0;"><label class="q-label">Certifications & degrees</label><input type="text" class="q-input" id="input-certs" placeholder="e.g. NASM-CPT, ACE, BS Kinesiology"></div>
+      <div class="q-block" style="margin-bottom:0;">
+        <label class="q-label">Certifications & degrees</label>
+        <p style="font-size:12px;color:var(--gray-text);line-height:1.55;margin-bottom:10px;">Type a certification and press Enter to add it. Then attach proof for each one.</p>
+        <div class="cert-input-row">
+          <input type="text" class="q-input" id="cert-type-input" placeholder="e.g. NASM-CPT, ACE, BS Kinesiology" onkeydown="if(event.key==='Enter'){event.preventDefault();addCert();}">
+          <button type="button" onclick="addCert()" class="cert-add-btn">Add</button>
+        </div>
+        <div id="cert-tags-list" style="margin-top:12px;display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
     </div>
 
     <div class="section-card">
@@ -537,7 +560,69 @@
     document.querySelectorAll('#'+groupId+' .pill').forEach(p => p.classList.remove('selected'));
     el.classList.add('selected');
   }
-  function togglePill(el) { el.classList.toggle('selected'); }
+  // CERT TAG BUILDER
+  let certList = []; // [{name, file}]
+  let certIdCounter = 0;
+
+  function addCert() {
+    const input = document.getElementById('cert-type-input');
+    const name = input.value.trim();
+    if (!name) return;
+    const id = ++certIdCounter;
+    certList.push({ id, name, file: null });
+    input.value = '';
+    renderCertTags();
+  }
+
+  function removeCert(id) {
+    certList = certList.filter(c => c.id !== id);
+    renderCertTags();
+  }
+
+  function certFileChosen(id, input) {
+    const cert = certList.find(c => c.id === id);
+    if (!cert || !input.files[0]) return;
+    cert.file = input.files[0];
+    const fnEl = document.getElementById('cert-fn-' + id);
+    const ftEl = document.getElementById('cert-ft-' + id);
+    fnEl.textContent = cert.file.name;
+    ftEl.classList.add('show');
+  }
+
+  function clearCertFile(id) {
+    const cert = certList.find(c => c.id === id);
+    if (!cert) return;
+    cert.file = null;
+    document.getElementById('cert-file-input-' + id).value = '';
+    document.getElementById('cert-ft-' + id).classList.remove('show');
+  }
+
+  function renderCertTags() {
+    const list = document.getElementById('cert-tags-list');
+    list.innerHTML = certList.map(c => `
+      <div class="cert-tag-row" id="cert-row-${c.id}">
+        <div class="cert-tag-header">
+          <div class="cert-tag-label">
+            <span class="cert-tag-pill">${c.name}</span>
+          </div>
+          <button class="cert-tag-remove" onclick="removeCert(${c.id})">×</button>
+        </div>
+        <div class="cert-tag-upload">
+          <input type="file" id="cert-file-input-${c.id}" accept="image/*,.pdf" style="display:none;" onchange="certFileChosen(${c.id}, this)">
+          <button type="button" class="cert-tag-upload-btn" onclick="document.getElementById('cert-file-input-${c.id}').click()">
+            📄 Attach proof
+          </button>
+          <div class="cert-tag-filename" id="cert-ft-${c.id}">
+            <span>✓</span><span id="cert-fn-${c.id}"></span>
+            <button class="cert-tag-clear" onclick="clearCertFile(${c.id})">×</button>
+          </div>
+        </div>
+      </div>`).join('');
+  }
+
+  function getCertData() {
+    return certList.map(c => c.name).join(', ');
+  }
   function togglePillOther(el, wrapperId) {
     el.classList.toggle('selected');
     document.getElementById(wrapperId).classList.toggle('visible', el.classList.contains('selected'));
@@ -834,7 +919,7 @@
     const expVal = parseInt(document.getElementById('slider-exp').value);
     const experience = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
     formData.append('experience', experience);
-    formData.append('certifications', document.getElementById('input-certs').value);
+    formData.append('certifications', getCertData());
     formData.append('specialties', specialties);
     formData.append('niches', niches);
     formData.append('diet_philosophies', diet);
@@ -858,11 +943,11 @@
     formData.append('client_success', document.getElementById('input-success').value);
     formData.append('other_notes', document.getElementById('input-other').value);
 
-    // Attach actual files directly to FormData
+    // Attach photo files
     const photoSlots = [
-      { id: 'file-profile',  name: 'photo_profile'  },
-      { id: 'file-physique', name: 'photo_physique'  },
-      { id: 'file-lifestyle',name: 'photo_lifestyle' },
+      { id: 'file-profile',   name: 'photo_profile'   },
+      { id: 'file-physique',  name: 'photo_physique'  },
+      { id: 'file-lifestyle', name: 'photo_lifestyle' },
     ];
     photoSlots.forEach(slot => {
       const input = document.getElementById(slot.id);
@@ -871,6 +956,11 @@
           formData.append(slot.name, file, file.name);
         });
       }
+    });
+
+    // attach cert proof files
+    certList.forEach(c => {
+      if (c.file) formData.append('cert_proof_' + c.name.replace(/[^a-z0-9]/gi,'_'), c.file, c.file.name);
     });
 
     try {
