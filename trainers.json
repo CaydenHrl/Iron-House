@@ -7,7 +7,7 @@
     "price": 150,
     "experience": "3 yrs",
     "certs": "NCEP",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 2,
     "founding": true,
     "photo_main": "images/Roger-PFP.jpg",
@@ -33,7 +33,7 @@
     "stat_energy": 3,
     "stat_diet": 3,
     "bio": "At 14 I realized I needed to grow, I was a scrawny kid. I started at home with limited equipment. Learned to master my bodyweight. Once I transitioned to a gym I mastered the weights.",
-    "story": "At 14 years old, I lost an arm wrestling competition and got made fun of for how skinny my arms were. I had already been doing random ab workouts at home, but losing that competition really sparked my drive to become bigger and stronger.\n\nWhen I got home, I tried doing push-ups and couldn't even do six proper reps. That's when I discovered calisthenics on YouTube. I became obsessed with learning how to train and progress at home with limited equipment. I would load backpacks with books, use broomsticks with water jugs as makeshift barbells, and do whatever I could to improve with what I had.\n\nWhen the pandemic hit, I moved from Florida to Texas for a while since school became virtual and I hadn't seen family in a long time. Luckily, the gym my cousins trained at stayed open, and that's where I started lifting weights seriously. We would spend late nights in the gym constantly pushing ourselves, and that's where my powerlifting journey began. I became focused on improving the \"big three\" lifts: squat, bench, and deadlift.\n\nEventually, I moved back to Florida and lost access to a gym again, so I had to continue progressing from home. By then, I had bought gymnastics rings, which completely changed my training and opened up far more exercise options. Around this time, people at school started noticing my physique, and I would occasionally train at local gyms using guest passes with friends.\n\nBecause of my calisthenics background, I had already learned how important joint health and movement quality were. While many people around me dealt with shoulder, elbow, and lower back pain from poor training habits, I became interested in learning how to avoid and fix those issues.\n\nOver time, my focus shifted away from pure powerlifting and more toward hypertrophy and building muscle. I wanted to learn everything I could about bodybuilding and muscle growth. The problem was that a lot of mainstream fitness advice either wasn't effective or was designed around people using performance-enhancing drugs. I trained incredibly hard, pushed myself constantly, ate as much as I could — sometimes even eating three school lunches a day — yet I still hit frustrating plateaus.\n\nThat frustration led me deeper into researching training, recovery, nutrition, and the science of muscle growth. I studied different training philosophies, from old-school bodybuilding methods to modern evidence-based approaches, and eventually realized that even many popular \"science-based\" fitness influencers were missing important pieces of the puzzle.\n\nAfter years of trial and error, I finally developed a much deeper understanding of effective training, recovery, nutrition, and long-term progression.\n\nNow at 20 years old, my goal is to help others avoid the same mistakes, confusion, and frustration I went through. I know what it feels like to work hard without seeing results, and I want to help people train smarter so their effort actually pays off.",
+    "story": "At 14 years old, I lost an arm wrestling competition and got made fun of for how skinny my arms were. I had already been doing random ab workouts at home, but losing that competition really sparked my drive to become bigger and stronger.\n\nWhen I got home, I tried doing push-ups and couldn't even do six proper reps. That's when I discovered calisthenics on YouTube. I became obsessed with learning how to train and progress at home with limited equipment. I would load backpacks with books, use broomsticks with water jugs as makeshift barbells, and do whatever I could to improve with what I had.\n\nWhen the pandemic hit, I moved from Florida to Texas for a while since school became virtual and I hadn't seen family in a long time. Luckily, the gym my cousins trained at stayed open, and that's where I started lifting weights seriously. We would spend late nights in the gym constantly pushing ourselves, and that's where my powerlifting journey began. I became focused on improving the \"big three\" lifts: squat, bench, and deadlift.\n\nEventually, I moved back to Florida and lost access to a gym again, so I had to continue progressing from home. By then, I had bought gymnastics rings, which completely changed my training and opened up far more exercise options. Around this time, people at school started noticing my physique, and I would occasionally train at local gyms using guest passes with friends.\n\nBecause of my calisthenics background, I had already learned how important joint health and movement quality were. While many people around me dealt with shoulder, elbow, and lower back pain from poor training habits, I became interested in learning how to avoid and fix those issues.\n\nOver time, my focus shifted away from pure powerlifting and more toward hypertrophy and building muscle. I wanted to learn everything I could about bodybuilding and muscle growth. The problem was that a lot of mainstream fitness advice either wasn't effective or was designed around people using performance-enhancing drugs. I trained incredibly hard, pushed myself constantly, ate as much as I could â sometimes even eating three school lunches a day â yet I still hit frustrating plateaus.\n\nThat frustration led me deeper into researching training, recovery, nutrition, and the science of muscle growth. I studied different training philosophies, from old-school bodybuilding methods to modern evidence-based approaches, and eventually realized that even many popular \"science-based\" fitness influencers were missing important pieces of the puzzle.\n\nAfter years of trial and error, I finally developed a much deeper understanding of effective training, recovery, nutrition, and long-term progression.\n\nNow at 20 years old, my goal is to help others avoid the same mistakes, confusion, and frustration I went through. I know what it feels like to work hard without seeing results, and I want to help people train smarter so their effort actually pays off.",
     "testimonials": []
   },
   {
@@ -71,7 +71,7 @@
     "stat_checkins": 3,
     "stat_energy": 2,
     "stat_diet": 2,
-    "bio": "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life — not some idealized version of it.",
+    "bio": "I believe every body is different and every plan should be too. My style is flexible, functional, and built around your actual life â not some idealized version of it.",
     "story": "I started in sports medicine before pivoting fully to personal coaching. After 9 years I've worked with everyone from desk workers with chronic back pain to competitive athletes rebuilding after injury. What I've learned is that the best program is the one someone actually sticks to. I'll help you find that.",
     "testimonials": [
       {
@@ -118,7 +118,7 @@
     "stat_checkins": 2,
     "stat_energy": 4,
     "stat_diet": 1,
-    "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client — let's build something that challenges you and actually keeps you coming back.",
+    "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client â let's build something that challenges you and actually keeps you coming back.",
     "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process.",
     "testimonials": []
   },
@@ -157,8 +157,8 @@
     "stat_checkins": 2,
     "stat_energy": 2,
     "stat_diet": 3,
-    "bio": "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment.",
-    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through — helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
+    "bio": "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up â at their own pace, no judgment.",
+    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through â helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
     "testimonials": [
       {
         "name": "Jamie T.",
@@ -177,5 +177,43 @@
         "after": ""
       }
     ]
+  },
+  {
+    "name": "Sean Carson",
+    "age": 36,
+    "location": "Sandwich, IL",
+    "email": "sean@ampdupwellness.com",
+    "price": 400,
+    "experience": "6",
+    "certs": "NASM",
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "images/795A8A79-BC59-4FBD-B640-C7117E469F12.jpeg",
+    "photo_physique": "images/IMG_3649.jpeg",
+    "photo_lifestyle": "images/IMG_5269.jpeg",
+    "specialties": [
+      "Hypertrophy",
+      "Weight Loss"
+    ],
+    "diet": "Flexible",
+    "niches": [
+      "General population"
+    ],
+    "interests": [
+      "Skiing",
+      "Golfing",
+      "Hiking",
+      "Live Music",
+      "Boating"
+    ],
+    "stat_intensity": 3,
+    "stat_structure": 3,
+    "stat_checkins": 3,
+    "stat_energy": 3,
+    "stat_diet": 3,
+    "bio": "An aspiring men's physique competitor and fitness coach with over 6 years of serious time under the bar.\n\n\n\nFitness isn't something I stumbled into. It's something I've built, rep by rep, over years of learning what actually works not just in theory, but on my own body. I've spent that time dialing in everything from programming and nutrition to the mental side of staying consistent when motivation fades.",
+    "story": "I’m Sean Carson and I help people get real results.\n\nI created AMP'D UP because I was tired of seeing everyday people misled by fads, gimmicks, and cookie cutter programs that just don’t work. Fitness doesn’t have to be complicated but it does require consistency, clarity, and accountability. That’s where I come in.\n\nAs a coach, I blend no BS fitness strategy with real world mindset support. Whether you’re just getting started or ready to level up, I’m here to make sure you don’t just work out you train with purpose.\n\nWhat I’m About\n\nSustainable Results - No crash diets. No burnout. We build habits that stick.\n\nBusy Person Friendly - I train professionals, parents, entrepreneurs. People with real schedules and real goals.\n\nEnergy, Discipline, and Confidence - This isn’t just about lifting more. It’s about showing up for your life stronger, sharper, and more in control.",
+    "testimonials": []
   }
 ]
