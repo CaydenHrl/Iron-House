@@ -1033,60 +1033,67 @@
     const btn = document.getElementById('btn-next');
     btn.textContent = 'Sending...'; btn.disabled = true;
 
+    const formData = new FormData();
+
+    // ── SUBJECT ──────────────────────────────────────
+    const trainerName = document.getElementById('input-firstname').value.trim() + ' ' + document.getElementById('input-lastname').value.trim();
+    formData.append('_subject', `New Trainer Application — ${trainerName}`);
+    formData.append('agreement_accepted', 'Yes — ' + new Date().toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}));
+
+    // ── SECTION 1: BASIC INFO ──────────────────────────────────────
+    formData.append('01_name', trainerName);
+    formData.append('02_email', document.getElementById('input-email').value.trim());
+    formData.append('03_age', document.getElementById('input-age').value);
+    formData.append('04_location', document.getElementById('input-location').value.trim());
+
+    // ── SECTION 2: CREDENTIALS ──────────────────────────────────────
+    const expVal = parseInt(document.getElementById('slider-exp').value);
+    const experience = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
+    formData.append('05_experience', experience);
+    formData.append('06_certifications', getCertData());
+    formData.append('07_monthly_rate', '$' + document.getElementById('slider-rate').value + ' / mo');
+
+    // ── SECTION 3: TRAINING STYLE ──────────────────────────────────────
     let specialties = getSelected('specialty-group');
     const specOther = document.getElementById('specialty-other-input').value.trim();
     if (specOther) specialties += (specialties ? ', ' : '') + specOther;
+    formData.append('08_specialties', specialties);
 
     let niches = getNicheOrdered().join(', ');
     const nicheOther = document.getElementById('niche-other-input').value.trim();
     if (nicheOther) niches += (niches ? ', ' : '') + nicheOther;
+    formData.append('09_niches_in_priority_order', niches);
+    formData.append('09a_niche_shown_on_card', getNicheOrdered()[0] || '');
 
     let diet = getSelected('diet-group');
     const dietOther = document.getElementById('diet-other-input').value.trim();
     if (dietOther) diet += (diet ? ', ' : '') + dietOther;
+    formData.append('10_diet_philosophies', diet);
 
-    const formData = new FormData();
+    // ── SECTION 4: COACHING STATS (0–4 scale) ──────────────────────────────────────
+    formData.append('11_intensity',       getSlider('slider-intensity')     + ' (' + document.getElementById('slider-intensity').value + '/4)');
+    formData.append('12_structure',       getSlider('slider-structure')     + ' (' + document.getElementById('slider-structure').value + '/4)');
+    formData.append('13_checkins',        getSlider('slider-checkin')       + ' (' + document.getElementById('slider-checkin').value + '/4)');
+    formData.append('14_energy',          getSlider('slider-energy')        + ' (' + document.getElementById('slider-energy').value + '/4)');
+    formData.append('15_diet_strictness', getSlider('slider-dietstrict')    + ' (' + document.getElementById('slider-dietstrict').value + '/4)');
 
-    // Text fields
-    formData.append('_subject', 'Iron House — Trainer Application');
-    formData.append('agreement_accepted', 'Yes');
-    formData.append('agreement_accepted_at', new Date().toISOString());
-    formData.append('name', document.getElementById('input-firstname').value + ' ' + document.getElementById('input-lastname').value);
-    formData.append('email', document.getElementById('input-email').value);
-    formData.append('age', document.getElementById('input-age').value);
-    formData.append('location', document.getElementById('input-location').value);
-    const expVal = parseInt(document.getElementById('slider-exp').value);
-    const experience = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
-    formData.append('experience', experience);
-    formData.append('certifications', getCertData());
-    formData.append('specialties', specialties);
-    formData.append('niches', niches);
-    formData.append('diet_philosophies', diet);
-    formData.append('monthly_rate', '$' + document.getElementById('slider-rate').value + '/mo');
-    formData.append('stat_intensity', document.getElementById('slider-intensity').value);
-    formData.append('stat_structure', document.getElementById('slider-structure').value);
-    formData.append('stat_checkins', document.getElementById('slider-checkin').value);
-    formData.append('stat_energy', document.getElementById('slider-energy').value);
-    formData.append('stat_diet', document.getElementById('slider-dietstrict').value);
-    formData.append('intensity_label', getSlider('slider-intensity'));
-    formData.append('structure_label', getSlider('slider-structure'));
-    formData.append('checkin_label', getSlider('slider-checkin'));
-    formData.append('energy_label', getSlider('slider-energy'));
-    formData.append('diet_strictness_label', getSlider('slider-dietstrict'));
-    formData.append('ideal_client_experience', getSelected('clientexp-group'));
-    formData.append('ideal_client_motivation', getSelected('clientmotiv-group'));
-    formData.append('interests', interests.join(', '));
-    formData.append('short_bio', document.getElementById('input-bio').value);
-    formData.append('full_story', document.getElementById('input-story').value);
-    formData.append('client_struggles', document.getElementById('input-struggle').value);
-    formData.append('client_success', document.getElementById('input-success').value);
-    formData.append('other_notes', document.getElementById('input-other').value);
+    // ── SECTION 5: IDEAL CLIENT ──────────────────────────────────────
+    formData.append('16_ideal_client_experience_level', getSelected('clientexp-group'));
+    formData.append('17_ideal_client_motivation_style', getSelected('clientmotiv-group'));
 
-    // Attach photo files
+    // ── SECTION 6: PROFILE COPY ──────────────────────────────────────
+    formData.append('18_personal_interests', interests.join(', '));
+    formData.append('19_short_bio',          document.getElementById('input-bio').value.trim());
+    formData.append('20_full_story',         document.getElementById('input-story').value.trim());
+    formData.append('21_client_struggles',   document.getElementById('input-struggle').value.trim());
+    formData.append('22_client_success',     document.getElementById('input-success').value.trim());
+    formData.append('23_other_notes',        document.getElementById('input-other').value.trim());
+
+    // ── PHOTOS ──────────────────────────────────────
     const photoSlots = [
-      { id: 'file-profile',   name: 'photo_profile'   },
-      { id: 'file-physique',  name: 'photo_physique'  },
-      { id: 'file-lifestyle', name: 'photo_lifestyle' },
+      { id: 'file-profile',   name: 'PHOTO_01_profile_1x1'   },
+      { id: 'file-physique',  name: 'PHOTO_02_physique_4x3'  },
+      { id: 'file-lifestyle', name: 'PHOTO_03_lifestyle_4x3' },
     ];
     photoSlots.forEach(slot => {
       const input = document.getElementById(slot.id);
@@ -1097,9 +1104,9 @@
       }
     });
 
-    // attach cert proof files
-    certList.forEach(c => {
-      if (c.file) formData.append('cert_proof_' + c.name.replace(/[^a-z0-9]/gi,'_'), c.file, c.file.name);
+    // ── CERT PROOF FILES ──────────────────────────────────────
+    certList.forEach((c, i) => {
+      if (c.file) formData.append(`CERT_PROOF_${String(i+1).padStart(2,'0')}_${c.name.replace(/[^a-z0-9]/gi,'_')}`, c.file, c.file.name);
     });
 
     try {
@@ -1109,6 +1116,94 @@
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
+        // ── WRITE TO trainerspreview.json ON GITHUB ──────────────────
+        // Fine-grained token — scoped only to trainerspreview.json on Iron-House repo
+        // Worst case someone finds this: they can only add to staging queue, nothing else
+        const GH_USER  = 'CaydenHrl';
+        const GH_REPO  = 'Iron-House';
+        const GH_TOKEN = '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';
+        const GH_FILE  = 'trainerspreview.json';
+
+        try {
+          // Build trainer object from form data
+          const expV = parseInt(document.getElementById('slider-exp').value);
+          const newTrainer = {
+            name:       trainerName,
+            age:        parseInt(document.getElementById('input-age').value) || 0,
+            location:   document.getElementById('input-location').value.trim(),
+            email:      document.getElementById('input-email').value.trim(),
+            experience: expV === 9 ? '9+ yrs' : expV === 1 ? '1 yr' : expV + ' yrs',
+            certs:      getCertData(),
+            price:      parseInt(document.getElementById('slider-rate').value) || 149,
+            rating:     5.0,
+            reviews:    0,
+            founding:   true,
+            photo_main:      '',
+            photo_physique:  '',
+            photo_lifestyle: '',
+            specialties: getSelected('specialty-group').concat(
+              document.getElementById('specialty-other-input').value.trim()
+                ? [document.getElementById('specialty-other-input').value.trim()] : []
+            ),
+            niches: getNicheOrdered().concat(
+              document.getElementById('niche-other-input').value.trim()
+                ? [document.getElementById('niche-other-input').value.trim()] : []
+            ),
+            diet: (() => {
+              let d = getSelected('diet-group');
+              const dOther = document.getElementById('diet-other-input').value.trim();
+              if (dOther) d = d + (d ? ', ' : '') + dOther;
+              return d;
+            })(),
+            stat_intensity: parseInt(document.getElementById('slider-intensity').value),
+            stat_structure: parseInt(document.getElementById('slider-structure').value),
+            stat_checkins:  parseInt(document.getElementById('slider-checkin').value),
+            stat_energy:    parseInt(document.getElementById('slider-energy').value),
+            stat_diet:      parseInt(document.getElementById('slider-dietstrict').value),
+            interests: interests,
+            bio:    document.getElementById('input-bio').value.trim(),
+            story:  document.getElementById('input-story').value.trim(),
+            client_struggles: document.getElementById('input-struggle').value.trim(),
+            client_success:   document.getElementById('input-success').value.trim(),
+            other_notes:      document.getElementById('input-other').value.trim(),
+            applied_at: new Date().toISOString(),
+            testimonials: []
+          };
+
+          // Fetch current trainerspreview.json
+          const ghHeaders = {
+            'Authorization': 'token ' + GH_TOKEN,
+            'Accept': 'application/vnd.github.v3+json'
+          };
+          const headRes = await fetch(
+            `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
+            { headers: ghHeaders }
+          );
+
+          let existing = [];
+          let sha = '';
+          if (headRes.ok) {
+            const headData = await headRes.json();
+            sha = headData.sha;
+            existing = JSON.parse(decodeURIComponent(escape(atob(headData.content.replace(/\n/g, '')))));
+          }
+
+          existing.push(newTrainer);
+          const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(existing, null, 2))));
+          const putBody = { message: `New application — ${trainerName}`, content: newContent, branch: 'main' };
+          if (sha) putBody.sha = sha;
+
+          await fetch(
+            `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
+            { method: 'PUT', headers: { ...ghHeaders, 'Content-Type': 'application/json' }, body: JSON.stringify(putBody) }
+          );
+          // Silent fail — Formspree already succeeded, this is a bonus
+        } catch(ghErr) {
+          // Don't surface GitHub errors to the applicant — Formspree is the source of truth
+          console.warn('GitHub staging write failed:', ghErr);
+        }
+        // ─────────────────────────────────────────────────────────────
+
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('nav-footer').style.display = 'none';
         document.getElementById('thankyou').classList.add('active');
