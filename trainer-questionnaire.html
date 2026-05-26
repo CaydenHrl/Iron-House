@@ -974,7 +974,36 @@
     });
   }
 
+  function validatePage1() {
+    const missing = certList.filter(c => !c.file);
+    if (missing.length > 0) {
+      // highlight each cert row missing a file
+      missing.forEach(c => {
+        const row = document.getElementById('cert-row-' + c.id);
+        if (row) {
+          const btn = row.querySelector('.cert-tag-upload-btn');
+          btn.style.borderColor = '#f87171';
+          btn.style.color = '#f87171';
+          btn.textContent = '⚠ Proof required';
+          // reset after they attach
+          row.querySelector('input[type=file]').addEventListener('change', () => {
+            btn.style.borderColor = '';
+            btn.style.color = '';
+            btn.textContent = '📄 Attach proof';
+          }, { once: true });
+        }
+      });
+      // scroll to first missing one
+      const firstRow = document.getElementById('cert-row-' + missing[0].id);
+      if (firstRow) firstRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    return true;
+  }
+
   function nextPage() {
+    // validate cert proofs before leaving page 1
+    if (currentPage === 1 && certList.length > 0 && !validatePage1()) return;
     if (currentPage < totalPages) {
       document.getElementById('page-'+currentPage).classList.remove('active');
       currentPage++;
