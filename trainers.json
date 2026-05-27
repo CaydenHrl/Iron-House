@@ -51,10 +51,9 @@
     "photo_physique": "images/IMG_3649.jpeg",
     "photo_lifestyle": "images/IMG_5269.jpeg",
     "specialties": [
-      "Hypertrophy",
-      "Weight Loss"
+      "Hypertrophy"
     ],
-    "diet": "Flexible",
+    "diet": "Flexible / IIFYM",
     "niches": [
       "General population"
     ],
@@ -171,9 +170,9 @@
     "rating": 4.9,
     "reviews": 84,
     "founding": true,
-    "photo_main": "",
-    "photo_physique": "",
-    "photo_lifestyle": "",
+    "photo_main": "images/marcus-main.jpg",
+    "photo_physique": "images/marcus-gym.jpg",
+    "photo_lifestyle": "images/marcus-life.jpg",
     "specialties": [
       "Hypertrophy",
       "Strength"
