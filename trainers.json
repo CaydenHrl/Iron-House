@@ -171,9 +171,9 @@
     "rating": 4.9,
     "reviews": 84,
     "founding": true,
-    "photo_main": "images/marcus-main.jpg",
-    "photo_physique": "images/marcus-gym.jpg",
-    "photo_lifestyle": "images/marcus-life.jpg",
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
     "specialties": [
       "Hypertrophy",
       "Strength"
