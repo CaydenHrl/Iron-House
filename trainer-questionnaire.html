@@ -1274,10 +1274,11 @@
         // Worst case someone finds this: they can only add to staging queue, nothing else
         const GH_USER  = 'CaydenHrl';
         const GH_REPO  = 'Iron-House';
-        const GH_TOKEN = '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';
+        const GH_TOKEN = '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';
         const GH_FILE  = 'trainerspreview.json';
 
         try {
+          console.log('Starting GitHub staging write...');
           // Build trainer object from form data
           const expV = parseInt(document.getElementById('slider-exp').value);
           const newTrainer = {
@@ -1336,6 +1337,7 @@
             `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
             { headers: ghHeaders }
           );
+          console.log('GitHub GET status:', headRes.status, headRes.ok ? 'OK' : 'FAILED');
 
           let existing = [];
           let sha = '';
@@ -1343,6 +1345,10 @@
             const headData = await headRes.json();
             sha = headData.sha;
             existing = JSON.parse(decodeURIComponent(escape(atob(headData.content.replace(/\n/g, '')))));
+            console.log('Existing staging entries:', existing.length);
+          } else {
+            const errData = await headRes.json().catch(() => ({}));
+            console.warn('GitHub GET failed:', headRes.status, errData.message);
           }
 
           existing.push(newTrainer);
@@ -1350,7 +1356,7 @@
           const putBody = { message: `New application — ${trainerName}`, content: newContent, branch: 'main' };
           if (sha) putBody.sha = sha;
 
-          await fetch(
+          const putRes = await fetch(
             `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
             {
               method: 'PUT',
@@ -1362,6 +1368,11 @@
               body: JSON.stringify(putBody)
             }
           );
+          console.log('GitHub PUT status:', putRes.status, putRes.ok ? 'SUCCESS' : 'FAILED');
+          if (!putRes.ok) {
+            const putErr = await putRes.json().catch(() => ({}));
+            console.warn('GitHub PUT error:', putErr.message);
+          }
           // Silent fail — Formspree already succeeded, this is a bonus
         } catch(ghErr) {
           // Don't surface GitHub errors to the applicant — Formspree is the source of truth
