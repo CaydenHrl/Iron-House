@@ -1,1 +1,38 @@
-
+[
+  {
+    "name": "o o",
+    "age": 0,
+    "location": "k",
+    "email": "k@f.com",
+    "experience": "1 yr",
+    "certs": "an",
+    "price": 150,
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "Weight loss"
+    ],
+    "niches": [
+      "Plus-size / body positive"
+    ],
+    "diet": "Flexible / IIFYM",
+    "stat_intensity": 2,
+    "stat_structure": 2,
+    "stat_checkins": 2,
+    "stat_energy": 2,
+    "stat_diet": 2,
+    "interests": [
+      "Gaming",
+      "Fishing",
+      "Motorcycles"
+    ],
+    "bio": "sdfasdfas",
+    "story": "sadfla/jsdf aosdfjb a",
+    "applied_at": "2026-05-27T20:51:48.626Z",
+    "testimonials": []
+  }
+]
