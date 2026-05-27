@@ -1345,7 +1345,8 @@
           if (headRes.ok) {
             const headData = await headRes.json();
             sha = headData.sha;
-            existing = JSON.parse(decodeURIComponent(escape(atob(headData.content.replace(/\n/g, '')))));
+            const raw = atob(headData.content.replace(/\s/g, ''));
+            existing = JSON.parse(raw);
             console.log('Existing staging entries:', existing.length);
           } else {
             const errData = await headRes.json().catch(() => ({}));
