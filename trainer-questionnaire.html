@@ -41,6 +41,7 @@
   .page { display: none; animation: fadeUp 0.4s ease both; }
   .page.active { display: block; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
 
   .container { max-width: 680px; margin: 0 auto; padding: 3rem 2rem 6rem; }
   .page-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
@@ -63,9 +64,18 @@
   .q-input { width: 100%; background: var(--gray-mid); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; transition: border-color 0.2s; }
   .q-input:focus { border-color: var(--orange); }
   .q-input::placeholder { color: var(--gray-text); }
+  .q-input.field-error { border-color: #f87171; background: rgba(248,113,113,0.06); }
+  .q-input.field-error:focus { border-color: #f87171; }
   .q-textarea { width: 100%; background: var(--gray-mid); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; color: var(--white); font-family: var(--font-body); font-size: 15px; line-height: 1.6; outline: none; resize: vertical; min-height: 110px; transition: border-color 0.2s; }
   .q-textarea:focus { border-color: var(--orange); }
   .q-textarea::placeholder { color: var(--gray-text); }
+  .q-textarea.field-error { border-color: #f87171; background: rgba(248,113,113,0.06); }
+  .q-label .required-star { color: #f87171; margin-left: 3px; }
+  .q-label .field-hint { font-size:11px; color: var(--gray-text); font-weight:400; text-transform:none; letter-spacing:0; margin-left:6px; }
+  .pill-group.group-error .pill:not(.selected) { border-color: rgba(248,113,113,0.4); }
+  .pill-group.group-error { outline: 1px solid rgba(248,113,113,0.3); outline-offset: 4px; border-radius: 8px; }
+  .field-error-msg { font-size: 12px; color: #f87171; margin-top: 5px; display: none; }
+  .field-error-msg.show { display: block; }
 
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
@@ -219,7 +229,7 @@
   <div class="container">
     <p class="page-label">Section 1 of 3</p>
     <h1 class="page-title">Your credentials.</h1>
-    <p class="page-sub">The practical stuff that goes on your profile card — what clients see first.</p>
+    <p class="page-sub">The practical stuff that goes on your profile card — what clients see first. <span style="color:#f87171;font-size:13px;">Fields marked <span style="font-weight:700;">*</span> are required.</span></p>
 
     <div class="card-preview-hint">
       <span>🪪</span>
@@ -229,14 +239,14 @@
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Basic info</div>
       <div class="field-row" style="margin-bottom:1rem;">
-        <div class="q-block" style="margin-bottom:0;"><label class="q-label">First name</label><input type="text" class="q-input" id="input-firstname" placeholder="Marcus"></div>
-        <div class="q-block" style="margin-bottom:0;"><label class="q-label">Last name</label><input type="text" class="q-input" id="input-lastname" placeholder="Reyes"></div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">First name<span class="required-star">*</span></label><input type="text" class="q-input" id="input-firstname" placeholder="Marcus"></div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">Last name<span class="required-star">*</span></label><input type="text" class="q-input" id="input-lastname" placeholder="Reyes"></div>
       </div>
       <div class="field-row" style="margin-bottom:1rem;">
-        <div class="q-block" style="margin-bottom:0;"><label class="q-label">Age</label><input type="number" class="q-input" id="input-age" placeholder="29"></div>
-        <div class="q-block" style="margin-bottom:0;"><label class="q-label">City & State</label><input type="text" class="q-input" id="input-location" placeholder="Tampa, FL"></div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">Age<span class="required-star">*</span></label><input type="number" class="q-input" id="input-age" placeholder="29"></div>
+        <div class="q-block" style="margin-bottom:0;"><label class="q-label">City &amp; State<span class="required-star">*</span></label><input type="text" class="q-input" id="input-location" placeholder="Tampa, FL"></div>
       </div>
-      <div class="q-block" style="margin-bottom:0;"><label class="q-label">Email address</label><input type="email" class="q-input" id="input-email" placeholder="you@email.com"></div>
+      <div class="q-block" style="margin-bottom:0;"><label class="q-label">Email address<span class="required-star">*</span></label><input type="email" class="q-input" id="input-email" placeholder="you@email.com"></div>
     </div>
 
     <div class="section-card">
@@ -261,7 +271,7 @@
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Training specialties <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
+      <div class="section-card-title"><div class="dot"></div>Training specialties<span class="required-star">*</span> <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
       <div class="pill-group" id="specialty-group">
         <button class="pill" onclick="togglePill(this)">Hypertrophy</button>
         <button class="pill" onclick="togglePill(this)">Strength & powerlifting</button>
@@ -279,7 +289,7 @@
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Who do you specialize in working with?</div>
+      <div class="section-card-title"><div class="dot"></div>Who do you specialize in working with?<span class="required-star">*</span></div>
       <p style="font-size:13px;color:var(--gray-text);line-height:1.6;margin-bottom:1rem;">Pick up to 3. Order matters — #1 shows on your trainer card, all 3 show in your full profile.</p>
       <div class="pill-group" id="niche-group" style="margin-bottom:1rem;">
         <button class="pill" onclick="toggleNiche(this)">Seniors / 60+</button>
@@ -304,7 +314,7 @@
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Diet philosophies you coach <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
+      <div class="section-card-title"><div class="dot"></div>Diet philosophies you coach<span class="required-star">*</span> <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(pick all that apply)</span></div>
       <div class="pill-group" id="diet-group">
         <button class="pill" onclick="togglePill(this)">Flexible / IIFYM</button>
         <button class="pill" onclick="togglePill(this)">High protein</button>
@@ -372,7 +382,7 @@
     </div>
 
     <div class="divider"></div>
-    <p class="page-label" style="margin-bottom:1.25rem;">Ideal client</p>
+    <p class="page-label" style="margin-bottom:1.25rem;">Ideal client<span class="required-star" style="color:#f87171;margin-left:4px;">*</span></p>
 
     <div class="section-card">
       <div class="section-card-title"><div class="dot"></div>Who do you do your best work with?</div>
@@ -457,7 +467,7 @@
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Personal interests</div>
+      <div class="section-card-title"><div class="dot"></div>Personal interests<span class="required-star">*</span></div>
       <p style="font-size:13px;color:var(--gray-text);margin-bottom:1rem;line-height:1.5;">Add 3–5 things you're into outside the gym. These show up on your card and help clients connect with you.</p>
       <div class="interests-input-row">
         <input type="text" class="q-input" id="interest-input" placeholder="e.g. Hiking, cooking, fantasy football..." onkeydown="if(event.key==='Enter'){event.preventDefault();addInterest();}">
@@ -487,14 +497,14 @@
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your short bio <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your card)</span></div>
+      <div class="section-card-title"><div class="dot"></div>Your short bio<span class="required-star">*</span> <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your card)</span></div>
       <p style="font-size:13px;color:var(--gray-text);margin-bottom:0.75rem;line-height:1.5;">2–3 sentences. First person voice.</p>
       <textarea class="q-textarea" id="input-bio" placeholder="Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up — at their own pace, no judgment."></textarea>
     </div>
 
     <div class="section-card">
-      <div class="section-card-title"><div class="dot"></div>Your full story <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your full profile)</span></div>
-      <textarea class="q-textarea" style="min-height:140px;" id="input-story" placeholder="Why you became a coach, what you believe in, what your program looks like and who it's built for..."></textarea>
+      <div class="section-card-title"><div class="dot"></div>Your full story<span class="required-star">*</span> <span style="font-size:12px;color:var(--gray-text);font-family:var(--font-body);font-weight:400;letter-spacing:0;margin-left:4px;">(shows on your full profile)</span></div>
+      <textarea class="q-textarea" style="min-height:140px;" id="input-story" required placeholder="Why you became a coach, what you believe in, what your program looks like and who it's built for..."></textarea>
     </div>
 
     <div class="section-card">
@@ -653,6 +663,149 @@
   function selectPill(el, groupId) {
     document.querySelectorAll('#'+groupId+' .pill').forEach(p => p.classList.remove('selected'));
     el.classList.add('selected');
+  }
+  function togglePill(btn) {
+    btn.classList.toggle('selected');
+  }
+  function togglePillOther(btn, wrapperId) {
+    btn.classList.toggle('selected');
+    const wrap = document.getElementById(wrapperId);
+    if (wrap) wrap.classList.toggle('visible', btn.classList.contains('selected'));
+  }
+
+  // ── VALIDATION ──────────────────────────────────────────────────────
+  function showValError(msg) {
+    let el = document.getElementById('val-error');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'val-error';
+      el.style.cssText = 'background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:8px;padding:10px 16px;font-size:13px;color:#f87171;margin:1rem 0;line-height:1.5;';
+      const footer = document.getElementById('nav-footer');
+      if (footer) footer.parentNode.insertBefore(el, footer);
+    }
+    el.textContent = '⚠ ' + msg;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function clearValError() {
+    const el = document.getElementById('val-error');
+    if (el) el.style.display = 'none';
+  }
+
+  function markFieldError(id, msg) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('field-error');
+    el.addEventListener('input', function() { el.classList.remove('field-error'); }, { once: true });
+    // shake animation
+    el.style.animation = 'none'; el.offsetHeight; el.style.animation = 'shake 0.3s ease';
+  }
+
+  function markGroupError(groupId) {
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    group.classList.add('group-error');
+    // remove on any pill click
+    group.querySelectorAll('.pill').forEach(p => {
+      p.addEventListener('click', function() { group.classList.remove('group-error'); }, { once: true });
+    });
+    group.style.animation = 'none'; group.offsetHeight; group.style.animation = 'shake 0.3s ease';
+  }
+
+  function validatePage() {
+    clearValError();
+    // clear previous errors
+    document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+    document.querySelectorAll('.group-error').forEach(el => el.classList.remove('group-error'));
+
+    let errors = [];
+    let firstErrorEl = null;
+
+    if (currentPage === 1) {
+      const textFields = [
+        ['input-firstname', 'First name'],
+        ['input-lastname',  'Last name'],
+        ['input-age',       'Age'],
+        ['input-location',  'City & State'],
+        ['input-email',     'Email address'],
+      ];
+      for (const [id, label] of textFields) {
+        const el = document.getElementById(id);
+        if (!el || !el.value.trim()) {
+          markFieldError(id, label + ' is required');
+          errors.push(label + ' is required');
+          if (!firstErrorEl) firstErrorEl = el;
+        }
+      }
+      const email = document.getElementById('input-email')?.value.trim();
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        markFieldError('input-email', 'Invalid email');
+        errors.push('Please enter a valid email address');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('input-email');
+      }
+      if (!document.querySelectorAll('#specialty-group .pill.selected').length) {
+        markGroupError('specialty-group');
+        errors.push('Select at least one training specialty');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('specialty-group');
+      }
+      if (!nicheOrder.length) {
+        markGroupError('niche-group');
+        errors.push('Select at least one client niche');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('niche-group');
+      }
+      if (!document.querySelectorAll('#diet-group .pill.selected').length) {
+        markGroupError('diet-group');
+        errors.push('Select at least one diet philosophy');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('diet-group');
+      }
+      if (certList.length > 0 && !validatePage1()) {
+        errors.push('Attach proof for all certifications');
+      }
+    }
+
+    if (currentPage === 2) {
+      if (!document.querySelectorAll('#clientexp-group .pill.selected').length) {
+        markGroupError('clientexp-group');
+        errors.push('Select your ideal client experience level');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('clientexp-group');
+      }
+      if (!document.querySelectorAll('#clientmotiv-group .pill.selected').length) {
+        markGroupError('clientmotiv-group');
+        errors.push('Select your ideal client motivation style');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('clientmotiv-group');
+      }
+    }
+
+    if (currentPage === 3) {
+      if (!document.getElementById('input-bio')?.value.trim()) {
+        markFieldError('input-bio', 'Bio is required');
+        errors.push('Short bio is required');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('input-bio');
+      }
+      if (!document.getElementById('input-story')?.value.trim()) {
+        markFieldError('input-story', 'Story is required');
+        errors.push('Full story is required');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('input-story');
+      }
+      if (!interests.length) {
+        errors.push('Add at least one personal interest');
+        if (!firstErrorEl) firstErrorEl = document.getElementById('interest-input');
+      }
+      if (!document.getElementById('file-profile')?.files.length) {
+        errors.push('Profile photo is required');
+        if (!firstErrorEl) firstErrorEl = document.querySelector('.photo-upload-area');
+      }
+    }
+
+    if (errors.length) {
+      const count = errors.length;
+      showValError(count === 1 ? errors[0] : count + ' fields need attention — highlighted in red below');
+      if (firstErrorEl) {
+        setTimeout(() => firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+      }
+      return false;
+    }
+    return true;
   }
   // CERT TAG BUILDER
   let certList = [];
@@ -1002,8 +1155,8 @@
   }
 
   function nextPage() {
-    // validate cert proofs before leaving page 1
-    if (currentPage === 1 && certList.length > 0 && !validatePage1()) return;
+    if (!validatePage()) return;
+    clearValError();
     if (currentPage < totalPages) {
       document.getElementById('page-'+currentPage).classList.remove('active');
       currentPage++;
@@ -1141,18 +1294,22 @@
             photo_main:      '',
             photo_physique:  '',
             photo_lifestyle: '',
-            specialties: getSelected('specialty-group').concat(
-              document.getElementById('specialty-other-input').value.trim()
-                ? [document.getElementById('specialty-other-input').value.trim()] : []
-            ),
-            niches: getNicheOrdered().concat(
-              document.getElementById('niche-other-input').value.trim()
-                ? [document.getElementById('niche-other-input').value.trim()] : []
-            ),
+            specialties: (() => {
+              const s = getSelected('specialty-group').split(', ').filter(Boolean);
+              const o = document.getElementById('specialty-other-input').value.trim();
+              if (o) s.push(o);
+              return s;
+            })(),
+            niches: (() => {
+              const n = getNicheOrdered();
+              const o = document.getElementById('niche-other-input').value.trim();
+              if (o) n.push(o);
+              return n;
+            })(),
             diet: (() => {
               let d = getSelected('diet-group');
-              const dOther = document.getElementById('diet-other-input').value.trim();
-              if (dOther) d = d + (d ? ', ' : '') + dOther;
+              const o = document.getElementById('diet-other-input').value.trim();
+              if (o) d = d + (d ? ', ' : '') + o;
               return d;
             })(),
             stat_intensity: parseInt(document.getElementById('slider-intensity').value),
@@ -1195,7 +1352,15 @@
 
           await fetch(
             `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
-            { method: 'PUT', headers: { ...ghHeaders, 'Content-Type': 'application/json' }, body: JSON.stringify(putBody) }
+            {
+              method: 'PUT',
+              headers: {
+                'Authorization': 'token ' + GH_TOKEN,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(putBody)
+            }
           );
           // Silent fail — Formspree already succeeded, this is a bonus
         } catch(ghErr) {
