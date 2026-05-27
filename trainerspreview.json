@@ -10,9 +10,9 @@
     "rating": 5,
     "reviews": 0,
     "founding": true,
-    "photo_main": "",
-    "photo_physique": "",
-    "photo_lifestyle": "",
+    "photo_main": "images/",
+    "photo_physique": "images/",
+    "photo_lifestyle": "images/",
     "specialties": [
       "Weight loss"
     ],
