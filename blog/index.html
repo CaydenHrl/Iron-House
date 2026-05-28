@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Iron House Online Personal Training</title>
+<meta name="description" content="Guides, tips, and resources for personal trainers and fitness clients. Learn how to grow your online coaching business and find the right trainer for you.">
+<meta name="author" content="Iron House">
+<link rel="canonical" href="https://www.joinironhouse.com/blog/">
+<meta property="og:title" content="Blog — Iron House">
+<meta property="og:description" content="Guides for personal trainers and fitness clients from the Iron House team.">
+<meta property="og:url" content="https://www.joinironhouse.com/blog/">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--black:#0a0a0a;--white:#f5f2ed;--orange:#e8500a;--orange-dark:#b83d06;--gray:#1a1a1a;--gray-mid:#2e2e2e;--gray-text:#888;--border:rgba(255,255,255,0.07);--font-display:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:2rem;align-items:center;}
+  .nav-links a{color:var(--gray-text);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:600!important;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all 0.25s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{font-family:var(--font-display);font-size:36px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .mobile-menu .m-cta{background:var(--orange);color:var(--white)!important;padding:12px 32px;border-radius:4px;}
+  .mobile-menu-close{position:absolute;top:1.25rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:32px;cursor:pointer;z-index:3;line-height:1;opacity:0.6;}
+  .page-wrap{max-width:1100px;margin:0 auto;padding:8rem 2rem 5rem;}
+  .page-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;}
+  .page-title{font-family:var(--font-display);font-size:clamp(48px,7vw,80px);line-height:1;letter-spacing:1px;margin-bottom:1rem;}
+  .page-sub{font-size:15px;color:var(--gray-text);max-width:560px;line-height:1.7;margin-bottom:3.5rem;}
+  .posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+  .post-card{background:var(--gray);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--white);transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;}
+  .post-card:hover{border-color:rgba(232,80,10,0.4);transform:translateY(-3px);}
+  .post-card-body{padding:1.75rem;flex:1;}
+  .post-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;display:block;}
+  .post-tag.client{color:#7cba4a;}
+  .post-title{font-family:var(--font-display);font-size:clamp(22px,3vw,28px);letter-spacing:0.5px;line-height:1.1;margin-bottom:0.75rem;}
+  .post-excerpt{font-size:14px;color:var(--gray-text);line-height:1.7;}
+  .post-footer{padding:1rem 1.75rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .post-read{font-size:12px;color:var(--gray-text);}
+  .post-cta{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--orange);}
+  footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-logo{font-family:var(--font-display);font-size:20px;letter-spacing:2px;}
+  .footer-logo span{color:var(--orange);}
+  .footer-links{display:flex;gap:1.5rem;align-items:center;}
+  .footer-links a{font-size:12px;color:var(--gray-text);text-decoration:none;}
+  .footer-links a:hover{color:var(--white);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:768px){nav{padding:1rem 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}.page-wrap{padding:6rem 1.25rem 4rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">IRON<span>HOUSE</span></a>
+  <div class="nav-links">
+    <a href="../index.html#how-it-works">How it works</a>
+    <a href="../trainers.html">Meet the coaches</a>
+    <a href="../index.html#faq">FAQ</a>
+    <a href="../questionnaire.html" class="nav-cta">Get matched</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" onclick="if(event.target===this)closeMenu()">
+  <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="../trainers.html" onclick="closeMenu()">Coaches</a>
+  <a href="../index.html#faq" onclick="closeMenu()">FAQ</a>
+  <a href="../questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
+</div>
+
+<div class="page-wrap">
+  <p class="page-eyebrow">Resources</p>
+  <h1 class="page-title">The Iron House blog.</h1>
+  <p class="page-sub">Practical guides for trainers growing their online business and clients looking for the right coach. No fluff.</p>
+
+  <div class="posts-grid">
+    <a href="how-to-get-online-personal-training-clients.html" class="post-card" style="animation:fadeUp 0.4s ease both;">
+      <div class="post-card-body">
+        <span class="post-tag">For Trainers</span>
+        <div class="post-title">How to get online personal training clients without social media</div>
+        <p class="post-excerpt">Most trainers burn out chasing the algorithm. There's a better way — and it doesn't require posting six times a week.</p>
+      </div>
+      <div class="post-footer"><span class="post-read">8 min read</span><span class="post-cta">Read →</span></div>
+    </a>
+    <a href="best-platforms-for-online-personal-trainers.html" class="post-card" style="animation:fadeUp 0.4s 0.05s ease both;">
+      <div class="post-card-body">
+        <span class="post-tag">For Trainers</span>
+        <div class="post-title">The best platforms for online personal trainers in 2025</div>
+        <p class="post-excerpt">Not all coaching platforms are built the same. Here's an honest breakdown of your options — and what most of them get wrong.</p>
+      </div>
+      <div class="post-footer"><span class="post-read">6 min read</span><span class="post-cta">Read →</span></div>
+    </a>
+    <a href="what-makes-a-great-online-trainer-profile.html" class="post-card" style="animation:fadeUp 0.4s 0.1s ease both;">
+      <div class="post-card-body">
+        <span class="post-tag">For Trainers</span>
+        <div class="post-title">What makes a great online personal trainer profile</div>
+        <p class="post-excerpt">Your profile is your first impression. Here's exactly what clients look for — and what makes them click away.</p>
+      </div>
+      <div class="post-footer"><span class="post-read">5 min read</span><span class="post-cta">Read →</span></div>
+    </a>
+    <a href="how-to-find-an-online-personal-trainer.html" class="post-card" style="animation:fadeUp 0.4s 0.15s ease both;">
+      <div class="post-card-body">
+        <span class="post-tag client">For Clients</span>
+        <div class="post-title">How to find an online personal trainer that actually fits you</div>
+        <p class="post-excerpt">Credentials matter less than you think. Here's what to actually look for when choosing an online coach.</p>
+      </div>
+      <div class="post-footer"><span class="post-read">6 min read</span><span class="post-cta">Read →</span></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">IRON<span>HOUSE</span></span>
+  <div class="footer-links">
+    <a href="https://instagram.com/joinironhouse" target="_blank">@joinironhouse</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <span style="font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Iron House LLC</span>
+  </div>
+</footer>
+<script>
+  function toggleMenu(){const h=document.getElementById('hamburger');const m=document.getElementById('mobile-menu');h.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+  function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>
