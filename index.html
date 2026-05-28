@@ -213,10 +213,13 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+  /* MOBILE SPOTLIGHT — hidden on PC, shown between headline and sub on mobile */
+  .mobile-spotlight-wrap { display: none; }
+
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
-    .hero-right { padding: 2rem 2.5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
-    .hero-bg { background: radial-gradient(ellipse at 50% 80%, rgba(232,80,10,0.22) 0%, rgba(232,80,10,0.08) 30%, transparent 60%); }
+    .hero-right { display: none; } /* hidden on mobile — spotlight moves into hero-left */
+    .hero-bg { background: radial-gradient(ellipse at 50% 55%, rgba(232,80,10,0.22) 0%, rgba(232,80,10,0.08) 30%, transparent 60%); }
     .spotlight-stage { max-width: 100%; }
     .steps { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
@@ -226,6 +229,49 @@
     .faq-col-label { margin-top: 2rem; display: block; }
     .faq-col:first-child .faq-col-label { margin-top: 0; }
     .section-header-split { grid-template-columns: 1fr; gap: 2rem; }
+
+    /* show mobile spotlight */
+    .mobile-spotlight-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin: 2rem 0 1.5rem;
+      width: 100%;
+    }
+    .mobile-spotlight-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(ellipse at center, rgba(232,80,10,0.28) 0%, rgba(232,80,10,0.1) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .mobile-spotlight-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    .mobile-spotlight-wrap .spotlight-stage {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 300px;
+      height: 520px;
+      overflow: visible;
+    }
+    .mobile-spotlight-wrap .carousel-dots {
+      position: relative;
+      z-index: 2;
+    }
   }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
@@ -283,6 +329,15 @@
     <div class="hero-verse">As iron sharpens iron —</div>
     <p class="hero-eyebrow">Online personal training, done right</p>
     <h1>Find the coach<br><em>built for you.</em></h1>
+
+    <!-- MOBILE ONLY: spotlight carousel appears here between headline and sub -->
+    <div class="mobile-spotlight-wrap">
+      <div class="mobile-spotlight-glow"></div>
+      <div class="mobile-spotlight-label">Trainer spotlight</div>
+      <div class="spotlight-stage" id="mobile-spotlight-stage"></div>
+      <div class="carousel-dots" id="mobile-carousel-dots"></div>
+    </div>
+
     <p class="hero-sub">Stop scrolling through random fitness pages. Iron House matches you with a personal trainer who fits your goals, your personality, and your life.</p>
     <div class="hero-actions">
       <a href="questionnaire.html" class="btn-primary">Find my coach</a>
@@ -558,9 +613,6 @@
   }
 
   function renderSpotlight() {
-    const stage = document.getElementById('spotlight-stage');
-    const dotsEl = document.getElementById('carousel-dots');
-    if (!spotlightData.length || !stage) return;
     const total = spotlightData.length;
     const prev = (spotlightIdx - 1 + total) % total;
     const next = (spotlightIdx + 1) % total;
@@ -572,15 +624,25 @@
       return 'sp-hidden';
     }
 
-    stage.innerHTML = spotlightData.map((t, i) =>
+    const cardHtml = spotlightData.map((t, i) =>
       `<div class="spotlight-card ${slotClass(i)}" onclick="${i === spotlightIdx ? `window.location.href='trainers.html?spotlight=${encodeURIComponent(t.name)}'` : ''}">${buildSpotlightCard(t)}</div>`
     ).join('');
 
-    dotsEl.innerHTML = spotlightData.map((_, i) =>
+    const dotsHtml = spotlightData.map((_, i) =>
       `<button class="carousel-dot ${i === spotlightIdx ? 'active' : ''}" onclick="goToSpotlight(${i})">
         <div class="carousel-dot-fill"></div>
       </button>`
     ).join('');
+
+    // render both desktop and mobile stages
+    ['spotlight-stage', 'mobile-spotlight-stage'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = cardHtml;
+    });
+    ['carousel-dots', 'mobile-carousel-dots'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = dotsHtml;
+    });
   }
 
   function goToSpotlight(n) {
@@ -658,13 +720,24 @@
     renderTestiMini();
     testiTimer = setInterval(() => { testiIdx = (testiIdx + 1) % testiData.length; renderTestiMini(); }, 4500);
 
-    // swipe on hero right
+    // swipe on desktop hero right
     const heroRight = document.querySelector('.hero-right');
     if (heroRight) {
       let tx = 0;
       heroRight.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
       heroRight.addEventListener('touchend', e => {
         const diff = tx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goToSpotlight((spotlightIdx + (diff > 0 ? 1 : -1) + spotlightData.length) % spotlightData.length);
+      }, { passive: true });
+    }
+
+    // swipe on mobile spotlight wrap
+    const mobileSpot = document.querySelector('.mobile-spotlight-wrap');
+    if (mobileSpot) {
+      let mx = 0;
+      mobileSpot.addEventListener('touchstart', e => { mx = e.touches[0].clientX; }, { passive: true });
+      mobileSpot.addEventListener('touchend', e => {
+        const diff = mx - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 40) goToSpotlight((spotlightIdx + (diff > 0 ? 1 : -1) + spotlightData.length) % spotlightData.length);
       }, { passive: true });
     }
