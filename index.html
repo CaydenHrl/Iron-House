@@ -170,8 +170,8 @@
   .benefit-card p { font-size: 13px; color: var(--gray-text); line-height: 1.65; }
 
   /* BENEFIT LIST — bullet points */
-  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; }
-  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: rgba(245,242,237,0.8); line-height: 1.6; }
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; align-items: center; }
+  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: rgba(245,242,237,0.8); line-height: 1.6; max-width: 500px; width: 100%; }
   .benefit-list li::before { content: '✦'; color: var(--orange); font-size: 11px; margin-top: 5px; flex-shrink: 0; }
 
   /* STAT HIGHLIGHT CARDS */
@@ -212,6 +212,13 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SPOTLIGHT SWIPE ANIMATION — applies on all screen sizes */
+  .spotlight-card { transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+  .spotlight-card.swipe-exit-left  { transform: translateX(calc(-50% - 280px)) scale(0.75) !important; opacity: 0 !important; }
+  .spotlight-card.swipe-exit-right { transform: translateX(calc(-50% + 280px)) scale(0.75) !important; opacity: 0 !important; }
+  .spotlight-card.swipe-enter-left  { transform: translateX(calc(-50% + 280px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
+  .spotlight-card.swipe-enter-right { transform: translateX(calc(-50% - 280px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
 
   /* MOBILE SPOTLIGHT — hidden on PC, shown between headline and sub on mobile */
   .mobile-spotlight-wrap { display: none; }
@@ -263,28 +270,7 @@
       position: relative;
       z-index: 2;
     }
-    /* swipe animation */
-    .spotlight-card {
-      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    .spotlight-card.swipe-exit-left {
-      transform: translateX(calc(-50% - 280px)) scale(0.75) !important;
-      opacity: 0 !important;
-    }
-    .spotlight-card.swipe-exit-right {
-      transform: translateX(calc(-50% + 280px)) scale(0.75) !important;
-      opacity: 0 !important;
-    }
-    .spotlight-card.swipe-enter-left {
-      transform: translateX(calc(-50% + 280px)) scale(0.75) !important;
-      opacity: 0 !important;
-      transition: none !important;
-    }
-    .spotlight-card.swipe-enter-right {
-      transform: translateX(calc(-50% - 280px)) scale(0.75) !important;
-      opacity: 0 !important;
-      transition: none !important;
-    }
+
   }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
