@@ -218,8 +218,9 @@
 
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; } /* hidden on mobile — spotlight moves into hero-left */
-    .hero-bg { background: radial-gradient(ellipse at 50% 55%, rgba(232,80,10,0.22) 0%, rgba(232,80,10,0.08) 30%, transparent 60%); }
+    .hero-right { display: none; }
+    /* glow now covers entire hero-left area — sits behind everything */
+    .hero-bg { background: radial-gradient(ellipse at 50% 45%, rgba(232,80,10,0.28) 0%, rgba(232,80,10,0.12) 35%, transparent 65%); }
     .spotlight-stage { max-width: 100%; }
     .steps { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
@@ -239,17 +240,7 @@
       margin: 2rem 0 1.5rem;
       width: 100%;
     }
-    .mobile-spotlight-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 340px;
-      height: 340px;
-      background: radial-gradient(ellipse at center, rgba(232,80,10,0.28) 0%, rgba(232,80,10,0.1) 40%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .mobile-spotlight-glow { display: none; } /* glow is now handled by hero-bg */
     .mobile-spotlight-label {
       font-size: 10px;
       font-weight: 600;
@@ -271,6 +262,28 @@
     .mobile-spotlight-wrap .carousel-dots {
       position: relative;
       z-index: 2;
+    }
+    /* swipe animation */
+    .spotlight-card {
+      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .spotlight-card.swipe-exit-left {
+      transform: translateX(calc(-50% - 280px)) scale(0.75) !important;
+      opacity: 0 !important;
+    }
+    .spotlight-card.swipe-exit-right {
+      transform: translateX(calc(-50% + 280px)) scale(0.75) !important;
+      opacity: 0 !important;
+    }
+    .spotlight-card.swipe-enter-left {
+      transform: translateX(calc(-50% + 280px)) scale(0.75) !important;
+      opacity: 0 !important;
+      transition: none !important;
+    }
+    .spotlight-card.swipe-enter-right {
+      transform: translateX(calc(-50% - 280px)) scale(0.75) !important;
+      opacity: 0 !important;
+      transition: none !important;
     }
   }
   @media (max-width: 768px) {
@@ -646,10 +659,40 @@
   }
 
   function goToSpotlight(n) {
-    spotlightIdx = n;
-    renderSpotlight();
+    if (!spotlightData.length) return;
+    const total = spotlightData.length;
+    const dir = ((n % total) + total) % total > spotlightIdx ? 'left' : 'right';
+    const oldIdx = spotlightIdx;
+    spotlightIdx = ((n % total) + total) % total;
+
+    // animate active card out, then render new state
+    const stages = ['spotlight-stage', 'mobile-spotlight-stage'];
+    stages.forEach(id => {
+      const stage = document.getElementById(id);
+      if (!stage) return;
+      const activeCard = stage.querySelector('.sp-active');
+      if (activeCard) {
+        activeCard.classList.add(dir === 'left' ? 'swipe-exit-left' : 'swipe-exit-right');
+      }
+    });
+
+    setTimeout(() => {
+      renderSpotlight();
+      // flash enter animation on new active card
+      stages.forEach(id => {
+        const stage = document.getElementById(id);
+        if (!stage) return;
+        const newActive = stage.querySelector('.sp-active');
+        if (newActive) {
+          newActive.classList.add(dir === 'left' ? 'swipe-enter-left' : 'swipe-enter-right');
+          newActive.offsetHeight; // force reflow
+          newActive.classList.remove('swipe-enter-left', 'swipe-enter-right');
+        }
+      });
+    }, 180);
+
     clearInterval(spotlightTimer);
-    spotlightTimer = setInterval(() => { spotlightIdx = (spotlightIdx + 1) % spotlightData.length; renderSpotlight(); }, 5000);
+    spotlightTimer = setInterval(() => goToSpotlight(spotlightIdx + 1), 5000);
   }
 
   // TESTIMONIAL MINI — 3-card faded stack
