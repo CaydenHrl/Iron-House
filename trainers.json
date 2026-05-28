@@ -169,12 +169,11 @@
     "rating": 4.9,
     "reviews": 84,
     "founding": true,
-    "photo_main": "images/marcus-main.jpg",
-    "photo_physique": "images/marcus-gym.jpg",
-    "photo_lifestyle": "images/marcus-life.jpg",
+    "photo_main": "images/",
+    "photo_physique": "images/",
+    "photo_lifestyle": "images/",
     "specialties": [
-      "Hypertrophy",
-      "Strength"
+      "Hypertrophy"
     ],
     "diet": "Carnivore",
     "niches": [
