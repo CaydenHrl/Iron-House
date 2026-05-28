@@ -4,21 +4,20 @@
     "age": 20,
     "location": "Orlando, FL",
     "email": "trainedbyrogmok@gmail.com",
-    "price": 150,
+    "price": 200,
     "experience": "3 yrs",
     "certs": "NCEP",
     "rating": 5,
-    "reviews": 2,
+    "reviews": 4,
     "founding": true,
     "photo_main": "images/Roger-PFP.jpg",
     "photo_physique": "images/RogerPhysique.jpg",
     "photo_lifestyle": "images/Roger-Lifestyle.jpg",
     "specialties": [
       "Hypertrophy",
-      "Calisthenics",
-      "Flexibility & Mobility"
+      "Calisthenics"
     ],
-    "diet": "Flexible",
+    "diet": "",
     "niches": [
       "General population"
     ],
