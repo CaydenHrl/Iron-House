@@ -128,6 +128,11 @@
   .testi-mini-card.tmc-active { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; background: var(--gray); border-color: rgba(232,80,10,0.15); }
   .testi-mini-card.tmc-next { transform: translateX(calc(-50% + 120px)) scale(0.84); opacity: 0.25; filter: blur(1px); z-index: 1; }
   .testi-mini-card.tmc-hidden { opacity: 0; z-index: 0; transform: translateX(-50%) scale(0.7); }
+  .testi-mini-card { transition: all 0.45s cubic-bezier(0.4,0,0.2,1); }
+  .testi-mini-card.tmc-exit-left  { transform: translateX(calc(-50% - 260px)) scale(0.75) !important; opacity: 0 !important; }
+  .testi-mini-card.tmc-exit-right { transform: translateX(calc(-50% + 260px)) scale(0.75) !important; opacity: 0 !important; }
+  .testi-mini-card.tmc-enter-left  { transform: translateX(calc(-50% + 260px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
+  .testi-mini-card.tmc-enter-right { transform: translateX(calc(-50% - 260px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
   .testi-mini-quote { font-size: 13px; line-height: 1.65; color: rgba(245,242,237,0.78); font-style: italic; position: relative; padding-left: 1.1rem; }
   .testi-mini-quote::before { content: '\201C'; font-family: var(--font-display); font-size: 34px; color: var(--orange); position: absolute; left: -3px; top: -5px; line-height: 1; }
   .testi-mini-author { display: flex; align-items: center; gap: 8px; margin-top: 0.7rem; }
@@ -719,10 +724,34 @@
   }
 
   function goToTesti(n) {
-    testiIdx = n;
-    renderTestiMini();
+    if (!testiData.length) return;
+    const total = testiData.length;
+    const next = ((n % total) + total) % total;
+    const dir = next > testiIdx ? 'left' : 'right';
+
+    // animate active card out
+    const stage = document.getElementById('testi-mini-stage');
+    if (stage) {
+      const active = stage.querySelector('.tmc-active');
+      if (active) active.classList.add('tmc-exit-' + dir);
+    }
+
+    setTimeout(() => {
+      testiIdx = next;
+      renderTestiMini();
+      // flash enter on new active
+      if (stage) {
+        const newActive = stage.querySelector('.tmc-active');
+        if (newActive) {
+          newActive.classList.add('tmc-enter-' + dir);
+          newActive.offsetHeight;
+          newActive.classList.remove('tmc-enter-' + dir);
+        }
+      }
+    }, 200);
+
     clearInterval(testiTimer);
-    testiTimer = setInterval(() => { testiIdx = (testiIdx + 1) % testiData.length; renderTestiMini(); }, 4500);
+    testiTimer = setInterval(() => goToTesti(testiIdx + 1), 4500);
   }
 
   async function initAll() {
@@ -744,10 +773,10 @@
     }
 
     renderSpotlight();
-    spotlightTimer = setInterval(() => { spotlightIdx = (spotlightIdx + 1) % spotlightData.length; renderSpotlight(); }, 5000);
+    spotlightTimer = setInterval(() => goToSpotlight(spotlightIdx + 1), 5000);
 
     renderTestiMini();
-    testiTimer = setInterval(() => { testiIdx = (testiIdx + 1) % testiData.length; renderTestiMini(); }, 4500);
+    testiTimer = setInterval(() => goToTesti(testiIdx + 1), 4500);
 
     // swipe on desktop hero right
     const heroRight = document.querySelector('.hero-right');
