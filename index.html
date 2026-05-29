@@ -12,6 +12,10 @@
 <meta property="og:description" content="Stop scrolling Instagram. Iron House hand-matches you with a certified personal trainer who fits your goals, personality, and life.">
 <meta property="og:url" content="https://www.joinironhouse.com/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://www.joinironhouse.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="twitter:image" content="https://www.joinironhouse.com/images/og-image.jpg">
 <meta property="og:site_name" content="Iron House">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Iron House — Find Your Personal Trainer Online">
@@ -89,7 +93,7 @@
   /* TRAINER SPOTLIGHT */
   .spotlight-label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; align-self: center; }
   .spotlight-stage { width: 100%; max-width: 300px; position: relative; height: 520px; overflow: visible; }
-  .spotlight-card { position: absolute; left: 50%; background: var(--gray); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; cursor: pointer; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); width: 280px; }
+  .spotlight-card { position: absolute; left: 50%; background: var(--gray); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; cursor: pointer; transition: all 0.65s cubic-bezier(0.16,1,0.3,1); width: 280px; }
   .spotlight-card.sp-active { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; border-color: rgba(232,80,10,0.2); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
   .spotlight-card.sp-prev { transform: translateX(calc(-50% - 190px)) scale(0.82); opacity: 0.3; filter: blur(1px); z-index: 1; pointer-events: none; }
   .spotlight-card.sp-next { transform: translateX(calc(-50% + 190px)) scale(0.82); opacity: 0.3; filter: blur(1px); z-index: 1; pointer-events: none; }
@@ -123,12 +127,12 @@
   /* TESTIMONIAL MINI CAROUSEL — 3-card faded stack */
   .testi-mini-wrap { width: 100%; position: relative; }
   .testi-mini-stage { position: relative; height: 200px; overflow: hidden; }
-  .testi-mini-card { position: absolute; left: 50%; width: 88%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.1rem 1.4rem; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .testi-mini-card { position: absolute; left: 50%; width: 88%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.1rem 1.4rem; transition: all 0.65s cubic-bezier(0.16,1,0.3,1); }
   .testi-mini-card.tmc-prev { transform: translateX(calc(-50% - 120px)) scale(0.84); opacity: 0.25; filter: blur(1px); z-index: 1; }
   .testi-mini-card.tmc-active { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; background: var(--gray); border-color: rgba(232,80,10,0.15); }
   .testi-mini-card.tmc-next { transform: translateX(calc(-50% + 120px)) scale(0.84); opacity: 0.25; filter: blur(1px); z-index: 1; }
   .testi-mini-card.tmc-hidden { opacity: 0; z-index: 0; transform: translateX(-50%) scale(0.7); }
-  .testi-mini-card { transition: all 0.45s cubic-bezier(0.4,0,0.2,1); }
+  .testi-mini-card { transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
   .testi-mini-card.tmc-exit-left  { transform: translateX(calc(-50% - 260px)) scale(0.75) !important; opacity: 0 !important; }
   .testi-mini-card.tmc-exit-right { transform: translateX(calc(-50% + 260px)) scale(0.75) !important; opacity: 0 !important; }
   .testi-mini-card.tmc-enter-left  { transform: translateX(calc(-50% + 260px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
@@ -219,7 +223,7 @@
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* SPOTLIGHT SWIPE ANIMATION — applies on all screen sizes */
-  .spotlight-card { transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+  .spotlight-card { transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1) !important; }
   .spotlight-card.swipe-exit-left  { transform: translateX(calc(-50% - 280px)) scale(0.75) !important; opacity: 0 !important; }
   .spotlight-card.swipe-exit-right { transform: translateX(calc(-50% + 280px)) scale(0.75) !important; opacity: 0 !important; }
   .spotlight-card.swipe-enter-left  { transform: translateX(calc(-50% + 280px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
@@ -229,10 +233,11 @@
   .mobile-spotlight-wrap { display: none; }
 
   @media (max-width: 960px) {
+    .ticker { display: none; }
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    /* glow now covers entire hero-left area — sits behind everything */
-    .hero-bg { background: radial-gradient(ellipse at 50% 45%, rgba(232,80,10,0.28) 0%, rgba(232,80,10,0.12) 35%, transparent 65%); }
+    /* glow now covers entire hero — bigger and taller to bleed behind h1 and sub-copy */
+    .hero-bg { background: radial-gradient(ellipse at 50% 50%, rgba(232,80,10,0.32) 0%, rgba(232,80,10,0.18) 30%, rgba(232,80,10,0.06) 60%, transparent 80%); background-size: 100% 140%; }
     .spotlight-stage { max-width: 100%; }
     .steps { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
@@ -318,7 +323,9 @@
   <a href="#how-it-works" onclick="closeMenu()">How it works</a>
   <a href="trainers.html" onclick="closeMenu()">Meet the coaches</a>
   <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="trainers.html" onclick="closeMenu()">Meet the coaches</a>
   <a href="blog/index.html" onclick="closeMenu()">Blog</a>
+  <a href="our-story.html" onclick="closeMenu()">Our story</a>
   <a href="trainers-join.html" onclick="closeMenu()">For trainers</a>
   <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
 </div>
@@ -346,7 +353,7 @@
       <div class="carousel-dots" id="mobile-carousel-dots"></div>
     </div>
 
-    <p class="hero-sub">Stop scrolling through random fitness pages. Iron House matches you with a personal trainer who fits your goals, your personality, and your life.</p>
+    <p class="hero-sub">Stop scrolling through random fitness pages. Iron House matches you with a personal trainer who fits your goals, your personality, and your life. <em>You do what you do best — we handle the rest.</em></p>
     <div class="hero-actions">
       <a href="questionnaire.html" class="btn-primary">Find my coach</a>
       <a href="trainers-join.html" class="btn-secondary">I'm a trainer</a>
@@ -658,9 +665,14 @@
   function goToSpotlight(n) {
     if (!spotlightData.length) return;
     const total = spotlightData.length;
-    const dir = ((n % total) + total) % total > spotlightIdx ? 'left' : 'right';
-    const oldIdx = spotlightIdx;
-    spotlightIdx = ((n % total) + total) % total;
+    const rawNext = ((n % total) + total) % total;
+    // wrap-aware direction: going last→first is still 'left' (forward)
+    let dir;
+    if (rawNext === spotlightIdx) return;
+    if (spotlightIdx === total - 1 && rawNext === 0) dir = 'left';
+    else if (spotlightIdx === 0 && rawNext === total - 1) dir = 'right';
+    else dir = rawNext > spotlightIdx ? 'left' : 'right';
+    spotlightIdx = rawNext;
 
     // animate active card out, then render new state
     const stages = ['spotlight-stage', 'mobile-spotlight-stage'];
@@ -733,7 +745,11 @@
     if (!testiData.length) return;
     const total = testiData.length;
     const next = ((n % total) + total) % total;
-    const dir = next > testiIdx ? 'left' : 'right';
+    let dir;
+    if (next === testiIdx) return;
+    if (testiIdx === total - 1 && next === 0) dir = 'left';
+    else if (testiIdx === 0 && next === total - 1) dir = 'right';
+    else dir = next > testiIdx ? 'left' : 'right';
 
     // animate active card out
     const stage = document.getElementById('testi-mini-stage');
@@ -783,6 +799,17 @@
 
     renderTestiMini();
     testiTimer = setInterval(() => goToTesti(testiIdx + 1), 4500);
+
+    // swipe on testimonials
+    const testiStage = document.getElementById('testi-mini-stage');
+    if (testiStage) {
+      let ttx = 0;
+      testiStage.addEventListener('touchstart', e => { ttx = e.touches[0].clientX; }, { passive: true });
+      testiStage.addEventListener('touchend', e => {
+        const diff = ttx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goToTesti(testiIdx + (diff > 0 ? 1 : -1));
+      }, { passive: true });
+    }
 
     // swipe on desktop hero right
     const heroRight = document.querySelector('.hero-right');
