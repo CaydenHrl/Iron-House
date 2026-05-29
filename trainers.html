@@ -471,8 +471,12 @@
     const img2    = trainer.photo_physique  ? `<img src="${trainer.photo_physique}" alt="">` : '🏋️';
     const img3    = trainer.photo_lifestyle ? `<img src="${trainer.photo_lifestyle}" alt="">` : '🌄';
 
-    const styleTags = trainer.specialties.map(s => `<span class="tag style">${s}</span>`).join('');
-    const dietTag   = trainer.diet ? `<span class="tag diet">${trainer.diet}</span>` : '';
+    const cardSpecs = (trainer.card_specialties && trainer.card_specialties.length)
+      ? trainer.card_specialties.slice(0, 3)
+      : (trainer.specialties || []).slice(0, 3);
+    const styleTags = cardSpecs.map(s => `<span class="tag style">${s}</span>`).join('');
+    const cardDiet  = trainer.card_diet || (trainer.diet ? trainer.diet.split(',')[0].trim() : '');
+    const dietTag   = cardDiet ? `<span class="tag diet">${cardDiet}</span>` : '';
     // show first niche from ordered list
     const nicheTag  = trainer.niches && trainer.niches.length
       ? `<span class="tag niche">${trainer.niches[0]}</span>` : '';
