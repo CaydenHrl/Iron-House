@@ -1410,9 +1410,9 @@
   function soloShirtColor(btn) {
     ['shirt-black','shirt-white','shirt-none'].forEach(function(id) {
       var el = document.getElementById(id);
-      if (el) el.classList.remove('on');
+      if (el) { el.classList.remove('on'); el.classList.remove('selected'); }
     });
-    btn.classList.add('on');
+    btn.classList.add('selected');
     var showDetails = btn.id !== 'shirt-none';
     shirtColor = showDetails ? (btn.id === 'shirt-black' ? 'Black' : 'White') : '';
     document.getElementById('shirt-details').style.display = showDetails ? 'block' : 'none';
