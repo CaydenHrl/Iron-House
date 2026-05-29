@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What makes a great online personal trainer profile — Iron House</title>
+<meta name="description" content="Your trainer profile is your first impression with potential clients. Here's exactly what separates profiles that convert from ones that get scrolled past.">
+<meta name="author" content="Iron House">
+<link rel="canonical" href="https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html">
+<meta property="og:title" content="What makes a great online personal trainer profile">
+<meta property="og:description" content="Your trainer profile is your first impression with potential clients. Here's exactly what separates profiles that convert from ones that get scrolled past.">
+<meta property="og:url" content="https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://www.joinironhouse.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.joinironhouse.com/images/og-image.jpg">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What makes a great online personal trainer profile",
+  "description": "Your trainer profile is your first impression with potential clients. Here's exactly what separates profiles that convert from ones that get scrolled past.",
+  "author": { "@type": "Organization", "name": "Iron House" },
+  "publisher": { "@type": "Organization", "name": "Iron House", "url": "https://www.joinironhouse.com" },
+  "datePublished": "2025-05-01",
+  "mainEntityOfPage": "https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html"
+}
+</script>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--black:#0a0a0a;--white:#f5f2ed;--orange:#e8500a;--orange-dark:#b83d06;--gray:#1a1a1a;--gray-mid:#2e2e2e;--gray-text:#888;--border:rgba(255,255,255,0.07);--font-display:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:2rem;align-items:center;}
+  .nav-links a{color:var(--gray-text);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:600!important;text-decoration:none;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all 0.25s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{font-family:var(--font-display);font-size:36px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .mobile-menu .m-cta{background:var(--orange);color:var(--white)!important;padding:12px 32px;border-radius:4px;}
+  .mobile-menu-close{position:absolute;top:1.25rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:32px;cursor:pointer;z-index:3;line-height:1;opacity:0.6;}
+
+  /* ARTICLE LAYOUT */
+  .article-wrap{max-width:740px;margin:0 auto;padding:8rem 2rem 5rem;}
+  .breadcrumb{font-size:12px;color:var(--gray-text);margin-bottom:2rem;}
+  .breadcrumb a{color:var(--gray-text);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--orange);}
+  .breadcrumb span{margin:0 6px;opacity:0.4;}
+  .article-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block;}
+  .article-title{font-family:var(--font-display);font-size:clamp(36px,6vw,62px);line-height:1;letter-spacing:1px;margin-bottom:1.25rem;}
+  .article-meta{font-size:13px;color:var(--gray-text);margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
+  .article-lede{font-size:18px;line-height:1.75;color:rgba(245,242,237,0.85);margin-bottom:2rem;font-style:italic;}
+
+  /* ARTICLE BODY */
+  .article-body h2{font-family:var(--font-display);font-size:clamp(26px,4vw,36px);letter-spacing:0.5px;margin:2.5rem 0 1rem;}
+  .article-body h3{font-size:17px;font-weight:700;color:var(--white);margin:2rem 0 0.75rem;}
+  .article-body p{font-size:16px;line-height:1.8;color:rgba(245,242,237,0.78);margin-bottom:1.25rem;}
+  .article-body p strong{color:var(--white);font-weight:600;}
+  .article-body a{color:var(--orange);text-decoration:none;}
+  .article-body a:hover{text-decoration:underline;}
+  .article-body ul,
+  .article-body ol{padding-left:1.5rem;margin-bottom:1.25rem;}
+  .article-body li{font-size:16px;line-height:1.8;color:rgba(245,242,237,0.78);margin-bottom:0.5rem;}
+  .article-body blockquote{border-left:3px solid var(--orange);padding:1rem 1.5rem;margin:2rem 0;background:rgba(232,80,10,0.06);border-radius:0 8px 8px 0;}
+  .article-body blockquote p{font-size:17px;font-style:italic;color:rgba(245,242,237,0.9);margin-bottom:0;}
+  .stat-callout{background:var(--gray);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;align-items:center;gap:1.5rem;}
+  .stat-callout-num{font-family:var(--font-display);font-size:52px;letter-spacing:1px;color:var(--orange);line-height:1;flex-shrink:0;}
+  .stat-callout-text{font-size:15px;color:rgba(245,242,237,0.75);line-height:1.6;}
+  .divider{height:1px;background:var(--border);margin:2.5rem 0;}
+
+  /* CTA BOX */
+  .cta-box{background:var(--gray);border:1px solid rgba(232,80,10,0.25);border-radius:14px;padding:2.5rem;margin:3rem 0;text-align:center;}
+  .cta-box-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;}
+  .cta-box-title{font-family:var(--font-display);font-size:clamp(28px,5vw,42px);letter-spacing:1px;margin-bottom:0.75rem;}
+  .cta-box-sub{font-size:15px;color:var(--gray-text);line-height:1.6;max-width:420px;margin:0 auto 1.75rem;}
+  .btn-primary{background:var(--orange);color:var(--white);padding:14px 32px;border-radius:4px;font-family:var(--font-body);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+  .btn-primary:hover{background:var(--orange-dark);}
+
+  /* RELATED */
+  .related{margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+  .related-title{font-family:var(--font-display);font-size:24px;letter-spacing:1px;margin-bottom:1.25rem;}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+  .related-card{background:var(--gray);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-decoration:none;color:var(--white);transition:border-color 0.2s;}
+  .related-card:hover{border-color:rgba(232,80,10,0.4);}
+  .related-tag{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;display:block;}
+  .related-card-title{font-family:var(--font-display);font-size:18px;letter-spacing:0.5px;line-height:1.2;}
+
+  footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-logo{font-family:var(--font-display);font-size:20px;letter-spacing:2px;}
+  .footer-logo span{color:var(--orange);}
+  .footer-links{display:flex;gap:1.5rem;align-items:center;}
+  .footer-links a{font-size:12px;color:var(--gray-text);text-decoration:none;}
+  .footer-links a:hover{color:var(--white);}
+
+  @media(max-width:768px){nav{padding:1rem 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}.article-wrap{padding:6rem 1.25rem 4rem;}.stat-callout{flex-direction:column;gap:0.75rem;}.stat-callout-num{font-size:42px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">IRON<span>HOUSE</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../trainers.html">Meet the coaches</a>
+    <a href="index.html">Blog</a>
+    <a href="../our-story.html">Our story</a>
+    <a href="../trainers-join.html" class="nav-cta">Join as a trainer</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" onclick="if(event.target===this)closeMenu()">
+  <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="../trainers.html" onclick="closeMenu()">Coaches</a>
+  <a href="index.html" onclick="closeMenu()">Blog</a>
+  <a href="../our-story.html" onclick="closeMenu()">Our story</a>
+  <a href="../trainers-join.html" class="m-cta" onclick="closeMenu()">Join as a trainer</a>
+</div>
+<article class="article-wrap">
+  <div class="breadcrumb">
+    <a href="../index.html">Iron House</a><span>›</span>
+    <a href="index.html">Blog</a><span>›</span>
+    <span style="color:rgba(245,242,237,0.6);">What makes a great online personal trainer profile</span>
+  </div>
+  <span class="article-tag ">For Trainers</span>
+  <h1 class="article-title">What makes a great online personal trainer profile</h1>
+  <div class="article-meta">By Iron House · 5 min read</div>
+  <p class="article-lede">Most trainer profiles say the same things in the same order. Here's how to build one that actually makes clients stop and choose you.</p>
+  <div class="article-body">
+<h2>Why most trainer profiles fail</h2><p>The average trainer profile reads like a résumé. Certifications. Years of experience. Specialties listed in bullet points. A generic bio that could belong to any of a hundred trainers.</p><p>Clients don't hire credentials. They hire people. <strong>A great profile doesn't prove you're qualified — it makes someone feel like they already know you.</strong></p><h2>What clients actually look for</h2><h3>Coaching style over credentials</h3><p>Clients care less about which certification you hold than about what it's actually like to be coached by you. Are you intense or patient? Rigid or flexible? High-checkin or low-touch? These are the things that determine fit — and fit determines retention.</p><h3>Photos that show your life, not just your physique</h3><p>A profile photo of you lifting in a gym is fine. But a lifestyle photo — you hiking, cooking, with your family, doing something that reveals who you are outside the gym — tells a richer story. Clients want to know they'll like the person they're texting every week.</p><h3>A bio that sounds like you</h3><p>Write your bio the way you'd introduce yourself to a client on a first call. Not formal, not clinical. Direct, specific, and honest. "I specialize in helping busy professionals lose fat without giving up the foods they love" is better than "I help clients reach their fitness goals."</p><div class="stat-callout"><div class="stat-callout-num">3x</div><div class="stat-callout-text">Trainers who describe their coaching personality specifically get significantly higher inquiry rates than those who list only credentials and specialties.</div></div><div class="divider"></div><h2>The elements of a standout profile</h2><h3>Specific niche statement</h3><p>Who do you work best with? The narrower the answer, the more resonant it is for the right person. "I work with postpartum women rebuilding their strength and confidence" attracts exactly the right person and repels everyone else — which is what you want.</p><h3>Honest coaching stats</h3><p>How structured are your programs? How often do you check in? How strict are you about nutrition? Clients who know what to expect before they hire you are far more likely to stick around. Surprises in a coaching relationship go badly.</p><h3>Real testimonials</h3><p>One specific, result-focused testimonial from a real client is worth more than five generic five-star ratings. "I lost 18 pounds in 12 weeks and for the first time I actually understand why my body works the way it does" converts. "Great trainer, highly recommend!" doesn't.</p><h2>Frequently asked questions</h2><h3>How long should my trainer bio be?</h3><p>Two to four sentences for the short bio that appears on your card. Your full story can be longer — three to five paragraphs covering your background, what drives you, and who you work best with. Clients who read your full story are already interested.</p><h3>Should I list all my certifications?</h3><p>List your primary certification prominently. Additional credentials can be included but don't need to be the lead. Clients remember one or two things — lead with what matters most.</p><h3>What photos should I use?</h3><p>Three is the sweet spot: a clear headshot or profile photo, a training/physique photo showing your athletic background, and a lifestyle photo. Together they tell a complete story.</p>
+    <div class="cta-box">
+      <p class="cta-box-eyebrow">Iron House</p>
+      <h2 class="cta-box-title">Ready to build your profile?</h2>
+      <p class="cta-box-sub">Iron House profiles are built around your coaching personality — not just your credentials. Apply today and we'll build it with you.</p>
+      <a href="../trainers-join.html" class="btn-primary">Apply as a founding trainer →</a>
+    </div>
+  </div>
+  <div class="related">
+    <div class="related-title">More reading</div>
+    <div class="related-grid"><a href="how-to-get-online-personal-training-clients.html" class="related-card"><span class="related-tag">For Trainers</span><div class="related-card-title">How to get online personal training clients without social media</div></a>
+<a href="best-platforms-for-online-personal-trainers.html" class="related-card"><span class="related-tag">For Trainers</span><div class="related-card-title">The best platforms for online personal trainers in 2025</div></a></div>
+  </div>
+</article>
+<footer>
+  <span class="footer-logo">IRON<span>HOUSE</span></span>
+  <div class="footer-links">
+    <a href="https://instagram.com/joinironhouse" target="_blank">@joinironhouse</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <span style="font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Iron House LLC</span>
+  </div>
+</footer>
+<script>
+  function toggleMenu(){const h=document.getElementById('hamburger');const m=document.getElementById('mobile-menu');h.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+  function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>
