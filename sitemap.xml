@@ -11,6 +11,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.joinironhouse.com/trainers-join.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/our-story.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.joinironhouse.com/questionnaire.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
@@ -19,5 +29,35 @@
     <loc>https://www.joinironhouse.com/trainer-questionnaire.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-get-online-personal-training-clients.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/best-platforms-for-online-personal-trainers.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-find-an-online-personal-trainer.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/privacy.html</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
   </url>
 </urlset>
