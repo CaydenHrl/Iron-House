@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Iron House</title>
+<meta name="description" content="Iron House was built for trainers who change lives, and clients who are ready for theirs to change. Here's why we built it.">
+<meta name="author" content="Iron House">
+<link rel="canonical" href="https://www.joinironhouse.com/our-story.html">
+<meta property="og:title" content="Our Story — Iron House">
+<meta property="og:description" content="Iron House was built for trainers who change lives, and clients who are ready for theirs to change.">
+<meta property="og:url" content="https://www.joinironhouse.com/our-story.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.joinironhouse.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.joinironhouse.com/images/og-image.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --black:#0a0a0a;--white:#f5f2ed;--orange:#e8500a;--orange-dark:#b83d06;
+    --gray:#1a1a1a;--gray-mid:#2e2e2e;--gray-text:#888;
+    --border:rgba(255,255,255,0.07);
+    --font-display:'Bebas Neue',sans-serif;
+    --font-body:'Barlow',sans-serif;
+    --font-marker:'Permanent Marker',cursive;
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:2rem;align-items:center;}
+  .nav-links a{color:var(--gray-text);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--white);}
+  .nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:600!important;}
+  .nav-cta:hover{background:var(--orange-dark)!important;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all 0.25s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+  .mobile-menu.open{display:flex;animation:fadeIn 0.2s ease;}
+  .mobile-menu a{font-family:var(--font-display);font-size:36px;letter-spacing:2px;color:var(--white);text-decoration:none;transition:color 0.2s;}
+  .mobile-menu a:hover{color:var(--orange);}
+  .mobile-menu .m-cta{background:var(--orange);color:var(--white)!important;padding:12px 32px;border-radius:4px;}
+  .mobile-menu-close{position:absolute;top:1.25rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:32px;cursor:pointer;z-index:3;line-height:1;opacity:0.6;transition:opacity 0.2s;}
+  .mobile-menu-close:hover{opacity:1;}
+
+  /* HERO */
+  .hero{padding:9rem 2.5rem 5rem;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;}
+  .hero-bg{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(232,80,10,0.1) 0%,transparent 60%);pointer-events:none;z-index:0;}
+  .hero-left{position:relative;z-index:2;}
+  .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;}
+  .hero-verse{font-family:var(--font-marker);font-size:clamp(20px,2.5vw,30px);color:rgba(232,80,10,0.85);margin-bottom:1.5rem;line-height:1.4;}
+  h1{font-family:var(--font-display);font-size:clamp(52px,7vw,90px);line-height:0.95;letter-spacing:1px;margin-bottom:1.5rem;}
+  h1 em{font-style:italic;font-family:'Barlow',sans-serif;font-weight:700;font-size:clamp(36px,5vw,64px);color:var(--orange);display:block;letter-spacing:-1px;margin-top:0.1em;}
+  .hero-sub{font-size:17px;line-height:1.75;color:rgba(245,242,237,0.65);max-width:500px;}
+  .hero-right{position:relative;z-index:2;display:flex;flex-direction:column;gap:1.5rem;}
+  .stat-block{background:var(--gray);border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
+  .stat-block-num{font-family:var(--font-display);font-size:48px;letter-spacing:1px;color:var(--orange);line-height:1;}
+  .stat-block-label{font-size:13px;color:var(--gray-text);margin-top:4px;line-height:1.5;}
+
+  /* STORY SECTIONS */
+  .story-wrap{max-width:760px;margin:0 auto;padding:0 2.5rem 6rem;}
+  .story-section{margin-bottom:4rem;}
+  .story-section:first-child{padding-top:0;}
+  .section-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;}
+  .story-section h2{font-family:var(--font-display);font-size:clamp(32px,5vw,48px);letter-spacing:1px;line-height:1.05;margin-bottom:1.5rem;}
+  .story-body p{font-size:16px;line-height:1.85;color:rgba(245,242,237,0.75);margin-bottom:1.25rem;}
+  .story-body p strong{color:var(--white);font-weight:600;}
+  .story-body p em{font-style:italic;color:rgba(245,242,237,0.9);}
+  .pull-quote{margin:2.5rem 0;padding:1.75rem 2rem;border-left:3px solid var(--orange);background:rgba(232,80,10,0.05);border-radius:0 10px 10px 0;}
+  .pull-quote p{font-size:19px;font-style:italic;color:rgba(245,242,237,0.9);line-height:1.7;margin:0;}
+  .pull-quote cite{display:block;font-size:12px;color:var(--gray-text);margin-top:10px;font-style:normal;letter-spacing:1px;text-transform:uppercase;}
+  .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;}
+  .value-card{background:var(--gray);border:1px solid var(--border);border-radius:10px;padding:1.5rem;}
+  .value-icon{font-size:28px;margin-bottom:0.75rem;}
+  .value-title{font-family:var(--font-display);font-size:20px;letter-spacing:0.5px;margin-bottom:0.5rem;}
+  .value-text{font-size:13px;color:var(--gray-text);line-height:1.65;}
+  .divider{height:1px;background:var(--border);margin:3rem 0;}
+
+  /* CTA */
+  .cta-section{background:var(--gray);border:1px solid rgba(232,80,10,0.2);border-radius:14px;padding:3rem;text-align:center;margin:0 2.5rem 5rem;}
+  .cta-section h2{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);letter-spacing:1px;margin-bottom:1rem;}
+  .cta-section h2 span{color:var(--orange);}
+  .cta-section p{font-size:15px;color:var(--gray-text);max-width:460px;margin:0 auto 2rem;line-height:1.7;}
+  .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--orange);color:var(--white);padding:14px 32px;border-radius:4px;font-family:var(--font-body);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;text-decoration:none;display:inline-block;transition:background 0.2s;}
+  .btn-primary:hover{background:var(--orange-dark);}
+  .btn-outline{color:var(--white);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:14px 28px;border-radius:4px;border:1px solid rgba(255,255,255,0.2);background:transparent;text-decoration:none;transition:all 0.2s;}
+  .btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+
+  footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-logo{font-family:var(--font-display);font-size:20px;letter-spacing:2px;}
+  .footer-logo span{color:var(--orange);}
+  .footer-links{display:flex;gap:1.5rem;align-items:center;}
+  .footer-links a{font-size:12px;color:var(--gray-text);text-decoration:none;}
+  .footer-links a:hover{color:var(--white);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+  @media(max-width:960px){
+    .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2rem;}
+    .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .values-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:768px){
+    nav{padding:1rem 1.25rem;}
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .story-wrap{padding:0 1.25rem 4rem;}
+    .hero{padding:6rem 1.25rem 2.5rem;}
+    .hero-right{grid-template-columns:1fr 1fr;}
+    .cta-section{margin:0 1.25rem 3.5rem;padding:2rem 1.5rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">IRON<span>HOUSE</span></a>
+  <div class="nav-links">
+    <a href="trainers.html">Meet the coaches</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="our-story.html" class="active">Our story</a>
+    <a href="trainers-join.html">For trainers</a>
+    <a href="questionnaire.html" class="nav-cta">Get matched</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" onclick="if(event.target===this)closeMenu()">
+  <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="trainers.html" onclick="closeMenu()">Coaches</a>
+  <a href="blog/index.html" onclick="closeMenu()">Blog</a>
+  <a href="our-story.html" onclick="closeMenu()">Our story</a>
+  <a href="trainers-join.html" onclick="closeMenu()">For trainers</a>
+  <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
+</div>
+
+<div class="hero-bg"></div>
+
+<div class="hero" style="animation:fadeUp 0.5s ease both;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Our story</p>
+    <div class="hero-verse">As iron sharpens iron —</div>
+    <h1>Built for people<br><em>who change lives.</em></h1>
+    <p class="hero-sub">Iron House was built out of a simple belief — that the right trainer doesn't just change your body. They change everything.</p>
+  </div>
+  <div class="hero-right">
+    <div class="stat-block" style="animation:fadeUp 0.5s 0.1s ease both;">
+      <div class="stat-block-num">100%</div>
+      <div class="stat-block-label">Online coaching. Your trainer, wherever you are.</div>
+    </div>
+    <div class="stat-block" style="animation:fadeUp 0.5s 0.15s ease both;">
+      <div class="stat-block-num">48H</div>
+      <div class="stat-block-label">Average time from questionnaire to hand-picked matches.</div>
+    </div>
+    <div class="stat-block" style="animation:fadeUp 0.5s 0.2s ease both;">
+      <div class="stat-block-num">$0</div>
+      <div class="stat-block-label">Platform fee for founding trainers — locked in for life.</div>
+    </div>
+  </div>
+</div>
+
+<div class="story-wrap">
+
+  <div class="story-section">
+    <p class="section-label">Where it started</p>
+    <h2>One of my best friends is a personal trainer.</h2>
+    <div class="story-body">
+      <p>He's the best trainer I've ever known. He's changed the lives of myself and many of my friends. That's not an exaggeration — he changed them fundamentally, deeply, permanently.</p>
+      <p>When I started lifting, there were things I didn't know and didn't understand. I picked up bits and pieces over the years from experience and social media — fragments here and there. But if I'd had a real source of knowledge from the beginning, I could have made so much more progress so much faster. <strong>When I finally learned it, it changed my life.</strong></p>
+      <p>That's the thing about training that most people don't realize until they're on the other side of it. It changes more than just your body. It changes your mentality. It changes your whole life.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Training changes more than just your body. It changes your mentality. It changes your whole life."</p>
+  </div>
+
+  <div class="story-section">
+    <p class="section-label">The belief behind Iron House</p>
+    <h2>Knowledge is the advantage.</h2>
+    <div class="story-body">
+      <p>For me, it's even deeper than that. My body is a temple for Christ. Taking care of it is an act of faith, not vanity. And I've grown to love people who share that same love for fitness — and an even greater love for people who want to make a career out of sharing that life-changing knowledge and helping others take advantage of it.</p>
+      <p>I've watched my friend pour everything into his clients and get almost nothing back in terms of discovery. The best trainer I know was virtually invisible to the people who needed him most. Not because he wasn't good enough — because he had no platform. No way to reach people who would benefit from exactly what he has to offer.</p>
+      <p><strong>That's a problem worth solving.</strong></p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="story-section">
+    <p class="section-label">Why we built this</p>
+    <h2>Two problems.<br>One platform.</h2>
+    <div class="story-body">
+      <p>Trainers who are genuinely gifted at changing people's lives shouldn't have to become social media personalities to find clients. They should be able to do what they do best and let the platform handle the rest.</p>
+      <p>And clients who are ready to change their lives shouldn't have to scroll endlessly hoping to stumble across the right person. They should be matched — carefully, personally, intentionally — with someone they can connect with, respect, and enjoy working with.</p>
+      <p>Because when that match is right, it doesn't just change your fitness. It changes everything.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"I want to help trainers by giving them a platform, and help clients by helping them find a trainer who they can click with, respect, and enjoy. Because it will absolutely change their life."</p>
+    <cite>— Cayden, Founder of Iron House</cite>
+  </div>
+
+  <div class="story-section">
+    <p class="section-label">What we stand for</p>
+    <h2>Our values.</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🔗</div>
+        <div class="value-title">Real fit matters</div>
+        <p class="value-text">Credentials matter. But personality, coaching style, and connection matter more. We match on who you are, not just what you know.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚒️</div>
+        <div class="value-title">Trainers first</div>
+        <p class="value-text">Trainers are the product. We treat them like it. No grind, no algorithm, no nonsense. Just a platform that works as hard as they do.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✝️</div>
+        <div class="value-title">Rooted in purpose</div>
+        <p class="value-text">Your body is worth taking care of. Whether your motivation is faith, family, or personal growth — we believe training is a life-changing act.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📈</div>
+        <div class="value-title">Change that compounds</div>
+        <p class="value-text">One good trainer. One good match. It starts there — and it doesn't stop. We've seen what it does. That's why we built this.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-section">
+  <h2>Ready to be part<br>of <span>what we're building?</span></h2>
+  <p>Whether you're a trainer looking for clients or someone ready to change their life — Iron House was built for you.</p>
+  <div class="cta-btns">
+    <a href="trainers-join.html" class="btn-primary">Join as a trainer →</a>
+    <a href="questionnaire.html" class="btn-outline">Find my coach</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">IRON<span>HOUSE</span></span>
+  <div class="footer-links">
+    <a href="blog/index.html">Blog</a>
+    <a href="trainers-join.html">For trainers</a>
+    <a href="https://instagram.com/joinironhouse" target="_blank">@joinironhouse</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <span style="font-size:12px;color:rgba(255,255,255,0.2);">© 2025 Iron House LLC</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    const h=document.getElementById('hamburger');
+    const m=document.getElementById('mobile-menu');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+  }
+  function closeMenu(){
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow='';
+  }
+</script>
+</body>
+</html>
