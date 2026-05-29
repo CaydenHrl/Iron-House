@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What makes a great online personal trainer profile — Iron House</title>
-<meta name="description" content="Your trainer profile is your first impression with potential clients. Here's exactly what separates profiles that convert from ones that get scrolled past.">
+<title>How to find an online personal trainer that actually fits you — Iron House</title>
+<meta name="description" content="Most people focus on credentials when choosing an online personal trainer. Here's what actually matters — and how to find someone who will genuinely change your life.">
 <meta name="author" content="Iron House">
-<link rel="canonical" href="https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html">
-<meta property="og:title" content="What makes a great online personal trainer profile">
-<meta property="og:description" content="Your trainer profile is your first impression with potential clients. Here's exactly what separates profiles that convert from ones that get scrolled past.">
-<meta property="og:url" content="https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html">
+<link rel="canonical" href="https://www.joinironhouse.com/blog/how-to-find-an-online-personal-trainer.html">
+<meta property="og:title" content="How to find an online personal trainer that actually fits you">
+<meta property="og:description" content="Most people focus on credentials when choosing an online personal trainer. Here's what actually matters — and how to find someone who will genuinely change your life.">
+<meta property="og:url" content="https://www.joinironhouse.com/blog/how-to-find-an-online-personal-trainer.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://www.joinironhouse.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,12 +20,12 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "What makes a great online personal trainer profile",
-  "description": "Your trainer profile is your first impression with potential clients. Here's exactly what separates profiles that convert from ones that get scrolled past.",
+  "headline": "How to find an online personal trainer that actually fits you",
+  "description": "Most people focus on credentials when choosing an online personal trainer. Here's what actually matters — and how to find someone who will genuinely change your life.",
   "author": { "@type": "Organization", "name": "Iron House" },
   "publisher": { "@type": "Organization", "name": "Iron House", "url": "https://www.joinironhouse.com" },
   "datePublished": "2025-05-01",
-  "mainEntityOfPage": "https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html"
+  "mainEntityOfPage": "https://www.joinironhouse.com/blog/how-to-find-an-online-personal-trainer.html"
 }
 </script>
 <style>
@@ -116,7 +116,7 @@
     <a href="../trainers.html">Meet the coaches</a>
     <a href="index.html">Blog</a>
     <a href="../our-story.html">Our story</a>
-    <a href="../trainers-join.html" class="nav-cta">For trainers</a>
+    <a href="../questionnaire.html" class="nav-cta">Get matched</a>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -128,31 +128,31 @@
   <a href="../trainers.html" onclick="closeMenu()">Meet the coaches</a>
   <a href="index.html" onclick="closeMenu()">Blog</a>
   <a href="../our-story.html" onclick="closeMenu()">Our story</a>
-  <a href="../trainers-join.html" class="m-cta" onclick="closeMenu()">For trainers</a>
+  <a href="../questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
 </div>
 <article class="article-wrap">
   <div class="breadcrumb">
     <a href="../index.html">Iron House</a><span>›</span>
     <a href="index.html">Blog</a><span>›</span>
-    <span style="color:rgba(245,242,237,0.6);">What makes a great online personal trainer profile</span>
+    <span style="color:rgba(245,242,237,0.6);">How to find an online personal trainer that actually fits you</span>
   </div>
-  <span class="article-tag ">For Trainers</span>
-  <h1 class="article-title">What makes a great online personal trainer profile</h1>
-  <div class="article-meta">By Iron House · 5 min read</div>
-  <p class="article-lede">Most trainer profiles say the same things in the same order. Here's how to build one that actually makes clients stop and choose you.</p>
+  <span class="article-tag client">For Clients</span>
+  <h1 class="article-title">How to find an online personal trainer that actually fits you</h1>
+  <div class="article-meta">By Iron House · 6 min read</div>
+  <p class="article-lede">Finding a personal trainer is easy. Finding one who actually fits your personality, your schedule, and the way you learn — that's harder. Here's how to get it right.</p>
   <div class="article-body">
-<h2>Why most trainer profiles fail</h2><p>The average trainer profile reads like a résumé. Certifications. Years of experience. Specialties listed in bullet points. A generic bio that could belong to any of a hundred trainers.</p><p>Clients don't hire credentials. They hire people. <strong>A great profile doesn't prove you're qualified — it makes someone feel like they already know you.</strong></p><h2>What clients actually look for</h2><h3>Coaching style over credentials</h3><p>Clients care less about which certification you hold than about what it's actually like to be coached by you. Are you intense or patient? Rigid or flexible? High-checkin or low-touch? These are the things that determine fit — and fit determines retention.</p><h3>Photos that show your life, not just your physique</h3><p>A profile photo of you lifting in a gym is fine. But a lifestyle photo — you hiking, cooking, with your family, doing something that reveals who you are outside the gym — tells a richer story. Clients want to know they'll like the person they're texting every week.</p><h3>A bio that sounds like you</h3><p>Write your bio the way you'd introduce yourself to a client on a first call. Not formal, not clinical. Direct, specific, and honest. "I specialize in helping busy professionals lose fat without giving up the foods they love" is better than "I help clients reach their fitness goals."</p><div class="stat-callout"><div class="stat-callout-num">3x</div><div class="stat-callout-text">Trainers who describe their coaching personality specifically get significantly higher inquiry rates than those who list only credentials and specialties.</div></div><div class="divider"></div><h2>The elements of a standout profile</h2><h3>Specific niche statement</h3><p>Who do you work best with? The narrower the answer, the more resonant it is for the right person. "I work with postpartum women rebuilding their strength and confidence" attracts exactly the right person and repels everyone else — which is what you want.</p><h3>Honest coaching stats</h3><p>How structured are your programs? How often do you check in? How strict are you about nutrition? Clients who know what to expect before they hire you are far more likely to stick around. Surprises in a coaching relationship go badly.</p><h3>Real testimonials</h3><p>One specific, result-focused testimonial from a real client is worth more than five generic five-star ratings. "I lost 18 pounds in 12 weeks and for the first time I actually understand why my body works the way it does" converts. "Great trainer, highly recommend!" doesn't.</p><h2>Frequently asked questions</h2><h3>How long should my trainer bio be?</h3><p>Two to four sentences for the short bio that appears on your card. Your full story can be longer — three to five paragraphs covering your background, what drives you, and who you work best with. Clients who read your full story are already interested.</p><h3>Should I list all my certifications?</h3><p>List your primary certification prominently. Additional credentials can be included but don't need to be the lead. Clients remember one or two things — lead with what matters most.</p><h3>What photos should I use?</h3><p>Three is the sweet spot: a clear headshot or profile photo, a training/physique photo showing your athletic background, and a lifestyle photo. Together they tell a complete story.</p>
+<h2>Why the wrong trainer doesn't work</h2><p>Most people who quit online personal training don't quit because the program was bad. They quit because the relationship was wrong. Their trainer's energy didn't match theirs. The communication style didn't fit. They felt like a client number, not a person.</p><p><strong>The right trainer changes your life. The wrong one wastes your time and money.</strong> The difference is almost never credentials — it's fit.</p><h2>What actually matters when choosing a trainer</h2><h3>Coaching style compatibility</h3><p>Do you thrive with tough love or do you need encouragement? Do you want structure and rigid programming or flexibility? Do you want daily check-ins or do you prefer autonomy between sessions? These aren't minor preferences — they're the difference between staying and quitting.</p><h3>Communication approach</h3><p>Some trainers are methodical explainers. Others are motivators. Some are calm and analytical, others are high-energy and intense. You'll be communicating with this person regularly. Make sure you'll actually look forward to those conversations.</p><h3>Specialization that matches your goal</h3><p>A trainer who specializes in powerlifting can technically help you lose weight — but a trainer who specializes in fat loss and body recomposition will do it better. Match the specialty to the goal.</p><div class="stat-callout"><div class="stat-callout-num">67%</div><div class="stat-callout-text">of people who quit online personal training within 90 days cite "wrong fit" as a reason — not program quality, not results, not cost.</div></div><div class="divider"></div><h2>How Iron House does matching differently</h2><p>Most platforms show you a directory and let you figure it out. Iron House reverses that. You fill out a detailed questionnaire about your goals, your personality, your schedule, and what you're looking for in a coaching relationship.</p><p>A real person on our team reviews your answers and hand-selects two to three trainers whose profiles align with what you described. Not algorithmically — by hand. You get a shortlist of people who could genuinely be a great fit, not a directory of everyone who's available.</p><blockquote><p>You do what you do best — we handle the rest. Just show up and train.</p></blockquote><h2>Frequently asked questions</h2><h3>How much does online personal training cost?</h3><p>Online personal training typically ranges from $100 to $500 per month depending on the level of service, how often you check in, and the trainer's experience. Most quality programs fall between $149 and $299 per month.</p><h3>What's the difference between online and in-person training?</h3><p>Online training is fully remote — your trainer writes your programs, you send check-ins and progress updates, and communication happens via messaging or video. You train on your schedule, at your gym or at home. Many people find online coaching more flexible and just as effective as in-person training.</p><h3>How long before I see results?</h3><p>Most people notice meaningful changes in energy, strength, and body composition within 4 to 8 weeks of consistent training with a good program. Visible body composition changes typically take 8 to 16 weeks depending on starting point and goals.</p><h3>What if I don't click with my matched trainer?</h3><p>Iron House matches you carefully, but if it's not the right fit we'll work with you to find someone who is. The goal is a relationship that lasts — not a transaction that ends in 30 days.</p>
     <div class="cta-box">
       <p class="cta-box-eyebrow">Iron House</p>
-      <h2 class="cta-box-title">Ready to build your profile?</h2>
-      <p class="cta-box-sub">Iron House profiles are built around your coaching personality — not just your credentials. Apply today and we'll build it with you.</p>
-      <a href="../trainers-join.html" class="btn-primary">Apply as a founding trainer →</a>
+      <h2 class="cta-box-title">Ready to find your person?</h2>
+      <p class="cta-box-sub">Fill out a short questionnaire. We'll hand-pick two to three coaches who fit your goals, personality, and life.</p>
+      <a href="../questionnaire.html" class="btn-primary">Find my coach →</a>
     </div>
   </div>
   <div class="related">
     <div class="related-title">More reading</div>
     <div class="related-grid"><a href="how-to-get-online-personal-training-clients.html" class="related-card"><span class="related-tag">For Trainers</span><div class="related-card-title">How to get online personal training clients without social media</div></a>
-<a href="best-platforms-for-online-personal-trainers.html" class="related-card"><span class="related-tag">For Trainers</span><div class="related-card-title">The best platforms for online personal trainers in 2025</div></a></div>
+<a href="what-makes-a-great-online-trainer-profile.html" class="related-card"><span class="related-tag">For Trainers</span><div class="related-card-title">What makes a great online personal trainer profile</div></a></div>
   </div>
 </article>
 <footer>
