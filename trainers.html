@@ -711,9 +711,9 @@
       </div>`;
     }).join('');
 
-    // all niches shown in modal
+    // all specialties, all diets, all niches shown in modal
     const specHTML = t.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
-      (t.diet ? `<span class="tag diet">${t.diet}</span>` : '') +
+      (t.diet ? t.diet.split(',').map(d => `<span class="tag diet">${d.trim()}</span>`).join('') : '') +
       (t.niches || []).map(n => `<span class="tag niche">${n}</span>`).join('');
     document.getElementById('modal-specialties').innerHTML = specHTML;
 
