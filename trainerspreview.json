@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "name": "y y",
+    "age": 9,
+    "location": "jk;df",
+    "email": "fuae@ga.com",
+    "experience": "1 yr",
+    "certs": "sd",
+    "price": 150,
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "Flexibility & mobility"
+    ],
+    "niches": [
+      "Postpartum women"
+    ],
+    "diet": "Whole foods",
+    "stat_intensity": 2,
+    "stat_structure": 2,
+    "stat_checkins": 2,
+    "stat_energy": 2,
+    "stat_diet": 2,
+    "interests": [
+      "Rock climbing",
+      "Yoga",
+      "Gaming"
+    ],
+    "bio": "asjkdf",
+    "story": "ajsdfboajsdfbjasdfn",
+    "applied_at": "2026-05-29T02:15:11.420Z",
+    "testimonials": []
+  }
+]
