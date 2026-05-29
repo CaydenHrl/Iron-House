@@ -1393,6 +1393,33 @@
   }
 
   updateProgress();
+
+  function soloShirtColor(btn) {
+    ['shirt-black','shirt-white','shirt-none'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.classList.remove('on');
+    });
+    btn.classList.add('on');
+    document.getElementById('shirt-details').style.display = btn.id !== 'shirt-none' ? 'block' : 'none';
+  }
+
+  function getShirtData() {
+    var black = document.getElementById('shirt-black') && document.getElementById('shirt-black').classList.contains('on');
+    var white = document.getElementById('shirt-white') && document.getElementById('shirt-white').classList.contains('on');
+    if (!black && !white) return null;
+    return {
+      color:   black ? 'Black' : 'White',
+      size:    (document.getElementById('shirt-size') || {}).value || '',
+      name:    ((document.getElementById('shirt-name') || {}).value || '').trim(),
+      address: [
+        ((document.getElementById('shirt-addr1') || {}).value || '').trim(),
+        ((document.getElementById('shirt-addr2') || {}).value || '').trim(),
+        ((document.getElementById('shirt-city')  || {}).value || '').trim(),
+        ((document.getElementById('shirt-state') || {}).value || '').trim(),
+        ((document.getElementById('shirt-zip')   || {}).value || '').trim()
+      ].filter(Boolean).join(', ')
+    };
+  }
 </script>
 
 </body>
