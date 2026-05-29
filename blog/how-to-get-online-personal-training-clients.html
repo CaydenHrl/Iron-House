@@ -44,7 +44,7 @@
   .nav-links{display:flex;gap:2rem;align-items:center;}
   .nav-links a{color:var(--gray-text);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;}
   .nav-links a:hover{color:var(--white);}
-  .nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:600!important;}
+  .nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:8px 20px;border-radius:4px;font-weight:600!important;text-decoration:none;}
   .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
   .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all 0.25s;}
   .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -116,10 +116,11 @@
 <nav>
   <a href="../index.html" class="nav-logo">IRON<span>HOUSE</span></a>
   <div class="nav-links">
-    <a href="../index.html#how-it-works">How it works</a>
+    <a href="../index.html">Home</a>
     <a href="../trainers.html">Meet the coaches</a>
-    <a href="../index.html#faq">FAQ</a>
-    <a href="../trainers-join.html" class="nav-cta">Join as a trainer</a>
+    <a href="index.html">Blog</a>
+    <a href="../our-story.html">Our story</a>
+    <a href="../trainers-join.html" class="nav-cta">For trainers</a>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -128,9 +129,10 @@
 <div class="mobile-menu" id="mobile-menu" onclick="if(event.target===this)closeMenu()">
   <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
   <a href="../index.html" onclick="closeMenu()">Home</a>
-  <a href="../trainers.html" onclick="closeMenu()">Coaches</a>
-  <a href="../index.html#faq" onclick="closeMenu()">FAQ</a>
-  <a href="../trainers-join.html" class="m-cta" onclick="closeMenu()">Join as a trainer</a>
+  <a href="../trainers.html" onclick="closeMenu()">Meet the coaches</a>
+  <a href="index.html" onclick="closeMenu()">Blog</a>
+  <a href="../our-story.html" onclick="closeMenu()">Our story</a>
+  <a href="../trainers-join.html" class="m-cta" onclick="closeMenu()">For trainers</a>
 </div>
 
 <article class="article-wrap">
