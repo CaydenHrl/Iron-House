@@ -1270,6 +1270,17 @@
     formData.append('22_client_success',     document.getElementById('input-success').value.trim());
     formData.append('23_other_notes',        document.getElementById('input-other').value.trim());
 
+    // ── SECTION 7: FREE SHIRT (optional) ──────────────────────────────────────
+    const shirtData = getShirtData();
+    if (shirtData) {
+      formData.append('24_shirt_color',    shirtData.color);
+      formData.append('25_shirt_size',     shirtData.size);
+      formData.append('26_shirt_name',     shirtData.name);
+      formData.append('27_shirt_address',  shirtData.address);
+    } else {
+      formData.append('24_shirt', 'No shirt requested');
+    }
+
     // ── PHOTOS ──────────────────────────────────────
     const photoSlots = [
       { id: 'file-profile',   name: 'PHOTO_01_profile_1x1'   },
@@ -1394,21 +1405,23 @@
 
   updateProgress();
 
+  var shirtColor = ''; // tracks selected shirt color
+
   function soloShirtColor(btn) {
     ['shirt-black','shirt-white','shirt-none'].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) el.classList.remove('on');
     });
     btn.classList.add('on');
-    document.getElementById('shirt-details').style.display = btn.id !== 'shirt-none' ? 'block' : 'none';
+    var showDetails = btn.id !== 'shirt-none';
+    shirtColor = showDetails ? (btn.id === 'shirt-black' ? 'Black' : 'White') : '';
+    document.getElementById('shirt-details').style.display = showDetails ? 'block' : 'none';
   }
 
   function getShirtData() {
-    var black = document.getElementById('shirt-black') && document.getElementById('shirt-black').classList.contains('on');
-    var white = document.getElementById('shirt-white') && document.getElementById('shirt-white').classList.contains('on');
-    if (!black && !white) return null;
+    if (!shirtColor) return null;
     return {
-      color:   black ? 'Black' : 'White',
+      color:   shirtColor,
       size:    (document.getElementById('shirt-size') || {}).value || '',
       name:    ((document.getElementById('shirt-name') || {}).value || '').trim(),
       address: [
