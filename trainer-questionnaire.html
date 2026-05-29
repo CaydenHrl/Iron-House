@@ -528,10 +528,10 @@
 <div class="thankyou-page" id="thankyou">
   <div class="thankyou-icon">🏋️</div>
   <h1>Application<br><span>received.</span></h1>
-  <p>We review every trainer personally. Expect a message from us within 48 hours — we'll hop on a quick call and get your profile built together.</p>
+  <p>We review every trainer personally. Expect an email from us within 48 hours — we'll get your profile built together and get you set up on the platform.</p>
   <div class="thankyou-detail">
     <strong>What happens next</strong>
-    We'll reach out to schedule a short intro call, finalize your profile card, and get you set up on the platform. As one of our founding trainers, you'll have a direct line to us whenever you need it.
+    We'll reach out via email to finalize your profile card and get you set up on the platform. As one of our founding trainers, you'll have a direct line to us whenever you need it.
   </div>
   <a href="index.html" class="btn-home">Back to Iron House</a>
   <p style="margin-top:1.5rem;font-size:11px;color:rgba(255,255,255,0.2);">By submitting this application you agreed to the Iron House Trainer Agreement. · <a href="privacy.html" style="color:rgba(255,255,255,0.2);text-decoration:underline;">Privacy Policy</a></p>
@@ -621,6 +621,35 @@
       <div>
         <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;">10. Entire Agreement</div>
         <p style="font-size:13px;color:rgba(245,242,237,0.7);line-height:1.75;">This Agreement constitutes the full understanding between Iron House LLC and the Trainer regarding platform participation. Iron House reserves the right to update these terms with reasonable notice.</p>
+      </div>
+    </div>
+
+    <!-- OPTIONAL: FREE SHIRT -->
+    <div class="section-card" style="margin-bottom:1.25rem;border-color:rgba(232,80,10,0.2);background:rgba(232,80,10,0.04);">
+      <div class="section-card-title"><div class="dot"></div>Free Iron House shirt <span style="font-family:var(--font-body);font-size:12px;color:var(--gray-text);font-weight:400;letter-spacing:0;text-transform:none;margin-left:6px;">— optional</span></div>
+      <p style="font-size:13px;color:var(--gray-text);line-height:1.65;margin-bottom:1.25rem;">Want a free Iron House shirt? We'll send one to accepted trainers. <strong style="color:rgba(245,242,237,0.6);">You only receive the shirt if your application is approved.</strong> This section is completely optional — skip it if you prefer.</p>
+      <div style="display:flex;gap:10px;margin-bottom:1rem;">
+        <button class="pill" onclick="soloShirtColor(this)" id="shirt-black">Black</button>
+        <button class="pill" onclick="soloShirtColor(this)" id="shirt-white">White</button>
+        <button class="pill" onclick="soloShirtColor(this)" id="shirt-none" style="opacity:0.5;font-size:11px;">No thanks</button>
+      </div>
+      <div id="shirt-details" style="display:none;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div class="field"><label>Shirt size</label>
+            <select id="shirt-size">
+              <option value="">Select size</option>
+              <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label>Full name</label><input type="text" id="shirt-name" placeholder="Name on shipping label" class="q-input"></div>
+        <div class="field"><label>Street address</label><input type="text" id="shirt-addr1" placeholder="123 Main St" class="q-input"></div>
+        <div class="field"><label>Apt / Suite</label><input type="text" id="shirt-addr2" placeholder="Optional" class="q-input"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <div class="field"><label>City</label><input type="text" id="shirt-city" placeholder="Tampa" class="q-input"></div>
+          <div class="field"><label>State</label><input type="text" id="shirt-state" placeholder="FL" class="q-input" maxlength="2"></div>
+          <div class="field"><label>ZIP</label><input type="text" id="shirt-zip" placeholder="33601" class="q-input" maxlength="10"></div>
+        </div>
       </div>
     </div>
 
