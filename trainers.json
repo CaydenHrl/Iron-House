@@ -235,22 +235,21 @@
     "card_diet": "Whole foods"
   },
   {
-    "name": "Sample Whitman",
+    "name": "Sample Trainer2",
     "age": 26,
     "location": "Denver, CO",
     "email": "cole@email.com",
     "price": 119,
     "experience": "3 yrs",
     "certs": "ISSA",
-    "rating": 4.3,
+    "rating": 5,
     "reviews": 57,
     "founding": true,
     "photo_main": "images/samplewhitmanpfp.png",
     "photo_physique": "images/samplewhitmanphysique.png",
     "photo_lifestyle": "images/samplewhitmanlifestyle.png",
     "specialties": [
-      "CrossFit",
-      "Endurance"
+      "CrossFit"
     ],
     "diet": "Plant-based",
     "niches": [
@@ -270,6 +269,11 @@
     "stat_diet": 1,
     "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client â let's build something that challenges you and actually keeps you coming back.",
     "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process.",
-    "testimonials": []
+    "testimonials": [],
+    "card_specialties": [
+      "CrossFit",
+      "Endurance"
+    ],
+    "card_diet": "Plant-based"
   }
 ]
