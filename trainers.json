@@ -183,6 +183,53 @@
     "card_diet": "Flexible / IIFYM"
   },
   {
+    "name": "Benny Apple",
+    "age": 22,
+    "location": "Wilmington, NC",
+    "email": "bapplefitcoaching@gmail.com",
+    "experience": "4 yrs",
+    "certs": "NASM CPT, NASM CNC, B.S. in Kinesiology - Exercise Science",
+    "price": 410,
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "images/bapplepfp.jpeg",
+    "photo_physique": "images/bapplephysique.jpeg",
+    "photo_lifestyle": "images/bapplelifestyle.jpeg",
+    "specialties": [
+      "Hypertrophy",
+      "Weight loss",
+      "Body recomposition"
+    ],
+    "niches": [
+      "Complete beginners",
+      "General population",
+      "Plus-size / body positive"
+    ],
+    "diet": "Flexible / IIFYM, High protein",
+    "stat_intensity": 3,
+    "stat_structure": 3,
+    "stat_checkins": 4,
+    "stat_energy": 3,
+    "stat_diet": 2,
+    "interests": [
+      "Cooking",
+      "Travel",
+      "Fishing",
+      "Faith"
+    ],
+    "bio": "I'm Benny, owner of BappleFit Coaching LLC and an Exercise Science graduate with over 6 years of experience in fitness, 4 years in the training field. I help busy people build muscle, lose fat, and create sustainable habits through personalized training, nutrition, and accountability. My goal is simple: help you get results without fitness taking over your life.",
+    "story": "My journey into fitness started from my own passion for training and quickly evolved into a career built around helping others transform both physically and mentally. Over the last 6+ years, I've gained experience in personal training, nutrition coaching, strength and conditioning, fitness sales, and business operations, while earning my degree in Exercise Science.\n\nThroughout my career, I've worked with a wide range of clients, from teenagers learning the basics of training to adults over 60 looking to improve their health and quality of life. I've helped clients lose over 100 pounds, build confidence in the gym, improve athletic performance, and develop sustainable habits that fit their lifestyles. My coaching philosophy is centered around creating realistic, personalized plans that clients can actually stick to long-term rather than relying on restrictive diets or unsustainable workout programs.\n\nToday, BappleFit Coaching LLC provides both online and in-person coaching with a focus on strength training, body recomposition, fat loss, muscle growth, and accountability. My mission is to give every client the structure, education, and support they need to build a stronger body, healthier lifestyle, and greater confidence both inside and outside the gym.",
+    "applied_at": "2026-05-30T08:35:40.472Z",
+    "testimonials": [],
+    "card_specialties": [
+      "Hypertrophy",
+      "Weight loss",
+      "Body recomposition"
+    ],
+    "card_diet": "High protein"
+  },
+  {
     "name": "Sample Trainer1",
     "age": 34,
     "location": "Atlanta, GA",
@@ -275,52 +322,5 @@
       "Endurance"
     ],
     "card_diet": "Plant-based"
-  },
-  {
-    "name": "Benny Apple",
-    "age": 22,
-    "location": "Wilmington, NC",
-    "email": "bapplefitcoaching@gmail.com",
-    "experience": "4 yrs",
-    "certs": "NASM CPT, NASM CNC, B.S. in Kinesiology - Exercise Science",
-    "price": 410,
-    "rating": 5,
-    "reviews": 0,
-    "founding": true,
-    "photo_main": "images/bapplepfp.jpeg",
-    "photo_physique": "images/bapplephysique.jpeg",
-    "photo_lifestyle": "images/bapplelifestyle.jpeg",
-    "specialties": [
-      "Hypertrophy",
-      "Weight loss",
-      "Body recomposition"
-    ],
-    "niches": [
-      "Complete beginners",
-      "General population",
-      "Plus-size / body positive"
-    ],
-    "diet": "Flexible / IIFYM, High protein",
-    "stat_intensity": 3,
-    "stat_structure": 3,
-    "stat_checkins": 4,
-    "stat_energy": 3,
-    "stat_diet": 2,
-    "interests": [
-      "Cooking",
-      "Travel",
-      "Fishing",
-      "Faith"
-    ],
-    "bio": "I'm Benny, owner of BappleFit Coaching LLC and an Exercise Science graduate with over 6 years of experience in fitness, 4 years in the training field. I help busy people build muscle, lose fat, and create sustainable habits through personalized training, nutrition, and accountability. My goal is simple: help you get results without fitness taking over your life.",
-    "story": "My journey into fitness started from my own passion for training and quickly evolved into a career built around helping others transform both physically and mentally. Over the last 6+ years, I've gained experience in personal training, nutrition coaching, strength and conditioning, fitness sales, and business operations, while earning my degree in Exercise Science.\n\nThroughout my career, I've worked with a wide range of clients, from teenagers learning the basics of training to adults over 60 looking to improve their health and quality of life. I've helped clients lose over 100 pounds, build confidence in the gym, improve athletic performance, and develop sustainable habits that fit their lifestyles. My coaching philosophy is centered around creating realistic, personalized plans that clients can actually stick to long-term rather than relying on restrictive diets or unsustainable workout programs.\n\nToday, BappleFit Coaching LLC provides both online and in-person coaching with a focus on strength training, body recomposition, fat loss, muscle growth, and accountability. My mission is to give every client the structure, education, and support they need to build a stronger body, healthier lifestyle, and greater confidence both inside and outside the gym.",
-    "applied_at": "2026-05-30T08:35:40.472Z",
-    "testimonials": [],
-    "card_specialties": [
-      "Hypertrophy",
-      "Weight loss",
-      "Body recomposition"
-    ],
-    "card_diet": "High protein"
   }
 ]
