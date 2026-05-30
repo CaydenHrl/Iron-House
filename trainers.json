@@ -183,7 +183,7 @@
     "card_diet": "Flexible / IIFYM"
   },
   {
-    "name": "Jane Doe",
+    "name": "Sample Trainer",
     "age": 34,
     "location": "Atlanta, GA",
     "email": "jade@email.com",
@@ -197,8 +197,7 @@
     "photo_physique": "images/janedoephysique.png",
     "photo_lifestyle": "images/janedoelifestyle.png",
     "specialties": [
-      "Calisthenics",
-      "Functional"
+      "Calisthenics"
     ],
     "diet": "Whole foods",
     "niches": [
@@ -228,7 +227,12 @@
         "before": "",
         "after": ""
       }
-    ]
+    ],
+    "card_specialties": [
+      "Calisthenics",
+      "Functional"
+    ],
+    "card_diet": "Whole foods"
   },
   {
     "name": "Sample Whitman",
