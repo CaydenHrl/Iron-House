@@ -11,8 +11,8 @@
     "reviews": 0,
     "founding": true,
     "photo_main": "images/ianpfp.png",
-    "photo_physique": "images/ianaction.png",
-    "photo_lifestyle": "images/ianlifestyle.jpg",
+    "photo_physique": "images/ianaction.PNG",
+    "photo_lifestyle": "images/ianlifestyle.JPG",
     "specialties": [
       "Hypertrophy",
       "Strength & powerlifting",
