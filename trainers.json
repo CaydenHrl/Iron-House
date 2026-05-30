@@ -183,7 +183,7 @@
     "card_diet": "Flexible / IIFYM"
   },
   {
-    "name": "Sample Trainer",
+    "name": "Jane Doe",
     "age": 34,
     "location": "Atlanta, GA",
     "email": "jade@email.com",
@@ -197,7 +197,8 @@
     "photo_physique": "images/janedoephysique.png",
     "photo_lifestyle": "images/janedoelifestyle.png",
     "specialties": [
-      "Calisthenics"
+      "Calisthenics",
+      "Functional"
     ],
     "diet": "Whole foods",
     "niches": [
@@ -227,29 +228,25 @@
         "before": "",
         "after": ""
       }
-    ],
-    "card_specialties": [
-      "Calisthenics",
-      "Functional"
-    ],
-    "card_diet": "Whole foods"
+    ]
   },
   {
-    "name": "Sample Trainer",
+    "name": "Sample Whitman",
     "age": 26,
     "location": "Denver, CO",
     "email": "cole@email.com",
     "price": 119,
     "experience": "3 yrs",
     "certs": "ISSA",
-    "rating": 5,
+    "rating": 4.3,
     "reviews": 57,
     "founding": true,
     "photo_main": "images/samplewhitmanpfp.png",
     "photo_physique": "images/samplewhitmanphysique.png",
     "photo_lifestyle": "images/samplewhitmanlifestyle.png",
     "specialties": [
-      "CrossFit"
+      "CrossFit",
+      "Endurance"
     ],
     "diet": "Plant-based",
     "niches": [
@@ -269,11 +266,61 @@
     "stat_diet": 1,
     "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client â let's build something that challenges you and actually keeps you coming back.",
     "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process.",
-    "testimonials": [],
-    "card_specialties": [
-      "CrossFit",
-      "Endurance"
+    "testimonials": []
+  },
+  {
+    "name": "John Doe",
+    "age": 29,
+    "location": "Tampa, FL",
+    "email": "marcus@email.com",
+    "price": 149,
+    "experience": "6 yrs",
+    "certs": "NASM",
+    "rating": 4.9,
+    "reviews": 84,
+    "founding": true,
+    "photo_main": "images/",
+    "photo_physique": "images/",
+    "photo_lifestyle": "images/",
+    "specialties": [
+      "Hypertrophy"
     ],
-    "card_diet": "Plant-based"
+    "diet": "Carnivore",
+    "niches": [
+      "Beginners",
+      "General population",
+      "Muscle building focused"
+    ],
+    "interests": [
+      "Hiking",
+      "Cooking",
+      "Fantasy football",
+      "Dogs"
+    ],
+    "stat_intensity": 3,
+    "stat_structure": 2,
+    "stat_checkins": 2,
+    "stat_energy": 2,
+    "stat_diet": 3,
+    "bio": "Built my own body from scratch after being a skinny kid my whole life. I coach people who are done with excuses and ready to actually show up â at their own pace, no judgment.",
+    "story": "I spent years feeling embarrassed in the gym before I figured out what actually works. Now I coach people going through exactly what I went through â helping them skip the frustrating part and get straight to results. My programs are built around real life, not a perfect schedule. I believe in consistency over intensity, and I'll meet you exactly where you are.",
+    "testimonials": [
+      {
+        "name": "Jamie T.",
+        "initials": "JT",
+        "result": "Lost 22 lbs in 14 weeks",
+        "quote": "Marcus figured out in week one that I needed structure but not pressure. Three months in and I haven't missed a session. That's never happened before.",
+        "before": "",
+        "after": ""
+      },
+      {
+        "name": "Derek K.",
+        "initials": "DK",
+        "result": "Added 40 lbs to his deadlift in 8 weeks",
+        "quote": "I came in thinking I knew how to train. Marcus completely rebuilt my foundation and my numbers went through the roof.",
+        "before": "",
+        "after": ""
+      }
+    ]
   }
 ]
