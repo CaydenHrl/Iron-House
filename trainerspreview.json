@@ -50,58 +50,5 @@
       "Weight loss"
     ],
     "card_diet": "Flexible / IIFYM"
-  },
-  {
-    "name": "Cortez Clinton",
-    "age": 38,
-    "location": "Jacksonville NC",
-    "email": "cortezonizuka@gmail.com",
-    "experience": "7 yrs",
-    "certs": "ISSA CPT/Nutrition",
-    "price": 200,
-    "rating": 5,
-    "reviews": 0,
-    "founding": true,
-    "photo_main": "images/cortezpfp1.jpeg",
-    "photo_physique": "images/cortezaction1.jpeg",
-    "photo_lifestyle": "images/cortezlifestyle1.jpeg",
-    "specialties": [
-      "Hypertrophy",
-      "Strength & powerlifting",
-      "CrossFit",
-      "Weight loss",
-      "Cardio & endurance",
-      "Functional fitness",
-      "Flexibility & mobility",
-      "Body recomposition"
-    ],
-    "niches": [
-      "General population",
-      "Competitive athletes",
-      "Women only"
-    ],
-    "diet": "Flexible / IIFYM, High protein, Carnivore, Keto, Vegan, Whole foods, Intermittent fasting",
-    "stat_intensity": 2,
-    "stat_structure": 2,
-    "stat_checkins": 2,
-    "stat_energy": 3,
-    "stat_diet": 2,
-    "interests": [
-      "Hiking",
-      "Cooking",
-      "Travel",
-      "Reading",
-      "Faith"
-    ],
-    "bio": "I was an overweight, lonely kid who hated what he saw in the mirror. My dad, who was handicapped, introduced me to fitness when I was 9 years old, and by 14 I was committed to changing my life. Today, I help people build the confidence, discipline, and strength that fitness gave me.",
-    "story": "I didn’t get into fitness because it was trendy—I got into it because I needed it.\n\nGrowing up, I was overweight, insecure, and lonely. I hated how I looked and how I felt. My dad, who was handicapped, introduced me to fitness when I was 9 years old. Even with the challenges he faced, he taught me the value of discipline, resilience, and showing up when things are hard.\n\nAt 14, I decided I was done feeling sorry for myself and started taking training seriously. Fitness became more than exercise—it became the thing that changed my confidence, my mindset, and ultimately the direction of my life.\n\nToday, I coach people who feel stuck, overwhelmed, or frustrated with where they are. My coaching isn’t about quick fixes or crash diets. It’s about building sustainable habits, creating accountability, and helping people become stronger physically and mentally. I want my clients to realize what I learned years ago: your circumstances don’t define you, and you’re capable of far more than you think.",
-    "applied_at": "2026-05-29T15:27:16.687Z",
-    "testimonials": [],
-    "card_specialties": [
-      "Hypertrophy",
-      "Strength & powerlifting",
-      "CrossFit"
-    ],
-    "card_diet": "Flexible / IIFYM"
   }
 ]
