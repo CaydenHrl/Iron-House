@@ -247,6 +247,7 @@
         <div class="q-block" style="margin-bottom:0;"><label class="q-label">City &amp; State<span class="required-star">*</span></label><input type="text" class="q-input" id="input-location" placeholder="Tampa, FL"></div>
       </div>
       <div class="q-block" style="margin-bottom:0;"><label class="q-label">Email address<span class="required-star">*</span></label><input type="email" class="q-input" id="input-email" placeholder="you@email.com"></div>
+      <div class="q-block" style="margin-bottom:0;margin-top:1rem;"><label class="q-label">Phone number <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--gray-text);font-size:11px;">— optional, in case email goes to spam</span></label><input type="tel" class="q-input" id="input-phone" placeholder="(555) 000-0000"></div>
     </div>
 
     <div class="section-card">
@@ -1224,6 +1225,7 @@
     // ── SECTION 1: BASIC INFO ──────────────────────────────────────
     formData.append('01_name', trainerName);
     formData.append('02_email', document.getElementById('input-email').value.trim());
+    formData.append('02b_phone', (document.getElementById('input-phone') ? document.getElementById('input-phone').value.trim() : '') || 'Not provided');
     formData.append('03_age', document.getElementById('input-age').value);
     formData.append('04_location', document.getElementById('input-location').value.trim());
 
