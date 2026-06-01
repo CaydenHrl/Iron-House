@@ -230,48 +230,6 @@
     "card_diet": "Flexible / IIFYM"
   },
   {
-    "name": "Sample Trainer2",
-    "age": 26,
-    "location": "Denver, CO",
-    "email": "cole@email.com",
-    "price": 119,
-    "experience": "3 yrs",
-    "certs": "ISSA",
-    "rating": 5,
-    "reviews": 57,
-    "founding": true,
-    "photo_main": "images/samplewhitmanpfp.png",
-    "photo_physique": "images/samplewhitmanphysique.png",
-    "photo_lifestyle": "images/samplewhitmanlifestyle.png",
-    "specialties": [
-      "CrossFit"
-    ],
-    "diet": "Plant-based",
-    "niches": [
-      "Athletes",
-      "General population",
-      "Weight loss focused"
-    ],
-    "interests": [
-      "Rock climbing",
-      "Trail running",
-      "Van life"
-    ],
-    "stat_intensity": 4,
-    "stat_structure": 2,
-    "stat_checkins": 2,
-    "stat_energy": 4,
-    "stat_diet": 1,
-    "bio": "Fitness should feel like an adventure, not a chore. I bring that energy to every client â let's build something that challenges you and actually keeps you coming back.",
-    "story": "I quit my desk job at 23 to live out of a van and climb full time. That lifestyle taught me more about functional fitness than any certification. Now I coach people who want to move better, feel stronger, and actually enjoy the process.",
-    "testimonials": [],
-    "card_specialties": [
-      "CrossFit",
-      "Endurance"
-    ],
-    "card_diet": "Plant-based"
-  },
-  {
     "name": "Zachary Johnson",
     "age": 29,
     "location": "Charleston, SC",
