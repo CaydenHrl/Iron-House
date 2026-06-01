@@ -375,6 +375,8 @@
     <div class="q-block">
       <label class="q-label">Email — so we can send you your matches</label>
       <input type="email" class="q-input" id="input-email" placeholder="you@email.com">
+      <label class="q-label" style="margin-top:0.75rem;">Phone number <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--gray-text);font-size:11px;">— optional, in case email goes to spam</span></label>
+      <input type="tel" class="q-input" id="input-phone" placeholder="(555) 000-0000">
     </div>
 
     <input type="hidden" id="input-preferred-trainer" value="">
@@ -506,34 +508,42 @@
 
     const formData = new FormData();
     formData.append('_subject', 'Iron House — New Client Match Request');
-    formData.append('name', document.getElementById('input-name').value);
-    formData.append('email', document.getElementById('input-email').value);
-    formData.append('age', document.getElementById('input-age').value);
-    formData.append('sex', getSelected('sex-group'));
-    formData.append('height', document.getElementById('input-height').value || 'Not provided');
-    formData.append('weight', document.getElementById('input-weight').value || 'Not provided');
-    formData.append('body_fat', document.getElementById('input-bf').value || 'Not provided');
-    formData.append('goal', getSelected('goal-group'));
-    formData.append('client_niches', getSelected('niche-group'));
-    formData.append('experience', getSelected('exp-group'));
-    formData.append('training_location', getSelected('location-group'));
-    formData.append('training_styles', getSelected('style-group'));
-    formData.append('diet', getSelected('diet-group'));
-    formData.append('interests', interests.join(', '));
-    formData.append('days_per_week', document.getElementById('slider-days').value);
-    formData.append('budget', '$' + document.getElementById('slider-budget').value + '/mo');
-    formData.append('coaching_style', getSlider('slider-coaching'));
-    formData.append('intensity', getSlider('slider-intensity'));
-    formData.append('checkin_freq', getSlider('slider-checkin'));
-    formData.append('diet_strictness', getSlider('slider-diet'));
-    formData.append('motivation', getSlider('slider-motivation'));
-    formData.append('personality', getSlider('slider-personality'));
-    formData.append('competitiveness', getSlider('slider-competitive'));
-    formData.append('held_back', document.getElementById('input-held-back').value);
-    formData.append('success_vision', document.getElementById('input-success').value);
-    formData.append('other_notes', document.getElementById('input-other').value);
+    // ── SECTION 1: Contact ────────────────────────────────────────
+    formData.append('01_name',   document.getElementById('input-name').value);
+    formData.append('02_email',  document.getElementById('input-email').value);
+    formData.append('03_phone',  document.getElementById('input-phone').value || 'Not provided');
+    // ── SECTION 2: About you ─────────────────────────────────────
+    formData.append('04_age',        document.getElementById('input-age').value);
+    formData.append('05_sex',        getSelected('sex-group'));
+    formData.append('06_height',     document.getElementById('input-height').value || 'Not provided');
+    formData.append('07_weight',     document.getElementById('input-weight').value || 'Not provided');
+    formData.append('08_body_fat',   document.getElementById('input-bf').value || 'Not provided');
+    formData.append('09_experience', getSelected('exp-group'));
+    // ── SECTION 3: Goals ─────────────────────────────────────────
+    formData.append('10_goal',             getSelected('goal-group'));
+    formData.append('11_success_vision',   document.getElementById('input-success').value);
+    formData.append('12_held_back',        document.getElementById('input-held-back').value);
+    // ── SECTION 4: Training preferences ─────────────────────────
+    formData.append('13_training_location', getSelected('location-group'));
+    formData.append('14_training_styles',   getSelected('style-group'));
+    formData.append('15_days_per_week',     document.getElementById('slider-days').value + ' days/week');
+    formData.append('16_client_niches',     getSelected('niche-group'));
+    // ── SECTION 5: Coaching preferences ─────────────────────────
+    formData.append('17_coaching_style',  getSlider('slider-coaching'));
+    formData.append('18_intensity',       getSlider('slider-intensity'));
+    formData.append('19_checkin_freq',    getSlider('slider-checkin'));
+    formData.append('20_motivation',      getSlider('slider-motivation'));
+    formData.append('21_personality',     getSlider('slider-personality'));
+    formData.append('22_competitiveness', getSlider('slider-competitive'));
+    // ── SECTION 6: Nutrition ─────────────────────────────────────
+    formData.append('23_diet',            getSelected('diet-group'));
+    formData.append('24_diet_strictness', getSlider('slider-diet'));
+    // ── SECTION 7: Budget & interests ────────────────────────────
+    formData.append('25_budget',    '$' + document.getElementById('slider-budget').value + '/mo');
+    formData.append('26_interests', interests.join(', '));
+    formData.append('27_other_notes', document.getElementById('input-other').value);
     const pt = document.getElementById('input-preferred-trainer').value;
-    if (pt) formData.append('interested_in_trainer', pt);
+    if (pt) formData.append('28_interested_in_trainer', pt);
 
     try {
       const res = await fetch('https://formspree.io/f/mqenyrkn', {
