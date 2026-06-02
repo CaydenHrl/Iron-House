@@ -5,14 +5,14 @@
     "location": "Shreveport, LA",
     "email": "sarah.keilbarth@gmail.com",
     "experience": "5 yrs",
-    "certs": "MS Health and Human Performance, NSCA-CSCS",
+    "certs": "MS Health/Human Performance, NSCA-CSCS",
     "price": 400,
     "rating": 5,
     "reviews": 0,
     "founding": true,
-    "photo_main": "",
-    "photo_physique": "",
-    "photo_lifestyle": "",
+    "photo_main": "images/sarahpfp.jpeg",
+    "photo_physique": "images/sarahaction.jpeg",
+    "photo_lifestyle": "images/sarahlifestyle.jpeg",
     "specialties": [
       "Hypertrophy",
       "Strength & powerlifting",
@@ -40,6 +40,12 @@
     "bio": "I grew up playing every sport in the book but once that stopped I lost myself physically and mentally, which motivated me to learn how to fuel my body properly and how to get my energy and physique back from weightlifting and being active in different parts of my life. My goal is to help my clients make health and fitness a sustainable part of their life instead of it feeling like a chore!",
     "story": "I am from Tulsa, OK and went to Oklahoma State University where I got my masters in health and human performance and my bachelors in exercise science. My love of sports is what drove me to this career. Being active and healthy is what I love most even when it gets hard to do sometimes. I became a coach to help others achieve their health and fitness goals whether that’s to get stronger and faster to perform better in their sport or so gain strength and energy to help them have a functioning and sustainable healthy lifestyle. My philosophy is that you’ll start to look better when you start to feel better. My programs are performance based which just means they are tailored to your specific goals and incorporate strength, hypertrophy, mobility, and power training. I am excited to have the opportunity to work with you and help you achieve your goals!",
     "applied_at": "2026-06-02T20:07:46.864Z",
-    "testimonials": []
+    "testimonials": [],
+    "card_specialties": [
+      "Hypertrophy",
+      "Strength & powerlifting",
+      "Flexibility & mobility"
+    ],
+    "card_diet": "Flexible / IIFYM"
   }
 ]
