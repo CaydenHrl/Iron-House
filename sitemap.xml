@@ -1,63 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
   <url>
     <loc>https://www.joinironhouse.com/</loc>
-    <priority>1.0</priority>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.joinironhouse.com/trainers.html</loc>
-    <priority>0.9</priority>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.joinironhouse.com/trainers-join.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.joinironhouse.com/our-story.html</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://www.joinironhouse.com/questionnaire.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.joinironhouse.com/trainer-questionnaire.html</loc>
-    <priority>0.8</priority>
+    <loc>https://www.joinironhouse.com/our-story.html</loc>
     <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.joinironhouse.com/blog/</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.joinironhouse.com/blog/how-to-get-online-personal-training-clients.html</loc>
-    <priority>0.9</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.joinironhouse.com/blog/best-platforms-for-online-personal-trainers.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.joinironhouse.com/blog/how-to-find-an-online-personal-trainer.html</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.joinironhouse.com/privacy.html</loc>
-    <priority>0.3</priority>
     <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
+
+  <!-- Blog index -->
+  <url>
+    <loc>https://www.joinironhouse.com/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog posts — For Trainers -->
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-get-online-personal-training-clients.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/best-platforms-for-online-personal-trainers.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/what-makes-a-great-online-trainer-profile.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-price-online-personal-training.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-write-a-personal-trainer-bio.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog posts — For Clients -->
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-find-an-online-personal-trainer.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/online-vs-in-person-personal-training.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/is-online-personal-training-worth-it.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/online-personal-training-for-beginners.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.joinironhouse.com/blog/how-to-stay-consistent-with-a-personal-trainer.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
