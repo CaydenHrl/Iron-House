@@ -134,6 +134,10 @@
   <span class="step-counter" id="step-counter">Step 1 of 3</span>
 </div>
 <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:33%"></div></div>
+<!-- Honeypot: hidden from humans via CSS, filled only by bots -->
+<div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+  <input type="text" name="_hp_email" id="_hp_email" tabindex="-1" autocomplete="off">
+</div>
 
 <!-- PAGE 1: THE BASICS -->
 <div class="page active" id="page-1">
@@ -424,9 +428,25 @@
   const totalPages = 3;
   let interests = [];
 
+  // ── SECURITY: HTML escape helper ────────────────────────────────
+  function esc(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  // ────────────────────────────────────────────────────────────────
+
+  // ── URL param: sanitize ?trainer= value before use ───────────────
+  // Only allow letters, digits, spaces, hyphens, apostrophes (name chars).
+  // Discard anything else to prevent injection into form data / emails.
   const urlParams = new URLSearchParams(window.location.search);
-  const preferredTrainer = urlParams.get('trainer');
+  const rawTrainer = urlParams.get('trainer') || '';
+  const preferredTrainer = /^[A-Za-z0-9 '\-\.]{1,80}$/.test(rawTrainer) ? rawTrainer : '';
   if (preferredTrainer) document.getElementById('input-preferred-trainer').value = preferredTrainer;
+  // ────────────────────────────────────────────────────────────────
 
   const sliderLabels = {
     'slider-coaching':    ['Totally laid-back','Relaxed & supportive','Balanced','Structured & firm','Full drill sergeant'],
@@ -459,7 +479,7 @@
     const container = document.getElementById('interests-tags');
     const hint = document.getElementById('interests-hint');
     container.innerHTML = interests.map((t, i) =>
-      `<div class="interest-tag">${t}<button onclick="removeInterest(${i})">×</button></div>`
+      `<div class="interest-tag">${esc(t)}<button onclick="removeInterest(${i})">×</button></div>`
     ).join('');
     hint.textContent = interests.length + ' of 5 added';
     hint.style.color = interests.length >= 5 ? 'var(--orange)' : 'var(--gray-text)';
@@ -503,6 +523,52 @@
   }
 
   async function submitForm() {
+    // ── HONEYPOT CHECK ──────────────────────────────────────────
+    if (document.getElementById('_hp_email').value) {
+      // Fake success for bots
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('nav-footer').style.display = 'none';
+      document.getElementById('thankyou').classList.add('active');
+      document.getElementById('progress-bar').style.width = '100%';
+      const _sc = document.getElementById('step-counter'); _sc.textContent = ''; const _scA = document.createElement('a'); _scA.href = 'index.html'; _scA.textContent = '← Back to Iron House'; _sc.appendChild(_scA);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // ── INPUT VALIDATION ────────────────────────────────────────
+    const nameVal  = document.getElementById('input-name').value.trim();
+    const emailVal = document.getElementById('input-email').value.trim();
+    const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
+
+    let valMsg = '';
+    if (!nameVal)        valMsg = 'Please enter your first name.';
+    else if (!emailVal)  valMsg = 'Please enter your email address so we can send your matches.';
+    else if (!emailOk)   valMsg = 'Please enter a valid email address (e.g. you@example.com).';
+
+    if (valMsg) {
+      let errEl = document.getElementById('submit-val-error');
+      if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.id = 'submit-val-error';
+        errEl.style.cssText = 'color:#f87171;font-size:13px;text-align:center;margin-bottom:0.75rem;';
+        const footer = document.getElementById('nav-footer');
+        footer.insertBefore(errEl, footer.firstChild);
+      }
+      errEl.textContent = valMsg;
+      // Scroll back to page 3 if not already there
+      if (currentPage !== 3) {
+        document.getElementById('page-'+currentPage).classList.remove('active');
+        currentPage = 3;
+        document.getElementById('page-3').classList.add('active');
+        updateProgress();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const errEl = document.getElementById('submit-val-error');
+    if (errEl) errEl.textContent = '';
+    // ────────────────────────────────────────────────────────────
+
     const btn = document.getElementById('btn-next');
     btn.textContent = 'Sending...'; btn.disabled = true;
 
@@ -557,7 +623,7 @@
         document.getElementById('nav-footer').style.display = 'none';
         document.getElementById('thankyou').classList.add('active');
         document.getElementById('progress-bar').style.width = '100%';
-        document.getElementById('step-counter').innerHTML = '<a href="index.html">← Back to Iron House</a>';
+        const _sc = document.getElementById('step-counter'); _sc.textContent = ''; const _scA = document.createElement('a'); _scA.href = 'index.html'; _scA.textContent = '← Back to Iron House'; _sc.appendChild(_scA);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else { btn.textContent = 'Try Again'; btn.disabled = false; }
     } catch(e) { btn.textContent = 'Try Again'; btn.disabled = false; }
