@@ -191,6 +191,8 @@
   .cert-tag-filename { font-size: 11px; color: #7cba4a; display: none; align-items: center; gap: 5px; }
   .cert-tag-filename.show { display: flex; }
   .cert-tag-clear { background: none; border: none; color: var(--gray-text); cursor: pointer; font-size: 13px; padding: 0; }
+
+  @media (max-width: 600px) {
     .container { padding: 2rem 1.25rem 6rem; }
     .topbar { padding: 1rem 1.25rem; }
     .nav-footer { padding: 1rem 1.25rem; }
@@ -223,6 +225,10 @@
   <span class="step-counter" id="step-counter">Step 1 of 3</span>
 </div>
 <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:33%"></div></div>
+<!-- Honeypot: hidden from humans via CSS, filled only by bots -->
+<div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+  <input type="text" name="_hp_email" id="_hp_email" tabindex="-1" autocomplete="off">
+</div>
 
 <!-- PAGE 1: CREDENTIALS -->
 <div class="page active" id="page-1">
@@ -675,6 +681,19 @@
   const totalPages = 4;
   let interests = [];
 
+  // ── SECURITY: HTML escape helper ────────────────────────────────
+  // Use esc() on every piece of external/user data before injecting
+  // into innerHTML. Converts &, <, >, ", ' to safe HTML entities.
+  function esc(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  // ────────────────────────────────────────────────────────────────
+
   const sliderLabels = {
     'slider-intensity':  ['Easy & light','Moderate','Balanced','Hard-working','Max effort always'],
     'slider-structure':  ['Very flexible','Mostly flexible','Balanced','Pretty structured','Fully rigid'],
@@ -858,9 +877,10 @@
     const div = document.createElement('div');
     div.className = 'cert-tag-row';
     div.id = 'cert-row-' + id;
+    const safeName = esc(name);
     div.innerHTML = `
       <div class="cert-tag-header">
-        <div class="cert-tag-label"><span class="cert-tag-pill">${name}</span></div>
+        <div class="cert-tag-label"><span class="cert-tag-pill">${safeName}</span></div>
         <button class="cert-tag-remove" onclick="removeCert(${id})">×</button>
       </div>
       <div class="cert-tag-upload">
@@ -929,8 +949,10 @@
     document.getElementById('niche-other').classList.toggle('visible', btn.classList.contains('selected'));
   }
 
-  function removeNicheRank(label) {
-    nicheOrder = nicheOrder.filter(n => n !== label);
+  function removeNicheRank(idx) {
+    const label = nicheOrder[idx];
+    if (label === undefined) return;
+    nicheOrder = nicheOrder.filter((_, i) => i !== idx);
     // unselect the pill
     document.querySelectorAll('#niche-group .pill').forEach(p => {
       if (p.textContent.trim() === label) p.classList.remove('selected');
@@ -950,10 +972,10 @@
         ondrop="nicheDrop(event,${i})"
         ondragend="nicheDragEnd()">
         <span class="niche-rank-num">${i + 1}</span>
-        <span class="niche-rank-label">${n}</span>
+        <span class="niche-rank-label">${esc(n)}</span>
         ${i === 0 ? '<span class="niche-rank-badge">Shows on card</span>' : ''}
         <span class="niche-rank-handle">⠿</span>
-        <button class="niche-rank-remove" onclick="removeNicheRank('${n}')">×</button>
+        <button class="niche-rank-remove" onclick="removeNicheRank(${i})">×</button>
       </div>`).join('');
   }
 
@@ -997,14 +1019,14 @@
   function buildPreviewCard() {
     const fname = document.getElementById('input-firstname')?.value.trim() || '';
     const lname = document.getElementById('input-lastname')?.value.trim() || '';
-    const name = (fname + ' ' + lname).trim() || 'Your Name';
-    const age = document.getElementById('input-age')?.value || '—';
-    const loc = document.getElementById('input-location')?.value.trim() || 'City, ST';
+    const name = esc((fname + ' ' + lname).trim() || 'Your Name');
+    const age = esc(document.getElementById('input-age')?.value || '—');
+    const loc = esc(document.getElementById('input-location')?.value.trim() || 'City, ST');
     const expVal = parseInt(document.getElementById('slider-exp')?.value) || 1;
-    const exp = expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs';
-    const certs = getCertData() || '—';
-    const rate = document.getElementById('slider-rate')?.value || '—';
-    const bio = document.getElementById('input-bio')?.value.trim() || 'Your bio will appear here.';
+    const exp = esc(expVal === 9 ? '9+ yrs' : expVal === 1 ? '1 yr' : expVal + ' yrs');
+    const certs = esc(getCertData() || '—');
+    const rate = esc(document.getElementById('slider-rate')?.value || '—');
+    const bio = esc(document.getElementById('input-bio')?.value.trim() || 'Your bio will appear here.');
 
     const specialties = [...document.querySelectorAll('#specialty-group .pill.selected')].map(p => p.textContent.trim()).filter(Boolean);
     const diet = [...document.querySelectorAll('#diet-group .pill.selected')].map(p => p.textContent.trim())[0] || '';
@@ -1021,9 +1043,9 @@
       </div>`;
     }).join('');
 
-    const styleTags = specialties.map(s => `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(50,120,20,0.1);color:#7cba4a;border:1px solid rgba(80,160,30,0.2);display:inline-block;margin:2px;">${s}</span>`).join('');
-    const dietTag = diet ? `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(200,120,20,0.08);color:#e0a84a;border:1px solid rgba(200,140,30,0.2);display:inline-block;margin:2px;">${diet}</span>` : '';
-    const nicheTag = niches[0] ? `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(100,80,200,0.1);color:#a89aea;border:1px solid rgba(120,100,220,0.2);display:inline-block;margin:2px;">${niches[0]}</span>` : '';
+    const styleTags = specialties.map(s => `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(50,120,20,0.1);color:#7cba4a;border:1px solid rgba(80,160,30,0.2);display:inline-block;margin:2px;">${esc(s)}</span>`).join('');
+    const dietTag = diet ? `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(200,120,20,0.08);color:#e0a84a;border:1px solid rgba(200,140,30,0.2);display:inline-block;margin:2px;">${esc(diet)}</span>` : '';
+    const nicheTag = niches[0] ? `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(100,80,200,0.1);color:#a89aea;border:1px solid rgba(120,100,220,0.2);display:inline-block;margin:2px;">${esc(niches[0])}</span>` : '';
 
     return `<div style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;font-family:'Barlow',sans-serif;color:#f5f2ed;">
       <div style="padding:0.875rem 1rem 0.6rem;display:flex;justify-content:space-between;align-items:flex-start;">
@@ -1074,7 +1096,7 @@
     const interestEl = inner.querySelector('#prev-interests-chips');
     if (interestEl) {
       interestEl.innerHTML = interests.map(i =>
-        `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:#242424;border:1px solid rgba(255,255,255,0.07);color:rgba(245,242,237,0.6);">${i}</span>`
+        `<span style="font-size:10px;padding:2px 8px;border-radius:99px;background:#242424;border:1px solid rgba(255,255,255,0.07);color:rgba(245,242,237,0.6);">${esc(i)}</span>`
       ).join('') || '<span style="font-size:11px;color:#555;">None added yet</span>';
     }
     document.getElementById('preview-modal-overlay').classList.add('open');
@@ -1119,7 +1141,7 @@
     const container = document.getElementById('interests-tags');
     const hint = document.getElementById('interests-hint');
     container.innerHTML = interests.map((t, i) =>
-      `<div class="interest-tag">${t}<button onclick="removeInterest(${i})">×</button></div>`
+      `<div class="interest-tag">${esc(t)}<button onclick="removeInterest(${i})">×</button></div>`
     ).join('');
     hint.textContent = interests.length + ' of 5 added';
     hint.style.color = interests.length >= 5 ? 'var(--orange)' : 'var(--gray-text)';
@@ -1215,6 +1237,18 @@
   const getSlider = (id) => { const v = document.getElementById(id).value; return sliderLabels[id] ? sliderLabels[id][v] : v; };
 
   async function submitForm() {
+    // ── HONEYPOT CHECK ── bots fill hidden fields; humans don't
+    if (document.getElementById('_hp_email').value) {
+      // Silently fake success to avoid revealing the block to bots
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('nav-footer').style.display = 'none';
+      document.getElementById('thankyou').classList.add('active');
+      document.getElementById('progress-bar').style.width = '100%';
+      const _sc = document.getElementById('step-counter'); _sc.textContent = ''; const _scA = document.createElement('a'); _scA.href = 'index.html'; _scA.textContent = '← Back to Iron House'; _sc.appendChild(_scA);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const btn = document.getElementById('btn-next');
     btn.textContent = 'Sending...'; btn.disabled = true;
 
@@ -1313,28 +1347,18 @@
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
-        // ── WRITE TO trainerspreview.json ON GITHUB ──────────────
-        const _t = ['github', '_pat_', '11CDQS5AY0J2uWzFvZolkf_', 'KS3C3abgsSvVwkLVD5Yz7gDp4IirknPckcNAThow2sI7UJGKFAKPqLGmV4f'];
-        const GH_TOKEN = _t.join('');
-        const GH_USER  = 'CaydenHrl';
-        const GH_REPO  = 'Iron-House';
-        const GH_FILE  = 'trainerspreview.json';
-        const GH_API   = 'https://api.github.com/repos/' + GH_USER + '/' + GH_REPO + '/contents/' + GH_FILE;
-        const GH_HEAD  = { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' };
-
+        // ── STAGING WRITE via Cloudflare Worker ───────────────────
         try {
           const expV2 = parseInt(document.getElementById('slider-exp').value);
           const newTrainer = {
-            name:       trainerName,
-            age:        parseInt(document.getElementById('input-age').value) || 0,
-            location:   document.getElementById('input-location').value.trim(),
-            email:      document.getElementById('input-email').value.trim(),
-            experience: expV2 === 9 ? '9+ yrs' : expV2 === 1 ? '1 yr' : expV2 + ' yrs',
-            certs:      getCertData(),
-            price:      parseInt(document.getElementById('slider-rate').value) || 149,
-            rating:     5.0,
-            reviews:    0,
-            founding:   true,
+            name:        trainerName,
+            age:         parseInt(document.getElementById('input-age').value) || 0,
+            location:    document.getElementById('input-location').value.trim(),
+            email:       document.getElementById('input-email').value.trim(),
+            experience:  expV2 === 9 ? '9+ yrs' : expV2 === 1 ? '1 yr' : expV2 + ' yrs',
+            certs:       getCertData(),
+            price:       parseInt(document.getElementById('slider-rate').value) || 149,
+            rating: 5.0, reviews: 0, founding: true,
             photo_main: '', photo_physique: '', photo_lifestyle: '',
             specialties: getSelected('specialty-group').split(', ').filter(Boolean),
             niches:      getNicheOrdered(),
@@ -1350,47 +1374,13 @@
             applied_at:  new Date().toISOString(),
             testimonials: []
           };
-
-          // GET current file to get sha and existing content
-          const getRes = await fetch(GH_API, { headers: GH_HEAD });
-          let existing = [];
-          let sha = undefined;
-
-          if (getRes.ok) {
-            const getData = await getRes.json();
-            sha = getData.sha;
-            // decode base64 — strip ALL whitespace first
-            const b64 = getData.content.replace(/[^A-Za-z0-9+/=]/g, '');
-            const decoded = atob(b64);
-            const trimmed = decoded.trim();
-            if (trimmed && trimmed !== 'null') {
-              try { existing = JSON.parse(trimmed); } catch(e) { existing = []; }
-            }
-          }
-
-          existing.push(newTrainer);
-
-          const putBody = {
-            message: 'New application: ' + trainerName,
-            content: btoa(unescape(encodeURIComponent(JSON.stringify(existing, null, 2)))),
-            branch: 'main'
-          };
-          if (sha) putBody.sha = sha;
-
-          const putRes = await fetch(GH_API, {
-            method: 'PUT',
-            headers: Object.assign({}, GH_HEAD, { 'Content-Type': 'application/json' }),
-            body: JSON.stringify(putBody)
+          await fetch('https://ironhouse-worker.ironhouse.workers.dev', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newTrainer)
           });
-
-          if (putRes.ok) {
-            console.log('Staging write SUCCESS');
-          } else {
-            const putErr = await putRes.json().catch(function(){ return {}; });
-            console.warn('Staging write failed:', putRes.status, putErr.message);
-          }
-        } catch(ghErr) {
-          console.warn('GitHub staging write error:', ghErr.message);
+        } catch (e) {
+          // Worker failure is non-fatal — application already emailed via Formspree
         }
         // ──────────────────────────────────────────────────────────
 
@@ -1398,7 +1388,7 @@
         document.getElementById('nav-footer').style.display = 'none';
         document.getElementById('thankyou').classList.add('active');
         document.getElementById('progress-bar').style.width = '100%';
-        document.getElementById('step-counter').innerHTML = '<a href="index.html">← Back to Iron House</a>';
+        const _sc = document.getElementById('step-counter'); _sc.textContent = ''; const _scA = document.createElement('a'); _scA.href = 'index.html'; _scA.textContent = '← Back to Iron House'; _sc.appendChild(_scA);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         btn.textContent = 'Try Again'; btn.disabled = false;
