@@ -503,7 +503,7 @@
     <div class="footer-right">
       <a href="blog/index.html">Blog</a>
     <a href="trainers-join.html">For trainers</a>
-    <a href="https://instagram.com/joinironhouse" target="_blank">@joinironhouse</a>
+    <a href="https://instagram.com/joinironhouse" target="_blank" rel="noopener noreferrer">@joinironhouse</a>
       <a href="privacy.html" style="font-size:11px;color:rgba(255,255,255,0.2);">Privacy Policy</a>
       <span class="footer-copy">© 2025 Iron House LLC. All rights reserved.</span>
     </div>
@@ -511,6 +511,17 @@
 </footer>
 
 <script>
+  // ── SECURITY: HTML escape helper ────────────────────────────────
+  function esc(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  // ────────────────────────────────────────────────────────────────
+
   // NAV
   function toggleMenu() {
     const h = document.getElementById('hamburger');
@@ -591,12 +602,12 @@
 
   function buildSpotlightCard(t) {
     const img = t.photo_main
-      ? `<img src="${t.photo_main}" alt="${t.name}" onerror="this.parentElement.innerHTML='💪'">`
+      ? `<img src="${esc(t.photo_main)}" alt="${esc(t.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='💪'">`
       : '💪';
     const tags = (t.specialties || []).slice(0,2).map(s =>
-      `<span class="spotlight-tag">${s}</span>`).join('');
+      `<span class="spotlight-tag">${esc(s)}</span>`).join('');
     const nicheTag = t.niches && t.niches[0]
-      ? `<span class="spotlight-tag" style="background:rgba(100,80,200,0.1);color:#a89aea;border-color:rgba(120,100,220,0.2);">${t.niches[0]}</span>` : '';
+      ? `<span class="spotlight-tag" style="background:rgba(100,80,200,0.1);color:#a89aea;border-color:rgba(120,100,220,0.2);">${esc(t.niches[0])}</span>` : '';
     const stars = Array(5).fill(0).map((_, i) =>
       `<div class="spotlight-star" style="background:${i < Math.round(t.rating || 5) ? '#c07a18' : 'var(--gray-light)'}"></div>`
     ).join('');
@@ -611,17 +622,17 @@
       <div class="spotlight-img">${img}</div>
       <div class="spotlight-body">
         <div class="spotlight-header-row">
-          <div class="spotlight-name">${t.name}</div>
+          <div class="spotlight-name">${esc(t.name)}</div>
           <div>
-            <div class="spotlight-stars">${stars}<span class="spotlight-rating">(${t.reviews || 0})</span></div>
+            <div class="spotlight-stars">${stars}<span class="spotlight-rating">(${esc(String(t.reviews || 0))})</span></div>
           </div>
         </div>
-        <div class="spotlight-meta">${t.age} · ${t.location}</div>
+        <div class="spotlight-meta">${esc(String(t.age))} · ${esc(t.location)}</div>
         <div class="spotlight-tags">${tags}${nicheTag}</div>
         <div class="spotlight-bars">${bars}</div>
       </div>
       <div class="spotlight-footer">
-        <div class="spotlight-exp">${t.experience || '—'}<span> experience</span></div>
+        <div class="spotlight-exp">${esc(t.experience || '—')}<span> experience</span></div>
         <span class="spotlight-cta">View profile →</span>
       </div>`;
   }
@@ -638,8 +649,9 @@
       return 'sp-hidden';
     }
 
+    // Use index-based navigation — no trainer name in onclick attribute
     const cardHtml = spotlightData.map((t, i) =>
-      `<div class="spotlight-card ${slotClass(i)}" onclick="${i === spotlightIdx ? `window.location.href='trainers.html?spotlight=${encodeURIComponent(t.name)}'` : ''}">${buildSpotlightCard(t)}</div>`
+      `<div class="spotlight-card ${slotClass(i)}" onclick="${i === spotlightIdx ? `goToTrainersPage(${i})` : ''}">${buildSpotlightCard(t)}</div>`
     ).join('');
 
     const dotsHtml = spotlightData.map((_, i) =>
@@ -657,6 +669,13 @@
       const el = document.getElementById(id);
       if (el) el.innerHTML = dotsHtml;
     });
+  }
+
+  // Navigate to trainers page with spotlight pre-opened, using safe index lookup
+  function goToTrainersPage(idx) {
+    const trainer = spotlightData[idx];
+    if (!trainer) return;
+    window.location.href = 'trainers.html?spotlight=' + encodeURIComponent(trainer.name);
   }
 
   function goToSpotlight(n) {
@@ -721,13 +740,13 @@
     if (!testiData.length || !stage) return;
     stage.innerHTML = testiData.map((t, i) => `
       <div class="testi-mini-card ${testiSlotClass(i, testiData.length)}" onclick="goToTesti(${i})">
-        <div class="testi-mini-quote">${t.quote}</div>
+        <div class="testi-mini-quote">${esc(t.quote)}</div>
         <div class="testi-mini-author">
-          <div class="testi-mini-avatar">${t.initials}</div>
+          <div class="testi-mini-avatar">${esc(t.initials)}</div>
           <div>
-            <div class="testi-mini-name">${t.name}</div>
-            <div class="testi-mini-role">${t.role}</div>
-            <div class="testi-mini-result">${t.result}</div>
+            <div class="testi-mini-name">${esc(t.name)}</div>
+            <div class="testi-mini-role">${esc(t.role)}</div>
+            <div class="testi-mini-result">${esc(t.result)}</div>
           </div>
         </div>
       </div>`).join('');
