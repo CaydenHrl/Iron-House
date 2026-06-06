@@ -428,7 +428,7 @@
   <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
     <a href="blog/index.html">Blog</a>
     <a href="trainers-join.html">For trainers</a>
-    <a href="https://instagram.com/joinironhouse" target="_blank" style="font-size:13px;color:#777;text-decoration:none;">@joinironhouse</a>
+    <a href="https://instagram.com/joinironhouse" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:#777;text-decoration:none;">@joinironhouse</a>
     <a href="privacy.html" style="font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;">Privacy Policy</a>
     <span style="font-size:11px;color:rgba(255,255,255,0.2);">© 2025 Iron House LLC</span>
   </div>
@@ -437,6 +437,18 @@
 <script>
   let activeFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
   let pendingFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
+  let TRAINERS = [];
+
+  // ── SECURITY: HTML escape helper ────────────────────────────────
+  function esc(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  // ────────────────────────────────────────────────────────────────
 
   // SVG ICONS — single color orange
   const ICONS = {
@@ -467,19 +479,24 @@
 
   function buildCard(trainer, index) {
     const delay = (index % 9) * 0.05;
-    const mainImg = trainer.photo_main   ? `<img src="${trainer.photo_main}" alt="${trainer.name}">` : '💪';
-    const img2    = trainer.photo_physique  ? `<img src="${trainer.photo_physique}" alt="">` : '🏋️';
-    const img3    = trainer.photo_lifestyle ? `<img src="${trainer.photo_lifestyle}" alt="">` : '🌄';
+    const mainImg = trainer.photo_main
+      ? `<img src="${esc(trainer.photo_main)}" alt="${esc(trainer.name)}" loading="lazy">`
+      : '💪';
+    const img2 = trainer.photo_physique
+      ? `<img src="${esc(trainer.photo_physique)}" alt="" loading="lazy">`
+      : '🏋️';
+    const img3 = trainer.photo_lifestyle
+      ? `<img src="${esc(trainer.photo_lifestyle)}" alt="" loading="lazy">`
+      : '🌄';
 
     const cardSpecs = (trainer.card_specialties && trainer.card_specialties.length)
       ? trainer.card_specialties.slice(0, 3)
       : (trainer.specialties || []).slice(0, 3);
-    const styleTags = cardSpecs.map(s => `<span class="tag style">${s}</span>`).join('');
+    const styleTags = cardSpecs.map(s => `<span class="tag style">${esc(s)}</span>`).join('');
     const cardDiet  = trainer.card_diet || (trainer.diet ? trainer.diet.split(',')[0].trim() : '');
-    const dietTag   = cardDiet ? `<span class="tag diet">${cardDiet}</span>` : '';
-    // show first niche from ordered list
+    const dietTag   = cardDiet ? `<span class="tag diet">${esc(cardDiet)}</span>` : '';
     const nicheTag  = trainer.niches && trainer.niches.length
-      ? `<span class="tag niche">${trainer.niches[0]}</span>` : '';
+      ? `<span class="tag niche">${esc(trainer.niches[0])}</span>` : '';
 
     const statBars = STAT_DEFS.map(d => {
       const pct = Math.round(((trainer[d.key] ?? 2) / 4) * 100);
@@ -489,17 +506,17 @@
       </div>`;
     }).join('');
 
-    const chips = (trainer.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
+    const chips = (trainer.interests || []).map(i => `<span class="interest-chip">${esc(i)}</span>`).join('');
 
     return `
     <div class="trainer-card" style="animation-delay:${delay}s" onclick="openModal(${index})">
       <div class="card-header">
         <div>
-          <div class="trainer-name">${trainer.name}</div>
-          <div class="trainer-meta">${trainer.age} · ${trainer.location}</div>
+          <div class="trainer-name">${esc(trainer.name)}</div>
+          <div class="trainer-meta">${esc(trainer.age)} · ${esc(trainer.location)}</div>
         </div>
         <div class="card-header-right">
-          <div class="stars">${renderStars(trainer.rating)}<span class="review-count">${trainer.rating} (${trainer.reviews})</span></div>
+          <div class="stars">${renderStars(trainer.rating)}<span class="review-count">${esc(String(trainer.rating))} (${esc(String(trainer.reviews))})</span></div>
           ${trainer.founding ? '<span class="founding-badge">✦ Founding</span>' : ''}
         </div>
       </div>
@@ -508,9 +525,9 @@
         <div class="img-side"><div class="img-secondary">${img2}</div><div class="img-secondary">${img3}</div></div>
       </div>
       <div class="card-stats">
-        <div class="card-stat"><div class="card-stat-val">${trainer.experience}</div><div class="card-stat-label">Experience</div></div>
-        <div class="card-stat"><div class="card-stat-val">${trainer.certs}</div><div class="card-stat-label">Certified</div></div>
-        <div class="card-stat"><div class="card-stat-val">$${trainer.price}</div><div class="card-stat-label">Per month</div></div>
+        <div class="card-stat"><div class="card-stat-val">${esc(trainer.experience)}</div><div class="card-stat-label">Experience</div></div>
+        <div class="card-stat"><div class="card-stat-val">${esc(trainer.certs)}</div><div class="card-stat-label">Certified</div></div>
+        <div class="card-stat"><div class="card-stat-val">$${esc(String(trainer.price))}</div><div class="card-stat-label">Per month</div></div>
       </div>
       <div class="card-middle">
         <div class="card-tags-col">${styleTags}${dietTag}${nicheTag}</div>
@@ -520,9 +537,9 @@
         <div class="interests-label">Interests</div>
         <div class="interests-row">${chips}</div>
       </div>
-      <div class="card-bio">${trainer.bio}</div>
+      <div class="card-bio">${esc(trainer.bio)}</div>
       <div class="card-footer">
-        <div class="card-price"><strong>$${trainer.price}</strong><span> / mo</span></div>
+        <div class="card-price"><strong>$${esc(String(trainer.price))}</strong><span> / mo</span></div>
         <button class="btn-view">View profile</button>
       </div>
     </div>`;
@@ -608,10 +625,10 @@
   function renderActiveSummary() {
     const wrap = document.getElementById('active-summary');
     let html = '';
-    if (activeFilters.specialty !== 'all') html += `<span class="active-tag style">${activeFilters.specialty}<button onclick="removeFilter('specialty')">×</button></span>`;
-    if (activeFilters.diet !== 'all') html += `<span class="active-tag diet">${activeFilters.diet}<button onclick="removeFilter('diet')">×</button></span>`;
-    if (activeFilters.niche !== 'all') html += `<span class="active-tag niche">${activeFilters.niche}<button onclick="removeFilter('niche')">×</button></span>`;
-    if (activeFilters.budget < 500) html += `<span class="active-tag budget">Under $${activeFilters.budget}/mo<button onclick="removeFilter('budget')">×</button></span>`;
+    if (activeFilters.specialty !== 'all') html += `<span class="active-tag style">${esc(activeFilters.specialty)}<button onclick="removeFilter('specialty')">×</button></span>`;
+    if (activeFilters.diet !== 'all') html += `<span class="active-tag diet">${esc(activeFilters.diet)}<button onclick="removeFilter('diet')">×</button></span>`;
+    if (activeFilters.niche !== 'all') html += `<span class="active-tag niche">${esc(activeFilters.niche)}<button onclick="removeFilter('niche')">×</button></span>`;
+    if (activeFilters.budget < 500) html += `<span class="active-tag budget">Under $${esc(String(activeFilters.budget))}/mo<button onclick="removeFilter('budget')">×</button></span>`;
     wrap.innerHTML = html;
   }
   document.addEventListener('click', e => {
@@ -627,18 +644,18 @@
     if (t.before && t.after) {
       return `<div class="testi-photo">
         <div class="testi-photo-images">
-          <div class="testi-photo-slot"><img src="${t.before}" alt="Before"><span class="testi-before-label">Before</span></div>
+          <div class="testi-photo-slot"><img src="${esc(t.before)}" alt="Before"><span class="testi-before-label">Before</span></div>
           <div class="testi-photo-divider"></div>
-          <div class="testi-photo-slot"><img src="${t.after}" alt="After"><span class="testi-after-label">After</span></div>
+          <div class="testi-photo-slot"><img src="${esc(t.after)}" alt="After"><span class="testi-after-label">After</span></div>
         </div>
         <div class="testi-photo-body">
-          <div class="testi-quote">${t.quote}</div>
-          <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
+          <div class="testi-quote">${esc(t.quote)}</div>
+          <div class="testi-author"><div class="testi-avatar">${esc(t.initials)}</div><div><div class="testi-name">${esc(t.name)}</div><div class="testi-result">${esc(t.result)}</div></div></div>
         </div></div>`;
     }
     return `<div class="testi-text">
-      <div class="testi-quote">${t.quote}</div>
-      <div class="testi-author"><div class="testi-avatar">${t.initials}</div><div><div class="testi-name">${t.name}</div><div class="testi-result">${t.result}</div></div></div>
+      <div class="testi-quote">${esc(t.quote)}</div>
+      <div class="testi-author"><div class="testi-avatar">${esc(t.initials)}</div><div><div class="testi-name">${esc(t.name)}</div><div class="testi-result">${esc(t.result)}</div></div></div>
     </div>`;
   }
 
@@ -660,7 +677,7 @@
     const photos = [t.photo_main, t.photo_physique, t.photo_lifestyle].filter(Boolean);
     const fallbacks = ['💪','🏋️','🌄'];
     const slides = photos.length
-      ? photos.map((p,i) => `<div class="modal-photo-slide"><img src="${p}" alt="" onerror="this.parentElement.innerHTML='${fallbacks[i]||'📷'}'"></div>`)
+      ? photos.map((p,i) => `<div class="modal-photo-slide"><img src="${esc(p)}" alt="" loading="lazy"></div>`)
       : fallbacks.slice(0,1).map(f => `<div class="modal-photo-slide">${f}</div>`);
 
     let modalPhotoIdx = 0;
@@ -712,12 +729,12 @@
     }).join('');
 
     // all specialties, all diets, all niches shown in modal
-    const specHTML = t.specialties.map(s => `<span class="tag style">${s}</span>`).join('') +
-      (t.diet ? t.diet.split(',').map(d => `<span class="tag diet">${d.trim()}</span>`).join('') : '') +
-      (t.niches || []).map(n => `<span class="tag niche">${n}</span>`).join('');
+    const specHTML = t.specialties.map(s => `<span class="tag style">${esc(s)}</span>`).join('') +
+      (t.diet ? t.diet.split(',').map(d => `<span class="tag diet">${esc(d.trim())}</span>`).join('') : '') +
+      (t.niches || []).map(n => `<span class="tag niche">${esc(n)}</span>`).join('');
     document.getElementById('modal-specialties').innerHTML = specHTML;
 
-    document.getElementById('modal-interests').innerHTML = (t.interests || []).map(i => `<span class="interest-chip">${i}</span>`).join('');
+    document.getElementById('modal-interests').innerHTML = (t.interests || []).map(i => `<span class="interest-chip">${esc(i)}</span>`).join('');
 
     const testiSection = document.getElementById('modal-testimonials-section');
     if (t.testimonials && t.testimonials.length > 0) {
