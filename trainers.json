@@ -368,5 +368,58 @@
       "Body recomposition"
     ],
     "card_diet": "Intermittent fasting"
+  },
+  {
+    "name": "Enrique Orozco",
+    "email": "enriqueorozco021@gmail.com",
+    "phone": "5097925419",
+    "age": 26,
+    "location": "Richland, WA",
+    "experience": "1 yr",
+    "certs": "In progress",
+    "price": 100,
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "images/enriquepfp.jpeg",
+    "photo_physique": "images/enriqueaction.jpeg",
+    "photo_lifestyle": "images/enriquelife.jpeg",
+    "specialties": [
+      "Hypertrophy",
+      "Weight loss",
+      "Cardio & endurance",
+      "Functional fitness",
+      "Body recomposition"
+    ],
+    "niches": [
+      "Complete beginners",
+      "General population",
+      "Plus-size / body positive"
+    ],
+    "diet": "Flexible / IIFYM, High protein, Whole foods, Intermittent fasting",
+    "stat_intensity": 2,
+    "stat_structure": 1,
+    "stat_checkins": 1,
+    "stat_energy": 3,
+    "stat_diet": 1,
+    "interests": [
+      "Hiking",
+      "Faith",
+      "Running",
+      "Outdoors",
+      "Nature"
+    ],
+    "bio": "Welcome! I want to help you transform into a hybrid athlete, lose the weight, gain the muscle! If I can, so can you.",
+    "story": "I became a coach to help and push people to reach their goals, after I changed my life, I figured I wanted to share that with others. I ran my first ultra marathon, got visible abs, became healthier.",
+    "client_success": "Success is defined as reaching the goals, regardless of how hard or easy the journey will be",
+    "other_notes": "I want to work with the young men and women who are wanting to lock in and enjoy their life as they are developing it. I want to help dad's with dad bods gain confidence and be able to perform for their family. I work full-time, volunteer at different areas and I strive to be consistent with my fitness goals.",
+    "applied_at": "2026-06-09T00:00:00.000Z",
+    "testimonials": [],
+    "card_specialties": [
+      "Hypertrophy",
+      "Weight loss",
+      "Body recomposition"
+    ],
+    "card_diet": "High protein"
   }
 ]
