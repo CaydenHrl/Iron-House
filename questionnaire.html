@@ -100,6 +100,9 @@
   .interest-suggestion { padding: 6px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--gray-text); font-family: var(--font-body); font-size: 12px; cursor: pointer; transition: all 0.15s; }
   .interest-suggestion:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
 
+  /* REFERRAL FIELDS */
+  .referral-fields { margin-top: 1.25rem; animation: fadeUp 0.25s ease both; }
+
   .nav-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 1rem 2rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 50; }
   .btn-back { background: transparent; color: var(--gray-text); border: 1px solid var(--border); border-radius: 4px; padding: 12px 24px; font-family: var(--font-display); font-size: 16px; letter-spacing: 1px; cursor: pointer; transition: all 0.15s; }
   .btn-back:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
@@ -399,6 +402,30 @@
       <label class="q-label">Anything else your coach should know about you?</label>
       <textarea class="q-textarea" id="input-other" placeholder="Injuries, schedule quirks, things that motivate you, things that don't — anything that helps us find the right fit."></textarea>
     </div>
+
+    <div class="divider"></div>
+
+    <!-- REFERRAL SECTION -->
+    <div class="section-card">
+      <div class="section-card-title"><div class="dot"></div>Were you referred by someone?</div>
+      <div class="pill-group" id="referral-group">
+        <button class="pill" onclick="selectPill(this,'referral-group');toggleReferral(this)">Yes</button>
+        <button class="pill" onclick="selectPill(this,'referral-group');toggleReferral(this)">No</button>
+      </div>
+      <div class="referral-fields" id="referral-fields" style="display:none;">
+        <div class="field-row">
+          <div class="q-block" style="margin-bottom:0;">
+            <label class="q-label">Referrer's name</label>
+            <input type="text" class="q-input" id="input-referrer-name" placeholder="Who sent you?">
+          </div>
+          <div class="q-block" style="margin-bottom:0;">
+            <label class="q-label">Their Instagram or email</label>
+            <input type="text" class="q-input" id="input-referrer-contact" placeholder="@handle or email">
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -440,8 +467,6 @@
   // ────────────────────────────────────────────────────────────────
 
   // ── URL param: sanitize ?trainer= value before use ───────────────
-  // Only allow letters, digits, spaces, hyphens, apostrophes (name chars).
-  // Discard anything else to prevent injection into form data / emails.
   const urlParams = new URLSearchParams(window.location.search);
   const rawTrainer = urlParams.get('trainer') || '';
   const preferredTrainer = /^[A-Za-z0-9 '\-\.]{1,80}$/.test(rawTrainer) ? rawTrainer : '';
@@ -466,6 +491,16 @@
     el.classList.add('selected');
   }
   function togglePill(el) { el.classList.toggle('selected'); }
+
+  function toggleReferral(btn) {
+    const show = btn.textContent.trim() === 'Yes';
+    const fields = document.getElementById('referral-fields');
+    fields.style.display = show ? 'block' : 'none';
+    if (!show) {
+      document.getElementById('input-referrer-name').value = '';
+      document.getElementById('input-referrer-contact').value = '';
+    }
+  }
 
   function addInterest(val) {
     const input = document.getElementById('interest-input');
@@ -525,7 +560,6 @@
   async function submitForm() {
     // ── HONEYPOT CHECK ──────────────────────────────────────────
     if (document.getElementById('_hp_email').value) {
-      // Fake success for bots
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('nav-footer').style.display = 'none';
       document.getElementById('thankyou').classList.add('active');
@@ -540,10 +574,17 @@
     const emailVal = document.getElementById('input-email').value.trim();
     const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
 
+    // Referral validation — only required if Yes is selected
+    const referralYes = document.querySelector('#referral-group .pill.selected')?.textContent.trim() === 'Yes';
+    const referrerName    = document.getElementById('input-referrer-name').value.trim();
+    const referrerContact = document.getElementById('input-referrer-contact').value.trim();
+
     let valMsg = '';
-    if (!nameVal)        valMsg = 'Please enter your first name.';
-    else if (!emailVal)  valMsg = 'Please enter your email address so we can send your matches.';
-    else if (!emailOk)   valMsg = 'Please enter a valid email address (e.g. you@example.com).';
+    if (!nameVal)                                      valMsg = 'Please enter your first name.';
+    else if (!emailVal)                                valMsg = 'Please enter your email address so we can send your matches.';
+    else if (!emailOk)                                 valMsg = 'Please enter a valid email address (e.g. you@example.com).';
+    else if (referralYes && !referrerName)             valMsg = 'Please enter the name of the person who referred you.';
+    else if (referralYes && !referrerContact)          valMsg = 'Please enter their Instagram handle or email.';
 
     if (valMsg) {
       let errEl = document.getElementById('submit-val-error');
@@ -555,7 +596,6 @@
         footer.insertBefore(errEl, footer.firstChild);
       }
       errEl.textContent = valMsg;
-      // Scroll back to page 3 if not already there
       if (currentPage !== 3) {
         document.getElementById('page-'+currentPage).classList.remove('active');
         currentPage = 3;
@@ -608,11 +648,14 @@
     formData.append('23_diet',            getSelected('diet-group'));
     formData.append('24_diet_strictness', getSlider('slider-diet'));
     // ── SECTION 7: Budget & interests ────────────────────────────
-    formData.append('25_budget',    '$' + document.getElementById('slider-budget').value + '/mo');
-    formData.append('26_interests', interests.join(', '));
+    formData.append('25_budget',      '$' + document.getElementById('slider-budget').value + '/mo');
+    formData.append('26_interests',   interests.join(', '));
     formData.append('27_other_notes', document.getElementById('input-other').value);
     const pt = document.getElementById('input-preferred-trainer').value;
     if (pt) formData.append('28_interested_in_trainer', pt);
+    // ── SECTION 8: Referral ───────────────────────────────────────
+    formData.append('29_referred_by',      referralYes ? referrerName    : 'N/A');
+    formData.append('30_referrer_contact', referralYes ? referrerContact : 'N/A');
 
     try {
       const res = await fetch('https://formspree.io/f/mqenyrkn', {
