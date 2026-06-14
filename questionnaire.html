@@ -17,6 +17,18 @@
 <meta name="twitter:description" content="Tell us about your goals, personality, and lifestyle. Iron House will hand-pick 2–3 certified personal trainers matched to you within 48 hours.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+
+<!-- ── REFERRAL TRACKING: save ?ref= to localStorage on landing ── -->
+<script>
+  (function() {
+    var _ref = new URLSearchParams(window.location.search).get('ref');
+    if (_ref && /^[A-Za-z0-9 '\-\.]{1,80}$/.test(_ref)) {
+      localStorage.setItem('ih_ref', _ref);
+    }
+  })();
+</script>
+<!-- ────────────────────────────────────────────────────────────── -->
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -464,13 +476,19 @@
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
-  // ────────────────────────────────────────────────────────────────
 
   // ── URL param: sanitize ?trainer= value before use ───────────────
   const urlParams = new URLSearchParams(window.location.search);
   const rawTrainer = urlParams.get('trainer') || '';
   const preferredTrainer = /^[A-Za-z0-9 '\-\.]{1,80}$/.test(rawTrainer) ? rawTrainer : '';
   if (preferredTrainer) document.getElementById('input-preferred-trainer').value = preferredTrainer;
+
+  // ── REFERRAL: read ?ref= from URL or fall back to localStorage ──
+  // The snippet in <head> already saved ?ref= to localStorage the
+  // moment the visitor landed on any page — even if they browsed
+  // the whole site before getting here. This just reads it back.
+  const rawRef = urlParams.get('ref') || localStorage.getItem('ih_ref') || '';
+  const refCode = /^[A-Za-z0-9 '\-\.]{1,80}$/.test(rawRef) ? rawRef : '';
   // ────────────────────────────────────────────────────────────────
 
   const sliderLabels = {
@@ -574,17 +592,16 @@
     const emailVal = document.getElementById('input-email').value.trim();
     const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
 
-    // Referral validation — only required if Yes is selected
-    const referralYes = document.querySelector('#referral-group .pill.selected')?.textContent.trim() === 'Yes';
+    const referralYes     = document.querySelector('#referral-group .pill.selected')?.textContent.trim() === 'Yes';
     const referrerName    = document.getElementById('input-referrer-name').value.trim();
     const referrerContact = document.getElementById('input-referrer-contact').value.trim();
 
     let valMsg = '';
-    if (!nameVal)                                      valMsg = 'Please enter your first name.';
-    else if (!emailVal)                                valMsg = 'Please enter your email address so we can send your matches.';
-    else if (!emailOk)                                 valMsg = 'Please enter a valid email address (e.g. you@example.com).';
-    else if (referralYes && !referrerName)             valMsg = 'Please enter the name of the person who referred you.';
-    else if (referralYes && !referrerContact)          valMsg = 'Please enter their Instagram handle or email.';
+    if (!nameVal)                             valMsg = 'Please enter your first name.';
+    else if (!emailVal)                       valMsg = 'Please enter your email address so we can send your matches.';
+    else if (!emailOk)                        valMsg = 'Please enter a valid email address (e.g. you@example.com).';
+    else if (referralYes && !referrerName)    valMsg = 'Please enter the name of the person who referred you.';
+    else if (referralYes && !referrerContact) valMsg = 'Please enter their Instagram handle or email.';
 
     if (valMsg) {
       let errEl = document.getElementById('submit-val-error');
@@ -607,13 +624,12 @@
     }
     const errEl = document.getElementById('submit-val-error');
     if (errEl) errEl.textContent = '';
-    // ────────────────────────────────────────────────────────────
 
     const btn = document.getElementById('btn-next');
     btn.textContent = 'Sending...'; btn.disabled = true;
 
     const getSelected = (id) => [...document.querySelectorAll('#'+id+' .pill.selected')].map(p => p.textContent).join(', ');
-    const getSlider = (id) => { const v = document.getElementById(id).value; return sliderLabels[id] ? sliderLabels[id][v] : v; };
+    const getSlider   = (id) => { const v = document.getElementById(id).value; return sliderLabels[id] ? sliderLabels[id][v] : v; };
 
     const formData = new FormData();
     formData.append('_subject', 'Iron House — New Client Match Request');
@@ -629,9 +645,9 @@
     formData.append('08_body_fat',   document.getElementById('input-bf').value || 'Not provided');
     formData.append('09_experience', getSelected('exp-group'));
     // ── SECTION 3: Goals ─────────────────────────────────────────
-    formData.append('10_goal',             getSelected('goal-group'));
-    formData.append('11_success_vision',   document.getElementById('input-success').value);
-    formData.append('12_held_back',        document.getElementById('input-held-back').value);
+    formData.append('10_goal',           getSelected('goal-group'));
+    formData.append('11_success_vision', document.getElementById('input-success').value);
+    formData.append('12_held_back',      document.getElementById('input-held-back').value);
     // ── SECTION 4: Training preferences ─────────────────────────
     formData.append('13_training_location', getSelected('location-group'));
     formData.append('14_training_styles',   getSelected('style-group'));
@@ -651,17 +667,26 @@
     formData.append('25_budget',      '$' + document.getElementById('slider-budget').value + '/mo');
     formData.append('26_interests',   interests.join(', '));
     formData.append('27_other_notes', document.getElementById('input-other').value);
+    // ── Preferred trainer (from ?trainer= on profile cards) ──────
     const pt = document.getElementById('input-preferred-trainer').value;
     if (pt) formData.append('28_interested_in_trainer', pt);
-    // ── SECTION 8: Referral ───────────────────────────────────────
+    // ── SECTION 8: Manual referral (typed by client) ─────────────
     formData.append('29_referred_by',      referralYes ? referrerName    : 'N/A');
     formData.append('30_referrer_contact', referralYes ? referrerContact : 'N/A');
+    // ── SECTION 9: Trainer link tracking (automatic, invisible) ──
+    // Set from ?ref= on whichever page the trainer linked to.
+    // Survives full site navigation via localStorage.
+    if (refCode) formData.append('31_referral_source', refCode);
 
     try {
       const res = await fetch('https://formspree.io/f/mqenyrkn', {
         method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
+        // Clear ref from storage after successful submit so it
+        // doesn't carry over to a future unrelated submission.
+        localStorage.removeItem('ih_ref');
+
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('nav-footer').style.display = 'none';
         document.getElementById('thankyou').classList.add('active');
