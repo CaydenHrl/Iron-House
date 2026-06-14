@@ -7,6 +7,17 @@
 <meta name="description" content="Iron House LLC Privacy Policy">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- ── REFERRAL TRACKING: save ?ref= to localStorage on landing ── -->
+<script>
+  (function() {
+    var _ref = new URLSearchParams(window.location.search).get('ref');
+    if (_ref && /^[A-Za-z0-9 '\-\.]{1,80}$/.test(_ref)) {
+      localStorage.setItem('ih_ref', _ref);
+    }
+  })();
+</script>
+<!-- ────────────────────────────────────────────────────────────── -->
+ 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
