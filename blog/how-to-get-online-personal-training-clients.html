@@ -30,6 +30,16 @@
   "mainEntityOfPage": "https://www.joinironhouse.com/blog/how-to-get-online-personal-training-clients.html"
 }
 </script>
+<!-- ── REFERRAL TRACKING: save ?ref= to localStorage on landing ── -->
+<script>
+  (function() {
+    var _ref = new URLSearchParams(window.location.search).get('ref');
+    if (_ref && /^[A-Za-z0-9 '\-\.]{1,80}$/.test(_ref)) {
+      localStorage.setItem('ih_ref', _ref);
+    }
+  })();
+</script>
+<!-- ────────────────────────────────────────────────────────────── -->
 
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
