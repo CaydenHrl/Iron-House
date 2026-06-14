@@ -28,6 +28,17 @@
   "mainEntityOfPage": "https://www.joinironhouse.com/blog/best-platforms-for-online-personal-trainers.html"
 }
 </script>
+<!-- ── REFERRAL TRACKING: save ?ref= to localStorage on landing ── -->
+<script>
+  (function() {
+    var _ref = new URLSearchParams(window.location.search).get('ref');
+    if (_ref && /^[A-Za-z0-9 '\-\.]{1,80}$/.test(_ref)) {
+      localStorage.setItem('ih_ref', _ref);
+    }
+  })();
+</script>
+<!-- ────────────────────────────────────────────────────────────── -->
+  
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   :root{--black:#0a0a0a;--white:#f5f2ed;--orange:#e8500a;--orange-dark:#b83d06;--gray:#1a1a1a;--gray-mid:#2e2e2e;--gray-text:#888;--border:rgba(255,255,255,0.07);--font-display:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;}
