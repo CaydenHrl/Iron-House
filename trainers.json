@@ -1,42 +1,5 @@
 [
   {
-    "name": "Sean Carson",
-    "age": 36,
-    "location": "Sandwich, IL",
-    "email": "sean@ampdupwellness.com",
-    "price": 400,
-    "experience": "6 YRS",
-    "certs": "NASM",
-    "rating": 5,
-    "reviews": 0,
-    "founding": true,
-    "photo_main": "images/795A8A79-BC59-4FBD-B640-C7117E469F12.jpeg",
-    "photo_physique": "images/IMG_3649.jpeg",
-    "photo_lifestyle": "images/IMG_5269.jpeg",
-    "specialties": [
-      "Hypertrophy"
-    ],
-    "diet": "Flexible / IIFYM",
-    "niches": [
-      "General population"
-    ],
-    "interests": [
-      "Skiing",
-      "Golfing",
-      "Hiking",
-      "Live Music",
-      "Boating"
-    ],
-    "stat_intensity": 3,
-    "stat_structure": 3,
-    "stat_checkins": 3,
-    "stat_energy": 3,
-    "stat_diet": 3,
-    "bio": "An aspiring men's physique competitor and fitness coach with over 6 years of serious time under the bar.\n\n\n\nFitness isn't something I stumbled into. It's something I've built, rep by rep, over years of learning what actually works not just in theory, but on my own body. I've spent that time dialing in everything from programming and nutrition to the mental side of staying consistent when motivation fades.",
-    "story": "I’m Sean Carson and I help people get real results.\n\nI created AMP'D UP because I was tired of seeing everyday people misled by fads, gimmicks, and cookie cutter programs that just don’t work. Fitness doesn’t have to be complicated but it does require consistency, clarity, and accountability. That’s where I come in.\n\nAs a coach, I blend no BS fitness strategy with real world mindset support. Whether you’re just getting started or ready to level up, I’m here to make sure you don’t just work out you train with purpose.\n\nWhat I’m About\n\nSustainable Results - No crash diets. No burnout. We build habits that stick.\n\nBusy Person Friendly - I train professionals, parents, entrepreneurs. People with real schedules and real goals.\n\nEnergy, Discipline, and Confidence - This isn’t just about lifting more. It’s about showing up for your life stronger, sharper, and more in control.",
-    "testimonials": []
-  },
-  {
     "name": "Benny Apple",
     "age": 22,
     "location": "Wilmington, NC",
