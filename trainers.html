@@ -143,7 +143,6 @@
   .card-stat-val { font-family: var(--font-display); font-size: 17px; letter-spacing: 0.5px; }
   .card-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; }
 
-  /* TAGS + STAT BARS */
   .card-middle { display: flex; border-bottom: 1px solid var(--border); }
   .card-tags-col { flex: 0 0 38%; padding: 0.875rem 1rem 0.875rem 1.25rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
   .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--border); color: var(--gray-text); white-space: nowrap; display: inline-block; }
@@ -157,7 +156,6 @@
   .stat-bar-track { flex: 1; height: 4px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
   .stat-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); transition: width 0.4s ease; }
 
-  /* INTERESTS */
   .card-interests { padding: 0.75rem 1.25rem 0; }
   .interests-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-text); margin-bottom: 5px; }
   .interests-row { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -179,7 +177,6 @@
   .modal { background: var(--gray); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 700px; overflow: hidden; margin: auto; position: relative; }
   .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); border: none; color: var(--white); width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.15s; }
   .modal-close:hover { background: var(--orange); }
-  /* MODAL PHOTO CAROUSEL */
   .modal-photo-carousel { position: relative; background: var(--gray-mid); overflow: hidden; }
   .modal-photo-track { display: flex; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
   .modal-photo-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; font-size: 64px; background: var(--gray-mid); flex-shrink: 0; }
@@ -187,9 +184,6 @@
   @media (max-width: 768px) {
     .modal-overlay { padding: 0; align-items: flex-end; }
     .modal { border-radius: 16px 16px 0 0; max-height: 92vh; overflow-y: auto; }
-    .modal-photo-carousel { position: relative; }
-    .modal-photo-track { display: flex; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
-    .modal-photo-slide { min-width: 100%; flex-shrink: 0; }
     .modal-photo-slide img { width: 100%; height: 260px; object-fit: cover; display: block; max-height: none; }
     .modal-photo-prev, .modal-photo-next { display: flex; }
   }
@@ -211,8 +205,6 @@
   .modal-stat { background: var(--gray-mid); padding: 1rem; text-align: center; }
   .modal-stat-val { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; }
   .modal-stat-label { font-size: 10px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-
-  /* MODAL STAT BARS with icons + labels */
   .modal-statbars { display: flex; flex-direction: column; gap: 10px; }
   .modal-bar-row { display: flex; align-items: center; gap: 10px; }
   .modal-bar-icon { flex-shrink: 0; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; }
@@ -221,7 +213,6 @@
   .modal-bar-fill { height: 100%; border-radius: 99px; background: var(--orange); }
   .modal-bar-ends { display: flex; justify-content: space-between; margin-top: 2px; }
   .modal-bar-end { font-size: 10px; color: rgba(255,255,255,0.25); }
-
   .testimonials-wrap { display: flex; flex-direction: column; gap: 12px; }
   .testi-text { background: var(--gray-mid); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
   .testi-quote { font-size: 14px; color: rgba(245,242,237,0.75); line-height: 1.7; font-style: italic; position: relative; padding-left: 1.25rem; }
@@ -239,7 +230,6 @@
   .testi-before-label { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(0,0,0,0.6); color: var(--gray-text); padding: 2px 7px; border-radius: 99px; }
   .testi-after-label { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(232,80,10,0.7); color: var(--white); padding: 2px 7px; border-radius: 99px; }
   .testi-photo-body { padding: 0.875rem 1.1rem; }
-
   .modal-cta { width: 100%; padding: 14px; background: var(--orange); color: var(--white); border: none; border-radius: 8px; font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; cursor: pointer; margin-top: 1.5rem; transition: background 0.15s; }
   .modal-cta:hover { background: var(--orange-dark); }
 
@@ -273,6 +263,7 @@
     <a href="blog/index.html">Blog</a>
     <a href="our-story.html">Our story</a>
     <a href="trainers-join.html">For trainers</a>
+    <a href="affiliate.html">Affiliates</a>
     <a href="questionnaire.html" class="nav-cta">Get matched</a>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -287,6 +278,7 @@
   <a href="blog/index.html" onclick="closeMenu()">Blog</a>
   <a href="our-story.html" onclick="closeMenu()">Our story</a>
   <a href="trainers-join.html" onclick="closeMenu()">For trainers</a>
+  <a href="affiliate.html" onclick="closeMenu()">Affiliates</a>
   <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
 </div>
 
@@ -317,7 +309,6 @@
   </div>
 </div>
 
-<!-- FLOATING FILTER BUTTON -->
 <button class="float-filter-btn" id="filter-toggle" onclick="toggleFilterPanel(event)">
   <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
     <rect x="0" y="0" width="16" height="2" rx="1" fill="white"/>
@@ -328,10 +319,8 @@
   <div class="float-filter-dot" id="filter-dot"></div>
 </button>
 
-<!-- ACTIVE FILTER TAGS -->
 <div class="active-summary" id="active-summary"></div>
 
-<!-- FILTER PANEL -->
 <div class="filter-panel-wrap">
   <div class="filter-panel" id="filter-panel">
     <div class="fp-section">
@@ -398,7 +387,6 @@
   </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModalDirect()">✕</button>
@@ -432,13 +420,11 @@
   </div>
 </div>
 
-</div>
-
 <footer style="padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
   <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;">IRON<span style="color:#e8500a;">HOUSE</span> <span style="font-family:'Barlow',sans-serif;font-size:11px;color:#777;font-weight:400;letter-spacing:1px;margin-left:4px;">LLC</span></span>
   <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
-    <a href="blog/index.html">Blog</a>
-    <a href="trainers-join.html">For trainers</a>
+    <a href="blog/index.html" style="font-size:13px;color:#777;text-decoration:none;">Blog</a>
+    <a href="trainers-join.html" style="font-size:13px;color:#777;text-decoration:none;">For trainers</a>
     <a href="https://instagram.com/joinironhouse" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:#777;text-decoration:none;">@joinironhouse</a>
     <a href="privacy.html" style="font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;">Privacy Policy</a>
     <span style="font-size:11px;color:rgba(255,255,255,0.2);">© 2025 Iron House LLC</span>
@@ -450,24 +436,18 @@
   let pendingFilters = { specialty: 'all', diet: 'all', niche: 'all', budget: 500 };
   let TRAINERS = [];
 
-  // ── SECURITY: HTML escape helper ────────────────────────────────
   function esc(str) {
     return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
-  // ────────────────────────────────────────────────────────────────
 
-  // SVG ICONS — single color orange
   const ICONS = {
-    intensity: `<svg width="14" height="14" viewBox="0 0 15 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0 C6 4 4 7 3 10 C1.5 8.5 1.5 6 2.5 4.5 C0.5 7 0 10 0 12 C0 17 3 21 7.5 21 C12 21 15 17 15 12 C15 7 12 3.5 8 0z" fill="#e8500a"/><path d="M7.5 21 C5 19.5 3.5 17 3.5 14 C3.5 11 5 8.5 6.5 7 C6 9.5 6.5 12 7.5 13.5 C6.5 11 7 8 7.5 6.5 C8 8 8.5 11 7.5 13.5 C8.5 12 9 9.5 8.5 7 C10 8.5 11.5 11 11.5 14 C11.5 17 10 19.5 7.5 21z" fill="#b83d06"/><path d="M7.5 21 C6 18.5 5.5 16 5.5 14 C5.5 12.5 6.3 11.5 7.5 11 C8.7 11.5 9.5 12.5 9.5 14 C9.5 16 9 18.5 7.5 21z" fill="#ff8040"/></svg>`,
-    structure:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" fill="#e8500a"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#e8500a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    checkins:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" fill="#e8500a"/><circle cx="16" cy="8" r="3" fill="#e8500a" opacity="0.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8500a" stroke-width="2" stroke-linecap="round"/><path d="M16 14c1.7.8 3 2.7 3 5" stroke="#e8500a" stroke-width="2" stroke-linecap="round" opacity="0.6"/></svg>`,
-    energy:     `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#e8500a"/></svg>`,
-    diet:       `<svg width="14" height="14" viewBox="0 0 16 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 7 C12 7 15 11 15 16 C15 22 12 28 8 30 C4 28 1 22 1 16 C1 11 4 7 8 7z" fill="#e8500a"/><line x1="3" y1="14" x2="13" y2="14" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="2" y1="18" x2="14" y2="18" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="3" y1="22" x2="13" y2="22" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><path d="M5 6 C3 4 2 1 3 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8 6 C8 4 8 1 8 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M11 6 C13 4 14 1 13 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>`,
+    intensity: `<svg width="14" height="14" viewBox="0 0 15 21" fill="none"><path d="M8 0 C6 4 4 7 3 10 C1.5 8.5 1.5 6 2.5 4.5 C0.5 7 0 10 0 12 C0 17 3 21 7.5 21 C12 21 15 17 15 12 C15 7 12 3.5 8 0z" fill="#e8500a"/><path d="M7.5 21 C5 19.5 3.5 17 3.5 14 C3.5 11 5 8.5 6.5 7 C6 9.5 6.5 12 7.5 13.5 C6.5 11 7 8 7.5 6.5 C8 8 8.5 11 7.5 13.5 C8.5 12 9 9.5 8.5 7 C10 8.5 11.5 11 11.5 14 C11.5 17 10 19.5 7.5 21z" fill="#b83d06"/><path d="M7.5 21 C6 18.5 5.5 16 5.5 14 C5.5 12.5 6.3 11.5 7.5 11 C8.7 11.5 9.5 12.5 9.5 14 C9.5 16 9 18.5 7.5 21z" fill="#ff8040"/></svg>`,
+    structure:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#e8500a"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#e8500a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    checkins:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" fill="#e8500a"/><circle cx="16" cy="8" r="3" fill="#e8500a" opacity="0.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8500a" stroke-width="2" stroke-linecap="round"/><path d="M16 14c1.7.8 3 2.7 3 5" stroke="#e8500a" stroke-width="2" stroke-linecap="round" opacity="0.6"/></svg>`,
+    energy:     `<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#e8500a"/></svg>`,
+    diet:       `<svg width="14" height="14" viewBox="0 0 16 30" fill="none"><path d="M8 7 C12 7 15 11 15 16 C15 22 12 28 8 30 C4 28 1 22 1 16 C1 11 4 7 8 7z" fill="#e8500a"/><line x1="3" y1="14" x2="13" y2="14" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="2" y1="18" x2="14" y2="18" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><line x1="3" y1="22" x2="13" y2="22" stroke="#b83d06" stroke-width="0.8" opacity="0.5"/><path d="M5 6 C3 4 2 1 3 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M8 6 C8 4 8 1 8 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M11 6 C13 4 14 1 13 -1" stroke="#e8500a" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>`,
   };
 
   const STAT_DEFS = [
@@ -490,42 +470,23 @@
 
   function buildCard(trainer, index) {
     const delay = (index % 9) * 0.05;
-    const mainImg = trainer.photo_main
-      ? `<img src="${esc(trainer.photo_main)}" alt="${esc(trainer.name)}" loading="lazy">`
-      : '💪';
-    const img2 = trainer.photo_physique
-      ? `<img src="${esc(trainer.photo_physique)}" alt="" loading="lazy">`
-      : '🏋️';
-    const img3 = trainer.photo_lifestyle
-      ? `<img src="${esc(trainer.photo_lifestyle)}" alt="" loading="lazy">`
-      : '🌄';
-
-    const cardSpecs = (trainer.card_specialties && trainer.card_specialties.length)
-      ? trainer.card_specialties.slice(0, 3)
-      : (trainer.specialties || []).slice(0, 3);
+    const mainImg = trainer.photo_main ? `<img src="${esc(trainer.photo_main)}" alt="${esc(trainer.name)}" loading="lazy">` : '💪';
+    const img2 = trainer.photo_physique ? `<img src="${esc(trainer.photo_physique)}" alt="" loading="lazy">` : '🏋️';
+    const img3 = trainer.photo_lifestyle ? `<img src="${esc(trainer.photo_lifestyle)}" alt="" loading="lazy">` : '🌄';
+    const cardSpecs = (trainer.card_specialties && trainer.card_specialties.length) ? trainer.card_specialties.slice(0,3) : (trainer.specialties || []).slice(0,3);
     const styleTags = cardSpecs.map(s => `<span class="tag style">${esc(s)}</span>`).join('');
-    const cardDiet  = trainer.card_diet || (trainer.diet ? trainer.diet.split(',')[0].trim() : '');
-    const dietTag   = cardDiet ? `<span class="tag diet">${esc(cardDiet)}</span>` : '';
-    const nicheTag  = trainer.niches && trainer.niches.length
-      ? `<span class="tag niche">${esc(trainer.niches[0])}</span>` : '';
-
+    const cardDiet = trainer.card_diet || (trainer.diet ? trainer.diet.split(',')[0].trim() : '');
+    const dietTag = cardDiet ? `<span class="tag diet">${esc(cardDiet)}</span>` : '';
+    const nicheTag = trainer.niches && trainer.niches.length ? `<span class="tag niche">${esc(trainer.niches[0])}</span>` : '';
     const statBars = STAT_DEFS.map(d => {
       const pct = Math.round(((trainer[d.key] ?? 2) / 4) * 100);
-      return `<div class="stat-bar-row">
-        <div class="stat-bar-icon">${ICONS[d.icon]}</div>
-        <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
-      </div>`;
+      return `<div class="stat-bar-row"><div class="stat-bar-icon">${ICONS[d.icon]}</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div></div>`;
     }).join('');
-
     const chips = (trainer.interests || []).map(i => `<span class="interest-chip">${esc(i)}</span>`).join('');
-
     return `
     <div class="trainer-card" style="animation-delay:${delay}s" onclick="openModal(${index})">
       <div class="card-header">
-        <div>
-          <div class="trainer-name">${esc(trainer.name)}</div>
-          <div class="trainer-meta">${esc(trainer.age)} · ${esc(trainer.location)}</div>
-        </div>
+        <div><div class="trainer-name">${esc(trainer.name)}</div><div class="trainer-meta">${esc(trainer.age)} · ${esc(trainer.location)}</div></div>
         <div class="card-header-right">
           <div class="stars">${renderStars(trainer.rating)}<span class="review-count">${esc(String(trainer.rating))} (${esc(String(trainer.reviews))})</span></div>
           ${trainer.founding ? '<span class="founding-badge">✦ Founding</span>' : ''}
@@ -544,10 +505,7 @@
         <div class="card-tags-col">${styleTags}${dietTag}${nicheTag}</div>
         <div class="card-statbars-col">${statBars}</div>
       </div>
-      <div class="card-interests">
-        <div class="interests-label">Interests</div>
-        <div class="interests-row">${chips}</div>
-      </div>
+      <div class="card-interests"><div class="interests-label">Interests</div><div class="interests-row">${chips}</div></div>
       <div class="card-bio">${esc(trainer.bio)}</div>
       <div class="card-footer">
         <div class="card-price"><strong>$${esc(String(trainer.price))}</strong><span> / mo</span></div>
@@ -557,7 +515,7 @@
   }
 
   function applyFilters() {
-    const grid  = document.getElementById('cards-grid');
+    const grid = document.getElementById('cards-grid');
     const empty = document.getElementById('empty-state');
     const filtered = TRAINERS.filter(t => {
       const specOk   = activeFilters.specialty === 'all' || t.specialties.some(s => s.toLowerCase().includes(activeFilters.specialty.toLowerCase()));
@@ -570,10 +528,9 @@
     else { empty.style.display = 'none'; grid.innerHTML = filtered.map((t, i) => buildCard(t, TRAINERS.indexOf(t))).join(''); }
   }
 
-  // FILTER PANEL
   function toggleFilterPanel(e) {
     if (e) e.stopPropagation();
-    const btn   = document.getElementById('filter-toggle');
+    const btn = document.getElementById('filter-toggle');
     const panel = document.getElementById('filter-panel');
     const isOpen = panel.classList.contains('open');
     btn.classList.toggle('panel-open', !isOpen);
@@ -583,10 +540,9 @@
 
   document.addEventListener('click', e => {
     const panel = document.getElementById('filter-panel');
-    const btn   = document.getElementById('filter-toggle');
+    const btn = document.getElementById('filter-toggle');
     if (panel && panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
-      panel.classList.remove('open');
-      btn.classList.remove('panel-open');
+      panel.classList.remove('open'); btn.classList.remove('panel-open');
     }
   });
 
@@ -598,11 +554,8 @@
       });
     });
     const slider = document.getElementById('fp-budget-slider');
-    const display = document.getElementById('fp-budget-val');
-    const suffix  = document.getElementById('fp-budget-suffix');
     slider.value = pendingFilters.budget;
-    if (pendingFilters.budget >= 500) { display.textContent = 'Any'; suffix.textContent = ''; }
-    else { display.textContent = '$' + pendingFilters.budget; suffix.textContent = ' / mo or less'; }
+    updateBudgetDisplay(pendingFilters.budget);
   }
   function fpSelect(dim, val, btn) {
     pendingFilters[dim] = val;
@@ -642,15 +595,7 @@
     if (activeFilters.budget < 500) html += `<span class="active-tag budget">Under $${esc(String(activeFilters.budget))}/mo<button onclick="removeFilter('budget')">×</button></span>`;
     wrap.innerHTML = html;
   }
-  document.addEventListener('click', e => {
-    const wrap = document.querySelector('.filter-panel-wrap');
-    if (wrap && !wrap.contains(e.target)) {
-      document.getElementById('filter-toggle').classList.remove('open');
-      document.getElementById('filter-panel').classList.remove('open');
-    }
-  });
 
-  // MODAL
   function buildTestimonial(t) {
     if (t.before && t.after) {
       return `<div class="testi-photo">
@@ -683,24 +628,18 @@
     document.getElementById('modal-cta-btn').onclick = () => {
       window.location.href = `questionnaire.html?trainer=${encodeURIComponent(t.name)}`;
     };
-
-    // build photo carousel
     const photos = [t.photo_main, t.photo_physique, t.photo_lifestyle].filter(Boolean);
-    const fallbacks = ['💪','🏋️','🌄'];
     const slides = photos.length
-      ? photos.map((p,i) => `<div class="modal-photo-slide"><img src="${esc(p)}" alt="" loading="lazy"></div>`)
-      : fallbacks.slice(0,1).map(f => `<div class="modal-photo-slide">${f}</div>`);
-
+      ? photos.map(p => `<div class="modal-photo-slide"><img src="${esc(p)}" alt="" loading="lazy"></div>`)
+      : ['<div class="modal-photo-slide">💪</div>'];
     let modalPhotoIdx = 0;
     const track = document.getElementById('modal-photo-track');
     const dotsEl = document.getElementById('modal-photo-dots');
     const prevBtn = document.getElementById('modal-photo-prev');
     const nextBtn = document.getElementById('modal-photo-next');
-
     track.innerHTML = slides.join('');
     prevBtn.style.display = slides.length > 1 ? '' : 'none';
     nextBtn.style.display = slides.length > 1 ? '' : 'none';
-
     function renderPhotoDots() {
       dotsEl.innerHTML = slides.map((_,i) =>
         `<button class="modal-photo-dot ${i===modalPhotoIdx?'active':''}" onclick="event.stopPropagation();setModalPhoto(${i})"></button>`
@@ -713,20 +652,15 @@
     }
     window.setModalPhoto = setModalPhoto;
     window.modalPhotoNav = (dir) => setModalPhoto(modalPhotoIdx + dir);
-
-    // swipe support
-    let touchStartX = 0;
     const carousel = document.getElementById('modal-photo-carousel');
+    let touchStartX = 0;
     carousel.ontouchstart = e => { touchStartX = e.touches[0].clientX; };
     carousel.ontouchend = e => {
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40) setModalPhoto(modalPhotoIdx + (diff > 0 ? 1 : -1));
     };
-
     renderPhotoDots();
     track.style.transform = 'translateX(0)';
-
-    // stat bars with icon + label + end labels
     document.getElementById('modal-statbars').innerHTML = STAT_DEFS.map(d => {
       const pct = Math.round(((t[d.key] ?? 2) / 4) * 100);
       return `<div class="modal-bar-row">
@@ -738,21 +672,15 @@
         </div>
       </div>`;
     }).join('');
-
-    // all specialties, all diets, all niches shown in modal
     const specHTML = t.specialties.map(s => `<span class="tag style">${esc(s)}</span>`).join('') +
       (t.diet ? t.diet.split(',').map(d => `<span class="tag diet">${esc(d.trim())}</span>`).join('') : '') +
       (t.niches || []).map(n => `<span class="tag niche">${esc(n)}</span>`).join('');
     document.getElementById('modal-specialties').innerHTML = specHTML;
-
     document.getElementById('modal-interests').innerHTML = (t.interests || []).map(i => `<span class="interest-chip">${esc(i)}</span>`).join('');
-
     const testiSection = document.getElementById('modal-testimonials-section');
     if (t.testimonials && t.testimonials.length > 0) {
-      testiSection.innerHTML = `<div class="modal-section-title">Client results</div>
-        <div class="testimonials-wrap">${t.testimonials.map(buildTestimonial).join('')}</div>`;
+      testiSection.innerHTML = `<div class="modal-section-title">Client results</div><div class="testimonials-wrap">${t.testimonials.map(buildTestimonial).join('')}</div>`;
     } else { testiSection.innerHTML = ''; }
-
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -761,7 +689,6 @@
   function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
-  // NAV
   function toggleMenu() {
     document.getElementById('hamburger').classList.toggle('open');
     document.getElementById('mobile-menu').classList.toggle('open');
@@ -774,13 +701,11 @@
   }
   function handleMenuClick(e) { if (e.target === document.getElementById('mobile-menu')) closeMenu(); }
 
-  // LOAD
   fetch('trainers.json')
     .then(r => r.json())
     .then(data => {
       TRAINERS = data;
       applyFilters();
-      // auto-open spotlight trainer if redirected from landing page
       const params = new URLSearchParams(window.location.search);
       const spotlightName = params.get('spotlight');
       if (spotlightName) {
