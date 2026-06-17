@@ -141,7 +141,7 @@
   .section-header-left { display: flex; flex-direction: column; justify-content: flex-start; }
   .section-header-right { display: flex; flex-direction: column; justify-content: center; }
 
-  /* TESTIMONIAL MINI CAROUSEL — 3-card faded stack */
+  /* TESTIMONIAL MINI CAROUSEL */
   .testi-mini-wrap { width: 100%; position: relative; }
   .testi-mini-stage { position: relative; height: 200px; overflow: hidden; }
   .testi-mini-card { position: absolute; left: 50%; width: 88%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.1rem 1.4rem; transition: all 0.65s cubic-bezier(0.16,1,0.3,1); }
@@ -149,7 +149,6 @@
   .testi-mini-card.tmc-active { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; background: var(--gray); border-color: rgba(232,80,10,0.15); }
   .testi-mini-card.tmc-next { transform: translateX(calc(-50% + 120px)) scale(0.84); opacity: 0.25; filter: blur(1px); z-index: 1; }
   .testi-mini-card.tmc-hidden { opacity: 0; z-index: 0; transform: translateX(-50%) scale(0.7); }
-  .testi-mini-card { transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
   .testi-mini-card.tmc-exit-left  { transform: translateX(calc(-50% - 260px)) scale(0.75) !important; opacity: 0 !important; }
   .testi-mini-card.tmc-exit-right { transform: translateX(calc(-50% + 260px)) scale(0.75) !important; opacity: 0 !important; }
   .testi-mini-card.tmc-enter-left  { transform: translateX(calc(-50% + 260px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
@@ -172,7 +171,7 @@
   .section-title { font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 64px); line-height: 1; letter-spacing: 1px; margin-bottom: 0.75rem; }
   .section-sub { font-size: 15px; color: var(--gray-text); max-width: 460px; line-height: 1.65; }
 
-  /* HOW IT WORKS — tabbed */
+  /* HOW IT WORKS */
   .how-tab-nav { display: flex; margin-bottom: 3rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; width: fit-content; }
   .how-tab-btn { padding: 12px 32px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; background: transparent; color: var(--gray-text); border: none; font-family: var(--font-body); transition: all 0.2s; }
   .how-tab-btn.active { background: var(--orange); color: var(--white); }
@@ -187,7 +186,7 @@
   .step h3 { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
   .step p { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
 
-  /* BENEFITS GRID inside how it works */
+  /* BENEFITS GRID */
   .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .benefit-card { background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.5rem; transition: border-color 0.2s; }
   .benefit-card:hover { border-color: rgba(232,80,10,0.3); }
@@ -195,12 +194,12 @@
   .benefit-card h4::before { content: '✦'; color: var(--orange); font-size: 12px; }
   .benefit-card p { font-size: 13px; color: var(--gray-text); line-height: 1.65; }
 
-  /* BENEFIT LIST — bullet points */
+  /* BENEFIT LIST */
   .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; align-items: center; }
   .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: rgba(245,242,237,0.8); line-height: 1.6; max-width: 500px; width: 100%; }
   .benefit-list li::before { content: '✦'; color: var(--orange); font-size: 11px; margin-top: 5px; flex-shrink: 0; }
 
-  /* STAT HIGHLIGHT CARDS */
+  /* STAT CARDS */
   .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
   .stat-card { background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1.5rem; text-align: center; }
   .stat-card-num { font-family: var(--font-display); font-size: 36px; letter-spacing: 1px; color: var(--orange); line-height: 1; margin-bottom: 0.4rem; }
@@ -239,21 +238,18 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* SPOTLIGHT SWIPE ANIMATION — applies on all screen sizes */
   .spotlight-card { transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1) !important; }
   .spotlight-card.swipe-exit-left  { transform: translateX(calc(-50% - 280px)) scale(0.75) !important; opacity: 0 !important; }
   .spotlight-card.swipe-exit-right { transform: translateX(calc(-50% + 280px)) scale(0.75) !important; opacity: 0 !important; }
   .spotlight-card.swipe-enter-left  { transform: translateX(calc(-50% + 280px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
   .spotlight-card.swipe-enter-right { transform: translateX(calc(-50% - 280px)) scale(0.75) !important; opacity: 0 !important; transition: none !important; }
 
-  /* MOBILE SPOTLIGHT — hidden on PC, shown between headline and sub on mobile */
   .mobile-spotlight-wrap { display: none; }
 
   @media (max-width: 960px) {
     .ticker { display: none; }
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    /* glow now covers entire hero — bigger and taller to bleed behind h1 and sub-copy */
     .hero-bg { background: radial-gradient(ellipse at 50% 50%, rgba(232,80,10,0.32) 0%, rgba(232,80,10,0.18) 30%, rgba(232,80,10,0.06) 60%, transparent 80%); background-size: 100% 140%; }
     .spotlight-stage { max-width: 100%; }
     .steps { grid-template-columns: 1fr; }
@@ -264,40 +260,11 @@
     .faq-col-label { margin-top: 2rem; display: block; }
     .faq-col:first-child .faq-col-label { margin-top: 0; }
     .section-header-split { grid-template-columns: 1fr; gap: 2rem; }
-
-    /* show mobile spotlight */
-    .mobile-spotlight-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      margin: 2rem 0 1.5rem;
-      width: 100%;
-    }
-    .mobile-spotlight-glow { display: none; } /* glow is now handled by hero-bg */
-    .mobile-spotlight-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 2;
-    }
-    .mobile-spotlight-wrap .spotlight-stage {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 300px;
-      height: 520px;
-      overflow: visible;
-    }
-    .mobile-spotlight-wrap .carousel-dots {
-      position: relative;
-      z-index: 2;
-    }
-
+    .mobile-spotlight-wrap { display: flex; flex-direction: column; align-items: center; position: relative; margin: 2rem 0 1.5rem; width: 100%; }
+    .mobile-spotlight-glow { display: none; }
+    .mobile-spotlight-label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; position: relative; z-index: 2; }
+    .mobile-spotlight-wrap .spotlight-stage { position: relative; z-index: 2; width: 100%; max-width: 300px; height: 520px; overflow: visible; }
+    .mobile-spotlight-wrap .carousel-dots { position: relative; z-index: 2; }
   }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
@@ -309,7 +276,6 @@
     .cta-section { padding: 4rem 1.25rem; }
     footer { padding: 1.5rem 1.25rem; }
     .stat-cards { grid-template-columns: 1fr; }
-    /* mobile carousel: smaller card, tighter peek offsets, auto height */
     .carousel-stage { height: 240px; max-width: 100%; }
     .c-card { width: 240px; padding: 1.1rem; }
     .c-card.prev { transform: translateX(calc(-50% - 130px)) scale(0.82); }
@@ -321,14 +287,14 @@
 <body>
 
 <nav>
-  <="#" class="nav-logo">IRON<span>HOUSE</span></a>
+  <a href="#" class="nav-logo">IRON<span>HOUSE</span></a>
   <div class="nav-links">
-    <="trainers.html">Meet the coaches</a>
-    <="blog/index.html">Blog</a>
-    <="our-story.html">Our story</a>
-    <="trainers-join.html">For trainers</a>
-    <="affiliate.html">Affiliates</a>
-    <="questionnaire.html" class="nav-cta">Get matched</a>
+    <a href="trainers.html">Meet the coaches</a>
+    <a href="blog/index.html">Blog</a>
+    <a href="our-story.html">Our story</a>
+    <a href="trainers-join.html">For trainers</a>
+    <a href="affiliate.html">Affiliates</a>
+    <a href="questionnaire.html" class="nav-cta">Get matched</a>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -337,13 +303,13 @@
 
 <div class="mobile-menu" id="mobile-menu" onclick="handleMenuClick(event)">
   <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
-  <="index.html" onclick="closeMenu()">Home</a>
-  <="trainers.html" onclick="closeMenu()">Meet the coaches</a>
-  <="blog/index.html" onclick="closeMenu()">Blog</a>
-  <="our-story.html" onclick="closeMenu()">Our story</a>
-  <="trainers-join.html" onclick="closeMenu()">For trainers</a>
-  <="affiliate.html" onclick="closeMenu()">Affiliates</a>
-  <="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="trainers.html" onclick="closeMenu()">Meet the coaches</a>
+  <a href="blog/index.html" onclick="closeMenu()">Blog</a>
+  <a href="our-story.html" onclick="closeMenu()">Our story</a>
+  <a href="trainers-join.html" onclick="closeMenu()">For trainers</a>
+  <a href="affiliate.html" onclick="closeMenu()">Affiliates</a>
+  <a href="questionnaire.html" class="m-cta" onclick="closeMenu()">Get matched</a>
 </div>
 
 <div class="ticker">
@@ -361,7 +327,6 @@
     <p class="hero-eyebrow">Online personal training, done right</p>
     <h1>Find the coach<br><em>built for you.</em></h1>
 
-    <!-- MOBILE ONLY: spotlight carousel appears here between headline and sub -->
     <div class="mobile-spotlight-wrap">
       <div class="mobile-spotlight-glow"></div>
       <div class="mobile-spotlight-label">Trainer spotlight</div>
@@ -371,8 +336,8 @@
 
     <p class="hero-sub">Stop scrolling through random fitness pages. Iron House matches you with a personal trainer who fits your goals, your personality, and your life. <em>You do what you do best — we handle the rest.</em></p>
     <div class="hero-actions">
-      <="questionnaire.html" class="btn-primary">Find my coach</a>
-      <="trainers-join.html" class="btn-secondary">I'm a trainer</a>
+      <a href="questionnaire.html" class="btn-primary">Find my coach</a>
+      <a href="trainers-join.html" class="btn-secondary">I'm a trainer</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><strong>48H</strong><span>Match turnaround</span></div>
@@ -388,7 +353,7 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS — tabbed, merged with Why Iron House -->
+<!-- HOW IT WORKS -->
 <section class="section" id="how-it-works" style="padding-bottom:3rem;">
   <div class="section-header-split">
     <div class="section-header-left">
@@ -408,7 +373,6 @@
     </div>
   </div>
 
-  <!-- CLIENTS PANEL -->
   <div class="how-panel active" id="how-clients">
     <div class="steps">
       <div class="step">
@@ -444,7 +408,6 @@
     </div>
   </div>
 
-  <!-- TRAINERS PANEL -->
   <div class="how-panel" id="how-trainers">
     <div class="steps">
       <div class="step">
@@ -509,8 +472,8 @@
 <div class="cta-section">
   <h2>Let's get you<br><span>in the house.</span></h2>
   <div class="cta-actions">
-    <="questionnaire.html" class="btn-primary">Find my coach</a>
-    <="trainers-join.html" class="btn-outline">Join as a trainer</a>
+    <a href="questionnaire.html" class="btn-primary">Find my coach</a>
+    <a href="trainers-join.html" class="btn-outline">Join as a trainer</a>
   </div>
 </div>
 
@@ -520,9 +483,9 @@
       <div class="footer-logo">IRON<span>HOUSE</span> <span style="font-family:var(--font-body);font-size:11px;color:var(--gray-text);font-weight:400;letter-spacing:1px;margin-left:6px;">LLC</span></div>
     </div>
     <div class="footer-right">
-      <="blog/index.html">Blog</a>
-    <a href="trainers-join.html">For trainers</a>
-    <a href="https://instagram.com/joinironhouse" target="_blank" rel="noopener noreferrer">@joinironhouse</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="trainers-join.html">For trainers</a>
+      <a href="https://instagram.com/joinironhouse" target="_blank" rel="noopener noreferrer">@joinironhouse</a>
       <a href="privacy.html" style="font-size:11px;color:rgba(255,255,255,0.2);">Privacy Policy</a>
       <span class="footer-copy">© 2025 Iron House LLC. All rights reserved.</span>
     </div>
@@ -530,18 +493,12 @@
 </footer>
 
 <script>
-  // ── SECURITY: HTML escape helper ────────────────────────────────
   function esc(str) {
     return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
-  // ────────────────────────────────────────────────────────────────
 
-  // NAV
   function toggleMenu() {
     const h = document.getElementById('hamburger');
     const m = document.getElementById('mobile-menu');
@@ -558,7 +515,6 @@
     if (e.target === document.getElementById('mobile-menu')) closeMenu();
   }
 
-  // SET NAV HEIGHT for ticker offset
   function setNavHeight() {
     const h = document.querySelector('nav').offsetHeight;
     document.documentElement.style.setProperty('--nav-h', h + 'px');
@@ -566,7 +522,6 @@
   window.addEventListener('load', setNavHeight);
   window.addEventListener('resize', setNavHeight);
 
-  // SMOOTH SCROLL
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -576,7 +531,6 @@
     });
   });
 
-  // HOW IT WORKS TABS
   function switchHowTab(tab, btn) {
     document.querySelectorAll('.how-tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.how-panel').forEach(p => p.classList.remove('active'));
@@ -584,12 +538,10 @@
     document.getElementById('how-' + tab).classList.add('active');
   }
 
-  // FAQ — accordion, one open at a time
   let openFaq = null;
   function toggleFaq(btn) {
     const a = btn.nextElementSibling;
     const isOpen = a.classList.contains('open');
-    // close currently open one
     if (openFaq && openFaq !== btn) {
       openFaq.classList.remove('open');
       openFaq.nextElementSibling.classList.remove('open');
@@ -599,7 +551,6 @@
     openFaq = !isOpen ? btn : null;
   }
 
-  // TRAINER SPOTLIGHT CAROUSEL
   const SPOTLIGHT_ICONS = {
     intensity: `<svg width="12" height="12" viewBox="0 0 15 21" fill="none"><path d="M8 0 C6 4 4 7 3 10 C1.5 8.5 1.5 6 2.5 4.5 C0.5 7 0 10 0 12 C0 17 3 21 7.5 21 C12 21 15 17 15 12 C15 7 12 3.5 8 0z" fill="#e8500a"/><path d="M7.5 21 C5 19.5 3.5 17 3.5 14 C3.5 11 5 8.5 6.5 7 C6 9.5 6.5 12 7.5 13.5 C6.5 11 7 8 7.5 6.5 C8 8 8.5 11 7.5 13.5 C8.5 12 9 9.5 8.5 7 C10 8.5 11.5 11 11.5 14 C11.5 17 10 19.5 7.5 21z" fill="#b83d06"/></svg>`,
     structure:  `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#e8500a"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#e8500a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -615,36 +566,23 @@
     { key: 'stat_diet',      icon: 'diet'      },
   ];
 
-  let spotlightData = [];
-  let spotlightIdx = 0;
-  let spotlightTimer;
+  let spotlightData = [], spotlightIdx = 0, spotlightTimer;
 
   function buildSpotlightCard(t) {
-    const img = t.photo_main
-      ? `<img src="${esc(t.photo_main)}" alt="${esc(t.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='💪'">`
-      : '💪';
-    const tags = (t.specialties || []).slice(0,2).map(s =>
-      `<span class="spotlight-tag">${esc(s)}</span>`).join('');
-    const nicheTag = t.niches && t.niches[0]
-      ? `<span class="spotlight-tag" style="background:rgba(100,80,200,0.1);color:#a89aea;border-color:rgba(120,100,220,0.2);">${esc(t.niches[0])}</span>` : '';
-    const stars = Array(5).fill(0).map((_, i) =>
-      `<div class="spotlight-star" style="background:${i < Math.round(t.rating || 5) ? '#c07a18' : 'var(--gray-light)'}"></div>`
-    ).join('');
+    const img = t.photo_main ? `<img src="${esc(t.photo_main)}" alt="${esc(t.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='💪'">` : '💪';
+    const tags = (t.specialties || []).slice(0,2).map(s => `<span class="spotlight-tag">${esc(s)}</span>`).join('');
+    const nicheTag = t.niches && t.niches[0] ? `<span class="spotlight-tag" style="background:rgba(100,80,200,0.1);color:#a89aea;border-color:rgba(120,100,220,0.2);">${esc(t.niches[0])}</span>` : '';
+    const stars = Array(5).fill(0).map((_, i) => `<div class="spotlight-star" style="background:${i < Math.round(t.rating || 5) ? '#c07a18' : 'var(--gray-light)'}"></div>`).join('');
     const bars = SPOTLIGHT_STAT_KEYS.map(d => {
       const pct = Math.round(((t[d.key] || 2) / 4) * 100);
-      return `<div class="spotlight-bar-row">
-        ${SPOTLIGHT_ICONS[d.icon]}
-        <div class="spotlight-bar-track"><div class="spotlight-bar-fill" style="width:${pct}%"></div></div>
-      </div>`;
+      return `<div class="spotlight-bar-row">${SPOTLIGHT_ICONS[d.icon]}<div class="spotlight-bar-track"><div class="spotlight-bar-fill" style="width:${pct}%"></div></div></div>`;
     }).join('');
     return `
       <div class="spotlight-img">${img}</div>
       <div class="spotlight-body">
         <div class="spotlight-header-row">
           <div class="spotlight-name">${esc(t.name)}</div>
-          <div>
-            <div class="spotlight-stars">${stars}<span class="spotlight-rating">(${esc(String(t.reviews || 0))})</span></div>
-          </div>
+          <div><div class="spotlight-stars">${stars}<span class="spotlight-rating">(${esc(String(t.reviews || 0))})</span></div></div>
         </div>
         <div class="spotlight-meta">${esc(String(t.age))} · ${esc(t.location)}</div>
         <div class="spotlight-tags">${tags}${nicheTag}</div>
@@ -660,37 +598,26 @@
     const total = spotlightData.length;
     const prev = (spotlightIdx - 1 + total) % total;
     const next = (spotlightIdx + 1) % total;
-
     function slotClass(i) {
       if (i === spotlightIdx) return 'sp-active';
       if (i === prev) return 'sp-prev';
       if (i === next) return 'sp-next';
       return 'sp-hidden';
     }
-
-    // Use index-based navigation — no trainer name in onclick attribute
     const cardHtml = spotlightData.map((t, i) =>
       `<div class="spotlight-card ${slotClass(i)}" onclick="${i === spotlightIdx ? `goToTrainersPage(${i})` : ''}">${buildSpotlightCard(t)}</div>`
     ).join('');
-
     const dotsHtml = spotlightData.map((_, i) =>
-      `<button class="carousel-dot ${i === spotlightIdx ? 'active' : ''}" onclick="goToSpotlight(${i})">
-        <div class="carousel-dot-fill"></div>
-      </button>`
+      `<button class="carousel-dot ${i === spotlightIdx ? 'active' : ''}" onclick="goToSpotlight(${i})"><div class="carousel-dot-fill"></div></button>`
     ).join('');
-
-    // render both desktop and mobile stages
     ['spotlight-stage', 'mobile-spotlight-stage'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = cardHtml;
+      const el = document.getElementById(id); if (el) el.innerHTML = cardHtml;
     });
     ['carousel-dots', 'mobile-carousel-dots'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = dotsHtml;
+      const el = document.getElementById(id); if (el) el.innerHTML = dotsHtml;
     });
   }
 
-  // Navigate to trainers page with spotlight pre-opened, using safe index lookup
   function goToTrainersPage(idx) {
     const trainer = spotlightData[idx];
     if (!trainer) return;
@@ -701,48 +628,35 @@
     if (!spotlightData.length) return;
     const total = spotlightData.length;
     const rawNext = ((n % total) + total) % total;
-    // wrap-aware direction: going last→first is still 'left' (forward)
     let dir;
     if (rawNext === spotlightIdx) return;
     if (spotlightIdx === total - 1 && rawNext === 0) dir = 'left';
     else if (spotlightIdx === 0 && rawNext === total - 1) dir = 'right';
     else dir = rawNext > spotlightIdx ? 'left' : 'right';
     spotlightIdx = rawNext;
-
-    // animate active card out, then render new state
     const stages = ['spotlight-stage', 'mobile-spotlight-stage'];
     stages.forEach(id => {
-      const stage = document.getElementById(id);
-      if (!stage) return;
+      const stage = document.getElementById(id); if (!stage) return;
       const activeCard = stage.querySelector('.sp-active');
-      if (activeCard) {
-        activeCard.classList.add(dir === 'left' ? 'swipe-exit-left' : 'swipe-exit-right');
-      }
+      if (activeCard) activeCard.classList.add(dir === 'left' ? 'swipe-exit-left' : 'swipe-exit-right');
     });
-
     setTimeout(() => {
       renderSpotlight();
-      // flash enter animation on new active card
       stages.forEach(id => {
-        const stage = document.getElementById(id);
-        if (!stage) return;
+        const stage = document.getElementById(id); if (!stage) return;
         const newActive = stage.querySelector('.sp-active');
         if (newActive) {
           newActive.classList.add(dir === 'left' ? 'swipe-enter-left' : 'swipe-enter-right');
-          newActive.offsetHeight; // force reflow
+          newActive.offsetHeight;
           newActive.classList.remove('swipe-enter-left', 'swipe-enter-right');
         }
       });
     }, 180);
-
     clearInterval(spotlightTimer);
     spotlightTimer = setInterval(() => goToSpotlight(spotlightIdx + 1), 5000);
   }
 
-  // TESTIMONIAL MINI — 3-card faded stack
-  let testiData = [];
-  let testiIdx = 0;
-  let testiTimer;
+  let testiData = [], testiIdx = 0, testiTimer;
 
   function testiSlotClass(i, total) {
     const prev = (testiIdx - 1 + total) % total;
@@ -770,9 +684,7 @@
         </div>
       </div>`).join('');
     dotsEl.innerHTML = testiData.map((_, i) =>
-      `<button class="carousel-dot ${i === testiIdx ? 'active' : ''}" onclick="goToTesti(${i})">
-        <div class="carousel-dot-fill"></div>
-      </button>`
+      `<button class="carousel-dot ${i === testiIdx ? 'active' : ''}" onclick="goToTesti(${i})"><div class="carousel-dot-fill"></div></button>`
     ).join('');
   }
 
@@ -785,18 +697,14 @@
     if (testiIdx === total - 1 && next === 0) dir = 'left';
     else if (testiIdx === 0 && next === total - 1) dir = 'right';
     else dir = next > testiIdx ? 'left' : 'right';
-
-    // animate active card out
     const stage = document.getElementById('testi-mini-stage');
     if (stage) {
       const active = stage.querySelector('.tmc-active');
       if (active) active.classList.add('tmc-exit-' + dir);
     }
-
     setTimeout(() => {
       testiIdx = next;
       renderTestiMini();
-      // flash enter on new active
       if (stage) {
         const newActive = stage.querySelector('.tmc-active');
         if (newActive) {
@@ -806,66 +714,40 @@
         }
       }
     }, 200);
-
     clearInterval(testiTimer);
     testiTimer = setInterval(() => goToTesti(testiIdx + 1), 4500);
   }
 
   async function initAll() {
-    // load trainers for spotlight
-    try {
-      const r = await fetch('trainers.json');
-      spotlightData = await r.json();
-    } catch(e) { spotlightData = []; }
-
-    // load testimonials for mini carousel
-    try {
-      const r = await fetch('testimonials.json');
-      testiData = await r.json();
-    } catch(e) {
+    try { const r = await fetch('trainers.json'); spotlightData = await r.json(); } catch(e) { spotlightData = []; }
+    try { const r = await fetch('testimonials.json'); testiData = await r.json(); } catch(e) {
       testiData = [
         { name: 'Jamie T.', initials: 'JT', role: 'Client', result: 'Lost 22 lbs in 14 weeks', quote: "I'd tried two other coaches before. The match Iron House sent me actually gets how I think. Three months in and I haven't missed a week." },
         { name: 'Marcus R.', initials: 'MR', role: 'Trainer · Tampa, FL', result: 'Filled his roster without posting', quote: "I spent two years grinding Instagram. Iron House gave me clients before I even finished setting up my profile." },
       ];
     }
-
     renderSpotlight();
     spotlightTimer = setInterval(() => goToSpotlight(spotlightIdx + 1), 5000);
-
     renderTestiMini();
     testiTimer = setInterval(() => goToTesti(testiIdx + 1), 4500);
 
-    // swipe on testimonials
     const testiStage = document.getElementById('testi-mini-stage');
     if (testiStage) {
       let ttx = 0;
       testiStage.addEventListener('touchstart', e => { ttx = e.touches[0].clientX; }, { passive: true });
-      testiStage.addEventListener('touchend', e => {
-        const diff = ttx - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goToTesti(testiIdx + (diff > 0 ? 1 : -1));
-      }, { passive: true });
+      testiStage.addEventListener('touchend', e => { const diff = ttx - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goToTesti(testiIdx + (diff > 0 ? 1 : -1)); }, { passive: true });
     }
-
-    // swipe on desktop hero right
     const heroRight = document.querySelector('.hero-right');
     if (heroRight) {
       let tx = 0;
       heroRight.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-      heroRight.addEventListener('touchend', e => {
-        const diff = tx - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goToSpotlight((spotlightIdx + (diff > 0 ? 1 : -1) + spotlightData.length) % spotlightData.length);
-      }, { passive: true });
+      heroRight.addEventListener('touchend', e => { const diff = tx - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goToSpotlight((spotlightIdx + (diff > 0 ? 1 : -1) + spotlightData.length) % spotlightData.length); }, { passive: true });
     }
-
-    // swipe on mobile spotlight wrap
     const mobileSpot = document.querySelector('.mobile-spotlight-wrap');
     if (mobileSpot) {
       let mx = 0;
       mobileSpot.addEventListener('touchstart', e => { mx = e.touches[0].clientX; }, { passive: true });
-      mobileSpot.addEventListener('touchend', e => {
-        const diff = mx - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goToSpotlight((spotlightIdx + (diff > 0 ? 1 : -1) + spotlightData.length) % spotlightData.length);
-      }, { passive: true });
+      mobileSpot.addEventListener('touchend', e => { const diff = mx - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goToSpotlight((spotlightIdx + (diff > 0 ? 1 : -1) + spotlightData.length) % spotlightData.length); }, { passive: true });
     }
   }
 
