@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "name": "Maryam Omidiparsa",
+    "age": 28,
+    "location": "Tehran",
+    "email": "Mary.parsa96@gmail.com",
+    "experience": "7 yrs",
+    "certs": "M.Sc. in Sports Nutrition Physiology, Certified Fitness Trainer (B-License) - Austrian Bodybuilding Federation, Certified XBody Trainer, Achieved 12+ International & Olympics Rowing Championships Medals, Proof of Medals By Rowing Federation, Conditioning Coach For Sports, Article ISI Q2, IELTS Language Proficiency",
+    "price": 250,
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "Hypertrophy",
+      "Strength & powerlifting",
+      "Calisthenics",
+      "CrossFit",
+      "Weight loss",
+      "Cardio & endurance",
+      "Functional fitness",
+      "Flexibility & mobility",
+      "Sport-specific",
+      "Body recomposition"
+    ],
+    "niches": [
+      "Women only",
+      "Complete beginners",
+      "Post-injury / rehab"
+    ],
+    "diet": "High protein, Keto, Plant-based, Vegan, Whole foods, Intermittent fasting, Whatever works for the client",
+    "stat_intensity": 2,
+    "stat_structure": 2,
+    "stat_checkins": 2,
+    "stat_energy": 3,
+    "stat_diet": 2,
+    "interests": [
+      "Yoga",
+      "Hiking",
+      "Self-improvement",
+      "Multiple Language Learning",
+      "Travel"
+    ],
+    "bio": "Former National Rowing Team Athlete with over 12 Medals and 7 years of personal training experience. Dedicated to improving overall body performance through effective training and sports nutrition.",
+    "story": "My motivation for training clients online is the ability to impact clients without having to meet them in person, which allows me to work with all people from around the world. Online coaching allows me to support them wherever they are. The most rewarding part of my work is making them reach their fitness goals. I'm passionate about helping people develop healthy habits and exercise, and achieve long-term results. Also, I've always strived to prevent them from being injured while doing effective exercise. For those who have had injuries before, I customize various rehabilitation programmes for them in a timely manner.",
+    "applied_at": "2026-06-20T19:18:04.262Z",
+    "testimonials": []
+  }
+]
