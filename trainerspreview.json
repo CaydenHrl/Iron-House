@@ -47,5 +47,50 @@
     "story": "My motivation for training clients online is the ability to impact clients without having to meet them in person, which allows me to work with all people from around the world. Online coaching allows me to support them wherever they are. The most rewarding part of my work is making them reach their fitness goals. I'm passionate about helping people develop healthy habits and exercise, and achieve long-term results. Also, I've always strived to prevent them from being injured while doing effective exercise. For those who have had injuries before, I customize various rehabilitation programmes for them in a timely manner.",
     "applied_at": "2026-06-20T19:18:04.262Z",
     "testimonials": []
+  },
+  {
+    "name": "Constantine Stoumbos",
+    "age": 36,
+    "location": "Alexandria, VA",
+    "email": "costa@anabolicarchitect.com",
+    "experience": "5 yrs",
+    "certs": "NASM-CPT",
+    "price": 450,
+    "rating": 5,
+    "reviews": 0,
+    "founding": true,
+    "photo_main": "",
+    "photo_physique": "",
+    "photo_lifestyle": "",
+    "specialties": [
+      "Hypertrophy",
+      "Weight loss",
+      "Functional fitness",
+      "Flexibility & mobility",
+      "Sport-specific",
+      "Body recomposition"
+    ],
+    "niches": [
+      "General population",
+      "Postpartum women",
+      "Competitive athletes"
+    ],
+    "diet": "Flexible / IIFYM, High protein, Intermittent fasting, Whatever works for the client",
+    "stat_intensity": 2,
+    "stat_structure": 2,
+    "stat_checkins": 2,
+    "stat_energy": 2,
+    "stat_diet": 2,
+    "interests": [
+      "Parenting",
+      "College basketball",
+      "Driving",
+      "Travel",
+      "Video games"
+    ],
+    "bio": "I help individuals over 30 break through stalled progress, build visible muscle, and get lean through individualized bodybuilding coaching.",
+    "story": "Fitness became deeply personal to me after a severe stroke caused by a neck injury on New Year’s Eve 2019. I had to rebuild my physical and mental capabilities from the ground up. My goal was not simply to recover. It was to become stronger than I had ever been.\n\nThat experience changed how I approach training. Drawing on my analytical background in mathematics and physics, I immersed myself in exercise science, biomechanics, nutrition, and proven bodybuilding methods. I have since trained alongside IFBB professionals, transformed my own physique, and helped clients overcome stalled progress with programs built around their bodies, goals, and lives.\n\nThe Anabolic Architect exists because I know what it means to feel unfinished, and I know what structured, intelligent coaching can make possible.\n\nIf you are training hard but no longer seeing the results your effort deserves, apply for coaching. Together, we will identify what is holding you back and build a clear blueprint for your next level.",
+    "applied_at": "2026-08-03T17:56:03.219Z",
+    "testimonials": []
   }
 ]
